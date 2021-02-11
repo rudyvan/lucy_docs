@@ -1,0 +1,11 @@
+\BOOKMARK [1][-]{Doc-Start}{Schoten\040-\040the\040really\040smart\040home\040implementation\040with\040Lucy}{}% 1
+\BOOKMARK [1][-]{Doc-Start}{site.conf\040:\040the\040Portable\040Home\040Configuration\040File\040\(PHCF\)}{}% 2
+\BOOKMARK [2][-]{section*.1}{Config\040Parser\040Structure}{Doc-Start}% 3
+\BOOKMARK [2][-]{Item.4}{Core\040Apps}{Doc-Start}% 4
+\BOOKMARK [2][-]{Item.4}{Multi\040App\040occurrences}{Doc-Start}% 5
+\BOOKMARK [2][-]{Item.4}{Properties\040:\040adding\040features\040and\040logic}{Doc-Start}% 6
+\BOOKMARK [2][-]{Item.4}{Virtuals\040and\040Events\040:\040make\040your\040configuration\040smart}{Doc-Start}% 7
+\BOOKMARK [2][-]{Item.4}{Value_Logic\040:\040set\040item\040values\040based\040on\040conditions\040or\040time\040events}{Doc-Start}% 8
+\BOOKMARK [2][-]{Item.9}{Referencing\040Things}{Doc-Start}% 9
+\BOOKMARK [2][-]{Item.9}{Notifications}{Doc-Start}% 10
+\BOOKMARK [1][-]{Item.9}{app_data.conf\040:\040the\040site\040install\040configuration\040file}{}% 11

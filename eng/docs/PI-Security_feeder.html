@@ -1,0 +1,48 @@
+
+<!DOCTYPE html><html><head><title>Feeder -> PI-Security_feeder.html  2020/06/19 11:13:26</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+table, caption, tbody, tfoot, thead, tr, th, td {
+border: 1px solid
+text-align: left;
+padding: 8px;
+}
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover {background-color: #ddd;}
+th {
+padding-top: 12px;
+padding-bottom: 12px;
+background-color: #4CAF50;
+color: white;
+}
+table {
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+h1 {
+text-align: center;
+text-decoration: underline;
+color: green;
+}
+h2 {
+text-align: left;
+color: blue;
+}
+p {
+text-indent: 50px;
+text-align: justify;
+letter-spacing: 3px;
+}
+</style></head><body><h1>Feeder -> PI-Security_feeder.html  2020/06/19 11:13:26</h1><table><thead><tr><th>Commands</th><th>Signature</th><th>Collect Report?</th><th>Can eat this Feed?</th><th>Doc</th></tr></thead><tbody><tr><td>Climate_manager.climate_report</td><td>(skip_nty=False)</td><td>Yes</td><td>only PI-Climate can</td><td>The climate report with actual and cumulative information</td></tr><tr><td>Deployer.anomaly_report</td><td>()</td><td>Yes</td><td>only imac-lucy can</td><td>reports used things with payload, tasks and timers</td></tr><tr><td>Deployer.cmd_deploy_all</td><td>(tc_set: set, do_what: str, *args, **kwargs)</td><td>-</td><td>only imac-lucy can</td><td>this script runs a command for all the tc&#x27;s and then does do itself, except for reload.
+   example : {&quot;type&quot;:&quot;cmd&quot;,&quot;cmd&quot;:&quot;Deployer.cmd_deploy_all&quot;,&quot;args&quot;:[{},&quot;Site_settings.cmd_reboot&quot;]}
+or example : {&quot;type&quot;:&quot;cmd&quot;,&quot;cmd&quot;:&quot;Deployer.cmd_deploy_all&quot;,&quot;kwargs&quot;:{&quot;tc_set&quot;:[],
+                                               &quot;do_what&quot;:&quot;Site_settings.cmd_reboot&quot;]}</td></tr><tr><td>Deployer.cmd_reload_all</td><td>()</td><td>-</td><td>only imac-lucy can</td><td>starts the reload sequence for every smart tc to get updated python and conf files</td></tr><tr><td>Deployer.collect_report</td><td>()</td><td>-</td><td>only imac-lucy can</td><td>this command sends to all smart tc&#x27;s commands to produce and notify their reports..</td></tr><tr><td>Feeder.report_feeder</td><td>()</td><td>-</td><td>i can</td><td>Generates this report</td></tr><tr><td>Google_driver.cal_event_self</td><td>(cal_id: str, cal_sum: str, cal_txt: str)</td><td>-</td><td>i can</td><td>Creates a Google Calendar API service object and adds an notification event</td></tr><tr><td>Irrigation_system.irr_abort</td><td>(who_aborted: str = &#x27;just someone&#x27;)</td><td>-</td><td>only PI-Garden can</td><td>Aborts the irrigation.  These scripts only work if just a single irrigation_system is defined</td></tr><tr><td>Irrigation_system.irr_fix_time</td><td>(how_started: str = &#x27;somehow triggered&#x27;)</td><td>-</td><td>only PI-Garden can</td><td>Starts the irrigation with a fix time as specified as irr_time_base in irrigation_system.
+These scripts only work if just a single irrigation_system is defined</td></tr><tr><td>Irrigation_system.irr_report</td><td>()</td><td>Yes</td><td>only PI-Garden can</td><td>Generates the irrigation report.  These scripts only work if just a single irrigation_system is defined</td></tr><tr><td>Irrigation_system.irr_start</td><td>(how_started, calc_new_time=True)</td><td>-</td><td>only PI-Garden can</td><td>Starts the irrigation with previous time setting per channel or with an updated (calc_new_time=True).
+These scripts only work if just a single irrigation_system is defined</td></tr><tr><td>Light_manager.light_reboot</td><td>()</td><td>Yes</td><td>only PI-Light can</td><td>reboot all light managed tc&#x27;s what is possible, Hue, Ikea, Vera(), currently only implemented for ikea...</td></tr><tr><td>Light_manager.light_report</td><td>()</td><td>-</td><td>only PI-Light can</td><td>reports everything in respect to light, it is yet to be made</td></tr><tr><td>Light_manager.light_set_do</td><td>(rm: str = &#x27;&#x27;, to_what: bool = False)</td><td>-</td><td>only PI-Light can</td><td>set the lights of a room or all the rooms to off or on</td></tr><tr><td>My_assistant.hue_emul_report</td><td>()</td><td>Yes</td><td>i can</td><td>generates an overview of all voice commands the emulator can do and emails the result</td></tr><tr><td>Network_controller.network_report</td><td>(mail_all: bool = False)</td><td>Yes</td><td>only PI-Data can</td><td>notifies the network monitoring report</td></tr><tr><td>Notifier.msg_dpl_txt</td><td>(text: str, who: str)</td><td>-</td><td>only PI-Trace can</td><td>puts out a text on smart tc&#x27;s who have screen for messages and potentially a buzzer to draw attention.
+This is useful for cases where voice nty is disturbing </td></tr><tr><td>Notifier.papirus_txt</td><td>(text: str, who: str)</td><td>-</td><td>only PI-Trace can</td><td>prints a text on the papirus screen, obsolete command</td></tr><tr><td>Notifier.voice_all</td><td>(room_ns: str = None, times: int = 1)</td><td>-</td><td>only PI-Trace can</td><td>play all voice notifications, everywhere or just in a room and repeat times</td></tr><tr><td>Notifier.voice_cmd</td><td>(say_item: str, room_ns: str = None, times: int = 1)</td><td>-</td><td>only PI-Trace can</td><td>issues a voice notification, the say_id, the room or all the rooms and the times to repeat</td></tr><tr><td>Prj_parser.parse_nty</td><td>()</td><td>Yes</td><td>i can</td><td>Notifies the very important parsed overview of all tc&#x27;s, apps, drivers, things,..
+ it is the reference book for understanding your configuration.
+Some other reports may also be published if the tc is a My_assistant or a feeder</td></tr><tr><td>Security_system.do_cams_dtime_all</td><td>()</td><td>-</td><td>i can</td><td>Actualizes all camera&#x27;s time based on local time and altzone.  
+It appears that the cameras ntp time is only base time but not local time.  
+The camera time is also automatically updated every Sunday at 3am</td></tr><tr><td>Security_system.security_report</td><td>()</td><td>Yes</td><td>i can</td><td>Generates and emails the security actuals and history report and calendar report and if available,
+the netatmo welcome report</td></tr><tr><td>Security_system.sirens_test</td><td>()</td><td>-</td><td>i can</td><td>Monthly 1st at 12 am the sirens are tested and a warning voice message is preceding.
+This cmd gives an immediate sirens test</td></tr><tr><td>Site_settings.cmd_logging</td><td>(reason: str = &#x27;&#x27;) -&gt; None</td><td>-</td><td>i can</td><td>Emails and restarts logging files unless emailing completed unsuccessfully</td></tr><tr><td>Site_settings.cmd_new_day</td><td>()</td><td>-</td><td>i can</td><td>New day processing, but does not close/re-opens cumul settings as this is done by the things_forensics tc</td></tr><tr><td>Site_settings.cmd_reboot</td><td>(reboot_not_exit: bool = True) -&gt; None</td><td>-</td><td>i can</td><td>restarts if Ubuntu or MAC_OS else reboots the tc</td></tr><tr><td>Site_settings.cmd_reload</td><td>()</td><td>-</td><td>i can</td><td>reload new bin files for the smart tc with the role of deployer</td></tr><tr><td>Site_settings.myproject_report</td><td>()</td><td>Yes</td><td>i can</td><td>shows myproject.py in html code form</td></tr><tr><td>Site_settings.print_version</td><td>(with_email: bool = True)</td><td>-</td><td>i can</td><td>print and or emails all the versions grouped per type</td></tr><tr><td>Sms_driver.sms_out_self</td><td>(sms_ky: str, sms_txt: str, sms_to: str, override: bool)</td><td>-</td><td>only PI-Trace can</td><td>entry point for the tc with the hologram nova sms modem installed. (override is no matter what)</td></tr><tr><td>Things_forensics.things_forensics_report</td><td>()</td><td>Yes</td><td>only PI-Data can</td><td>is an extensive report with several views on things of how they changed over time including usage.</td></tr><tr><td>Timers.report_timers</td><td>()</td><td>Yes</td><td>i can</td><td>Generates a report of all actual timers and their count/condition</td></tr><tr><td>Vera_driver.vera_house_mode</td><td>(mode_nr: int)</td><td>-</td><td>i can</td><td>set house mode on the vera device : 1=home, 2=away, 3=night and 4=vacation</td></tr><tr><td>Vera_driver.vera_report</td><td>()</td><td>-</td><td>i can</td><td>reports the parsing of the vera rooms, categories, devices and scenes</td></tr><tr><td>Weather_station.forecast_report</td><td>()</td><td>-</td><td>only PI-Garden can</td><td>Generates the weather forecast report</td></tr><tr><td>Weather_station.weather_report</td><td>()</td><td>Yes</td><td>only PI-Garden can</td><td>Generates the weather station report.  These scripts only work if just a single weather_station is defined</td></tr></tbody></table></body></html>

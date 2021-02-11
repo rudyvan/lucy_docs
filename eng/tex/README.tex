@@ -1,0 +1,406 @@
+\input{preamble}
+\usepackage{tabu}
+
+\begin{document}
+
+
+\section{Schoten - the really smart home implementation with Lucy}
+
+Lucy is the smart home software that delivers an integrated experience
+for all home control purposes. It is voice controlled by Amazon Alexa,
+Ok Google and Apple Siri and drives many interfaces such as Lutron,
+Philips Hue lights, Ikea Tradfri and vera control ltd Vera.
+
+My house in Schoten is implemented with this Lucy, and these site
+implementation files are stored here. These are private to the owner of
+the house and as much serve as an implementation example of Lucy as a
+full functional house solution.
+
+There is just 1 configuration file that define a site implementation,
+\url{site.conf}.
+
+This readme file covers the structure of this file and has click through
+to all the underlying support documents.
+
+\section{site.conf : the Portable Home Configuration File (PHCF)}
+
+\subsection{Config Parser Structure}
+
+This file is a configuration file that contains all the home definitions
+and descriptors. It implements a basic configuration language which
+provides a structure similar to what’s found in Microsoft Windows INI
+files. This file can be customized by end users if they have some
+computer knowledge and text file editing skills.
+
+For more information on config parsing, see
+https://docs.python.org/3/library/configparser.html
+
+The syntax of site.conf is checked by a config parser program by every
+raspberry node in the network and is the basis of the data structures
+used by Lucy's scripts and an extensive html report is available once
+parsing is completed.
+
+The file app\_obj.conf in the Lucy package (not the home package)
+contains all the fields and their purpose for every interface or
+control. The config parser reads this definitions to validate the
+parsing of site.conf, so it is the best source for information and
+validation.
+
+The first 3 sections (square braced words in the beginning of the line)
+in site.conf are mandatory and should be in that order, then the rooms
+or places are defined (in square braces):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{{[}DEFAULT{]}} : do not change, this is a config parser thing
+\item
+  \textbf{{[}VERSION{]}} : version of the config file, update this after
+  making changes
+\item
+  \textbf{{[}APPS{]}} : the system apps and the drivers, the functional
+  apps can only be defined in the room or place where they provide their
+  functionality
+\item
+  \_\_{[}ROOM/PLACE{]}*\_\_ : the sections where rooms (in-house) or
+  places (out-house) definitions are specified
+\end{enumerate}
+
+Comments must be prefixed with \# or ;
+
+Example (... means must continue):
+
+\begin{verbatim}
+[DEFAULT]       # is applied automatically to every room
+    is_room=True
+    security={"zone":"house"}
+[VERSION]       # should be first, is mandatory and contains the version information of this file
+    is_room=False
+    version="h-3.0.0"
+[APPS]    # should be after version, is mandatory and contains all non room linked configuration, interfaces and drivers
+    is_room=False
+    site_settings={           
+            "latitude":             51.2849951,                 # of your location.  It is used for sunrise / sunset calculations (-90..90)
+            "longitude":            4.5322251,                  # -180..180
+            "currency":             "€&euro;",                  # 1 to 3 characters the currency letters and the HTML currency text (must start with &)
+            "degrees":              "°C",                       # °C or °F
+            # **** Below are the special status virtuals, is_holiday does not imply that that alarm system is armed, this should be done seperately
+            "is_reboot":            Virtual("app", duration=1),   # do not change the duration
+            "is_day":               Virtual("app", value_logic={"00:00":"False","sunrise+00:15":"True","sunset-00:10":"False"}),
+            "EMAIL_prime":          "rudy_vandenberghe@hotmail.com",
+            "EMAIL_other":          "lucyaraujo13@hotmail.com",
+            "language":             "english", # not yet implemented
+            "IP_WAN":               "8.8.8.8", # not yet implemented
+            "site_id":              "schoten"}
+    ...
+[STREET]
+...
+[GARDEN]
+...
+[KITCHEN]
+...
+\end{verbatim}
+
+Firstly, the core apps are outlined, followed with the system apps, the
+drivers and then the functional apps. Then base things follow which are
+the basis of all things which are presented last.
+
+Potentially you can skip the core apps and first visit the rest, and
+come back to these if you need more detail.
+
+\subsection{Core Apps}
+
+\begin{tabular}{ l l }
+what\_is & Description \\
+\hline
+\href{config\_parser} (docs/config\_parser.md) & Config Parsing verifies and turns your site.conf file into program data \\
+\href{multi\_app} (docs/config\_parser.md) & Multiple Occurrences for complex functional apps such climate\_system or security\_system or weather\_station \\
+\href{notifications} (docs/Notifications.md) & Notifications are triggered by an app or a thing and post their message through different channels \\
+\href{pin\_definitions} (docs/pin.md) & the reference to the physical aspect of a thing, such as an input, an output or sensors \\
+\href{properties} (docs/properties.md) & more detailed information on item properties, adding features and logic \\
+\href{rooms\_places} (docs/room\_place.md) & define rooms, subrooms, places and zones and link this all together \\
+\href{things} (docs/devices.md) & definable input things or output things \\
+\href{things\_sync} (docs/things\_sync.md) & The process of ensuring that the as\_is and to\_be state of a Thing is there where it needs to be for the system to work as a whole \\
+\href{value\_logic} (docs/value\_logic.md) & value logic : value setting/blocking based on conditions or time events \\
+\href{virtual} (docs/Virtual.md) & Virtuals are Virtual Things and they make your configuration smart and easy to understand \\
+\end{tabular}
+
+\subsection{Multi App occurrences}
+
+To allow multiple instances of security and climate system, the options
+can be indexed by adding an index trailer: \_x with x a number and add
+to the raspberry roles a keyword 'option\_x' with x the index number, so
+that only these options will be parsed for the raspberry that will
+handle that set of security or climate arrangements.
+
+Example of 2 climate systems managed by 2 separate raspberry's:
+
+\begin{verbatim}
+climate_system_0={"role_me":"PI-Climate",..}
+climate_system_1={"role_me":"PI-Climate2",..}
+raspi={
+    "PI-Climate":  Raspi(ip="192.168.15.70",io_dev="UniPi,24,14",color="magenta", roles=["option_0"]),
+    "PI-Climate2": Raspi(ip="192.168.15.71",io_dev="UniPi,24,14",color="magenta", roles=["option_1"]),
+}
+\end{verbatim}
+
+This works also for other interfaces such as irrigation, weather, etc..
+
+\subsection{Properties : adding features and logic}
+
+Properties is a keyword allowed in the definition of Inputs, Outputs,
+Lights, Buttons, Dimmers,.. to define a dictionary of additional
+attributes. The fields of this dictionary are checked for eligibility
+and it can be best showed through some examples.
+
+Simple Example to have a voice message when internet access is lost or
+restored:
+
+\begin{verbatim}
+"internet_lost":
+    Virtual("app", properties={
+        "say_active":"tts_internet_lost",
+        "say_normal":"tts_internet_there"})
+\end{verbatim}
+
+A more complex example involves the use of virtuals for post mail
+handling.\\
+It will trigger a voice and mail message when new mail arrives and
+create an email message when the mail is removed. At the same time a
+virtual "have\_mail" is maintained and set when there is new mail and
+lowered when the mail is taken.
+
+\begin{verbatim}
+mailbox_monitor={  # It is connected to 2 magnetic switches which register incoming and retrieved post mail
+    "role_me": "PI-Mail",                                               
+    "mail_in": Input(pin="pi:PI-Mail,0", properties={
+        "say_active":   "tts_mail",
+        "have_mail":    Virtual("do_me_up"),
+        "nty_active":   "nty_mail_in"}),
+    "mail_out": Input(pin="pi:PI-Mail,1", properties={
+        "have_mail":    Virtual("do_me_down"),
+        "nty_active":   "nty_mail_out"})}
+\end{verbatim}
+
+Nesting of properties is allowed to a few levels deep, but it is best to
+keep nesting levels shallow.
+
+see \href{docs/door.md}{a gate entrance door example} for a complex
+nesting structure and the extensive use of virtuals and notifications.
+
+Although this may look like programming, you can easily add features
+without changing any of the programming scripts.
+
+Please study the site.conf example for tricks and features you may need.
+
+\subsection{Virtuals and Events : make your configuration smart}
+
+When pondering the strategy to separate home specific configuration from
+the programming scripts, the idea emerged of using virtuals and events
+to make the configuration smart and to have a powerful design mechanism
+to have logic in the site.conf configuration file. It worked out better
+than i anticipated and the result is a very powerful combination. The
+negatives, cluttering the configuration file with virtuals has proven to
+be manageable although the syntax of closing parentheses and braces can
+drive you almost nuts. However, it clearly delivers the result of having
+stable and separated processing code.
+
+as an example of frequently used virtual actions (many more are
+available):
+
+
+\href{docs/Virtual.md}{Further reading on how to use virtuals.}
+
+\href{docs/Event.md}{Further reading on how to use events.}
+
+\subsection{Value\_Logic : set item values based on conditions or time
+events}
+
+Home automation results in devices getting values based on very complex
+circumstances and value\_logic is a reasonable simple solution to
+capture this complexity in a (hopefully) readable manner.
+
+Two situations can be defined, one whereby the device get overruled and
+a certain value is set or the other situation whereby the value of the
+device is frozen until this lock is lifted.
+
+Value logic is a value setting dictionary that can be defined in output
+derived devices, see \href{docs/value_logic.md}{value\_logic}
+
+A few value\_logic examples will clarify:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  below is\_day is defined as True after sunrise and before sunset else
+  False
+
+\begin{verbatim}
+"is_day": Virtual("app", value_logic={"00:00":"False","sunrise":"True","sunset":"False"})
+\end{verbatim}
+\item
+  here the curtains open 15 minutes after sunrise and before sunset or
+  5pm whatever comes first and freezelist the item the rest of the time.
+
+\begin{verbatim}
+"vera_curtains": Virtual("do_me_follow", 
+    value_logic={"sunrise+00:15":True,"00:00":False,"07:30":True,"17:00":False,"sunset":False})
+\end{verbatim}
+\item
+  this example sets the ventilation speed based on the occupancy modes
+  of the house if it is day or night
+
+\begin{verbatim}
+"ventilation_speed": Dimmer(pin="pi:PI-WWaste,0", 
+    value_logic={"is_holiday":"0.10","is_armed_full":"0.10","is_armed_partial":"0.20","is_day":"0.50"})
+\end{verbatim}
+\item
+  this example sets the hall light off when nobody is there, if sleeping
+  then the value is 10 else 25 before sunset else 100
+
+\begin{verbatim}
+"hall_light": Dimmer(pin="pi:AR-Hall,0", 
+    value_logic={"is_armed_partial":"10","is_armed_full":"0","is_holiday":"0","00:00":"25","sunset":"100"})
+\end{verbatim}
+\item
+  for philips hue items, a hue defined scene name can be used in the
+  value\_logic, see below example where the light will be off when the
+  room is protected or before sunrise. Then it will be at
+  spring\_blossom at 20 (values are 0..255) till noon, then
+  tropical\_twilight at 150 and finally from sunset savanna\_sunset at
+  50.
+
+\begin{verbatim}
+"office_ledstrip": Dimmer(pin="hue:Hue_Bridge,{:}",
+    value_logic={"is_room_secure":"0",
+            "00:00":"0",
+            "sunrise":"20,spring_blossom",
+            "12:00":"150,tropical_twilight",
+            "sunset":"50,savanna_sunset"}, 
+    properties={"type":"RGB"})
+\end{verbatim}
+\end{enumerate}
+
+\subsection{Referencing Things}
+
+Firstly what are input or output derived objects and what are allowed
+pin types?
+
+In all input or output derived objects, the definition of a
+\textbf{pin=} is mandatory.
+
+Pin types define the source of the input / output element and they have
+each to follow a specific syntax:
+
+
+
+For tcp and udp, 'ip\_txt' string can contain python string formatting,
+whereby the variables are \{name\} for substituting the device name and
+\{val\} the current value of the device.
+
+Pin definition Examples:
+
+\begin{verbatim}
+"iButton_out_red":     Light(pin="pi:AR-1W-OUT,1",duration=2)           # pin is an arduino, output pin 1
+"door_kitchen_terras": Door(pin="1w:A,12742ECC000000B4")                # pin is DS2406 pin A 
+"HVAC_test":           Clim_SP(pin="zw:p_switch,135,1",i_make={"wind"}) # pin is zw device 135 variable 1
+"office_wall_light":   Light(pin="vera:{:}")                            # pin is vera device named office_wall_light
+"guest_light":         Dimmer(pin="ikea:Ikea_Tradfri,{:}")              # pin is tradfri device guest_light
+"bed_candle":          Dimmer(pin="hue:Hue_Bridge2,{:}")                # pin is on Hue Bridge 2, named bed candle
+"temp_outside":        Sensor(pin="289574D906000075")                   # pin is 1w temp sensor 
+"tcp_light":           Light(pin="PI-Light/tcp:192.168.15.76,5000,'{name}-{val}'") # pin is tcp message 
+"udp_light":           Light(pin="PI-Light/udp:192.168.15.76,5000,'{val}'")        # pin is udp message
+\end{verbatim}
+
+\subsection{Notifications}
+
+Using a prefix in the properties of an option or an io item, certain
+notifications can be defined.
+
+As example, in \href{docs/irrigation.md}{irrigation} there is an
+attribute nty\_all, that has a list of names that are notifications that
+will be called automatically when that particular irrigation event
+happens.
+
+With a prefix, these notification triggers can be activated in
+PI\_Home.conf in the option irrigation to allow the following:
+
+
+So to make a speech notification for the completion of irrigation, the
+identifier "tts\_irr\_completed" should be referenced in PI\_Home.conf
+in irrigation, and "tts\_irr\_completed" should be defined in
+PI\_Install.conf, section {[}TTS{]} in the tts\_msg dictionary.
+
+Some examples:
+
+\begin{itemize}
+\item
+  for range devices we have val\_x (x the value), example whereby a text
+  message is played through sonos when climatisation switches from
+  heating to cooling :
+\end{itemize}
+
+\begin{verbatim}
+"climate_mode":         
+    Flag_R("role",[-1,0,1], ["Cooling","Off","Heating"]), 
+        properties={
+            "tts_val_-1":   "tts_now_cooling",
+            "tts_val_1":    "tts_now_heating"})
+\end{verbatim}
+
+\begin{itemize}
+\item
+  for binary devices we have active and normal. In this example there is
+  a zwave multi switch device that get triggered when the flag do\_sonos
+  gets active and a tcp and udp message when this flag becomes non
+  active.
+\end{itemize}
+
+\begin{verbatim}
+"do_sonos": 
+    Flag("role", value_logic={"is_armed":"False","is_holiday":"False","00:00":"False","09:15":"True","22:30":"False"}, 
+        properties={
+            "zw_active":    "zw:p_switch,135,1",    # this is the vera virtual switch Voice Anotations kept in sync
+            "zw_normal":    "zw:p_switch,135,0"}),
+            "tcp_normal":   "tcp:192.168.15.58,5000,'text!!'", 
+            "udp_normal":   "udp:192.168.15.58,5000,'text!!'"})
+\end{verbatim}
+
+\begin{itemize}
+\item
+  for sensors we have high/low and normal. In this example there is a
+  notification email and a sonos speech message when the temperature is
+  high and back to normal.
+\end{itemize}
+
+\begin{verbatim}
+"Case°C_aslave_rear":   
+    Sensor("28FF7C1965040004",
+        properties={
+            "check_event": Event("check_float", 
+                parameters={
+                    "low":  None,
+                    "high": 40.0,
+                    "nty_high":    "nty_box_high",
+                    "nty_normal":  "nty_box_normal",
+                    "say_high":    "tts_box_high",
+                    "say_normal":  "tts_box_normal"})})
+\end{verbatim}
+
+see \href{docs/notifier.md}{notifier} for more details on the
+notification syntax.
+
+\section{app\_data.conf : the site install configuration file}
+
+This configuration file is home site specific but contains information
+that is typically only for the installer of the system.
+
+Sections of this file:
+
+
+Apache License, Version 2.0
+
+Raspberry Pi is a trademark of the Raspberry Pi Foundation
+
+
+\end{document}

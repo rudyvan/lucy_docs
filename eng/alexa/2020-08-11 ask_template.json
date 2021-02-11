@@ -1,0 +1,1130 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "my home",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "StartIntent",
+                    "slots": [
+                        {
+                            "name": "startaction",
+                            "type": "AMAZON.DeviceType",
+                            "samples": [
+                                "proceed with {startaction}",
+                                "commence {startaction}",
+                                "start {startaction}",
+                                "i would like to start {startaction}",
+                                "{startaction}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "commence",
+                        "begin",
+                        "start",
+                        "commence with {startaction}",
+                        "begin {startaction}",
+                        "start {startaction}",
+                        "start with {startaction}"
+                    ]
+                },
+                {
+                    "name": "StopIntent",
+                    "slots": [
+                        {
+                            "name": "stopaction",
+                            "type": "AMAZON.DeviceType",
+                            "samples": [
+                                "terminate {stopaction}",
+                                "cancel {stopaction}",
+                                "stop {stopaction}",
+                                "{stopaction}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "end {stopaction}",
+                        "terminate {stopaction}",
+                        "cancel {stopaction}",
+                        "stop {stopaction}"
+                    ]
+                },
+                {
+                    "name": "OpenIntent",
+                    "slots": [
+                        {
+                            "name": "doorwindow",
+                            "type": "AMAZON.DeviceType",
+                            "samples": [
+                                "open the {doorwindow}",
+                                "trigger the {doorwindow}",
+                                "trigger {doorwindow}",
+                                "open  {doorwindow}",
+                                "{doorwindow}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "give me access to the {doorwindow}",
+                        "give me access to {doorwindow}",
+                        "open the window",
+                        "open the door",
+                        "open the {doorwindow}",
+                        "open {doorwindow}"
+                    ]
+                },
+                {
+                    "name": "CloseIntent",
+                    "slots": [
+                        {
+                            "name": "doorwindow",
+                            "type": "AMAZON.DeviceType",
+                            "samples": [
+                                "the {doorwindow}",
+                                "close the {doorwindow}",
+                                "close {doorwindow}",
+                                "{doorwindow}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "close the {doorwindow}",
+                        "revoke access to {doorwindow}",
+                        "close the door",
+                        "close the window",
+                        "close {doorwindow}"
+                    ]
+                },
+                {
+                    "name": "RunIntent",
+                    "slots": [
+                        {
+                            "name": "report",
+                            "type": "AMAZON.DeviceType",
+                            "samples": [
+                                "execute {report}",
+                                "run {report}",
+                                "{report}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "execute the {report}",
+                        "run the {report}",
+                        "execute {report}",
+                        "execute a scene",
+                        "run a scene",
+                        "execute a report",
+                        "run a report",
+                        "run {report}"
+                    ]
+                },
+                {
+                    "name": "OnIntent",
+                    "slots": [
+                        {
+                            "name": "device",
+                            "type": "AMAZON.DeviceType",
+                            "samples": [
+                                "activate the {device}",
+                                "activate {device}",
+                                "turn on the {device}",
+                                "switch on the {device}",
+                                "switch on {device}",
+                                "turn on {device}",
+                                "{device}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "enable {device}",
+                        "turn on the {device}",
+                        "switch on the {device}",
+                        "activate the {device}",
+                        "activate {device}",
+                        "switch on {device}",
+                        "turn on {device}"
+                    ]
+                },
+                {
+                    "name": "OffIntent",
+                    "slots": [
+                        {
+                            "name": "device",
+                            "type": "AMAZON.DeviceType",
+                            "samples": [
+                                "desactivate {device}",
+                                "turn off {device}",
+                                "switch off {device}",
+                                "{device}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "disable {device}",
+                        "desactivate the {device}",
+                        "switch off the {device}",
+                        "turn off the {device}",
+                        "desactivate {device}",
+                        "switch off {device}",
+                        "turn off {device}"
+                    ]
+                },
+                {
+                    "name": "ClimaRoomIntent",
+                    "slots": [
+                        {
+                            "name": "Room",
+                            "type": "AMAZON.Room",
+                            "samples": [
+                                "{Room}"
+                            ]
+                        },
+                        {
+                            "name": "OnOffValue",
+                            "type": "OnOff",
+                            "samples": [
+                                "{OnOffValue}",
+                                "turn it {OnOffValue}"
+                            ]
+                        },
+                        {
+                            "name": "Clima",
+                            "type": "ClimRmVar",
+                            "samples": [
+                                "update {Clima}",
+                                "change {Clima}",
+                                "{Clima}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "turn {Clima} mode for the {Room}  {OnOffValue}",
+                        "switch {Clima} mode for the {Room}  {OnOffValue}",
+                        "set {Clima}  mode for the {Room}  {OnOffValue}",
+                        "set {Clima} mode for the {Room} {OnOffValue}",
+                        "switch {Clima} mode for the {Room} {OnOffValue}",
+                        "turn {Clima} mode for {Room}  {OnOffValue}"
+                    ]
+                },
+                {
+                    "name": "LampBrightnessIntent",
+                    "slots": [
+                        {
+                            "name": "device",
+                            "type": "AMAZON.DeviceType",
+                            "samples": [
+                                "set {device} to {brightness} percent",
+                                "{device}"
+                            ]
+                        },
+                        {
+                            "name": "brightness",
+                            "type": "brightness",
+                            "samples": [
+                                "{brightness} percent",
+                                "{brightness}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "set the brightness of the {device} to {brightness} percent",
+                        "set brightness of a lamp",
+                        "dim a lamp",
+                        "set brightness of {device} to {brightness} percent",
+                        "change brightness of {device} to {brightness}"
+                    ]
+                },
+                {
+                    "name": "LampColorIntent",
+                    "slots": [
+                        {
+                            "name": "device",
+                            "type": "AMAZON.DeviceType",
+                            "samples": [
+                                "change the color of {device}",
+                                "{device}"
+                            ]
+                        },
+                        {
+                            "name": "color",
+                            "type": "LightColor",
+                            "samples": [
+                                "make it {color}",
+                                "{color}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "set the color of {device} to {color}",
+                        "change the color of {device} to {color}"
+                    ]
+                },
+                {
+                    "name": "LampSceneIntent",
+                    "slots": [
+                        {
+                            "name": "device",
+                            "type": "AMAZON.DeviceType",
+                            "samples": [
+                                "{device}"
+                            ]
+                        },
+                        {
+                            "name": "scene",
+                            "type": "Scene",
+                            "samples": [
+                                "{scene}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        " set the scene for {device} to {scene}",
+                        "set the scene of {device} to {scene}"
+                    ]
+                },
+                {
+                    "name": "ClimaIntent",
+                    "slots": [
+                        {
+                            "name": "ClimaMode",
+                            "type": "ClimVar"
+                        }
+                    ],
+                    "samples": [
+                        "set {ClimaMode} mode",
+                        "set climatisation to {ClimaMode} mode"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "OnOff",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Off"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "On"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ClimVar",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "default"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "normal"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "comfort"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "economy"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "LightColor",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "orange"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "yellow"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "brown"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "white"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "magenta"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "purple"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "green"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "red"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "blue"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "brightness",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "0"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "100"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "95"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "90"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "85"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "80"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "75"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "70"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "65"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "60"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "55"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "50"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "45"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "40"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "35"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "30"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "25"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "20"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "15"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "10"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "5"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Scene",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "red green change"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "gradual on off"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "flash"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "breath"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "gradual change"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "meteor shower"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "savanna sunset"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "artic aurora"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "spring blossom"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "tropical twilight"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "concentrate"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "read"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "relax"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "energize"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nightlight"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dimmed"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bright"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "rainbow"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ClimRmVar",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "climatization"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cooling"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "heating"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "climatisation"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "default"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "normal"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "comfort"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "economy"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "StartIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "startaction",
+                            "type": "AMAZON.DeviceType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.605629117880.173278881137"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "StopIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "stopaction",
+                            "type": "AMAZON.DeviceType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1394466115974.1191257329485"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "OpenIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "doorwindow",
+                            "type": "AMAZON.DeviceType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.937903773443.173174669529"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "CloseIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "doorwindow",
+                            "type": "AMAZON.DeviceType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1387824125891.1115498403477"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "RunIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "report",
+                            "type": "AMAZON.DeviceType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.142158645020.1253903145462"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "OnIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "device",
+                            "type": "AMAZON.DeviceType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.901860559329.993805636366"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "OffIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "device",
+                            "type": "AMAZON.DeviceType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.248215185926.1506579031427"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ClimaRoomIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "Room",
+                            "type": "AMAZON.Room",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.441829876591.1406318751882"
+                            }
+                        },
+                        {
+                            "name": "OnOffValue",
+                            "type": "OnOff",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.441829876591.576449284625"
+                            }
+                        },
+                        {
+                            "name": "Clima",
+                            "type": "ClimRmVar",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.441829876591.508639857608"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "LampBrightnessIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "device",
+                            "type": "AMAZON.DeviceType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.475470319540.26683868424"
+                            }
+                        },
+                        {
+                            "name": "brightness",
+                            "type": "brightness",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.475470319540.110930290504"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "LampColorIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "device",
+                            "type": "AMAZON.DeviceType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.411862376749.703731050495"
+                            }
+                        },
+                        {
+                            "name": "color",
+                            "type": "LightColor",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.411862376749.939825413223"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "LampSceneIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "device",
+                            "type": "AMAZON.DeviceType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.688868489719.893993794954"
+                            }
+                        },
+                        {
+                            "name": "scene",
+                            "type": "Scene",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.688868489719.578642161162"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ClimaIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.864920494624"
+                    },
+                    "slots": [
+                        {
+                            "name": "ClimaMode",
+                            "type": "ClimVar",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.178392731569.130033995647"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.605629117880.173278881137",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What would you like to start?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Tell me what you want me to start"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1394466115974.1191257329485",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what do you want me to terminate?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "tell me what you want to stop"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "what do you want to stop?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.937903773443.173174669529",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what door or window do you like me to open?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1387824125891.1115498403477",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what door or window would you like me to close?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.142158645020.1253903145462",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "tell me what report or scene that i should execute"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "what report or scene would you like me to run or execute?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.901860559329.993805636366",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "tell me what device i should turn on"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "what device do you want me to turn on?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.248215185926.1506579031427",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "tell me the device to switch off"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "what device would you like me to switch off?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.441829876591.576449284625",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "shall i turn it on or off?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "tell me to turn it on or off "
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.441829876591.1406318751882",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what is the room that you want to change climatisation for?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.441829876591.508639857608",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what climatisation aspect of the room you want me to change.  climatisation, comfort or economy mode?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "tell me what to change, climatisation, comfort or economy mode?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "do you want me to change climatisation, comfort mode or economy mode?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1175550536849.1345653174869",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "tell me the device you want to change the color of?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "what  device do you want to set the color?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.475470319540.26683868424",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what device?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "what device do you want to set the brightness to?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.475470319540.110930290504",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "how much percent?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.821800765010.643552980738",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what device do you want the scene changed for?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.411862376749.703731050495",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what device do you want to change the color of?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.411862376749.939825413223",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what is the color you want to have?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.688868489719.893993794954",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what device you want to set the scene of?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.688868489719.578642161162",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what scene?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.178392731569.130033995647",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What climatisation mode for the house do you want, comfort, economy or normal?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.864920494624",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Do you want climatisation to become {ClimaMode} mode?"
+                    }
+                ]
+            }
+        ]
+    }
+}

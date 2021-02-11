@@ -1,0 +1,36 @@
+
+<!DOCTYPE html><html><head><title>Irrigation Rain Decay -> PI-Garden_irr_decay.html  2020/08/16 17:38:09</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+table, caption, tbody, tfoot, thead, tr, th, td {
+border: 1px solid
+text-align: left;
+padding: 8px;
+}
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover {background-color: #ddd;}
+th {
+padding-top: 12px;
+padding-bottom: 12px;
+background-color: #4CAF50;
+color: white;
+}
+table {
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+h1 {
+text-align: center;
+text-decoration: underline;
+color: green;
+}
+h2 {
+text-align: left;
+color: blue;
+}
+p {
+text-indent: 50px;
+text-align: justify;
+letter-spacing: 3px;
+}
+</style></head><body><h1>Irrigation Rain Decay -> PI-Garden_irr_decay.html  2020/08/16 17:38:09</h1><table><tr><td style='background-color:cyan;text-align:center' colspan='3'>Inputs</td></tr><tr><td>Irrigation Time Basis</td><th style='text-align:center'>00:08:00</th><td>HH:MM:SS</td></tr><tr><td>High Temp Forecast</td><td style='text-align:center'>+29.00</td><td> &deg;C</td></tr><tr><td>Low  Temp Forecast</td><td style='text-align:center'>+18.00</td><td> &deg;C</td></tr><tr><td>Rain Forecast</td><td style='text-align:center'>0.3955</td><td> mm/day</td></tr><tr><td>Rain Time</td><td style='text-align:center'>00:03:12</td><td>HH:MM:SS</td></tr><tr><td>Rain Quantity</td><td style='text-align:center'>0.28</td><td>mm/m2</td></tr><tr><td>Prior Dry Days</td><td style='text-align:center'>0</td><td>Count</td></tr><tr><td>Rain Decay</td><td style='text-align:center'>00:00:00</td><td>HH:MM:SS</td></tr><tr><td style='background-color:cyan;text-align:center' colspan='3'>Evaluation</td></tr><tr><td>1-&gt; High &deg;C : Multiplier</td><td style='text-align:center'>2</td><td>Times</td></tr><tr><td>2-&gt; Rain Decay</td><td style='text-align:center'>not changed by</td><td>dry days 0&lt;3</td></tr><tr><td>3-&gt; Rain Decay + Rain Time</td><td style='text-align:center'>00:03:00</td><td>HH:MM:SS</td></tr><tr><td>4-&gt; Rain Decay Factor</td><td style='text-align:center'>2</td><td>Factor</td></tr><tr><td style='background-color:cyan;text-align:center' colspan='3'>Results</td></tr><tr><td>--&gt; Rain Carry Over, New Rain Decay</td><td style='text-align:center'>00:00:00</td><td>HH:MM:SS</td></tr></table></body></html>
