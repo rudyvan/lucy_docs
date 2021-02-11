@@ -58,7 +58,7 @@ Enjoy reading!
 
 ## Config Parser 
 
-[__myproject.py__](../../site/myproject.py) is a configuration file that contains all the home definitions and descriptors.
+[__myproject.py__](../lucy/site/myproject.py) is a configuration file that contains all the home definitions and descriptors.
 It implements a complete python3 script which provides a structure similar to any of the many python3 script that exist with the exception that it only contains a single expression with all your home's configuration. 
 This file can be customized by software designers and users who have some computer knowledge and text file editing skills.
 
@@ -70,6 +70,7 @@ A document generator is part of the prj_parser, whereby more than 70% of the doc
 
 ```python3
 from lucy import *
+
 root_str={
     "project":Project(
         settings=[],
