@@ -3825,3 +3825,169 @@ class Vera:
     :type ths_hw:  list
     '''
     pass
+
+class Slack_driver:
+    ''' Slack_driver in Driver
+
+    is the driver for the Slack interface
+
+    - **parameters** and **types**
+
+    :param role_me: role_me of 'Slack_driver', adds <loxone> to the roles of the specified tc
+    :param fav: is this a favorite element
+    :param icon: icon file for this element
+    :type role_me:  {tc}
+    :type fav:  str
+    :type icon:  str
+    '''
+    pass
+
+class Niko_driver:
+    ''' Niko_driver in Driver
+
+    is the driver for Niko
+
+    - **parameters** and **types**
+
+    :param role_me: role_me of 'Niko_driver', adds <niko> to the roles of the specified tc
+    :param fav: is this a favorite element
+    :param icon: icon file for this element
+    :type role_me:  {tc}
+    :type fav:  str
+    :type icon:  str
+    '''
+    pass
+
+class HAP_driver:
+    ''' HAP_driver in Driver
+
+    is the driver for HAP Home Apple Protocol
+
+    - **parameters** and **types**
+
+    :param role_me: role_me of 'HAP_driver', adds <hap> to the roles of the specified tc
+    :param fav: is this a favorite element
+    :param icon: icon file for this element
+    :type role_me:  {tc}
+    :type fav:  str
+    :type icon:  str
+    '''
+    pass
+
+class KNX_driver:
+    ''' KNX_driver in Driver
+
+    is the driver for KNX
+
+    - **parameters** and **types**
+
+    :param role_me: role_me of 'KNX_driver', adds <knx> to the roles of the specified tc
+    :param fav: is this a favorite element
+    :param icon: icon file for this element
+    :type role_me:  {tc}
+    :type fav:  str
+    :type icon:  str
+    '''
+    pass
+
+class Lutron_driver:
+    ''' Lutron_driver in Driver
+
+    is the driver for Lutron
+
+    - **parameters** and **types**
+
+    :param role_me: role_me of 'Lutron_driver', adds <lutron> to the roles of the specified tc
+    :param fav: is this a favorite element
+    :param icon: icon file for this element
+    :type role_me:  {tc}
+    :type fav:  str
+    :type icon:  str
+    '''
+    pass
+
+class Modbus_driver:
+    ''' Modbus_driver in Driver
+
+    is the driver for Modbus
+
+    - **parameters** and **types**
+
+    :param role_me: role_me of 'Modbus_driver', adds <modbus> to the roles of the specified tc
+    :param fav: is this a favorite element
+    :param icon: icon file for this element
+    :type role_me:  {tc}
+    :type fav:  str
+    :type icon:  str
+    '''
+    pass
+
+class Somfy_driver:
+    ''' Somfy_driver in Driver
+
+    is the driver for Somfy
+
+    - **parameters** and **types**
+
+    :param role_me: role_me of 'Somfy_driver', adds <somfy> to the roles of the specified tc
+    :param fav: is this a favorite element
+    :param icon: icon file for this element
+    :type role_me:  {tc}
+    :type fav:  str
+    :type icon:  str
+    '''
+    pass
+
+class Twitter_driver:
+    ''' Twitter_driver in Driver
+
+    is the driver for Twitter
+
+    - **parameters** and **types**
+
+    :param role_me: role_me of 'Twitter_driver', adds <twitter> to the roles of the specified tc
+    :param fav: is this a favorite element
+    :param icon: icon file for this element
+    :type role_me:  {tc}
+    :type fav:  str
+    :type icon:  str
+    '''
+    pass
+
+class HAP:
+    ''' tc=HAP
+
+    controller of things - HAP
+
+    - **parameters** and **types**
+
+    :param fav: is this a favorite element
+    :param icon: icon file for this element
+    :param color: color on the display for this item
+    :param ip: ip in the format of xx.xx.xx.xx
+    :param roles: list of roles for this things_controller, mostly they are assigned automatically when a tc is assigned in a driver or an app
+    :param ths_hw: hardware controlling the thing by the things_controller
+    :type fav:  str
+    :type icon:  str
+    :type color:  str
+    :type ip:  str
+    :type roles:  list
+    :type ths_hw:  list
+    '''
+    pass
+
+class Knx_driver:
+    ''' KNX_driver in Driver
+
+    is the driver for KNX
+
+    - **parameters** and **types**
+
+    :param role_me: role_me of 'KNX_driver', adds <knx> to the roles of the specified tc
+    :param fav: is this a favorite element
+    :param icon: icon file for this element
+    :type role_me:  {tc}
+    :type fav:  str
+    :type icon:  str
+    '''
+    pass

@@ -40,6 +40,9 @@
 <!--s_insert_{'file_n':'docs/Google_driver.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
+<!--s_insert_{'file_n':'docs/HAP_driver.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
 <!--s_insert_{'file_n':'docs/Hue_driver.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
@@ -52,16 +55,28 @@
 <!--s_insert_{'file_n':'docs/Ip_building_driver.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
+<!--s_insert_{'file_n':'docs/KNX_driver.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
 <!--s_insert_{'file_n':'docs/Log_driver.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Loxone_driver.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
+<!--s_insert_{'file_n':'docs/Lutron_driver.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
+<!--s_insert_{'file_n':'docs/Modbus_driver.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
 <!--s_insert_{'file_n':'docs/Netatmo_driver.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Netatmo_driver.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
+<!--s_insert_{'file_n':'docs/Niko_driver.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/One_wire_driver.md','path+':'docs/','level':+1}-->
@@ -70,7 +85,13 @@
 <!--s_insert_{'file_n':'docs/Piface_driver.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
+<!--s_insert_{'file_n':'docs/Slack_driver.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
 <!--s_insert_{'file_n':'docs/Sms_driver.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
+<!--s_insert_{'file_n':'docs/Somfy_driver.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Sonos.md','path+':'docs/','level':+1}-->
@@ -80,6 +101,9 @@
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Text2speech_driver.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
+<!--s_insert_{'file_n':'docs/Twitter_driver.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Udp_driver.md','path+':'docs/','level':+1}-->
@@ -302,9 +326,6 @@
 <!--s_insert_{'file_n':'docs/Things.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
-<!--s_insert_{'file_n':'docs/Things.md','path+':'docs/','level':+1}-->
-<!--e_insert-->
-
 <!--s_insert_{'file_n':'docs/Ping.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
@@ -367,6 +388,9 @@
 <!--e_insert-->
 
 # Things_controller
+
+<!--s_insert_{'file_n':'docs/Things_controllers.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Things_controllers.md','path+':'docs/','level':+1}-->
 <!--e_insert-->

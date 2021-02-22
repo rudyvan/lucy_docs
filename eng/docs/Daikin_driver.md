@@ -99,7 +99,7 @@ from project.py tree:['(o:Daikin_driver)', '(dk:veranda).*(o:Climate)', '(dk:ver
 ```python3
 # --> project.py :<dk:project,o:Project,kw:drivers,lp:7,o:Daikin_driver>
 
-from lucy import *
+from lucy_app import *
 
 Daikin_driver(
     C_diff_off = 1.5,
@@ -112,7 +112,7 @@ Daikin_driver(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:8,o:Climate>
 
-from lucy import *
+from lucy_app import *
 
 Climate(
     clim_makers = {
@@ -154,7 +154,7 @@ Climate(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:0,o:Things_controllers>
 
-from lucy import *
+from lucy_app import *
 
 Things_controllers(items = {
             "DK_Veranda":Daikin(color = "magenta",ip = "192.168.15.62"),

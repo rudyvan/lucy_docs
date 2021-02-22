@@ -39,7 +39,7 @@ from project.py tree:['(dk:garden).*(o:Monitor)', '(dk:garage_dressing).*(o:Moni
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:5,o:Monitor>
 
-from lucy import *
+from lucy_app import *
 
 Monitor(
     items = {
@@ -116,7 +116,7 @@ Monitor(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:4,o:Monitor>
 
-from lucy import *
+from lucy_app import *
 
 Monitor(
     items = {

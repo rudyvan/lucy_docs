@@ -89,7 +89,7 @@ from project.py tree:['(o:Btle_driver)', '(o:Ifttt_driver)']
 ```python3
 # --> project.py :<dk:project,o:Project,kw:drivers,lp:11,o:Btle_driver>
 
-from lucy import *
+from lucy_app import *
 
 Btle_driver(
     btle_blackout = Virtual(duration = 180),
@@ -131,7 +131,7 @@ Btle_driver(
 
 # --> project.py :<dk:project,o:Project,kw:drivers,lp:4,o:Ifttt_driver>
 
-from lucy import *
+from lucy_app import *
 
 Ifttt_driver(
     google_assistant = True,

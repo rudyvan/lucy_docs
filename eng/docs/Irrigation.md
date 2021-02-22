@@ -174,13 +174,13 @@ from project.py tree:['(o:Irrigation_manager)', '(o:Irrigation_system)', '(dk:ga
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:12,o:Irrigation_manager>
 
-from lucy import *
+from lucy_app import *
 
 Irrigation_manager()
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:8,o:Irrigation_system>
 
-from lucy import *
+from lucy_app import *
 
 Irrigation_system(
     dry_days_max = 3,
@@ -233,7 +233,7 @@ Irrigation_system(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:7,o:Irrigation_points>
 
-from lucy import *
+from lucy_app import *
 
 Irrigation_points(
     items = {

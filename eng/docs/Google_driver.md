@@ -87,7 +87,7 @@ from project.py tree:(o:Google_driver)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:drivers,lp:9,o:Google_driver>
 
-from lucy import *
+from lucy_app import *
 
 Google_driver(
     application_name = "HomeEvents",

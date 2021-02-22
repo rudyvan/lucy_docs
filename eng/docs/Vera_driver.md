@@ -86,7 +86,7 @@ from project.py tree:(dk:veranda).*(o:Lights)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:7,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "veranda_color":Color_light(
@@ -162,7 +162,7 @@ from project.py tree:['(o:Vera_driver)', '(dk:garage).*(o:Lights)', '(dk:hall.gr
 ```python3
 # --> project.py :<dk:project,o:Project,kw:drivers,lp:10,o:Vera_driver>
 
-from lucy import *
+from lucy_app import *
 
 Vera_driver(
     alexa_cmds = {
@@ -183,7 +183,7 @@ Vera_driver(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:5,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "garage_light":Light(effect_virtuals = {
@@ -195,7 +195,7 @@ Lights(my_assistant = True,room_lights = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:hall.ground,o:Room,kw:contents,lp:2,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "stairs_ledstrip":Color_light(
@@ -211,7 +211,7 @@ Lights(my_assistant = True,room_lights = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:2,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "TV_ledstrip":Dim_light(
@@ -240,7 +240,7 @@ Lights(my_assistant = True,room_lights = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:3,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "bed_light":Color_light(
@@ -276,7 +276,7 @@ Lights(my_assistant = True,room_lights = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:master_bath,o:Room,kw:contents,lp:3,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(room_lights = {
             "bathroom_wall_light":Light(
@@ -286,7 +286,7 @@ Lights(room_lights = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:5,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "{room}^main_light":Light(path = "vera:Vera_plus,office^main_light",value_logic = {"assign":{"is_room_secure":"0"}}),
@@ -341,7 +341,7 @@ from project.py tree:['(o:Notifier)', '(dk:living_lounge).*(o:Climate)']
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:4,o:Notifier>
 
-from lucy import *
+from lucy_app import *
 
 Notifier(
     buzzers = [
@@ -375,7 +375,7 @@ Notifier(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:3,o:Climate>
 
-from lucy import *
+from lucy_app import *
 
 Climate(
     clim_makers = {

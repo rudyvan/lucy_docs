@@ -113,7 +113,7 @@ from project.py tree:(dk:street).*(o:Cameras)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:2,o:Cameras>
 
-from lucy import *
+from lucy_app import *
 
 Cameras(items = {
             "cam_alpha_gate":Camera(
@@ -164,7 +164,7 @@ from project.py tree:(dk:street).*(o:Mailbox_alert)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:5,o:Mailbox_alert>
 
-from lucy import *
+from lucy_app import *
 
 Mailbox_alert(mail_in = Input(
             effect_virtuals = {

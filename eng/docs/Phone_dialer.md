@@ -50,7 +50,7 @@ from project.py tree:(o:Phone_dialer)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:9,o:Phone_dialer>
 
-from lucy import *
+from lucy_app import *
 
 Phone_dialer(
     pho_input = Input(active = 0,notifications = {"active":Log(txt='Phone Dialer Input is triggered!', ceiling=None)},path = "unipi:PI-Stats,input,1"),

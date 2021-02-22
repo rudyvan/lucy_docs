@@ -114,7 +114,7 @@ from project.py tree:(dk:hall.upstairs).*(o:Security)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:hall.upstairs,o:Room,kw:contents,lp:0,o:Security>
 
-from lucy import *
+from lucy_app import *
 
 Security(fire_detectors = [Fire_detector(path = "unipi:PI-Light,input,3")],sirens = [Alarm_siren(
                 copy_things = {

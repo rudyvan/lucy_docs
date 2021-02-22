@@ -59,7 +59,7 @@ from project.py tree:(o:Network_controller)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:0,o:Network_controller>
 
-from lucy import *
+from lucy_app import *
 
 Network_controller(
     IP_WAN = "127.0.0.1",
@@ -124,7 +124,7 @@ from project.py tree:(o:Mailbox_alert)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:5,o:Mailbox_alert>
 
-from lucy import *
+from lucy_app import *
 
 Mailbox_alert(mail_in = Input(
             effect_virtuals = {

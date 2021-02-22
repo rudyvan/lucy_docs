@@ -1,5 +1,5 @@
 <!--s_name-->
-# twitter_driver
+# Twitter_driver
 
 <!--e_name-->
 
@@ -7,15 +7,16 @@
 <!--e_role-->
 
 <!--s_descr-->
-__yet to be made__ for Notifications with Twitter and processing of Twitter messages
+is the driver for Twitter
 
 <!--e_descr-->
 
 <!--s_tbl-->
-## List of [properties](Properties.md) for __twitter_driver__:
+## List of [properties](Properties.md) for __Twitter_driver__:
 
-  | Attribute | Representation | Optional? | Repeat? | Description |
+  | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | do_twitter | Virtual | False | - | = virtual, when reset, twitting will be ignored as are triggers (unless No_Matter_What) | 
+  | fav | str | True | - | is this a favorite element | 
+  | icon | str | True | - | icon file for this element | 
 <!--e_tbl-->
 

@@ -58,7 +58,7 @@ Enjoy reading!
 
 ## Config Parser 
 
-[__myproject.py__](../lucy/site/myproject.py) is a configuration file that contains all the home definitions and descriptors.
+[__myproject.py__](../../site/myproject.py) is a configuration file that contains all the home definitions and descriptors.
 It implements a complete python3 script which provides a structure similar to any of the many python3 script that exist with the exception that it only contains a single expression with all your home's configuration. 
 This file can be customized by software designers and users who have some computer knowledge and text file editing skills.
 
@@ -70,7 +70,6 @@ A document generator is part of the prj_parser, whereby more than 70% of the doc
 
 ```python3
 from lucy import *
-
 root_str={
     "project":Project(
         settings=[],
@@ -352,20 +351,28 @@ These Apps interface to gateways, bridges of other suppliers or make a connectio
   | [__Daikin_driver__](docs/Daikin_driver.md) | This driver enables the daikin room airconditioners to be used in the climatization app as room coolers, heaters, ventilators or air dryers |
   | [__Dropbox_driver__](docs/Dropbox_driver.md) | This driver defines the dropbox handler and the dropbox paths to the folders where logs, cumulative data and program scripts is to be updated.  This updating occurs automatically at the end of the day before log files or cumulative files are refreshed for a new day |
   | [__Google_driver__](docs/Google_driver.md) | This is the google calendar driver to read the calendar and read person and device credentials (f.i. is entrance allowed?) and to execute events such as holidays, heating up guest rooms, triggering irrigation or lights for special occasions |
+  | [__HAP_driver__](docs/HAP_driver.md) | is the driver for HAP Home Apple Protocol |
   | [__Hue_driver__](docs/Hue_driver.md) | This is the Philips Hue driver, to interface to the Philips Hue bridge that drives all the Hue devices |
   | [__Ifttt_driver__](docs/Ifttt_driver.md) | IFTTT IF THIS THEN THAT driver, both as a trigger with 'maker' and as an google assistant applet processor, These allow ok Google to work, see instructions and the trigger url and reverse web hook url |
   | [__Ikea_driver__](docs/Ikea_driver.md) | This is the IKEA Tradfri driver, to interface to the IKEA Tradfri light gateways that drives all the Tradfri devices |
   | [__Ip_building_driver__](docs/Ip_building_driver.md) | is the driver for the IP-Building modules |
+  | [__KNX_driver__](docs/KNX_driver.md) | is the driver for KNX |
   | [__Log_driver__](docs/Log_driver.md) | This is the logging that the apps will use to keep a trace of what is happening |
   | [__Loxone_driver__](docs/Loxone_driver.md) | is the driver for the loxone master module ip interface |
+  | [__Lutron_driver__](docs/Lutron_driver.md) | is the driver for Lutron |
+  | [__Modbus_driver__](docs/Modbus_driver.md) | is the driver for Modbus |
   | [__Netatmo_wlc_driver__](docs/Netatmo_driver.md) | Netatmo welcome system driver -> make a different id compared with the netatmo weather station.  Netatmo Welcome: name your netatmo welcome camera and tags. |
   | [__Netatmo_ws_driver__](docs/Netatmo_driver.md) | Netatmo weather station driver -> make a different id compared with the netatmo welcome system.  Name your inhouse and outhouse station to the room where they are placed, e.g. 'garden','office' and rainmeter / windmeter for these modules |
+  | [__Niko_driver__](docs/Niko_driver.md) | is the driver for Niko |
   | [__One_wire_driver__](docs/One_wire_driver.md) | Handles the 1 wire sensors, 1 wire devices and iButtons |
   | [__Piface_driver__](docs/Piface_driver.md) | Reads and writes binary inputs and outputs on the piface hat |
+  | [__Slack_driver__](docs/Slack_driver.md) | is the driver for the Slack interface |
   | [__Sms_driver__](docs/Sms_driver.md) | GSM SMS driver, both as a notification sender of messages as a receiver of remote commands, via the hologram nova modem, see http://hologram.io |
+  | [__Somfy_driver__](docs/Somfy_driver.md) | is the driver for Somfy |
   | [__Sonos_driver__](docs/Sonos.md) | The Sonos Driver to play notifications through a sonos setup.   Define the sonos speakers with the Sonos() thing! |
   | [__Tcp_driver__](docs/Tcp_driver.md) | TCP Driver |
   | [__Text2speech_driver__](docs/Text2speech_driver.md) | contains the parameters for the text to speech parameters and credentials, for Microsoft speech services, for a free subscription to speech services, 5000 messages per month goto https://account.windowsazure.com |
+  | [__Twitter_driver__](docs/Twitter_driver.md) | is the driver for Twitter |
   | [__Udp_driver__](docs/Udp_driver.md) | UDP Driver |
   | [__Unipi_driver__](docs/Unipi_driver.md) | Reads and writes binary and analog inputs and outputs on the unipi and neutron hats using evok, see http://www.unipi.technology |
   | [__Usb_driver__](docs/Usb_driver.md) | Driver for interfacing with usb serial devices. |
@@ -465,7 +472,6 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | [__Flow_meter__](docs/Things.md) | Liquid flow meter with hall effect sensor |
   | [__Irr__](docs/Things.md) | Irr description, works also for the derived classes |
   | [__Light__](docs/Things.md) | Light description, works also for the derived classes |
-  | [__Mail__](docs/Things.md) | Input description, works also for the derived classes |
   | [__Motor__](docs/Things.md) | Motor description, works also for the derived classes |
   | [__Optical__](docs/Things.md) | Input description, works also for the derived classes |
   | [__Ping__](docs/Ping.md) | is a network function to check the presence of a thing through a ping |
@@ -488,6 +494,7 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | --- | --- |
   | [__Arduino__](docs/Things_controllers.md) | controller of things - Arduino |
   | [__Daikin__](docs/Things_controllers.md) | controller of things - Daikin |
+  | [__HAP__](docs/Things_controllers.md) | controller of things - HAP |
   | [__Hue__](docs/Things_controllers.md) | controller of things - Hue |
   | [__Ikea__](docs/Things_controllers.md) | controller of things - Ikea |
   | [__IP_Building__](docs/Things_controllers.md) | controller of things - IP_Building |
@@ -538,7 +545,7 @@ from project.py tree:(o:Network_controller)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:0,o:Network_controller>
 
-from lucy import *
+from lucy_app import *
 
 Network_controller(
     IP_WAN = "127.0.0.1",
@@ -726,7 +733,7 @@ from project.py tree:(o:Network_controller)
 ```python3
 ## --> project.py :<dk:project,o:Project,kw:apps,lp:0,o:Network_controller>
 
-from lucy import *
+from lucy_app import *
 
 Network_controller(
     IP_WAN = "127.0.0.1",
@@ -791,7 +798,7 @@ from project.py tree:(o:Mailbox_alert)
 ```python3
 ## --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:5,o:Mailbox_alert>
 
-from lucy import *
+from lucy_app import *
 
 Mailbox_alert(mail_in = Input(
             effect_virtuals = {

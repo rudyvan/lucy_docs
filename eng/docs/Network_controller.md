@@ -78,7 +78,7 @@ from project.py tree:(o:Network_controller)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:0,o:Network_controller>
 
-from lucy import *
+from lucy_app import *
 
 Network_controller(
     IP_WAN = "127.0.0.1",
@@ -158,7 +158,7 @@ from project.py tree:['(dk:living_loung).*(o:Ip_ping)', '(dk:living_loung).*(o:C
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:7,o:Ip_ping>
 
-from lucy import *
+from lucy_app import *
 
 Ip_ping(items = {
             "TV_Sony":Ping(
@@ -174,7 +174,7 @@ Ip_ping(items = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:1,o:Cameras>
 
-from lucy import *
+from lucy_app import *
 
 Cameras(items = {
             "cam_lounge":Camera(
@@ -186,7 +186,7 @@ Cameras(items = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:8,o:Ip_ping>
 
-from lucy import *
+from lucy_app import *
 
 Ip_ping(
     items = {
@@ -207,7 +207,7 @@ Ip_ping(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:1,o:Cameras>
 
-from lucy import *
+from lucy_app import *
 
 Cameras(items = {
             "cam_office":Camera(
@@ -219,7 +219,7 @@ Cameras(items = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
 
-from lucy import *
+from lucy_app import *
 
 Things_controllers(
     items = {

@@ -162,7 +162,7 @@ from project.py tree:(dk:street).*(o:Door)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:3,o:Doors>
 
-from lucy import *
+from lucy_app import *
 
 Doors(items = {
             "gate":Door(
@@ -321,7 +321,7 @@ from project.py tree:['(dk:guest.sleep).*(o:Climate)', '(dk:guest.bath).*(o:Clim
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:guest.sleep,o:Room,kw:contents,lp:3,o:Climate>
 
-from lucy import *
+from lucy_app import *
 
 Climate(
     clim_makers = {
@@ -349,7 +349,7 @@ Climate(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:guest.bath,o:Room,kw:contents,lp:1,o:Climate>
 
-from lucy import *
+from lucy_app import *
 
 Climate(
     clim_makers = {
@@ -510,7 +510,7 @@ from project.py tree:(dk:master_bed).*(o:Windows)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:2,o:Windows>
 
-from lucy import *
+from lucy_app import *
 
 Windows(items = {
             "sun_master_front":Win_cover(

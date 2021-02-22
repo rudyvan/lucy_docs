@@ -68,7 +68,7 @@ from project.py tree:(o:Security_manager)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:15,o:Security_manager>
 
-from lucy import *
+from lucy_app import *
 
 Security_manager(
     notifications = {
@@ -258,7 +258,7 @@ from project.py tree:(dk:attic).*(o:Monitor)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:attic,o:Room,kw:contents,lp:3,o:Monitor>
 
-from lucy import *
+from lucy_app import *
 
 Monitor(items = {
             "pwr_light_relay":Input(

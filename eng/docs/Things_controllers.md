@@ -82,7 +82,7 @@ from project.py tree:['(dk:garden).*(o:Things_controllers)', '(dk:garage).*(o:Th
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:1,o:Things_controllers>
 
-from lucy import *
+from lucy_app import *
 
 Things_controllers(items = {
             "PI-Garden":Raspi(color = "brown",ip = "192.168.15.55",ths_hw = ["unipi,8,14"]),
@@ -91,7 +91,7 @@ Things_controllers(items = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:0,o:Things_controllers>
 
-from lucy import *
+from lucy_app import *
 
 Things_controllers(items = {
             "PI-RearDoor":Raspi(color = "white",ip = "192.168.15.94",ths_hw = ["unipi,12,14"]),
@@ -100,7 +100,7 @@ Things_controllers(items = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:1,o:Things_controllers>
 
-from lucy import *
+from lucy_app import *
 
 Things_controllers(items = {
             "DK_Bedroom":Daikin(color = "white",ip = "192.168.15.92"),
@@ -108,7 +108,7 @@ Things_controllers(items = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
 
-from lucy import *
+from lucy_app import *
 
 Things_controllers(
     items = {
@@ -132,7 +132,7 @@ Things_controllers(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:attic,o:Room,kw:contents,lp:0,o:Things_controllers>
 
-from lucy import *
+from lucy_app import *
 
 Things_controllers(items = {
             "Healthbox_North":Renson(color = "magenta",ip = "192.168.15.146"),

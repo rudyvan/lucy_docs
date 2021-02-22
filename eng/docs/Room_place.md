@@ -47,7 +47,7 @@ from project.py tree:['(dk:veranda)', '(dk:hall.ground)', '(dk:hall.upstairs)', 
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:veranda,o:Room>
 
-from lucy import *
+from lucy_app import *
 
 Room(
     contents = [
@@ -185,7 +185,7 @@ Room(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:hall.ground,o:Room>
 
-from lucy import *
+from lucy_app import *
 
 Room(
     contents = [
@@ -228,7 +228,7 @@ Room(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:hall.upstairs,o:Room>
 
-from lucy import *
+from lucy_app import *
 
 Room(
     contents = [
@@ -268,7 +268,7 @@ Room(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:toilet.ground,o:Room>
 
-from lucy import *
+from lucy_app import *
 
 Room(
     contents = [
@@ -284,7 +284,7 @@ Room(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:toilet.hall,o:Room>
 
-from lucy import *
+from lucy_app import *
 
 Room(
     contents = [

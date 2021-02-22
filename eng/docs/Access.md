@@ -296,7 +296,7 @@ from project.py tree:(o:Access_manager)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:6,o:Access_manager>
 
-from lucy import *
+from lucy_app import *
 
 Access_manager(
     access_scenes = {
@@ -358,7 +358,7 @@ from project.py tree:['(dk:street).*(o:Access_ways)', '(dk:garage).*(o:Access_wa
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:1,o:Access_ways>
 
-from lucy import *
+from lucy_app import *
 
 Access_ways(
     items = {
@@ -392,7 +392,7 @@ Access_ways(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:1,o:Access_ways>
 
-from lucy import *
+from lucy_app import *
 
 Access_ways(
     items = {
@@ -437,7 +437,7 @@ Access_ways(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:9,o:Security_system>
 
-from lucy import *
+from lucy_app import *
 
 Security_system(
     blackout_mode = Virtual(duration = 600,effect_virtuals = {
@@ -530,7 +530,7 @@ from project.py tree:['(kw:apps).*(o:Access_manager)']
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:6,o:Access_manager>
 
-from lucy import *
+from lucy_app import *
 
 Access_manager(
     access_scenes = {
@@ -592,7 +592,7 @@ from project.py tree:['(kw:apps).*(o:Access_keys)']
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:7,o:Access_keys>
 
-from lucy import *
+from lucy_app import *
 
 Access_keys(
     keys = {

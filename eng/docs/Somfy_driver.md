@@ -1,5 +1,5 @@
 <!--s_name-->
-# somfy_driver
+# Somfy_driver
 
 <!--e_name-->
 
@@ -7,15 +7,17 @@
 <!--e_role-->
 
 <!--s_descr-->
-__yet to be made__ driver for interfacing with somfy home kit controller. Somfy is a widely used supplier of blinds and shades, www.somfy.com
+is the driver for Somfy
 
 <!--e_descr-->
 
 <!--s_tbl-->
-## List of [properties](Properties.md) for __somfy_driver__:
+## List of [properties](Properties.md) for __Somfy_driver__:
 
-  | Attribute | Representation | Optional? | Repeat? | Description |
+  | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
+  | fav | str | True | - | is this a favorite element | 
+  | icon | str | True | - | icon file for this element | 
 <!--e_tbl-->
 
 ![somfy](somfy.jpg)

@@ -152,7 +152,7 @@ from project.py tree:(o:Things_forensics)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:2,o:Things_forensics>
 
-from lucy import *
+from lucy_app import *
 
 Things_forensics(
     notifications = {

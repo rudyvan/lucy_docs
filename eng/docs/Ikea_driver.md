@@ -85,7 +85,7 @@ from project.py tree:['(o:Ikea_driver)', '(dk:guest.sleep).*(o:Lights)', '(dk:of
 ```python3
 # --> project.py :<dk:project,o:Project,kw:drivers,lp:3,o:Ikea_driver>
 
-from lucy import *
+from lucy_app import *
 
 Ikea_driver(
     notifications = {
@@ -93,7 +93,7 @@ Ikea_driver(
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:guest.sleep,o:Room,kw:contents,lp:4,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "guest_light":Dim_light(
@@ -102,7 +102,7 @@ Lights(my_assistant = True,room_lights = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
 
-from lucy import *
+from lucy_app import *
 
 Things_controllers(
     items = {

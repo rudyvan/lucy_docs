@@ -1,5 +1,5 @@
 <!--s_name-->
-# knx_driver
+# KNX_driver
 
 <!--e_name-->
 
@@ -7,14 +7,16 @@
 <!--e_role-->
 
 <!--s_descr-->
-__yet to be made__, is the driver to access the KNX bus via an IP interface such as the Weinzierl IP Interface 731
+is the driver for KNX
 
 <!--e_descr-->
 
 <!--s_tbl-->
-## List of [properties](Properties.md) for __knx_driver__:
+## List of [properties](Properties.md) for __KNX_driver__:
 
-  | Attribute | Representation | Optional? | Repeat? | Description |
+  | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
+  | fav | str | True | - | is this a favorite element | 
+  | icon | str | True | - | icon file for this element | 
 <!--e_tbl-->
 

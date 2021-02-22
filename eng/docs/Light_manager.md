@@ -189,13 +189,13 @@ from project.py tree:['(o:Light_manager)', '(dk:hall.ground).*(o:Lights)', '(dk:
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:13,o:Light_manager>
 
-from lucy import *
+from lucy_app import *
 
 Light_manager(role_me = "PI-Light")
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:hall.ground,o:Room,kw:contents,lp:2,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "stairs_ledstrip":Color_light(
@@ -211,7 +211,7 @@ Lights(my_assistant = True,room_lights = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:hall.upstairs,o:Room,kw:contents,lp:3,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "hall_light":Dim_light(
@@ -220,7 +220,7 @@ Lights(my_assistant = True,room_lights = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:2,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "TV_ledstrip":Dim_light(
@@ -249,7 +249,7 @@ Lights(my_assistant = True,room_lights = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:3,o:Lights>
 
-from lucy import *
+from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
             "bed_light":Color_light(

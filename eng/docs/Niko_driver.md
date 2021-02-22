@@ -1,5 +1,5 @@
 <!--s_name-->
-# niko_driver
+# Niko_driver
 
 <!--e_name-->
 
@@ -7,15 +7,17 @@
 <!--e_role-->
 
 <!--s_descr-->
-__yet to be made__ driver for interfacing with niko connected controller.  Niko is a known supplier in the benelux, www.niko.eu 
+is the driver for Niko
 
 <!--e_descr-->
 
 <!--s_tbl-->
-## List of [properties](Properties.md) for __niko_driver__:
+## List of [properties](Properties.md) for __Niko_driver__:
 
-  | Attribute | Representation | Optional? | Repeat? | Description |
+  | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
+  | fav | str | True | - | is this a favorite element | 
+  | icon | str | True | - | icon file for this element | 
 <!--e_tbl-->
 
 ![niko](niko.jpg)

@@ -1,5 +1,5 @@
 <!--s_name-->
-# modbus_driver
+# Modbus_driver
 
 <!--e_name-->
 
@@ -7,14 +7,16 @@
 <!--e_role-->
 
 <!--s_descr-->
-__yet to be made__, is the driver to access the Modbus via an RS485 interface
+is the driver for Modbus
 
 <!--e_descr-->
 
 <!--s_tbl-->
-## List of [properties](Properties.md) for __modbus_driver__:
+## List of [properties](Properties.md) for __Modbus_driver__:
 
-  | Attribute | Representation | Optional? | Repeat? | Description |
+  | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
+  | fav | str | True | - | is this a favorite element | 
+  | icon | str | True | - | icon file for this element | 
 <!--e_tbl-->
 

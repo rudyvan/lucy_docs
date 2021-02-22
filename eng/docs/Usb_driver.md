@@ -21,7 +21,7 @@ from project.py tree:(o:Usb_driver)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:drivers,lp:14,o:Usb_driver>
 
-from lucy import *
+from lucy_app import *
 
 Usb_driver(
     usb_paths = {
@@ -39,7 +39,7 @@ from project.py tree:(dk:garden).*(o:Access_point)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:2,o:Access_ways,kw:items,dk:iButton_out_garden,o:Access_point>
 
-from lucy import *
+from lucy_app import *
 
 Access_point(direction = "exit",method_things = {
             "access_green":Light(duration = 4,path = "unipi:PI-Garden,relay,7"),

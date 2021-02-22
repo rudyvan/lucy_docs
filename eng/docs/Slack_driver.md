@@ -1,5 +1,5 @@
 <!--s_name-->
-# slack_driver
+# Slack_driver
 
 <!--e_name-->
 
@@ -7,15 +7,16 @@
 <!--e_role-->
 
 <!--s_descr-->
-TBI/Notifications with Slack and processing of Slack messages
+is the driver for the Slack interface
 
 <!--e_descr-->
 
 <!--s_tbl-->
-## List of [properties](Properties.md) for __slack_driver__:
+## List of [properties](Properties.md) for __Slack_driver__:
 
-  | Attribute | Representation | Optional? | Repeat? | Description |
+  | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | do_slack | Virtual | False | - | = virtual, when reset, slack notifications will be ignored as are triggers (unless No_Matter_What) | 
+  | fav | str | True | - | is this a favorite element | 
+  | icon | str | True | - | icon file for this element | 
 <!--e_tbl-->
 

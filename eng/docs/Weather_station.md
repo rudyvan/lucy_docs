@@ -125,7 +125,7 @@ from project.py tree:(o:Weather_station)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:9,o:Weather_station>
 
-from lucy import *
+from lucy_app import *
 
 Weather_station(
     C_outdoor = Sensor(
@@ -144,7 +144,7 @@ Weather_station(
                         Say(txt='{tts_start} it is very warm outside, the temperature is above 27 degrees{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
                     "low":[
                         Mail(subject='it is COLD outside, below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                        Say(txt='{tts_start} it is cold outside, the temperature is below 5 degrees{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
+                        Say(txt='{tts_start} it is cold outside, approaching freezing levels{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
                     "normal":[
                         Mail(subject='Happy! outside temp now {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                         Say(txt='{tts_start} temperature outside is not extreme any more{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},

@@ -247,7 +247,7 @@ from project.py tree:(o:Climate_manager)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:11,o:Climate_manager>
 
-from lucy import *
+from lucy_app import *
 
 Climate_manager(
     C_outdoor_cm = Sensor(i_read = "°C",path = "ow:PI-Gate,28DAE37306000070,DS18B20,,99"),
@@ -344,7 +344,7 @@ from project.py tree:(o:Climate_system)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:5,o:Climate_system>
 
-from lucy import *
+from lucy_app import *
 
 Climate_system(
     air_removal = Virtual(
@@ -818,7 +818,7 @@ from project.py tree:['(dk:garage).*(o:Climate)', '(dk:garage_dressing).*(o:Clim
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:6,o:Climate>
 
-from lucy import *
+from lucy_app import *
 
 Climate(clim_makers = {
             "r26_rear":Clim_SW(
@@ -836,7 +836,7 @@ Climate(clim_makers = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:3,o:Climate>
 
-from lucy import *
+from lucy_app import *
 
 Climate(clim_makers = {
             "r25":Clim_SW(
@@ -848,7 +848,7 @@ Climate(clim_makers = {
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:3,o:Climate>
 
-from lucy import *
+from lucy_app import *
 
 Climate(
     clim_makers = {

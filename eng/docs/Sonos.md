@@ -97,19 +97,19 @@ from project.py tree:['(o:Sonos_driver)', '(dk:veranda).*(o:Music_players)', '(d
 ```python3
 # --> project.py :<dk:project,o:Project,kw:drivers,lp:6,o:Sonos_driver>
 
-from lucy import *
+from lucy_app import *
 
 Sonos_driver(party_mode = False)
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:2,o:Music_players>
 
-from lucy import *
+from lucy_app import *
 
 Music_players(items = [Sonos(ip = "192.168.15.161",ip_action = 0,sonos_type = "PLAY:1"),Sonos(ip = "192.168.15.160",ip_action = 0,sonos_type = "PLAY:1")])
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:6,o:Music_players>
 
-from lucy import *
+from lucy_app import *
 
 Music_players(items = [
         Sonos(ip = "192.168.15.114",ip_action = 0,sonos_type = "SUB"),
@@ -119,13 +119,13 @@ Music_players(items = [
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:kitchen,o:Room,kw:contents,lp:5,o:Music_players>
 
-from lucy import *
+from lucy_app import *
 
 Music_players(items = [Sonos(ip = "192.168.15.111",ip_action = 0,sonos_type = "PLAY:1"),Sonos(ip = "192.168.15.83",ip_action = 0,sonos_type = "PLAY:1")])
 
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:6,o:Music_players>
 
-from lucy import *
+from lucy_app import *
 
 Music_players(items = [Sonos(ip = "192.168.15.107",ip_action = 0,sonos_type = "PLAY:1"),Sonos(ip = "192.168.15.101",ip_action = 0,sonos_type = "PLAY:1")])
 

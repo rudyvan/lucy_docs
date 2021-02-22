@@ -34,7 +34,7 @@ from project.py tree:(o:Network_controller)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:0,o:Network_controller>
 
-from lucy import *
+from lucy_app import *
 
 Network_controller(
     IP_WAN = "127.0.0.1",
@@ -129,7 +129,7 @@ from project.py tree:(o:Security_system)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:9,o:Security_system>
 
-from lucy import *
+from lucy_app import *
 
 Security_system(
     blackout_mode = Virtual(duration = 600,effect_virtuals = {

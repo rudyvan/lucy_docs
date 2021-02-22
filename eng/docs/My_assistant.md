@@ -133,7 +133,7 @@ from project.py tree:(o:My_assistant)
 ```python3
 # --> project.py :<dk:project,o:Project,kw:apps,lp:3,o:My_assistant>
 
-from lucy import *
+from lucy_app import *
 
 My_assistant(
     bridge_prefix = "House",
