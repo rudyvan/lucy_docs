@@ -115,11 +115,8 @@ Things_controllers(
             "PI-Notify2":Raspi(color = "white",ip = "192.168.15.63"),
             "PI-Notify3":Raspi(color = "white",ip = "192.168.15.133",ths_hw = ["piface"]),
             "PI-Notify4":Raspi(color = "white",ip = "192.168.15.120",ths_hw = ["piface"]),
-            "PI-Stats":Raspi(
-                    color = "blue",
-                    ip = "192.168.15.35",
-                    roles = ["trace","dropbox","sms","network","things_forensics","notifier","phone"],
-                    ths_hw = ["unipi,6,6"]),
+            "PI-Stats":Raspi(color = "blue", ip = "192.168.15.35", ths_hw = ["unipi,6,6"],
+                    roles = ["trace","dropbox","sms","network","things_forensics","notifier","phone"]),
             "Vera_plus":Vera(color = "white",ip = "192.168.15.75"),
             "imac-lucy":Ubuntu(color = "white",ip = "192.168.15.113"),
             "ow_office":Ow_eds(color = "white",ip = "192.168.15.151")})
