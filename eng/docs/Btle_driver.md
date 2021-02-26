@@ -56,9 +56,9 @@ Notifications can be defined obviously and in the example below there are emails
   | btle_blackout | Virtual | True | - | virtual to blackout all btle devices | 
   | btle_entry_blackout | Virtual | True | - | virtual to blackout arrival of btle devices | 
   | btle_exit_blackout | Virtual | True | - | virtual to blackout leavers of btle devices | 
-  | btle_gw_entry | data_list | False | - | list of names of tc btle gateways furthest from the home to first notice the arrival of btle devices wanting to enter | 
-  | btle_gw_exit | data_list | False | - | list of names of tc btle gateways closest in the home to first notice the wakeup of btle devices that are going to exit | 
-  | btle_gw_other | data_list | True | - | list of names of tc btle gateways used for other purposes than access beacons | 
+  | btle_gw_entry | str_list | False | - | list of names of tc btle gateways furthest from the home to first notice the arrival of btle devices wanting to enter | 
+  | btle_gw_exit | str_list | False | - | list of names of tc btle gateways closest in the home to first notice the wakeup of btle devices that are going to exit | 
+  | btle_gw_other | str_list | True | - | list of names of tc btle gateways used for other purposes than access beacons | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | notifications | ['b_none', '{id}.b_detected', '{id}.b_entry', '{id}.b_exit', '{id}.b_lost', '{id}.b_refused'] | True | - | notifications whereby {id} is the device equipped with a btle tag, see [__Notifier__](Notifier.md) | 

@@ -40,7 +40,7 @@ The voice channel is managed by [__my_assistant__](my_assistant.md)
   | can_feed_sms | Virtual | True | - | virtual to allow the feeder to work from sms | 
   | can_feed_tcp | Virtual | True | - | virtual to allow the feeder to work from tcp | 
   | can_feed_udp | Virtual | True | - | virtual to allow the feeder to work from udp | 
-  | channels | data_list | False | - | list of the feeder authorized channels | 
+  | channels | str_list | False | - | list of the feeder authorized channels | 
   | event_trigger | str | False | - | this is the instruction format for the feeder in the google calendar event or google email subject field or one of the other channels. It should prefix the action string, and __an exclamation point in front of the action string reverses the meaning, makes it 'not'__.  Example:  @ALEXA@=Holiday  where Holiday is an alexa intent that will set <on>/<off> at the beginning/end of the event. Also an inversion is allowed: @ALEXA@=!Holiday | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 

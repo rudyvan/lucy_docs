@@ -152,7 +152,7 @@ Please use the default values and change only if you know what you are doing.
   | is_lum_dark | Virtual | True | - | virtual to capture if the climate system is dark and needs lightening | 
   | is_lum_light | Virtual | True | - | virtual to capture if the climate system is light and needs darkening | 
   | notifications | ['climate_report', 'comfort_0', 'comfort_1', 'economy_0', 'economy_1', '{room}.clim_on_0', '{room}.clim_on_1', '{room}.comfort_0', '{room}.comfort_1', '{room}.economy_0', '{room}.economy_1', '{room}.humid_ok_0', '{room}.humid_ok_1', '{room}.lum_ok_0', '{room}.lum_ok_1', '{room}.temp_ok_0', '{room}.temp_ok_1'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
-  | role_followers | data_list | False | - | list of names of tc's that are climate slaves, all the same processing but driving outputs is disabled as this is exclusive for the master.  They are good to show on a display what happens... | 
+  | role_followers | str_list | False | - | list of names of tc's that are climate slaves, all the same processing but driving outputs is disabled as this is exclusive for the master.  They are good to show on a display what happens... | 
   | sp_presets | data_dict | True | - | dictionary of climate setpoint presets | 
 
 ## List of [Notifications](Notifier.md) for  __Climate_manager__:

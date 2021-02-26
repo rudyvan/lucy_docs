@@ -53,7 +53,6 @@ Some Apps have something to do with specific things (such as a sirens_test with 
   | err_event_pars | !!Scene Error: {:} |  
   | err_logic | !!Logic Error in {:}: {:}<>{:} |  
   | err_mk_me | !!mk_me error, in th {:}, <{:}> ? {:} |  
-  | err_out_val | !!Output Dissonance Unipi <{:}>, thing <{:}>, val={:}, unipi={:} |  
   | err_pickle_load | !!pickle file reloading of <{:}> failed {:} |  
   | err_render_cols_len | !!render {:}, generator {:}, has t={:} and not matches {:} header strings |  
   | err_render_do | !!Error in rendering table_do in <{:}> : {:} {:} {:} |  

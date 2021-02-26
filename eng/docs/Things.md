@@ -205,7 +205,6 @@ Any temperature sensor
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | check_event | Event | True | - | see the description on events, the temp_check event exists to check sensor values, see [__Event__](Event.md) | 
   | descr | str | False | - | free description field for this thing | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
@@ -619,7 +618,7 @@ utility consumption meter
 ## 'Alarm_detector' Thing
 
 <!--s_descr_ad-->
-Input description, works also for the derived classes
+Alarm_detector description
 
 <!--e_descr_ad-->
 

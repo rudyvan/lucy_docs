@@ -454,8 +454,8 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | [__Access__](docs/Things.md) | Access description, works also for the derived classes |
   | [__Access_point__](docs/Access.md) | Access points are devices that read iButtons, smart cards, finger print scanners, facial recognition devices and emit an access key string to the security guardian that is interpreted for access rights and consequential access scene execution.  Access controllers follow the propriety data exchange protocol with the security things_controller and have a direction: enter, exit or select |
   | [__Access_trigger__](docs/Access.md) | Access trigger are inputs and when activated, they submit an access_scene id to the security guardian for scene processing |
-  | [__Alarm_detector__](docs/Things.md) | Input description, works also for the derived classes |
-  | [__Alarm_siren__](docs/Things.md) | Alarm_siren description, works also for the derived classes |
+  | [__Alarm_detector__](docs/Things.md) | Alarm_detector description |
+  | [__Alarm_siren__](docs/Things.md) | Alarm_siren description |
   | [__Ble_gw_th__](docs/Ble_gw_th.md) | is an internal generated thing for every beacon for every gateway to hold the rssi value or zero when lost |
   | [__Button__](docs/Things.md) | Input description, works also for the derived classes |
   | [__Camera__](docs/Camera.md) | is a network function to check the presence of a thing through a ping |
@@ -509,7 +509,7 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | [__Renson__](docs/Things_controllers.md) | Renson Healthbox controller |
   | [__Somfy__](docs/Things_controllers.md) | controller of things - Somfy |
   | [__Ubuntu__](docs/Things_controllers.md) | controller of things - Ubuntu |
-  | [__Unipi_evok__](docs/Things_controllers.md) | controller of things - Unipi_evok |
+  | [__Unipi_Evok__](docs/Things_controllers.md) | controller of things - Unipi_Evok |
   | [__Vera__](docs/Things_controllers.md) | controller of things - Vera |
 <!--e_toc_Things_controller-->
 

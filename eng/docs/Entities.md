@@ -20,7 +20,7 @@ entity object - Apartment
   | icon | str | True | - | icon file for this element | 
   | occupants | list | True | - | list of occupants of the property | 
   | owners | list | True | - | list of owners of the property | 
-  | rooms | *Places | - | True | rooms in the apartment | 
+  | rooms | *Place | - | True | rooms in the apartment | 
 <!--e_tbl_apartment-->
 
 <!--s_name_building-->

@@ -79,7 +79,7 @@ See [Google_driver](Google_driver.md) for more details and instructions.
   | notifications | ['hue_emul', 'hue_emul_log', 'voice_bad'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
   | port | int | False | - | should be an unique port number not in use elsewhere, and as Hue bridges have themselves port 80 as default, Amazon Echo will detect them only if at 80 | 
   | siri_notes | bool | True | - | use apple siri as voice control input, by creating a note in gmail that is the voice command | 
-  | siri_users | data_list | True | - | tuples of email address and password so to access the 'notes' section for commands, by default the main email, paswd is automatically included | 
+  | siri_users | str_list | True | - | tuples of email address and password so to access the 'notes' section for commands, by default the main email, paswd is automatically included | 
 
 ## List of [Notifications](Notifier.md) for  __My_assistant__:
 

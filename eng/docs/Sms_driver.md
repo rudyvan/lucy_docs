@@ -22,7 +22,7 @@ GSM SMS driver, both as a notification sender of messages as a receiver of remot
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | notifications | ['sms_log'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
-  | sms_from | data_list | True | - | authorised sources of sms messages, whereby phone is an E.164 formatted string with a '+' sign.  If empty then all sources are allowed | 
+  | sms_from | str_list | True | - | authorised sources of sms messages, whereby phone is an E.164 formatted string with a '+' sign.  If empty then all sources are allowed | 
   | sms_rcv | str | True | - | the bash command string for receiving a message, if empty then no sms receiving will happen | 
   | sms_snd | str | False | - | the bash command string for sending a message, whereby phone is an E.164 formatted string with a '+' sign whereto the msg sms message will be sent | 
   | sms_tags | data_dict | - | - | tags that work like formatting in strings in python | 

@@ -336,7 +336,6 @@ Virtuals that are acting on things can have parameters whereby the parameters ar
 
   | Error/Warning ID | Error/Warning MSG | Occurring When? |
   | --- | --- | --- | 
-  | msg_virtual_only_when | Virtual <{:}> prevented <{:}.mk_active()> with <{:}> |  
   | msg_virtual_play | PLAY '{}' on '{}' with '{}' --> {} |  
 <!--e_tbl-->
 

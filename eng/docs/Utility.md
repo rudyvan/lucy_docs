@@ -36,12 +36,12 @@ Much to do and to improve!
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | consumers | ['Utility_consumers'] | True | True | is a dictionary of consumers which counts when something is heating, taking energy, such as cooking, room heating or hot water tub.  CURRENTLY NOT IMPLEMENTED | 
+  | consumers | dict | True | True | is a dictionary of consumers which counts when something is heating, taking energy, such as cooking, room heating or hot water tub.  CURRENTLY NOT IMPLEMENTED | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
-  | meters | ['Utility_meter', 'Utility_pulse_meter', 'Flow_meter'] | True | True | is a dictionary of meters which counts when something is heating, taking energy, such as cooking, room heating or hot water tub.  CURRENTLY NOT IMPLEMENTED | 
+  | meters | ['Utility_meter', 'Flow_meter'] | True | True | is a dictionary of meters which counts when something is heating, taking energy, such as cooking, room heating or hot water tub.  CURRENTLY NOT IMPLEMENTED | 
   | notifications | ['power', 'power_cam_shot'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
-  | producers | ['Utility_producers'] | True | True | is a dictionary of utility producers which generate water, electricity (solar panels), gas.  CURRENTLY NOT IMPLEMENTED | 
+  | producers | dict | True | True | is a dictionary of utility producers which generate water, electricity (solar panels), gas.  CURRENTLY NOT IMPLEMENTED | 
   | sensors | ['Sensor'] | False | True | is a dictionary of sensors which measures when something is heating, taking energy, such as cooking, room heating or hot water tub.  CURRENTLY NOT IMPLEMENTED | 
 
 ## List of [Notifications](Notifier.md) for  __Home_utilities__:

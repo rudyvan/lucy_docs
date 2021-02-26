@@ -91,7 +91,7 @@ Door and Window methods are the same
 
   | Method Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | access | data_list | {'descr': 'zone list where the door give access to', 'short': 'access'} | 
+  | access | str_list | {'descr': 'zone list where the door give access to', 'short': 'access'} | 
   | beam2close | Optical | {'descr': 'optical beam, if tripped the door closes after 3 seconds', 'short': 'beam2close'} | 
   | beam2open | Optical | {'descr': 'optical beam, if tripped the door opens if beam_can_open', 'short': 'beam2open'} | 
   | beam_can_close | ['Switch', 'Optical', 'Virtual'] | {'descr': 'actually is not needed as a switch can be put in series with the optical close beam which is similar to a constantly interrupted beam', 'short': 'beam_can_close'} | 
@@ -262,8 +262,7 @@ Doors(items = {
                             "beam2open":Optical(
                                     notifications = {
                                             "payload_no":Mail(subject='Soccer Door Open Alert, {app_txt}', to='{prime}', cams=['cam_alpha_soccer'], cam_groups=None, passes=2, body_file='', files2mail=None, ceiling=None)},
-                                    path = "unipi:PI-Soccer,input,4",
-                                    value_logic = {"freeze":{"is_alarm":False,"is_armed":True},"freeze_delay":{"before":120}}),
+                                    path = "unipi:PI-Soccer,input,4"),
                             "keep_opened":Virtual(),
                             "light_night":Light(
                                     duration = 120,
@@ -422,7 +421,7 @@ Manages and contain options for the defined Door and Window coverings
   | sun_light_wc | Sensor | True | - | is an analog light sensor with output 0..10V | 
   | wind_speed_wc | Wind_speed | True | - | an input that generates counter data, the input must allow for counter mode | 
   | wind_switch | Input | True | - | Input device to monitor wind strength level and flip a switch if it is too strong | 
-  | winter_months | data_list | True | - | number of the months list with default winter mode | 
+  | winter_months | int_list | True | - | number of the months list with default winter mode | 
 
 ## List of [Errors/Warnings](Error_Warn.md) for  __Wincover_manager__:
 

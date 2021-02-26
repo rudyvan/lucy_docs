@@ -330,7 +330,7 @@ Is the App to deliver all outgoing notifications to displays, buzzers, voice out
   | do_say | Virtual | False | - | = virtual, when reset, sound will not play and the sound request is ignored (unless No_Matter_What) | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
-  | msg_dpls | data_list | True | - | things_controllers that will act as message displays, f.i. to be place next to the television | 
+  | msg_dpls | str_list | True | - | things_controllers that will act as message displays, f.i. to be place next to the television | 
   | notifications | ['say_log', 'timers'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
   | tts_port | int | False | - | port for the http tts file web services, choose not to interfere with other ports such as the hue emulation port | 
   | tts_request | str | False | - | accepted web requests, this string is a python3 format string and should contain {ip}, {port} and {wav_file} keyword | 
