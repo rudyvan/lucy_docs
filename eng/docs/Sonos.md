@@ -22,10 +22,10 @@ Sonos has a broad range of speakers.
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
@@ -101,13 +101,13 @@ from lucy_app import *
 
 Sonos_driver(party_mode = False)
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:2,o:Music_players>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:2,o:Music_players>
 
 from lucy_app import *
 
 Music_players(items = [Sonos(ip = "192.168.15.161",ip_action = 0,sonos_type = "PLAY:1"),Sonos(ip = "192.168.15.160",ip_action = 0,sonos_type = "PLAY:1")])
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:6,o:Music_players>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:6,o:Music_players>
 
 from lucy_app import *
 
@@ -117,13 +117,13 @@ Music_players(items = [
         Sonos(ip = "192.168.15.99",ip_action = 0,sonos_type = "PLAY:1"),
         Sonos(ip = "192.168.15.90",ip_action = 0,sonos_type = "PLAYBAR")])
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:kitchen,o:Room,kw:contents,lp:5,o:Music_players>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:kitchen,o:Room,kw:contents,lp:5,o:Music_players>
 
 from lucy_app import *
 
 Music_players(items = [Sonos(ip = "192.168.15.111",ip_action = 0,sonos_type = "PLAY:1"),Sonos(ip = "192.168.15.83",ip_action = 0,sonos_type = "PLAY:1")])
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:6,o:Music_players>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:office,o:Room,kw:contents,lp:6,o:Music_players>
 
 from lucy_app import *
 

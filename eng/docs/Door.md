@@ -39,11 +39,11 @@ Door and Window methods are the same
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
@@ -51,7 +51,7 @@ Door and Window methods are the same
   | method_things | ['access', 'beam2close', 'beam2open', 'beam_can_close', 'beam_can_open', 'cmd_close', 'cmd_close_ign', 'cmd_open', 'cmd_open_ign', 'is_opened', 'keep_closed', 'keep_opened', 'light_deco', 'light_green', 'light_night', 'light_not_closed', 'light_red', 'light_warn', 'lights_off_at_close', 'lights_off_at_open', 'lights_on_at_close', 'lights_on_at_open', 'pulse2close', 'pulse2open', 'ring_button', 'step2open_close', 'time_auto_close', 'time_check_close', 'time_check_open', 'time_open_max'] | False | - | special methods of this thing, mostly realised through things | 
   | my_assistant | bool | True | - | a flag if voice (alexa) can activate this thing | 
   | notifications | ['active', 'app_done', 'app_start', 'conflict_oc', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'open_max', 'payload_no', 'ring', 'ring_away', 'trigger', 'trigger_no'] | True | - | door nty's, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -160,7 +160,7 @@ A yellow flicker stroboscopic light works when the isles of the door are moving,
 
 from project.py tree:(dk:street).*(o:Door)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:3,o:Doors>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:street,o:Place,kw:contents,lp:3,o:Doors>
 
 from lucy_app import *
 
@@ -318,7 +318,7 @@ In the example below, a single room is defined as 2 rooms : guest.sleep and gues
 
 from project.py tree:['(dk:guest.sleep).*(o:Climate)', '(dk:guest.bath).*(o:Climate)']
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:guest.sleep,o:Room,kw:contents,lp:3,o:Climate>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:guest.sleep,o:Room,kw:contents,lp:3,o:Climate>
 
 from lucy_app import *
 
@@ -346,7 +346,7 @@ Climate(
                             "twin_copy@-1":Output(path = "zw:Vera_plus,buttonset,151,Status7"),
                             "twin_copy@1":Output(path = "zw:Vera_plus,buttonset,151,Status3")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1])})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:guest.bath,o:Room,kw:contents,lp:1,o:Climate>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:guest.bath,o:Room,kw:contents,lp:1,o:Climate>
 
 from lucy_app import *
 
@@ -445,7 +445,7 @@ Window covering
   | --- | --- | --- | --- | --- |
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
@@ -453,7 +453,7 @@ Window covering
   | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button'] | False | - | special methods of this thing, mostly realised through things | 
   | my_assistant | bool | True | - | a flag if voice (alexa) can activate this thing | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for window covers, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
@@ -507,7 +507,7 @@ the below example is typical for an outside wind/rain sensitive sunscreen that w
 
 from project.py tree:(dk:master_bed).*(o:Windows)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:2,o:Windows>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:2,o:Windows>
 
 from lucy_app import *
 

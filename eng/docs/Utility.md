@@ -87,7 +87,7 @@ parameters:
 
 from project.py tree:(o:Home_utilities)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:6,o:Home_utilities>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:6,o:Home_utilities>
 
 from lucy_app import *
 

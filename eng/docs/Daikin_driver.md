@@ -110,7 +110,7 @@ Daikin_driver(
     skip_if_multi = True,
     streamer_mode = True)
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:8,o:Climate>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:8,o:Climate>
 
 from lucy_app import *
 
@@ -152,7 +152,7 @@ Climate(
                             "twin_copy@1":Output(path = "zw:Vera_plus,buttonset,171,Status1")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1]),
             "{room}^humid_soll":Virtual_A(i_read = "%H")})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:0,o:Things_controllers>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:0,o:Things_controllers>
 
 from lucy_app import *
 

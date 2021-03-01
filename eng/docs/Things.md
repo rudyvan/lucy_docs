@@ -83,11 +83,11 @@ Output description, works also for the derived classes
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
@@ -95,7 +95,7 @@ Output description, works also for the derived classes
   | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button'] | False | - | special methods of this thing, mostly realised through things | 
   | my_assistant | bool | True | - | a flag if voice (alexa) can activate this thing | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for outputs, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -150,17 +150,17 @@ Input description, works also for the derived classes
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for inputs, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -214,7 +214,7 @@ Any temperature sensor
   | low | float | True | - | - | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify+', 'payload_no', 'positive'] | True | - | the notifications for Sensors, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -292,18 +292,18 @@ An Input switch which is activated by something such as a high temperature like 
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | i_read | str | False | - | the type of data that this sensor reads | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for inputs, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -350,7 +350,7 @@ Str_device, a device containing text
   | --- | --- | --- | --- | --- |
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Str_device']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Str_device']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
@@ -449,7 +449,7 @@ Wind speed meter device
   | --- | --- | --- | --- | --- |
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | i_read | str | True | - | the type of data that this sensor reads | 
@@ -498,7 +498,7 @@ Rain gauge meter device
   | --- | --- | --- | --- | --- |
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
@@ -541,14 +541,14 @@ Liquid flow meter with hall effect sensor
   | --- | --- | --- | --- | --- |
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | flow_type | str | True | - | type of flow measured | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['flow_lot', 'flow_major', 'flow_nice', 'flow_tickle'] | True | - | the notifications for Flow_meter, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | q_per_rev | float | False | - | quantity per revolve | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -627,18 +627,18 @@ Alarm_detector description
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | detector_type | valid_list | False | - | is the detector type such as burglar, tamper, alarm,.. | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for inputs, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -681,17 +681,17 @@ Input description, works also for the derived classes
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for inputs, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -734,17 +734,17 @@ Input description, works also for the derived classes
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for inputs, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -840,17 +840,17 @@ Input description, works also for the derived classes
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for inputs, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -893,17 +893,17 @@ Input description, works also for the derived classes
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for inputs, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 

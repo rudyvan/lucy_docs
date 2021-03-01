@@ -256,7 +256,7 @@ several other notification keys exist for digital range things: going_up, going_
 
 from project.py tree:(dk:attic).*(o:Monitor)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:attic,o:Room,kw:contents,lp:3,o:Monitor>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:attic,o:Room,kw:contents,lp:3,o:Monitor>
 
 from lucy_app import *
 

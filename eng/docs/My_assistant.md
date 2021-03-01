@@ -72,10 +72,10 @@ See [Google_driver](Google_driver.md) for more details and instructions.
   | --- | --- | --- | --- | --- |
   | bridge_prefix | str | False | - | the emulated bridge name will appear in the iphone hue app with this prefix and its role | 
   | fav | str | True | - | is this a favorite element | 
-  | i_use | valid_set | False | - | is the list of the voice assistants suppliers you use and the instructions to your butler in google calendar or via email (= To Be Done) | 
+  | i_use | valid_set_list | False | - | is the list of the voice assistants suppliers you use and the instructions to your butler in google calendar or via email (= To Be Done) | 
   | icon | str | True | - | icon file for this element | 
   | link_button | Virtual | False | - | when this virtual is up, then adding users (just like a real hue bridge) is allowed | 
-  | may_do | valid_set | False | - | is the list of the functional apps that your butler may serve | 
+  | may_do | valid_set_list | False | - | is the list of the functional apps that your butler may serve | 
   | notifications | ['hue_emul', 'hue_emul_log', 'voice_bad'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
   | port | int | False | - | should be an unique port number not in use elsewhere, and as Hue bridges have themselves port 80 as default, Amazon Echo will detect them only if at 80 | 
   | siri_notes | bool | True | - | use apple siri as voice control input, by creating a note in gmail that is the voice command | 

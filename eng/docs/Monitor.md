@@ -37,7 +37,7 @@ If something happens, proper notifications are issued.
 
 from project.py tree:['(dk:garden).*(o:Monitor)', '(dk:garage_dressing).*(o:Monitor)']
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:5,o:Monitor>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:5,o:Monitor>
 
 from lucy_app import *
 
@@ -114,7 +114,7 @@ Monitor(
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
                     path = "ow:PI-Soccer,,DS18B20,28D4747A0B000006,106")})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:4,o:Monitor>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:4,o:Monitor>
 
 from lucy_app import *
 

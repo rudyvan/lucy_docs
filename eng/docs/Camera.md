@@ -29,11 +29,11 @@ Older Foscam camera's use port 80 and more recent camera's have port 88.
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | cam_tpe | str | False | - | key in the Camera_driver dict cam_types | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | file_id | str | False | - | 2 characted file id | 
@@ -111,7 +111,7 @@ Camera names are generated with the prefix 'cam_' and the name of the place, in 
 
 from project.py tree:(dk:street).*(o:Cameras)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:2,o:Cameras>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:street,o:Place,kw:contents,lp:2,o:Cameras>
 
 from lucy_app import *
 
@@ -162,7 +162,7 @@ These pictures are then sent by email and as mail_more mentions EMAIL_notice, th
 
 from project.py tree:(dk:street).*(o:Mailbox_alert)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:5,o:Mailbox_alert>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:street,o:Place,kw:contents,lp:5,o:Mailbox_alert>
 
 from lucy_app import *
 

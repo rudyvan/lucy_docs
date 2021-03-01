@@ -111,7 +111,7 @@ Here a sirens test event will happen every 1st day of new month at 12am.
 
 from project.py tree:(dk:hall.upstairs).*(o:Security)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:hall.upstairs,o:Room,kw:contents,lp:0,o:Security>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:hall.upstairs,o:Room,kw:contents,lp:0,o:Security>
 
 from lucy_app import *
 

@@ -37,7 +37,7 @@ Subsequently the serial input can be used to specify a pin for a thing as in:
 
 from project.py tree:(dk:garden).*(o:Access_point)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:2,o:Access_ways,kw:items,dk:iButton_out_garden,o:Access_point>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:2,o:Access_ways,kw:items,dk:iButton_out_garden,o:Access_point>
 
 from lucy_app import *
 

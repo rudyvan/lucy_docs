@@ -240,7 +240,7 @@ Example of a system whereby Lucy is master for the fire_alarm and slave for the 
 
 from project.py tree:(o:Security_system)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:9,o:Security_system>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:9,o:Security_system>
 
 from lucy_app import *
 

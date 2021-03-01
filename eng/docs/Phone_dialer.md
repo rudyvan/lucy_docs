@@ -48,7 +48,7 @@ When the internet is down and and the home is occupied, then the dialer is ignor
 
 from project.py tree:(o:Phone_dialer)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:9,o:Phone_dialer>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:office,o:Room,kw:contents,lp:9,o:Phone_dialer>
 
 from lucy_app import *
 

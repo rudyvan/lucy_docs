@@ -178,7 +178,7 @@ from lucy_app import *
 
 Irrigation_manager()
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:8,o:Irrigation_system>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:8,o:Irrigation_system>
 
 from lucy_app import *
 
@@ -231,7 +231,7 @@ Irrigation_system(
     role_me = "PI-Garden",
     winter_months = [11,12,1,2,3])
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:7,o:Irrigation_points>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:7,o:Irrigation_points>
 
 from lucy_app import *
 

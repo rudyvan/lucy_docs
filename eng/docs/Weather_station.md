@@ -123,7 +123,7 @@ Some other sensors that you can purchase;
 
 from project.py tree:(o:Weather_station)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:9,o:Weather_station>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:9,o:Weather_station>
 
 from lucy_app import *
 

@@ -80,7 +80,7 @@ There is one Vera() gateway, 2 hue bridges and one ikea tradfri gateway.
 
 from project.py tree:['(dk:garden).*(o:Things_controllers)', '(dk:garage).*(o:Things_controllers)', '(dk:master_bed).*(o:Things_controllers)', '(dk:office).*(o:Things_controllers)', '(dk:attic).*(o:Things_controllers)']
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:1,o:Things_controllers>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:1,o:Things_controllers>
 
 from lucy_app import *
 
@@ -89,7 +89,7 @@ Things_controllers(items = {
             "PI-Gate":Raspi(color = "green",ip = "192.168.15.121",ths_hw = ["unipi,16,14"]),
             "PI-Soccer":Raspi(color = "white",ip = "192.168.15.78",ths_hw = ["unipi,6,6"])})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:0,o:Things_controllers>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:0,o:Things_controllers>
 
 from lucy_app import *
 
@@ -98,7 +98,7 @@ Things_controllers(items = {
             "PI-Security":Raspi(color = "cyan",ip = "192.168.15.29",ths_hw = ["unipi,16,14"]),
             "PI-Water":Raspi(color = "green",ip = "192.168.15.33",ths_hw = ["unipi,6,6"])})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:1,o:Things_controllers>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:1,o:Things_controllers>
 
 from lucy_app import *
 
@@ -106,7 +106,7 @@ Things_controllers(items = {
             "DK_Bedroom":Daikin(color = "white",ip = "192.168.15.92"),
             "Hue_Bridge2":Hue(color = "white",ip = "192.168.15.159")})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
 
 from lucy_app import *
 
@@ -130,7 +130,7 @@ Things_controllers(
             "imac-lucy":Ubuntu(color = "white",ip = "192.168.15.113"),
             "ow_office":Ow_eds(color = "white",ip = "192.168.15.151")})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:attic,o:Room,kw:contents,lp:0,o:Things_controllers>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:attic,o:Room,kw:contents,lp:0,o:Things_controllers>
 
 from lucy_app import *
 

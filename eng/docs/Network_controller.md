@@ -156,7 +156,7 @@ ip_ping objects are automatically created for raspi, sonos objects and camera's 
 
 from project.py tree:['(dk:living_loung).*(o:Ip_ping)', '(dk:living_loung).*(o:Cameras)', '(dk:office).*(o:Ip_ping)', '(dk:office).*(o:Cameras)', '(dk:office).*(o:Things_controllers)']
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:7,o:Ip_ping>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:7,o:Ip_ping>
 
 from lucy_app import *
 
@@ -172,7 +172,7 @@ Ip_ping(items = {
                     spec_func = "Echo",
                     usage = {"watts":10})})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:1,o:Cameras>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:1,o:Cameras>
 
 from lucy_app import *
 
@@ -184,7 +184,7 @@ Cameras(items = {
                     port = 88,
                     user = "admin")})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:8,o:Ip_ping>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:office,o:Room,kw:contents,lp:8,o:Ip_ping>
 
 from lucy_app import *
 
@@ -205,7 +205,7 @@ Ip_ping(
                     spec_func = "Echo",
                     usage = {"watts":10})})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:1,o:Cameras>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:office,o:Room,kw:contents,lp:1,o:Cameras>
 
 from lucy_app import *
 
@@ -217,7 +217,7 @@ Cameras(items = {
                     port = 88,
                     user = "rudyv")})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
 
 from lucy_app import *
 

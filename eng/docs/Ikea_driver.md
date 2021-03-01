@@ -91,7 +91,7 @@ Ikea_driver(
     notifications = {
             "ikea_parsing":Mail(subject='Ikea Tradfri Parsing{app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='ikea', files2mail=None, ceiling=None)})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:guest.sleep,o:Room,kw:contents,lp:4,o:Lights>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:guest.sleep,o:Room,kw:contents,lp:4,o:Lights>
 
 from lucy_app import *
 
@@ -100,7 +100,7 @@ Lights(my_assistant = True,room_lights = {
                     path = "ikea:Ikea_Tradfri,guest_light",
                     value_logic = {"assign":{"00:00":"0","is_armed":"0","sunrise":"0","sunset":"25"}})})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
 
 from lucy_app import *
 
@@ -115,8 +115,11 @@ Things_controllers(
             "PI-Notify2":Raspi(color = "white",ip = "192.168.15.63"),
             "PI-Notify3":Raspi(color = "white",ip = "192.168.15.133",ths_hw = ["piface"]),
             "PI-Notify4":Raspi(color = "white",ip = "192.168.15.120",ths_hw = ["piface"]),
-            "PI-Stats":Raspi(color = "blue", ip = "192.168.15.35", ths_hw = ["unipi,6,6"],
-                    roles = ["trace","dropbox","sms","network","things_forensics","notifier","phone"]),
+            "PI-Stats":Raspi(
+                    color = "blue",
+                    ip = "192.168.15.35",
+                    roles = ["trace","dropbox","sms","network","things_forensics","notifier","phone"],
+                    ths_hw = ["unipi,6,6"]),
             "Vera_plus":Vera(color = "white",ip = "192.168.15.75"),
             "imac-lucy":Ubuntu(color = "white",ip = "192.168.15.113"),
             "ow_office":Ow_eds(color = "white",ip = "192.168.15.151")})

@@ -84,7 +84,7 @@ See the following example of the rgb_c_veranda light whereas animation and one h
 
 from project.py tree:(dk:veranda).*(o:Lights)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:7,o:Lights>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:7,o:Lights>
 
 from lucy_app import *
 
@@ -181,7 +181,7 @@ Vera_driver(
             "vera_security_pars":Vera_cmd(log_nty = "Security parameters received",vera_pars = ["107"],vera_type = "RunScene")},
     vera_port = 3480)
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:5,o:Lights>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:5,o:Lights>
 
 from lucy_app import *
 
@@ -193,7 +193,7 @@ Lights(my_assistant = True,room_lights = {
                                     play = Effect(maker='self', condition='become_inactive', effect='make_inactive', taker='parent', delay=None, duration=None))},method_things = {
                             "is_on":Input(path = "unipi:PI-RearDoor,input,1",usage = {"watts":250})},path = "unipi:PI-Security,relay,7")})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:hall.ground,o:Room,kw:contents,lp:2,o:Lights>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:hall.ground,o:Room,kw:contents,lp:2,o:Lights>
 
 from lucy_app import *
 
@@ -209,7 +209,7 @@ Lights(my_assistant = True,room_lights = {
                                     "sunrise":C_state(brightness=35, scene='arctic_aurora', color=''),
                                     "sunset":C_state(brightness=35, scene='', color='yellow')}})})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:2,o:Lights>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:2,o:Lights>
 
 from lucy_app import *
 
@@ -238,7 +238,7 @@ Lights(my_assistant = True,room_lights = {
                     usage = {"watts":15},
                     value_logic = {"assign":{"00:00":"0","22:30":"25","is_room_secure":"0","sunset-00:10":"50"}})})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:3,o:Lights>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:3,o:Lights>
 
 from lucy_app import *
 
@@ -274,7 +274,7 @@ Lights(my_assistant = True,room_lights = {
                     usage = {"watts":2},
                     value_logic = {"assign":{"00:00":"0","17:00":"1","is_armed":"0","is_holiday":"0"}})})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:master_bath,o:Room,kw:contents,lp:3,o:Lights>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:master_bath,o:Room,kw:contents,lp:3,o:Lights>
 
 from lucy_app import *
 
@@ -284,7 +284,7 @@ Lights(room_lights = {
                     usage = {"watts":2},
                     value_logic = {"assign":{"00:00":"1","17:00":"1","is_holiday":"0","is_room_secure":"0","sunrise":"0"}})})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:office,o:Room,kw:contents,lp:5,o:Lights>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:office,o:Room,kw:contents,lp:5,o:Lights>
 
 from lucy_app import *
 
@@ -373,7 +373,7 @@ Notifier(
             "tts_start":"<prosody rate='medium'>Hi honey,"},
     tts_volume = 30)
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:3,o:Climate>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:3,o:Climate>
 
 from lucy_app import *
 

@@ -342,7 +342,7 @@ Climate_manager(
 
 from project.py tree:(o:Climate_system)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:5,o:Climate_system>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:5,o:Climate_system>
 
 from lucy_app import *
 
@@ -412,11 +412,11 @@ Climate energy Switch, is a binary on/off switch for gas or electricity heaters 
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | i_make | str | False | - | the type of environmental impact that this thing makes | 
@@ -424,7 +424,7 @@ Climate energy Switch, is a binary on/off switch for gas or electricity heaters 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['activate_button', 'C_fluid', 'C_in', 'C_out', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button'] | False | - | special methods of this thing, mostly realised through things | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for outputs, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_app | tuple:value_app_tuples | True | - | app logic to determine the payload based programming logic and input parameters | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -484,7 +484,7 @@ Climate energy Dimmer, is a device that has a 0% to 100% setting and value can b
   | --- | --- | --- | --- | --- |
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | i_make | str | False | - | the type of environmental impact that this thing makes | 
@@ -607,11 +607,11 @@ Climate Switch, Clim_SW (switch) is a binary on/off climate switch such as an on
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | i_make | str | False | - | the type of environmental impact that this thing makes | 
@@ -619,7 +619,7 @@ Climate Switch, Clim_SW (switch) is a binary on/off climate switch such as an on
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['C_fluid', 'C_in', 'C_out', 'is_on'] | False | - | special methods of this thing, mostly realised through things | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for outputs, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
 
@@ -675,7 +675,7 @@ Climate Setpoint, Clim_SP is a climate device that has a (temperature) set-point
   | --- | --- | --- | --- | --- |
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | i_make | str | False | - | the type of environmental impact that this thing makes | 
@@ -683,7 +683,7 @@ Climate Setpoint, Clim_SP is a climate device that has a (temperature) set-point
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['C_fluid', 'C_in', 'C_out', 'is_on'] | False | - | special methods of this thing, mostly realised through things | 
   | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify+', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -746,7 +746,7 @@ Climate Dimmer, clim_DM is a climate device that has a 0% to 100% setting and va
   | --- | --- | --- | --- | --- |
   | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | i_make | str | False | - | the type of environmental impact that this thing makes | 
@@ -754,7 +754,7 @@ Climate Dimmer, clim_DM is a climate device that has a 0% to 100% setting and va
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['C_fluid', 'C_in', 'C_out'] | False | - | special methods of this thing, mostly realised through things | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high', 'inactive', 'low', 'normal', 'notify+', 'payload_no'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -816,7 +816,7 @@ The __userassistance__ dictionary is somewhat special, example whereby through v
 
 from project.py tree:['(dk:garage).*(o:Climate)', '(dk:garage_dressing).*(o:Climate)', '(dk:living_lounge).*(o:Climate)']
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:6,o:Climate>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:6,o:Climate>
 
 from lucy_app import *
 
@@ -834,7 +834,7 @@ Climate(clim_makers = {
                             "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,285BFB5E070000A9,DS18B20,,69")},
                     path = "unipi:PI-Climate,relay,12")},clim_sensors = [Sensor(i_read = "°C",path = "ow:PI-Climate,28A2FC5F07000093,DS18B20,,74"),Sensor(i_read = "°C",path = "ow:PI-Climate,28C12C6007000085,DS18B20,,75")],clim_targets = {"warm_sp":{"away":10.0,"day":12.0,"sleep":10.0}})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:3,o:Climate>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:3,o:Climate>
 
 from lucy_app import *
 
@@ -846,7 +846,7 @@ Climate(clim_makers = {
                             "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,28A91F600700002D,DS18B20,,84")},
                     path = "unipi:PI-Climate,relay,22")},clim_sensors = [Sensor(i_read = "°C",path = "ow:PI-Climate,28B82760070000FB,DS18B20,,63")],clim_targets = {"warm_sp":{"away":13.0,"day":15.0,"sleep":13.0}})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:3,o:Climate>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:3,o:Climate>
 
 from lucy_app import *
 

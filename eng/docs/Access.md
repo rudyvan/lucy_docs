@@ -191,18 +191,18 @@ This enables a great choice in access point types and what they do.
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | direction | valid_list | False | - | is the direction of the access point : exit/entry or both | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['access_green', 'access_red'] | False | - | special methods of this thing, mostly realised through things | 
   | notifications | ['access_try', 'active', 'inactive'] | True | - | access controllers nty's, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -238,18 +238,18 @@ An example of a real life situation is the use of nold.io, see www.nold.io and t
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | access_scene | str | False | - | is the direction of the access point : exit/entry or both | 
-  | active | int | False | - | designate the active state for a binary thing, either 0 or 1 | 
+  | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | direction | valid_list | False | - | is the direction of the access point : exit/entry or both | 
-  | duration | int | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['access_green', 'access_red'] | False | - | special methods of this thing, mostly realised through things | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | access trigger nty's, see [__Notifier__](Notifier.md) | 
-  | path | str | False | - | path to the specific hardware element | 
+  | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -356,7 +356,7 @@ Access_manager(
 
 from project.py tree:['(dk:street).*(o:Access_ways)', '(dk:garage).*(o:Access_ways)', '(dk:garage).*(o:Security_system)']
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:1,o:Access_ways>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:street,o:Place,kw:contents,lp:1,o:Access_ways>
 
 from lucy_app import *
 
@@ -390,7 +390,7 @@ Access_ways(
                             "access_green":Light(duration = 3,path = "unipi:PI-Gate,relay,10")},
                     path = "unipi:PI-Gate,input,12")})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:1,o:Access_ways>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:1,o:Access_ways>
 
 from lucy_app import *
 
@@ -435,7 +435,7 @@ Access_ways(
                             "access_green":Light(duration = 3,path = "unipi:PI-Security,relay,13")},
                     path = "unipi:PI-Security,input,4")})
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:9,o:Security_system>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:9,o:Security_system>
 
 from lucy_app import *
 

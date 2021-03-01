@@ -45,7 +45,7 @@ In the security system one can define which zones are armed partially or fully a
 
 from project.py tree:['(dk:veranda)', '(dk:hall.ground)', '(dk:hall.upstairs)', '(dk:toilet.ground)', '(dk:toilet.hall)']
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:veranda,o:Room>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:veranda,o:Room>
 
 from lucy_app import *
 
@@ -183,7 +183,7 @@ Room(
                         "{room}^humid_soll":Virtual_A(i_read = "%H")})],
     say = "veranda")
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:hall.ground,o:Room>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:hall.ground,o:Room>
 
 from lucy_app import *
 
@@ -226,7 +226,7 @@ Room(
         Security(zone = "house")],
     say = "{room_grp}")
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:hall.upstairs,o:Room>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:hall.upstairs,o:Room>
 
 from lucy_app import *
 
@@ -266,7 +266,7 @@ Room(
                         "{room}_echo":Ping(ip = "192.168.15.118",ip_action = -1,spec_func = "Echo")})],
     say = "{room_grp}")
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:toilet.ground,o:Room>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:toilet.ground,o:Room>
 
 from lucy_app import *
 
@@ -282,7 +282,7 @@ Room(
         Security(zone = "house")],
     say = "{room_grp}")
 
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:toilet.hall,o:Room>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:toilet.hall,o:Room>
 
 from lucy_app import *
 

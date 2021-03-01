@@ -31,7 +31,7 @@ Observe the notifications, but also the creation of a flag __have_mail__ that is
 
 from project.py tree:(o:Mailbox_alert)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:street,o:Place,kw:contents,lp:5,o:Mailbox_alert>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:street,o:Place,kw:contents,lp:5,o:Mailbox_alert>
 
 from lucy_app import *
 

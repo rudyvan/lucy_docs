@@ -167,7 +167,7 @@ See extract below and notice the 3 value apps, one to determine the boiler on of
 
 from project.py tree:(o:Climate_system)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:5,o:Climate_system>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:5,o:Climate_system>
 
 from lucy_app import *
 
