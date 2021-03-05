@@ -240,6 +240,9 @@
 <!--s_insert_{'file_n':'docs/Phone_dialer.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
+<!--s_insert_{'file_n':'docs/Pool_manager.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
 <!--s_insert_{'file_n':'docs/Security.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 

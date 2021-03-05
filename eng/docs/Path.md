@@ -93,31 +93,6 @@ from app_obj.conf:
 ```python3
 [PATH]
 
-path_defs=
-	{"zw":         {"gw_sleep": 20, "physical":{"write_by":"*",       "scan_by":["light","security","m.clim","wincover","s.clim"],          "ask_from":"light",   "tell_by":"light",   "boot_set" : False}, "format":"tc,zw_id,zw_nr,zw_fld",  "assert":{"am_i_any":["binary","analog","color"], "drv":"Vera_driver",       "owner":["Vera"]}},
-	"vera":       {"gw_sleep": 20, "physical":{"write_by":"*",       "scan_by":["light","security","m.clim","wincover","s.clim"],          "ask_from":"light",   "tell_by":"light",   "boot_set" : False}, "format":"tc,th",                  "assert":{"am_i_any":["binary","analog","color"], "drv":"Vera_driver",       "owner":["Vera"]}},
-	"hue":        {"gw_sleep": 25, "physical":{"write_by":"light",   "scan_by":["light"],          "ask_from":"light",   "tell_by":"light",   "boot_set" : False}, "format":"tc,th",                  "assert":{"am_i_any":["binary","analog","color"], "drv":"Hue_driver",        "owner":["Hue"]}},
-	"ikea":       {"gw_sleep": 20, "physical":{"write_by":"light",   "scan_by":["light"],          "ask_from":"light",   "tell_by":"light",   "boot_set" : False}, "format":"tc,th",                  "assert":{"am_i_any":["binary","analog","color"], "drv":"Ikea_driver",       "owner":["Ikea"]}},
-	"shelly":     {"gw_sleep":2.5, "physical":{"write_by":"*",       "scan_by":["light"],          "ask_from":"light",   "tell_by":"",        "boot_set" : False}, "format":"ip,shelly_id",           "assert":{"am_i_any":["binary","analog","color"],"shelly_id":["1","2","3","4",""]}},
-	"tcp":        {"gw_sleep":  0, "physical":{"write_by":"*",       "scan_by":[],                 "ask_from":"",        "tell_by":"*",       "boot_set" : False}, "format":"tc,ip,port,msg",         "assert":{"am_i_all":["output"],                  "drv":"Tcp_driver",        "owner":["Raspi"]}},
-	"udp":        {"gw_sleep":  0, "physical":{"write_by":"*",       "scan_by":[],                 "ask_from":"",        "tell_by":"*",       "boot_set" : False}, "format":"tc,ip,port,msg",         "assert":{"am_i_all":["output"],                  "drv":"Udp_driver",        "owner":["Raspi"]}},
-	"daikin":     {"gw_sleep":  5, "physical":{"write_by":"m.clim",  "scan_by":["m.clim","s.clim"],"ask_from":"m.clim",  "tell_by":"m.clim",  "boot_set" : False}, "format":"tc,dk_tpe",              "assert":{"am_i_any":["binary","analog","string"],"drv":"Daikin_driver",     "owner":["Daikin"],"dk_tpe":["","sp","mode","h_humid","o_temp","is_on","h_temp","f_dir","f_rate","dry_sp"]}},
-	"renson":     {"gw_sleep": 20, "physical":{"write_by":"m.clim",  "scan_by":["m.clim","s.clim"],"ask_from":"m.clim",  "tell_by":"m.clim",  "boot_set" : False}, "format":"tc,th",                  "assert":{"am_i_any":["analog"],                                             "owner":["Renson"]}},
-	"unipi":      {"gw_sleep": 20, "physical":{"write_by":"*",       "scan_by":["*"],              "ask_from":"",        "tell_by":"",        "boot_set" : False}, "format":"tc,xy_tpe,nr",           "assert":{"am_i_any":["binary","analog"],         "drv":"Unipi_driver",      "owner":["Raspi","Unipi_Evok"],"xy_tpe":["relay","input","ai","ao"]}},
-	"piface":     {"gw_sleep":0.3, "physical":{"write_by":"owner",   "scan_by":["owner"],          "ask_from":"owner",   "tell_by":"owner",   "boot_set" : True }, "format":"tc,xy_tpe,nr",           "assert":{"am_i_any":["binary"],                  "drv":"Piface_driver",     "owner":["Raspi"],"xy_tpe":["di","do"]}},
-	"arduino":    {"gw_sleep":  1, "physical":{"write_by":"owner",   "scan_by":["owner"],          "ask_from":"owner",   "tell_by":"owner",   "boot_set" : True }, "format":"tc,xy_tpe,nr",           "assert":{"am_i_any":["binary","analog","string"],                           "owner":["Arduino"],"xy_tpe":["di","do","ao"]}},
-	"ip_building":{"gw_sleep":2.0, "physical":{"write_by":"*",       "scan_by":["light"],          "ask_from":"light",   "tell_by":"light",   "boot_set" : False}, "format":"tc,xy_tpe,th,chan",      "assert":{"am_i_any":["binary","analog"],         "drv":"Ip_building_driver","owner":["IP_Building"],"xy_tpe":["1w_button","1w_sensor","1w_in","1w_out","out_analog","out_relay"]}},
-	"loxone":     {"gw_sleep":2.0, "physical":{"write_by":"*",       "scan_by":["*"],              "ask_from":"",        "tell_by":"",        "boot_set" : False}, "format":"tc,xy_tpe,nr",           "assert":{"am_i_any":["binary","analog"],         "drv":"Loxone_driver",     "owner":["Loxone"]}},
-	"na_tag":     {"gw_sleep": 10, "physical":{"write_by":"",        "scan_by":["security"],       "ask_from":"security","tell_by":"security","boot_set" : True }, "format":"th",                     "assert":{"am_i_all":["input"],                   "drv":"Netatmo_wlc_driver"}},
-	"na_ws":      {"gw_sleep": 10, "physical":{"write_by":"",        "scan_by":["weather"],        "ask_from":"weather", "tell_by":"weather", "boot_set" : False}, "format":"th",                     "assert":{"am_i_all":["input"],                   "drv":"Netatmo_ws_driver"}},
-	"niko":       {"gw_sleep":2.0, "physical":{"write_by":"*",       "scan_by":["light"],          "ask_from":"light",   "tell_by":"light",   "boot_set" : False}, "format":"tc,xy_tpe,nr",           "assert":{"am_i_any":["binary","analog"],         "drv":"Niko_driver",       "owner":["Niko"]}},
-	"knx":        {"gw_sleep":2.0, "physical":{"write_by":"*",       "scan_by":["*"],              "ask_from":"",        "tell_by":"",        "boot_set" : False}, "format":"tc,xy_tpe,nr",           "assert":{"am_i_any":["binary","analog"],         "drv":"KNX_driver",        "owner":["KNX"]}},
-	"modbus":     {"gw_sleep":2.0, "physical":{"write_by":"*",       "scan_by":["*"],              "ask_from":"",        "tell_by":"",        "boot_set" : False}, "format":"tc,xy_tpe,nr",           "assert":{"am_i_any":["binary","analog"],         "drv":"Modbus_driver",     "owner":["Modbus"]}},
-	"btle":       {"gw_sleep":0.1, "physical":{"write_by":"",        "scan_by":["*"],              "ask_from":"",        "tell_by":"*",       "boot_set" : False}, "format":"tc,mac,uuid,major,minor","assert":{"am_i_any":["analog","binary"],         "drv":"Btle_driver",       "owner":["Raspi"]},"path_aid":["btle:{mac}","BtleThing"]},
-	"ow":         {"gw_sleep":1.5, "physical":{"write_by":"",        "scan_by":["*"],              "ask_from":"",        "tell_by":"",        "boot_set" : False}, "format":"tc,th,th_tpe,chan,lbl",  "assert":{"am_i_any":["binary","analog"],         "drv":"One_wire_driver",   "owner":["Raspi","Ow_eds"],"th_tpe":["EDS0068","DS2406","DS18B20","DS2401"]},"chan":["","A","B"],"path_aid":["ow:{th}","OwThing"]},
-	"usb":        {"gw_sleep":0.8, "physical":{"write_by":"owner",   "scan_by":["owner"],          "ask_from":"owner",   "tell_by":"owner",   "boot_set" : True }, "format":"tc,usb_path,xy_tpe,nr",  "assert":{"am_i_any":["digital","string"],        "drv":"Usb_driver",        "owner":["Raspi","Ubuntu"],"xy_tpe":["1w_button","o","i"]}},
-	"ean":        {"gw_sleep":  0, "physical":{"write_by":"",        "scan_by":["owner"],          "ask_from":"owner",   "tell_by":"owner",   "boot_set" : True }, "format":"tc,utility,ean_nr,meter_nr,value_format,unit,unit_rate,unit2,unit2_rate,sum_total","assert":{"am_i_any":["string","analog"]}},
-	"virtual":    {"gw_sleep":  0, "physical":{"write_by":"",        "scan_by":[],                 "ask_from":"owner",   "tell_by":"*",       "boot_set" : True }, "format":"",                       "assert":{"am_i_any":["binary","analog","virtual"]}}}
 
 ```
 
@@ -353,6 +328,8 @@ paths_used={'btle:PI-Security,0117c58556ac,23a01af0232a45189c0e323fb773f5ef,1,1'
 	 'hue:Hue_Bridge,stairs_ledstrip': 'stairs_ledstrip',
 	 'hue:Hue_Bridge2,bad_candle': 'bad_candle',
 	 'ikea:Ikea_Tradfri,guest_light': 'guest_light',
+	 'modbus:pool_energy,Tot_W': 'pool_energy^Tot_W',
+	 'modbus:pool_energy,Tot_kWh': 'pool_energy^Tot_kWh',
 	 'na_tag:Dining Front': 'win_dining_front',
 	 'na_tag:Dining Rear': 'win_dining_rear',
 	 'na_tag:Living Front': 'win_living_front',
@@ -429,6 +406,7 @@ paths_used={'btle:PI-Security,0117c58556ac,23a01af0232a45189c0e323fb773f5ef,1,1'
 	 'ow:PI-Light,28FEF35F070000AF,DS18B20,,61': 'guest.sleep_sensor',
 	 'ow:PI-Light,28FF5F2465040067,DS18B20,,88': '°C_case_light_front',
 	 'ow:PI-Light,28FF7C1965040004,DS18B20,,87': '°C_case_light_rear',
+	 'ow:PI-Pool,,DS18B20,2811CE790B000008,107': '°C_pool_case',
 	 'ow:PI-RearDoor,,DS18B20,2813807A0B0000A5,105': '°C_rear_door_case',
 	 'ow:PI-Security,00020000193E2C1F,DS2401,,supervisor': 'Ronald',
 	 'ow:PI-Security,0006000019389F75,DS2401,,owner': 'Rudy',

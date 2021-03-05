@@ -157,8 +157,8 @@ Climate(
 from lucy_app import *
 
 Things_controllers(items = {
-            "DK_Veranda":Daikin(color = "magenta",ip = "192.168.15.62"),
-            "PI-Veranda":Raspi(color = "magenta",ip = "192.168.15.32",ths_hw = ["unipi,12,14"])})
+            "DK_Veranda":Daikin(color = "magenta",path = "ip:192.168.15.62"),
+            "PI-Veranda":Raspi(color = "magenta",path = "ip:192.168.15.32",ths_hw = ["unipi,12,14"])})
 
 ```
 

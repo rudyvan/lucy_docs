@@ -87,7 +87,7 @@ outbound IFTTT notifications are generated when the car or motor enters, exits o
 
 from project.py tree:['(o:Btle_driver)', '(o:Ifttt_driver)']
 ```python3
-# --> project.py :<dk:project,o:Project,kw:drivers,lp:11,o:Btle_driver>
+# --> project.py :<dk:project,o:Project,kw:drivers,lp:12,o:Btle_driver>
 
 from lucy_app import *
 

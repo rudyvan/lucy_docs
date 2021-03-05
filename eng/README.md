@@ -421,6 +421,7 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | [__Monitor__](docs/Monitor.md) | Device monitoring such as waste water levels, wine cellar temperatures and any other things data to watch and to notify if set boundaries are crossed |
   | [__Music_players__](docs/Music_players.md) | Any of the music_players supported such as sonos |
   | [__Phone_dialer__](docs/Phone_dialer.md) | This is the driver to an old fashioned phone dialer to deliver preset voice messages in case of fire, alarm or loss of internet or power |
+  | [__Pool_manager__](docs/Pool_manager.md) | This is the app for swimpool management |
   | [__Security__](docs/Security.md) | This App is defined per room and contains the Fire/Alarm detectors and sirens and the zones linked to the place or room |
   | [__Security_system__](docs/Security.md) | Advanced interface and definition of a security system, either stand alone or integrated as a master or slave subsystem. The role drives the alarm and fire detectors and the whole security logic |
   | [__Things_controllers__](docs/Things_controllers.md) | This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Ow_eds','Unipi_Evok' |

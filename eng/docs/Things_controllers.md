@@ -28,7 +28,7 @@ Others will be added in the future such as niko or lutron.
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
-  | items | ['Raspi', 'Ubuntu', 'MAC_OS', 'Arduino', 'Vera', 'Hue', 'Ikea', 'Ow_eds', 'Unipi_Evok', 'Daikin', 'IP_Building', 'Loxone', 'Renson'] | False | - | This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Ow_eds','Unipi_Evok' | 
+  | items | ['Raspi', 'Ubuntu', 'MAC_OS', 'Arduino', 'Vera', 'Hue', 'Ikea', 'Ow_eds', 'Unipi_Evok', 'Daikin', 'IP_Building', 'Loxone', 'Renson', 'Modbus'] | False | - | This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Ow_eds','Unipi_Evok' | 
 <!--e_tbl-->
 
 The things_controllers driven by Lucy (those also drive the alien ones) can be a [Raspberry](https://www.raspberrypi.org/) or a special purpose ethernet [Arduino](https://www.arduino.cc/) or even a full unix computer with [Ubuntu](https://www.ubuntu.com/) or [Debian](https://www.debian.org/).
@@ -85,26 +85,28 @@ from project.py tree:['(dk:garden).*(o:Things_controllers)', '(dk:garage).*(o:Th
 from lucy_app import *
 
 Things_controllers(items = {
-            "PI-Garden":Raspi(color = "brown",ip = "192.168.15.55",ths_hw = ["unipi,8,14"]),
-            "PI-Gate":Raspi(color = "green",ip = "192.168.15.121",ths_hw = ["unipi,16,14"]),
-            "PI-Soccer":Raspi(color = "white",ip = "192.168.15.78",ths_hw = ["unipi,6,6"])})
+            "PI-Garden":Raspi(color = "brown",path = "ip:192.168.15.55",ths_hw = ["unipi,8,14"]),
+            "PI-Gate":Raspi(color = "green",path = "ip:192.168.15.121",ths_hw = ["unipi,16,14"]),
+            "PI-Pool":Raspi(color = "blue",path = "ip:192.168.15.194",ths_hw = ["unipi,16,14"]),
+            "PI-Soccer":Raspi(color = "white",path = "ip:192.168.15.78",ths_hw = ["unipi,6,6"]),
+            "pool_energy":Modbus(color = "magenta",path = "usb:PI-Pool,RS485,1,EASTRON_SDM630V2,Tot_kWh+Tot_W")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:0,o:Things_controllers>
 
 from lucy_app import *
 
 Things_controllers(items = {
-            "PI-RearDoor":Raspi(color = "white",ip = "192.168.15.94",ths_hw = ["unipi,12,14"]),
-            "PI-Security":Raspi(color = "cyan",ip = "192.168.15.29",ths_hw = ["unipi,16,14"]),
-            "PI-Water":Raspi(color = "green",ip = "192.168.15.33",ths_hw = ["unipi,6,6"])})
+            "PI-RearDoor":Raspi(color = "white",path = "ip:192.168.15.94",ths_hw = ["unipi,12,14"]),
+            "PI-Security":Raspi(color = "cyan",path = "ip:192.168.15.29",ths_hw = ["unipi,16,14"]),
+            "PI-Water":Raspi(color = "green",path = "ip:192.168.15.33",ths_hw = ["unipi,6,6"])})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:1,o:Things_controllers>
 
 from lucy_app import *
 
 Things_controllers(items = {
-            "DK_Bedroom":Daikin(color = "white",ip = "192.168.15.92"),
-            "Hue_Bridge2":Hue(color = "white",ip = "192.168.15.159")})
+            "DK_Bedroom":Daikin(color = "white",path = "ip:192.168.15.92"),
+            "Hue_Bridge2":Hue(color = "white",path = "ip:192.168.15.159")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
 
@@ -112,32 +114,32 @@ from lucy_app import *
 
 Things_controllers(
     items = {
-            "DK_Office":Daikin(color = "blue",ip = "192.168.15.60"),
-            "Hue_Bridge":Hue(color = "white",ip = "192.168.15.136"),
-            "Ikea_Tradfri":Ikea(color = "white",ip = "192.168.15.164",secret = "Ua42jpHcvKu3xsKy"),
-            "PI-CSlave":Raspi(color = "white",ip = "192.168.15.91"),
-            "PI-Dev":Raspi(color = "white",ip = "192.168.15.56"),
-            "PI-Notify":Raspi(color = "white",ip = "192.168.15.106",ths_hw = ["piface"]),
-            "PI-Notify2":Raspi(color = "white",ip = "192.168.15.63"),
-            "PI-Notify3":Raspi(color = "white",ip = "192.168.15.133",ths_hw = ["piface"]),
-            "PI-Notify4":Raspi(color = "white",ip = "192.168.15.120",ths_hw = ["piface"]),
+            "DK_Office":Daikin(color = "blue",path = "ip:192.168.15.60"),
+            "Hue_Bridge":Hue(color = "white",path = "ip:192.168.15.136"),
+            "Ikea_Tradfri":Ikea(color = "white",path = "ip:192.168.15.164",secret = "Ua42jpHcvKu3xsKy"),
+            "PI-CSlave":Raspi(color = "white",path = "ip:192.168.15.91"),
+            "PI-Dev":Raspi(color = "white",path = "ip:192.168.15.56"),
+            "PI-Notify":Raspi(color = "white",path = "ip:192.168.15.106",ths_hw = ["piface"]),
+            "PI-Notify2":Raspi(color = "white",path = "ip:192.168.15.63"),
+            "PI-Notify3":Raspi(color = "white",path = "ip:192.168.15.133",ths_hw = ["piface"]),
+            "PI-Notify4":Raspi(color = "white",path = "ip:192.168.15.120",ths_hw = ["piface"]),
             "PI-Stats":Raspi(
                     color = "blue",
-                    ip = "192.168.15.35",
+                    path = "ip:192.168.15.35",
                     roles = ["trace","dropbox","sms","network","things_forensics","notifier","phone"],
                     ths_hw = ["unipi,6,6"]),
-            "Vera_plus":Vera(color = "white",ip = "192.168.15.75"),
-            "imac-lucy":Ubuntu(color = "white",ip = "192.168.15.113"),
-            "ow_office":Ow_eds(color = "white",ip = "192.168.15.151")})
+            "Vera_plus":Vera(color = "white",path = "ip:192.168.15.75"),
+            "imac-lucy":Ubuntu(color = "white",path = "ip:192.168.15.113"),
+            "ow_office":Ow_eds(color = "white",path = "ip:192.168.15.151")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:attic,o:Room,kw:contents,lp:0,o:Things_controllers>
 
 from lucy_app import *
 
 Things_controllers(items = {
-            "Healthbox_North":Renson(color = "magenta",ip = "192.168.15.146"),
-            "Healthbox_South":Renson(color = "magenta",ip = "192.168.15.145"),
-            "PI-Light":Raspi(color = "magenta",ip = "192.168.15.31",ths_hw = ["unipi,16,14"])})
+            "Healthbox_North":Renson(color = "magenta",path = "ip:192.168.15.146"),
+            "Healthbox_South":Renson(color = "magenta",path = "ip:192.168.15.145"),
+            "PI-Light":Raspi(color = "magenta",path = "ip:192.168.15.31",ths_hw = ["unipi,16,14"])})
 
 ```
 

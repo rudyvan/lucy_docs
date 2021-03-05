@@ -19,12 +19,18 @@ In the example below a usb_driver is defined with one item serial_arduino:
 
 from project.py tree:(o:Usb_driver)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:drivers,lp:14,o:Usb_driver>
+# --> project.py :<dk:project,o:Project,kw:drivers,lp:15,o:Usb_driver>
 
 from lucy_app import *
 
 Usb_driver(
     usb_paths = {
+            "RS485":{
+                    "baudrate":9600,
+                    "bytesize":8,
+                    "parity":"E",
+                    "port":["/dev/serial/by-id/usb-Silicon_Labs_CP2102*","/dev/ttyUSB0*"],
+                    "stopbits":2},
             "serial_arduino":{"baudrate":38400,"bytesize":8,"parity":"N","port":["/dev/serial/by-id/usb-Arduino*","/dev/ttyUSB0*"],"stopbits":1}})
 
 ```

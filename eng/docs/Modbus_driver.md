@@ -18,5 +18,12 @@ is the driver for Modbus
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | notifications | ['modbus_parsing'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
+
+## List of [Notifications](Notifier.md) for  __Modbus_driver__:
+
+  | Notification Suffix | When invoked? |
+  | --- | --- | 
+  | modbus_parsing | when this report runs | 
 <!--e_tbl-->
 

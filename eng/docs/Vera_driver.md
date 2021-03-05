@@ -160,7 +160,7 @@ Subsequently these scene names can be used in vera notifications as you can obse
 
 from project.py tree:['(o:Vera_driver)', '(dk:garage).*(o:Lights)', '(dk:hall.ground).*(o:Lights)', '(dk:living_lounge).*(o:Lights)', '(dk:master_bed).*(o:Lights)', '(dk:master_bath).*(o:Lights)', '(dk:office).*(o:Lights)']
 ```python3
-# --> project.py :<dk:project,o:Project,kw:drivers,lp:10,o:Vera_driver>
+# --> project.py :<dk:project,o:Project,kw:drivers,lp:11,o:Vera_driver>
 
 from lucy_app import *
 
