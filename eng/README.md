@@ -325,6 +325,7 @@ These Apps are main internal components of Lucy, they are the backbone of the ha
   | --- | --- |
   | [__Deployer__](docs/Deployer.md) | Manages and protects the things-controllers if multiple are deployed at a site and ensures automatic program version distribution and health check |
   | [__Feeder__](docs/Feeder.md) | This App processes incoming commands from various sources and checks eligibility.  Sources for the feeder could be Vera, TCP, UDP, IFTTT, Calendar, email, SMS, twitter,... Also included is the master and other things_controllers who need a service.  The feeder generates a report with all the possible commands with parameters and if and who can execute such command. |
+  | [__Forensics__](docs/Forensics.md) | Collects and reports cumulative data of all Things for a 24 hours period and assigns to every things_controller access to updated status reports linked to its role |
   | [__Home_settings__](docs/Site_home_settings.md) | App to define parameters such as home occupancy, is_holiday that are crucial aspects for most other functional apps |
   | [__My_assistant__](docs/My_assistant.md) | Advanced voice control with Amazon's Alexa, ok_Google, Siri Notes and for instructions from calendar and mail and for the Apps that are enabled to receive voice instructions |
   | [__Network_controller__](docs/Network_controller.md) | Protects the ip network. Scans all devices for ping latency, a summary is emailed at midnight |
@@ -334,7 +335,6 @@ These Apps are main internal components of Lucy, they are the backbone of the ha
   | [__Site_settings__](docs/Site_home_settings.md) | Defines the geographical location (needed for sunset and sunrise), the email names used and some site specific parameters such as currency and temperature scale |
   | [__Site_tasker__](docs/Site_tasker.md) | the app that allows certain roles to assume a multi site role |
   | [__Things_additions__](docs/Things_additions.md) | Some Apps have something to do with specific things (such as a sirens_test with an Alarm_siren) or you need to define an App that collects data for every thing defined, then this App is the one to use |
-  | [__Things_forensics__](docs/Things_forensics.md) | Collects and reports cumulative data of all Things for a 24 hours period and assigns to every things_controller access to updated status reports linked to its role |
   | [__Things_sync__](docs/Things_sync.md) | The process of ensuring that the as_is and to_be state of a Thing is there where it needs to be for the system to work as a whole |
 <!--e_toc_App_system-->
 
@@ -1272,7 +1272,7 @@ Such data could be:
 * any other information need or app that will be released
 
 With the above data you can estimate power and water consumption for all the things in scope because your home controller knows when they are active.
-Both apps Things_forensics and Utility_usage work together to get this overview accomplished.
+Both apps Forensics and Utility_usage work together to get this overview accomplished.
 
 Other properties could be more than data, say a sirens test associated with a siren thing.
 

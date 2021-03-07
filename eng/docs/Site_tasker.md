@@ -18,7 +18,7 @@ Data from other things_controllers will be processed as if there was only one si
 
 Also timers and reports are site specific and will run as they are necessary.
 
-With these possibilities, you could design one deployer or things_forensics role things_controller, applied to a large set of sites.
+With these possibilities, you could design one deployer or forensics role things_controller, applied to a large set of sites.
 All having the same base code, no replication or redundant scripts.
 
 This module is work in progress..

@@ -48,7 +48,7 @@ IFTTT IF THIS THEN THAT driver, both as a trigger with 'maker' and as an google 
   | err_ifttt_g_fail | !!IFTTT <{:}> GET fail |  
   | err_ifttt_p_fail | !!IFTTT <{:}> POST fail |  
   | err_ssi_ky | !!Webserver SSI Secret Key error: <{:}><{:}>,data <{:}> |  
-  | err_ssi_secret | !!web_secret missing in things_forensics |  
+  | err_ssi_secret | !!web_secret missing in forensics |  
   | msg_ifttt_ok | IFTTT <{:}> with <{:}> : <{:}> |  
 <!--e_tbl-->
 

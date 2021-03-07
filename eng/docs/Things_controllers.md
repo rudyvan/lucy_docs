@@ -50,30 +50,13 @@ Very detailed reporting is available from the [prj_parser](Prj_parser.md), see t
     * as io_dev (input/output devices) currently piface or UniPi are accepted.   The UniPi string must be followed with 2 arguments : the number of relays and inputs installed
 
 * Raspberry Roles: The role that a given raspberry can perform is defined in the role list of that raspberry. All raspberry's can run scenes, email, read inputs or drive outputs, but some specific roles can be assigned. 
-    Below is a list of specific roles to add in the Raspi(roles=[]) definition:
-
-    | Raspberry Role | Description |
-    | --- | --- |
-    | __option_x__                  | see the chapter on options to allow for multiple systems for security or climate to name a few
-    | __s_clim__                    | is a raspberry who runs the same program as the m_clim, but are prevented from outputting to boiler, pump and climate controllers.  It is fitted with a touch display they can be placed anywhere a view on the heating/cooling situation is needed. m_clim and s_clim email at midnight full statistics and reset everything for the new day
-    | __arduino-light__             | role to give to every Arduino that is given a light function 
-    | __show__ and __displ_small__  | is the nerve centre capturing status messages from everyone and logging/displaying them. At midnight a summary is emailed
-    | __papirus__                   | assumes the raspberry has a papirus display and with a specific UDP message, the text get displayed 
-	
-## Arduino Specifics
-
-Arduino's with an ethernet port can be used as RGB led drivers or as access controllers reading ibuttons or other access devices.
-
-In the Arduino() definition a roles=["arduino-access"] must be added for an access device, and roles=["arduino-light"] for a led driver.
-
-Also always ensure that the programmable mac address is unique or dhcp ip issues will arise.
-
-The ip address must be a fixed one.
+    
+    These roles are automatically assigned by associating a things_controller with a driver or an app.
 
 ## Example
 
-In the example below several things_controllers are defined with a naming convention with 'PI-' prefix for raspberry's en 'AR-' for arduino's.
-There is one Vera() gateway, 2 hue bridges and one ikea tradfri gateway.
+In the example below several things_controllers are defined with a naming convention with 'PI-' prefix for raspberry's.
+Amongst others there is one Vera() gateway, 2 hue bridges, 1 ikea tradfri gateway, Modbus energy reading device and several Renson and Daikin controllers.
 
 
 <!--s_insert_{"tree":["(dk:garden).*(o:Things_controllers)","(dk:garage).*(o:Things_controllers)","(dk:master_bed).*(o:Things_controllers)","(dk:office).*(o:Things_controllers)","(dk:attic).*(o:Things_controllers)"]}-->
@@ -85,28 +68,28 @@ from project.py tree:['(dk:garden).*(o:Things_controllers)', '(dk:garage).*(o:Th
 from lucy_app import *
 
 Things_controllers(items = {
-            "PI-Garden":Raspi(color = "brown",path = "ip:192.168.15.55",ths_hw = ["unipi,8,14"]),
-            "PI-Gate":Raspi(color = "green",path = "ip:192.168.15.121",ths_hw = ["unipi,16,14"]),
-            "PI-Pool":Raspi(color = "blue",path = "ip:192.168.15.194",ths_hw = ["unipi,16,14"]),
-            "PI-Soccer":Raspi(color = "white",path = "ip:192.168.15.78",ths_hw = ["unipi,6,6"]),
-            "pool_energy":Modbus(color = "magenta",path = "usb:PI-Pool,RS485,1,EASTRON_SDM630V2,Tot_kWh+Tot_W")})
+            "PI-Garden":Raspi(path = "ip:192.168.15.55",ths_hw = ["unipi,8,14"]),
+            "PI-Gate":Raspi(path = "ip:192.168.15.121",ths_hw = ["unipi,16,14"]),
+            "PI-Pool":Raspi(path = "ip:192.168.15.194",ths_hw = ["unipi,16,14"]),
+            "PI-Soccer":Raspi(path = "ip:192.168.15.78",ths_hw = ["unipi,6,6"]),
+            "pool_energy":Modbus(path = "usb:PI-Pool,RS485,1,EASTRON_SDM630V2,Tot_kWh+Tot_W")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:0,o:Things_controllers>
 
 from lucy_app import *
 
 Things_controllers(items = {
-            "PI-RearDoor":Raspi(color = "white",path = "ip:192.168.15.94",ths_hw = ["unipi,12,14"]),
-            "PI-Security":Raspi(color = "cyan",path = "ip:192.168.15.29",ths_hw = ["unipi,16,14"]),
-            "PI-Water":Raspi(color = "green",path = "ip:192.168.15.33",ths_hw = ["unipi,6,6"])})
+            "PI-RearDoor":Raspi(path = "ip:192.168.15.94",ths_hw = ["unipi,12,14"]),
+            "PI-Security":Raspi(path = "ip:192.168.15.29",ths_hw = ["unipi,16,14"]),
+            "PI-Water":Raspi(path = "ip:192.168.15.33",ths_hw = ["unipi,6,6"])})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:1,o:Things_controllers>
 
 from lucy_app import *
 
 Things_controllers(items = {
-            "DK_Bedroom":Daikin(color = "white",path = "ip:192.168.15.92"),
-            "Hue_Bridge2":Hue(color = "white",path = "ip:192.168.15.159")})
+            "DK_Bedroom":Daikin(path = "ip:192.168.15.92"),
+            "Hue_Bridge2":Hue(path = "ip:192.168.15.159")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:office,o:Room,kw:contents,lp:0,o:Things_controllers>
 
@@ -114,32 +97,28 @@ from lucy_app import *
 
 Things_controllers(
     items = {
-            "DK_Office":Daikin(color = "blue",path = "ip:192.168.15.60"),
-            "Hue_Bridge":Hue(color = "white",path = "ip:192.168.15.136"),
-            "Ikea_Tradfri":Ikea(color = "white",path = "ip:192.168.15.164",secret = "Ua42jpHcvKu3xsKy"),
-            "PI-CSlave":Raspi(color = "white",path = "ip:192.168.15.91"),
-            "PI-Dev":Raspi(color = "white",path = "ip:192.168.15.56"),
-            "PI-Notify":Raspi(color = "white",path = "ip:192.168.15.106",ths_hw = ["piface"]),
-            "PI-Notify2":Raspi(color = "white",path = "ip:192.168.15.63"),
-            "PI-Notify3":Raspi(color = "white",path = "ip:192.168.15.133",ths_hw = ["piface"]),
-            "PI-Notify4":Raspi(color = "white",path = "ip:192.168.15.120",ths_hw = ["piface"]),
-            "PI-Stats":Raspi(
-                    color = "blue",
-                    path = "ip:192.168.15.35",
-                    roles = ["trace","dropbox","sms","network","things_forensics","notifier","phone"],
-                    ths_hw = ["unipi,6,6"]),
-            "Vera_plus":Vera(color = "white",path = "ip:192.168.15.75"),
-            "imac-lucy":Ubuntu(color = "white",path = "ip:192.168.15.113"),
-            "ow_office":Ow_eds(color = "white",path = "ip:192.168.15.151")})
+            "DK_Office":Daikin(path = "ip:192.168.15.60"),
+            "Hue_Bridge":Hue(path = "ip:192.168.15.136"),
+            "Ikea_Tradfri":Ikea(path = "ip:192.168.15.164",secret = "Ua42jpHcvKu3xsKy"),
+            "PI-CSlave":Raspi(path = "ip:192.168.15.91"),
+            "PI-Dev":Raspi(path = "ip:192.168.15.56"),
+            "PI-Notify":Raspi(path = "ip:192.168.15.106",ths_hw = ["piface"]),
+            "PI-Notify2":Raspi(path = "ip:192.168.15.63"),
+            "PI-Notify3":Raspi(path = "ip:192.168.15.133",ths_hw = ["piface"]),
+            "PI-Notify4":Raspi(path = "ip:192.168.15.120",ths_hw = ["piface"]),
+            "PI-Stats":Raspi(path = "ip:192.168.15.35",ths_hw = ["unipi,6,6"]),
+            "Vera_plus":Vera(path = "ip:192.168.15.75"),
+            "imac-lucy":Ubuntu(path = "ip:192.168.15.113"),
+            "ow_office":Ow_eds(path = "ip:192.168.15.151")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:attic,o:Room,kw:contents,lp:0,o:Things_controllers>
 
 from lucy_app import *
 
 Things_controllers(items = {
-            "Healthbox_North":Renson(color = "magenta",path = "ip:192.168.15.146"),
-            "Healthbox_South":Renson(color = "magenta",path = "ip:192.168.15.145"),
-            "PI-Light":Raspi(color = "magenta",path = "ip:192.168.15.31",ths_hw = ["unipi,16,14"])})
+            "Healthbox_North":Renson(path = "ip:192.168.15.146"),
+            "Healthbox_South":Renson(path = "ip:192.168.15.145"),
+            "PI-Light":Raspi(path = "ip:192.168.15.31",ths_hw = ["unipi,16,14"])})
 
 ```
 

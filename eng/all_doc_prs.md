@@ -126,6 +126,9 @@
 <!--s_insert_{'file_n':'docs/Feeder.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
+<!--s_insert_{'file_n':'docs/Forensics.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
 <!--s_insert_{'file_n':'docs/Site_home_settings.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
@@ -151,9 +154,6 @@
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Things_additions.md','path+':'docs/','level':+1}-->
-<!--e_insert-->
-
-<!--s_insert_{'file_n':'docs/Things_forensics.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Things_sync.md','path+':'docs/','level':+1}-->

@@ -112,7 +112,7 @@ Monitor(
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the temperature of the electronics in the soccer door case is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "ow:PI-Pool,,DS18B20,2811CE790B000008,107"),
+                    path = "ow:PI-Pool,2811CE790B000008,DS18B20,,107"),
             "°C_soccer_case":Sensor(
                     high = 50.0,
                     i_read = "°C",

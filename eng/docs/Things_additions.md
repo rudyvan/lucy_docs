@@ -19,7 +19,7 @@ Such data could be:
 * any other information need or app that will be released
 
 With the above data you can estimate power and water consumption for all the things in scope because your home controller knows when they are active.
-Both apps Things_forensics and Utility_usage work together to get this overview accomplished.
+Both apps Forensics and Utility_usage work together to get this overview accomplished.
 
 Other properties could be more than data, say a sirens test associated with a siren thing.
 

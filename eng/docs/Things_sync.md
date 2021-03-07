@@ -141,7 +141,7 @@ Below is the list of all available commands and the role that the receiving thin
 | light | reboot | reboot all what is possible with Hue, Ikea and Vera | ```{"type":"cmd","role":"light","cmd":"reboot"}``` |
 | voice | tts_all | plays all voice notifications in the specified room the number of times specified | ```{"type":"cmd","role":"voice","cmd":"tts_all","args":["GARAGE_DRESSING",1]}``` |
 | voice | tts | plays the tts id in the specified room the number of times specified | ```{"type":"cmd","args": ["tts_clim_on_0_DAUGHTER","DAUGHTER.SLEEP",2], "cmd": "tts", "role": "voice"}``` |
-| things_forensics | report | emails the things_forensics_report | ```{"type":"cmd","role":"things_forensics","cmd":"report"}``` |
+| forensics | report | emails the forensics_report | ```{"type":"cmd","role":"forensics","cmd":"report"}``` |
 | sms | sms | sends an sms to a list of designators | ```{"type":"cmd","role":"sms","cmd":"sms","args":["sms_fire_on",["+441234123423"]]}``` | 
   
   

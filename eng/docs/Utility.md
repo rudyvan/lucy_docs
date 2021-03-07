@@ -99,6 +99,7 @@ Home_utilities(
             "electricity_night":Utility_meter(path = "ean:PI-Climate,electricity,541448820048316727,4117-Dal,XXXXXX00,kW/h,0.125,,,"),
             "gas":Utility_meter(path = "ean:PI-Climate,gas,41448820048316734,6237,XXXXX.x,m3,0.4078,kwH,9.99,"),
             "gas_boiler":Flow_meter(path = "unipi:PI-Climate,input,7",q_per_rev = 10.0),
+            "pool_water":Flow_meter(path = "unipi:PI-Climate,input,8",q_per_rev = 1.0),
             "water":Utility_meter(path = "ean:PI-Climate,water,,43828915,XXXXX,m3,41.7,,,")},
     notifications = {
             "power":Mail(subject='Power & Utility Charges', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='pwr', files2mail=None, ceiling=None),
@@ -118,7 +119,7 @@ Home_utilities(
 * * * 
 * * * 
 
-<!--s_insert_{"role":"things_forensics","suffix":"pwr"}-->
+<!--s_insert_{"role":"forensics","suffix":"pwr"}-->
 
 
 [PI-Stats_pwr.html](PI-Stats_pwr.html)

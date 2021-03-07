@@ -52,8 +52,8 @@ from lucy_app import *
 Room(
     contents = [
         Things_controllers(items = {
-                        "DK_Veranda":Daikin(color = "magenta",path = "ip:192.168.15.62"),
-                        "PI-Veranda":Raspi(color = "magenta",path = "ip:192.168.15.32",ths_hw = ["unipi,12,14"])}),
+                        "DK_Veranda":Daikin(path = "ip:192.168.15.62"),
+                        "PI-Veranda":Raspi(path = "ip:192.168.15.32",ths_hw = ["unipi,12,14"])}),
         Access_ways(items = {
                         "iButton_out_veranda":Access_point(direction = "exit",method_things = {
                                         "access_green":Light(duration = 4,path = "unipi:PI-Veranda,relay,6"),

@@ -47,7 +47,7 @@ As an example, for every room that prj_parser reads, it will create a room objec
 | Alarm_detector | room_name^secure | is the room armed? |
 | Door/Window | room_name^locked  | is the room locked?
 | clim_SP/clim_Dev | room_name^clim_on | is the room climatised?
-| Sensor | room_name^ plus [pref,comfort_offset,economy_offset,temp_soll,temp_ok] | the climate settings for the room, all tracked by things_forensics
+| Sensor | room_name^ plus [pref,comfort_offset,economy_offset,temp_soll,temp_ok] | the climate settings for the room, all tracked by forensics
 
 All these things have an owner and are wanted by some things_controller(s) and that is exactly what prj_parser does.
 

@@ -223,23 +223,19 @@ from lucy_app import *
 
 Things_controllers(
     items = {
-            "DK_Office":Daikin(color = "blue",path = "ip:192.168.15.60"),
-            "Hue_Bridge":Hue(color = "white",path = "ip:192.168.15.136"),
-            "Ikea_Tradfri":Ikea(color = "white",path = "ip:192.168.15.164",secret = "Ua42jpHcvKu3xsKy"),
-            "PI-CSlave":Raspi(color = "white",path = "ip:192.168.15.91"),
-            "PI-Dev":Raspi(color = "white",path = "ip:192.168.15.56"),
-            "PI-Notify":Raspi(color = "white",path = "ip:192.168.15.106",ths_hw = ["piface"]),
-            "PI-Notify2":Raspi(color = "white",path = "ip:192.168.15.63"),
-            "PI-Notify3":Raspi(color = "white",path = "ip:192.168.15.133",ths_hw = ["piface"]),
-            "PI-Notify4":Raspi(color = "white",path = "ip:192.168.15.120",ths_hw = ["piface"]),
-            "PI-Stats":Raspi(
-                    color = "blue",
-                    path = "ip:192.168.15.35",
-                    roles = ["trace","dropbox","sms","network","things_forensics","notifier","phone"],
-                    ths_hw = ["unipi,6,6"]),
-            "Vera_plus":Vera(color = "white",path = "ip:192.168.15.75"),
-            "imac-lucy":Ubuntu(color = "white",path = "ip:192.168.15.113"),
-            "ow_office":Ow_eds(color = "white",path = "ip:192.168.15.151")})
+            "DK_Office":Daikin(path = "ip:192.168.15.60"),
+            "Hue_Bridge":Hue(path = "ip:192.168.15.136"),
+            "Ikea_Tradfri":Ikea(path = "ip:192.168.15.164",secret = "Ua42jpHcvKu3xsKy"),
+            "PI-CSlave":Raspi(path = "ip:192.168.15.91"),
+            "PI-Dev":Raspi(path = "ip:192.168.15.56"),
+            "PI-Notify":Raspi(path = "ip:192.168.15.106",ths_hw = ["piface"]),
+            "PI-Notify2":Raspi(path = "ip:192.168.15.63"),
+            "PI-Notify3":Raspi(path = "ip:192.168.15.133",ths_hw = ["piface"]),
+            "PI-Notify4":Raspi(path = "ip:192.168.15.120",ths_hw = ["piface"]),
+            "PI-Stats":Raspi(path = "ip:192.168.15.35",ths_hw = ["unipi,6,6"]),
+            "Vera_plus":Vera(path = "ip:192.168.15.75"),
+            "imac-lucy":Ubuntu(path = "ip:192.168.15.113"),
+            "ow_office":Ow_eds(path = "ip:192.168.15.151")})
 
 ```
 
