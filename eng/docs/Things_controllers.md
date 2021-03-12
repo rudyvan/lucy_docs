@@ -7,7 +7,7 @@
 <!--e_role-->
 
 <!--s_descr-->
-This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Ow_eds','Unipi_Evok'
+This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Eds','Unipi_Evok'
 
 <!--e_descr-->
 
@@ -28,7 +28,7 @@ Others will be added in the future such as niko or lutron.
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
-  | items | ['Raspi', 'Ubuntu', 'MAC_OS', 'Arduino', 'Vera', 'Hue', 'Ikea', 'Ow_eds', 'Unipi_Evok', 'Daikin', 'IP_Building', 'Loxone', 'Renson', 'Modbus'] | False | - | This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Ow_eds','Unipi_Evok' | 
+  | items | ['Raspi', 'Ubuntu', 'MAC_OS', 'Arduino', 'Vera', 'Hue', 'Ikea', 'Eds', 'Unipi_Evok', 'Daikin', 'IP_Building', 'Loxone', 'Renson', 'Modbus'] | False | - | This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Eds','Unipi_Evok' | 
 <!--e_tbl-->
 
 The things_controllers driven by Lucy (those also drive the alien ones) can be a [Raspberry](https://www.raspberrypi.org/) or a special purpose ethernet [Arduino](https://www.arduino.cc/) or even a full unix computer with [Ubuntu](https://www.ubuntu.com/) or [Debian](https://www.debian.org/).
@@ -68,10 +68,10 @@ from project.py tree:['(dk:garden).*(o:Things_controllers)', '(dk:garage).*(o:Th
 from lucy_app import *
 
 Things_controllers(items = {
-            "PI-Garden":Raspi(path = "ip:192.168.15.55",ths_hw = ["unipi,8,14"]),
-            "PI-Gate":Raspi(path = "ip:192.168.15.121",ths_hw = ["unipi,16,14"]),
-            "PI-Pool":Raspi(path = "ip:192.168.15.194",ths_hw = ["unipi,16,14"]),
-            "PI-Soccer":Raspi(path = "ip:192.168.15.78",ths_hw = ["unipi,6,6"]),
+            "PI-Garden":Raspi(hw_gws = ["unipi:8,14"],path = "ip:192.168.15.55"),
+            "PI-Gate":Raspi(hw_gws = ["unipi:16,14"],path = "ip:192.168.15.121"),
+            "PI-Pool":Raspi(hw_gws = ["unipi:16,14"],path = "ip:192.168.15.194"),
+            "PI-Soccer":Raspi(hw_gws = ["unipi:6,6"],path = "ip:192.168.15.78"),
             "pool_energy":Modbus(path = "usb:PI-Pool,RS485,1,EASTRON_SDM630V2,Tot_kWh+Tot_W")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:0,o:Things_controllers>
@@ -79,9 +79,9 @@ Things_controllers(items = {
 from lucy_app import *
 
 Things_controllers(items = {
-            "PI-RearDoor":Raspi(path = "ip:192.168.15.94",ths_hw = ["unipi,12,14"]),
-            "PI-Security":Raspi(path = "ip:192.168.15.29",ths_hw = ["unipi,16,14"]),
-            "PI-Water":Raspi(path = "ip:192.168.15.33",ths_hw = ["unipi,6,6"])})
+            "PI-RearDoor":Raspi(hw_gws = ["unipi:12,14"],path = "ip:192.168.15.94"),
+            "PI-Security":Raspi(hw_gws = ["unipi:16,14"],path = "ip:192.168.15.29"),
+            "PI-Water":Raspi(hw_gws = ["unipi:6,6"],path = "ip:192.168.15.33")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:1,o:Things_controllers>
 
@@ -102,14 +102,14 @@ Things_controllers(
             "Ikea_Tradfri":Ikea(path = "ip:192.168.15.164",secret = "Ua42jpHcvKu3xsKy"),
             "PI-CSlave":Raspi(path = "ip:192.168.15.91"),
             "PI-Dev":Raspi(path = "ip:192.168.15.56"),
-            "PI-Notify":Raspi(path = "ip:192.168.15.106",ths_hw = ["piface"]),
+            "PI-Notify":Raspi(hw_gws = ["piface:8,8"],path = "ip:192.168.15.106"),
             "PI-Notify2":Raspi(path = "ip:192.168.15.63"),
-            "PI-Notify3":Raspi(path = "ip:192.168.15.133",ths_hw = ["piface"]),
-            "PI-Notify4":Raspi(path = "ip:192.168.15.120",ths_hw = ["piface"]),
-            "PI-Stats":Raspi(path = "ip:192.168.15.35",ths_hw = ["unipi,6,6"]),
+            "PI-Notify3":Raspi(hw_gws = ["piface:8,8"],path = "ip:192.168.15.133"),
+            "PI-Notify4":Raspi(hw_gws = ["piface:8,8"],path = "ip:192.168.15.120"),
+            "PI-Stats":Raspi(hw_gws = ["unipi:6,6"],path = "ip:192.168.15.35"),
             "Vera_plus":Vera(path = "ip:192.168.15.75"),
             "imac-lucy":Ubuntu(path = "ip:192.168.15.113"),
-            "ow_office":Ow_eds(path = "ip:192.168.15.151")})
+            "ow_office":Eds(path = "ip:192.168.15.151")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:attic,o:Room,kw:contents,lp:0,o:Things_controllers>
 
@@ -118,7 +118,7 @@ from lucy_app import *
 Things_controllers(items = {
             "Healthbox_North":Renson(path = "ip:192.168.15.146"),
             "Healthbox_South":Renson(path = "ip:192.168.15.145"),
-            "PI-Light":Raspi(path = "ip:192.168.15.31",ths_hw = ["unipi,16,14"])})
+            "PI-Light":Raspi(hw_gws = ["unipi:16,14"],path = "ip:192.168.15.31")})
 
 ```
 

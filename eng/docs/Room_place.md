@@ -53,7 +53,7 @@ Room(
     contents = [
         Things_controllers(items = {
                         "DK_Veranda":Daikin(path = "ip:192.168.15.62"),
-                        "PI-Veranda":Raspi(path = "ip:192.168.15.32",ths_hw = ["unipi,12,14"])}),
+                        "PI-Veranda":Raspi(hw_gws = ["unipi:12,14"],path = "ip:192.168.15.32")}),
         Access_ways(items = {
                         "iButton_out_veranda":Access_point(direction = "exit",method_things = {
                                         "access_green":Light(duration = 4,path = "unipi:PI-Veranda,relay,6"),
@@ -69,7 +69,7 @@ Room(
                                 user = "rudyv")}),
         Windows(items = {
                         "sun_veranda_side":Win_cover(
-                                path = "vera:Vera_plus,sun_veranda_side",
+                                path = "vera:Vera_plus,th,sun_veranda_side",
                                 value_logic = {
                                         "assign":{"sunrise+03:00":"100","sunset-01:00":"0"},
                                         "disable":['raining_wc', 'wind_speed_wc^wind_gust>60'],
@@ -81,7 +81,7 @@ Room(
                                 notifications = {
                                         "enable_off":Say(txt='{tts_start} the sun tent is closed as the sun and temperature do not need the tent to open{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                         "enable_on":Say(txt='{tts_start} the sun tent is enabled and can open{tts_end}', ceiling=None, times=1, override=None, volume=None)},
-                                path = "vera:Vera_plus,sun_veranda_tent",
+                                path = "vera:Vera_plus,th,sun_veranda_tent",
                                 value_logic = {
                                         "assign":{"sunrise+01:00":"50","sunrise+02:00":"100","sunset-02:00":"0","sunset-03:00":"50"},
                                         "disable":['raining_wc', 'sun_light_wc<50', 'wind_speed_wc^wind_gust>60'],
@@ -124,7 +124,7 @@ Room(
         Lights(my_assistant = True,room_lights = {
                         "veranda_color":Color_light(
                                 my_assistant = True,
-                                path = "vera:Vera_plus,veranda_color",
+                                path = "vera:Vera_plus,th,veranda_color",
                                 usage = {"watts":12},
                                 value_logic = {
                                         "assign":{
@@ -155,7 +155,7 @@ Room(
                                 path = "daikin:DK_Veranda,sp",
                                 usage = {"watts":"from_daikin"})},
                 clim_sensors = {
-                        "°C_veranda":Sensor(i_read = "°C",path = "ow:PI-Veranda,284572ED0500008F,DS18B20,,104"),
+                        "°C_veranda":Sensor(i_read = "°C",path = "unipi:PI-Veranda,ow,284572ED0500008F,DS18B20,,104"),
                         "°C_veranda2":Sensor(i_read = "°C",path = "daikin:DK_Veranda,h_temp")},
                 clim_targets = {
                         "cold_sp":{"away":27.0,"comfort":-2,"day":{"off":27.0,"on":24.0},"economy":1.5,"sleep":30.0},
@@ -173,11 +173,11 @@ Room(
                         "{room}_clim_on_1":Mail(subject='Veranda Climatisation is Activated{app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},
                 room_virtuals = {
                         "{room}^clim_on":Virtual(copy_things = {
-                                        "twin_copy":Output(path = "zw:Vera_plus,buttonset,146,Status3")}),
+                                        "twin_copy":Output(path = "vera:Vera_plus,zw,buttonset,146,Status3")}),
                         "{room}^clim_pref":Virtual_R(
                                 copy_things = {
-                                        "twin_copy@-1":Output(path = "zw:Vera_plus,buttonset,171,Status5"),
-                                        "twin_copy@1":Output(path = "zw:Vera_plus,buttonset,171,Status1")},
+                                        "twin_copy@-1":Output(path = "vera:Vera_plus,zw,buttonset,171,Status5"),
+                                        "twin_copy@1":Output(path = "vera:Vera_plus,zw,buttonset,171,Status1")},
                                 descr_range = ["Economy","Standard","Comfort"],
                                 digital_range = [-1,0,1]),
                         "{room}^humid_soll":Virtual_A(i_read = "%H")})],
@@ -219,9 +219,9 @@ Room(
                                 i_make = ['warm'],
                                 member_of = ["pump"],
                                 method_things = {
-                                        "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,2859115F0700002F,DS18B20,,79")},
+                                        "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,2859115F0700002F,DS18B20,,79")},
                                 path = "unipi:PI-Climate,relay,11")},
-                clim_sensors = [Sensor(i_read = "°C",path = "ow:PI-Light,28BDB65F070000B8,DS18B20,,71")],
+                clim_sensors = [Sensor(i_read = "°C",path = "unipi:PI-Light,ow,28BDB65F070000B8,DS18B20,,71")],
                 clim_targets = {"warm_sp":{"away":16.0,"comfort":1.0,"day":17.0,"economy":-1.5,"sleep":16.0}}),
         Security(zone = "house")],
     say = "{room_grp}")
@@ -234,7 +234,7 @@ Room(
     contents = [
         Security(fire_detectors = [Fire_detector(path = "unipi:PI-Light,input,3")],sirens = [Alarm_siren(
                             copy_things = {
-                                    "carbon_copy":Output(path = "zw:Vera_plus,buttonset,173,Status1")},
+                                    "carbon_copy":Output(path = "vera:Vera_plus,zw,buttonset,173,Status1")},
                             notifications = {
                                     "app_done":Log(txt='Sirens testing completed', ceiling=None),
                                     "app_start":Say(txt='{tts_start} beware, now follows a monthly sirens test, report urgently if it stays silent {tts_end}', ceiling=None, times=2, override=True, volume=35)},
@@ -254,9 +254,9 @@ Room(
                                 i_make = ['warm'],
                                 member_of = ["pump"],
                                 method_things = {
-                                        "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Light,28C90674060000FC,DS18B20,,97")},
+                                        "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Light,ow,28C90674060000FC,DS18B20,,97")},
                                 path = "unipi:PI-Light,relay,15")},
-                clim_sensors = [Sensor(i_read = "°C",path = "ow:PI-Light,28BDB65F070000B8,DS18B20,,71"),Sensor(i_read = "%V",path = "renson:Healthbox_South,hall.upstairs")],
+                clim_sensors = [Sensor(i_read = "°C",path = "unipi:PI-Light,ow,28BDB65F070000B8,DS18B20,,71"),Sensor(i_read = "%V",path = "renson:Healthbox_South,hall.upstairs")],
                 clim_targets = {"warm_sp":{"away":16.0,"comfort":1.0,"day":18.0,"economy":-1.5,"sleep":16.0}}),
         Lights(my_assistant = True,room_lights = {
                         "hall_light":Dim_light(
@@ -277,8 +277,8 @@ Room(
                                 i_make = ['warm'],
                                 member_of = ["pump"],
                                 method_things = {
-                                        "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,2806895F070000AC,DS18B20,,62")},
-                                path = "unipi:PI-Climate,relay,21")},clim_sensors = [Sensor(i_read = "°C",path = "ow:PI-Climate,2806895F070000AC,DS18B20,,62")],clim_targets = {"warm_sp":{"away":13.0,"day":18.0,"sleep":13.0}}),
+                                        "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,2806895F070000AC,DS18B20,,62")},
+                                path = "unipi:PI-Climate,relay,21")},clim_sensors = [Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,2806895F070000AC,DS18B20,,62")],clim_targets = {"warm_sp":{"away":13.0,"day":18.0,"sleep":13.0}}),
         Security(zone = "house")],
     say = "{room_grp}")
 
@@ -293,8 +293,8 @@ Room(
                                 i_make = ['warm'],
                                 member_of = ["pump"],
                                 method_things = {
-                                        "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,28ED006007000097,DS18B20,,60")},
-                                path = "unipi:PI-Climate,relay,24")},clim_sensors = [Sensor(i_read = "°C",path = "ow:PI-Climate,28ED006007000097,DS18B20,,60")],clim_targets = {"warm_sp":{"away":13.0,"day":18.0,"sleep":13.0}}),
+                                        "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28ED006007000097,DS18B20,,60")},
+                                path = "unipi:PI-Climate,relay,24")},clim_sensors = [Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28ED006007000097,DS18B20,,60")],clim_targets = {"warm_sp":{"away":13.0,"day":18.0,"sleep":13.0}}),
         Security(zone = "house")],
     say = "{room_grp}")
 

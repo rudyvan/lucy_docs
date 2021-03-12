@@ -461,7 +461,7 @@ Security_system(
     do_fire = Virtual(duration = 1),
     do_unarm = Virtual(duration = 1),
     is_alarm = Virtual(copy_things = {
-                    "carbon_copy":Output(path = "zw:Vera_plus,buttonset,173,Status6")},effect_virtuals = {
+                    "carbon_copy":Output(path = "vera:Vera_plus,zw,buttonset,173,Status6")},effect_virtuals = {
                     "dw_autom_close":Virtual(
                             duration = 600,
                             play = Effect(maker='parent', condition='i_change', effect='make_same', taker='self', delay=None, duration=None)),
@@ -490,7 +490,7 @@ Security_system(
                             value_logic = {"freeze":{"is_not_day":True}})}),
     is_burglar = Virtual(notifications = {"active":Vera_nty(txt='vera_open_curtains')}),
     is_fire = Virtual(copy_things = {
-                    "carbon_copy":Output(path = "zw:Vera_plus,buttonset,173,Status7")}),
+                    "carbon_copy":Output(path = "vera:Vera_plus,zw,buttonset,173,Status7")}),
     light_armed_warn = Light(
             copy_things = {
                     "carbon_copy":Output(path = "unipi:PI-Veranda,relay,8")},
@@ -598,21 +598,21 @@ Access_keys(
     keys = {
             "Isabel":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,003100000174B67D,DS2401,,neighbor",
+                    path = "ow:PI-Security,003100000174B67D,DS2401,neighbor",
                     rights = {
                             "iButton_in_soccer":"entry_via_soccer",
                             "iButton_in_street":"entry_via_gate_no_unlock",
                             "iButton_out_garden":"exit_via_gate"}),
             "Leandro":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,00350000012EEC5E,DS2401,,trainer",
+                    path = "ow:PI-Security,00350000012EEC5E,DS2401,trainer",
                     rights = {
                             "iButton_in_soccer":"entry_via_soccer",
                             "iButton_in_street":"entry_via_gate_no_unlock",
                             "iButton_out_garden":"exit_via_gate"}),
             "Lucy":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,00B20000181BDB68,DS2401,,owner",
+                    path = "ow:PI-Security,00B20000181BDB68,DS2401,owner",
                     rights = {
                             "iButton_in_rear_door":"entry_via_garage_rear_door_and_unlock",
                             "iButton_in_soccer":"entry_via_soccer",
@@ -623,7 +623,7 @@ Access_keys(
                             "iButton_out_veranda":"exit_via_veranda_and_lockup"}),
             "Rebecca":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,00F3000001C7BB7C,DS2401,,daughter",
+                    path = "ow:PI-Security,00F3000001C7BB7C,DS2401,daughter",
                     rights = {
                             "iButton_in_rear_door":"entry_via_garage_rear_door_and_unlock",
                             "iButton_in_soccer":"entry_via_soccer",
@@ -634,7 +634,7 @@ Access_keys(
                             "iButton_out_veranda":"exit_via_veranda_and_lockup"}),
             "Ronald":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,00020000193E2C1F,DS2401,,supervisor",
+                    path = "ow:PI-Security,00020000193E2C1F,DS2401,supervisor",
                     rights = {
                             "iButton_in_rear_door":"entry_via_garage_rear_door_and_unlock",
                             "iButton_in_soccer":"entry_via_soccer",
@@ -645,7 +645,7 @@ Access_keys(
                             "iButton_out_veranda":"exit_via_veranda_and_lockup"}),
             "Rudy":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,0006000019389F75,DS2401,,owner",
+                    path = "ow:PI-Security,0006000019389F75,DS2401,owner",
                     rights = {
                             "iButton_in_rear_door":"entry_via_garage_rear_door_and_unlock",
                             "iButton_in_soccer":"entry_via_soccer",
@@ -656,7 +656,7 @@ Access_keys(
                             "iButton_out_veranda":"exit_via_veranda_and_lockup"}),
             "Rudy_motor":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,00D40000193E7738,DS2401,,owner",
+                    path = "ow:PI-Security,00D40000193E7738,DS2401,owner",
                     rights = {
                             "iButton_in_rear_door":"entry_via_garage_rear_door_and_unlock",
                             "iButton_in_soccer":"entry_via_soccer",
@@ -667,7 +667,7 @@ Access_keys(
                             "iButton_out_veranda":"exit_via_veranda_and_lockup"}),
             "Rudy_scooter":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,00FA000019389F58,DS2401,,owner",
+                    path = "ow:PI-Security,00FA000019389F58,DS2401,owner",
                     rights = {
                             "iButton_in_rear_door":"entry_via_garage_rear_door_and_unlock",
                             "iButton_in_soccer":"entry_via_soccer",
@@ -678,14 +678,14 @@ Access_keys(
                             "iButton_out_veranda":"exit_via_veranda_and_lockup"}),
             "Tony":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,0051000001057C5F,DS2401,,worker",
+                    path = "ow:PI-Security,0051000001057C5F,DS2401,worker",
                     rights = {
                             "iButton_in_soccer":"entry_via_soccer",
                             "iButton_in_street":"entry_via_gate_no_unlock",
                             "iButton_out_garden":"exit_via_gate"}),
             "Zoulikha":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,006D00001939D336,DS2401,,cleaner",
+                    path = "ow:PI-Security,006D00001939D336,DS2401,cleaner",
                     rights = {
                             "iButton_in_rear_door":"entry_via_garage_rear_door_and_unlock",
                             "iButton_in_soccer":"entry_via_soccer",
@@ -706,6 +706,10 @@ Access_keys(
                             "PI-Gate":"entry_via_garage_and_unlock",
                             "PI-Security":"exit_via_garage_no_lockup",
                             "PI-Soccer":"entry_via_garage_and_unlock"}),
+            "leandro_car":Access(
+                    member_of = ["vehicles"],
+                    path = "btle:PI-Security,0117c58d426a,23a01af0232a45189c0e323fb773f5ef,5,5",
+                    rights = {"*":"entry_via_gate_no_unlock"}),
             "motor":Access(
                     member_of = ["vehicles"],
                     path = "btle:PI-Security,0117c587fea6,23a01af0232a45189c0e323fb773f5ef,2,2",
@@ -725,11 +729,7 @@ Access_keys(
             "soccer_beacon":Access(
                     member_of = ["services"],
                     path = "btle:PI-Soccer,0117c5838753,23a01af0232a45189c0e323fb773f5ef,4,4",
-                    rights = {"*":"soccer_{detected_lost}"}),
-            "test":Access(
-                    member_of = ["vehicles"],
-                    path = "btle:PI-Security,0117c58d426a,23a01af0232a45189c0e323fb773f5ef,5,5",
-                    rights = {"*":"entry_via_gate_no_unlock"})},
+                    rights = {"*":"soccer_{detected_lost}"})},
     rights_templates = {
             "access_all":{
                     "iButton_in_rear_door":"entry_via_garage_rear_door_and_unlock",

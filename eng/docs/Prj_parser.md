@@ -150,6 +150,7 @@ Then any latex to pdf transformer such as Texmaker can be used to produce a few 
   | err_flg_owner | !!Virtual tc is undetermined for {:} with {:} |  
   | err_flg_smart | !!Virtual <{:}> has a non smart tc <{:}>, unable to control |  
   | err_guider | !!Parsing error in guider {:} |  
+  | err_hw_gws | !!hw_gws syntax : <{:}>, error:{:} |  
   | err_i_make | !!Clim_XX <{:}> in {:} has i_make {:} ? {:} |  
   | err_ip_addr | !!IP addr invalid: {:} for {:} |  
   | err_logic_ths | !!Logic Error, {:} not in ths dictionary |  
@@ -159,7 +160,7 @@ Then any latex to pdf transformer such as Texmaker can be used to produce a few 
   | err_nty_drv | !!Notifications {:} exist, but {:} not |  
   | err_opt_mult | !!prj_parser, {:} only one allowed |  
   | err_ow_tpe | !!{:} ow thing type <{:}> not implemented |  
-  | err_owner_ths_hw | !!{:} need {:} but owner {:} ths_hw? {:} |  
+  | err_owner_hw_gws | !!{:} need {:} but owner {:} hw_gws? {:} |  
   | err_parse | !!Parse Error: <{:}> |  
   | err_path | !!path <{:}> error: {:} |  
   | err_path_all | !!<{}>, path <{}>: {} must be {} |  
@@ -167,10 +168,11 @@ Then any latex to pdf transformer such as Texmaker can be used to produce a few 
   | err_path_drv | !!<{}>, path <{}>, ?? driver {} |  
   | err_path_fmt_mis | !!<{}>, path <{}>: format <{}> mismatch |  
   | err_path_format | !!path parameter string mismatch <{}> for <{}> : {} <> {} |  
+  | err_path_gw | !!gateway? <{}>, available = <{}> |  
   | err_path_kw_mis | !!<{}>, path <{}>: has {} with {} not in {} |  
   | err_path_nr | !!<{}>, path <{}>, {} should be integer number |  
   | err_path_owner | !!<{}>, path <{}>, {} is not {} |  
-  | err_path_tc | !!<{}>, path <{}>, ??tc <{}> |  
+  | err_path_tc | !!<{}>, path <{}>, ?? tc <{}> |  
   | err_path_tc_many | !!cannot auto-fill tc name <{}> for <{}> in <{}> as multiple tc's exist |  
   | err_path_tc_none | !!cannot auto-fill tc name <{}> for <{}> in <{}> as not such tc is defined |  
   | err_path_tpe | !!<{}>, path <{}>: tpe {} not one of {} |  
@@ -186,7 +188,6 @@ Then any latex to pdf transformer such as Texmaker can be used to produce a few 
   | err_short_name | !!Concept: short <{:}> is multiple {:}, {:} |  
   | err_sun_sr | !!Sun Set/Rise, invalid Site_setting: <{:}> |  
   | err_things_app | !!Things_app {:}?? for {:}? |  
-  | err_ths_hw | !!ths_hw syntax : <{:}>, error:{:} |  
   | err_tpe_chk | !!<{:}> check failed: {:}/{:} has {:} not in {:} |  
   | err_usage_dict | !!Things_app thing usage {:} is missing Qty or Unit |  
   | err_value_logic | !!value_logic for <{:}> is not valid: {:} |  

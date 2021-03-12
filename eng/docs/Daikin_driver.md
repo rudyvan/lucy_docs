@@ -128,7 +128,7 @@ Climate(
                     path = "daikin:DK_Veranda,sp",
                     usage = {"watts":"from_daikin"})},
     clim_sensors = {
-            "°C_veranda":Sensor(i_read = "°C",path = "ow:PI-Veranda,284572ED0500008F,DS18B20,,104"),
+            "°C_veranda":Sensor(i_read = "°C",path = "unipi:PI-Veranda,ow,284572ED0500008F,DS18B20,,104"),
             "°C_veranda2":Sensor(i_read = "°C",path = "daikin:DK_Veranda,h_temp")},
     clim_targets = {
             "cold_sp":{"away":27.0,"comfort":-2,"day":{"off":27.0,"on":24.0},"economy":1.5,"sleep":30.0},
@@ -146,10 +146,10 @@ Climate(
             "{room}_clim_on_1":Mail(subject='Veranda Climatisation is Activated{app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},
     room_virtuals = {
             "{room}^clim_on":Virtual(copy_things = {
-                            "twin_copy":Output(path = "zw:Vera_plus,buttonset,146,Status3")}),
+                            "twin_copy":Output(path = "vera:Vera_plus,zw,buttonset,146,Status3")}),
             "{room}^clim_pref":Virtual_R(copy_things = {
-                            "twin_copy@-1":Output(path = "zw:Vera_plus,buttonset,171,Status5"),
-                            "twin_copy@1":Output(path = "zw:Vera_plus,buttonset,171,Status1")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1]),
+                            "twin_copy@-1":Output(path = "vera:Vera_plus,zw,buttonset,171,Status5"),
+                            "twin_copy@1":Output(path = "vera:Vera_plus,zw,buttonset,171,Status1")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1]),
             "{room}^humid_soll":Virtual_A(i_read = "%H")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:veranda,o:Room,kw:contents,lp:0,o:Things_controllers>
@@ -158,7 +158,7 @@ from lucy_app import *
 
 Things_controllers(items = {
             "DK_Veranda":Daikin(path = "ip:192.168.15.62"),
-            "PI-Veranda":Raspi(path = "ip:192.168.15.32",ths_hw = ["unipi,12,14"])})
+            "PI-Veranda":Raspi(hw_gws = ["unipi:12,14"],path = "ip:192.168.15.32")})
 
 ```
 

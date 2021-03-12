@@ -25,5 +25,14 @@ is the driver for Modbus
   | Notification Suffix | When invoked? |
   | --- | --- | 
   | modbus_parsing | when this report runs | 
+
+## List of [Errors/Warnings](Error_Warn.md) for  __Modbus_driver__:
+
+  | Error/Warning ID | Error/Warning MSG | Occurring When? |
+  | --- | --- | --- | 
+  | err_mb_bad | !!Modbus {} does not access : {} |  
+  | err_mb_dev | !!Modbus {} has {} not in {} |  
+  | err_mb_ns | !!Modbus {} not yet supported |  
+  | err_mb_type | !!Modbus {} is <{}> type but should be {} |  
 <!--e_tbl-->
 

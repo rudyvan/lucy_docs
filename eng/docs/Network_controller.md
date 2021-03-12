@@ -228,14 +228,14 @@ Things_controllers(
             "Ikea_Tradfri":Ikea(path = "ip:192.168.15.164",secret = "Ua42jpHcvKu3xsKy"),
             "PI-CSlave":Raspi(path = "ip:192.168.15.91"),
             "PI-Dev":Raspi(path = "ip:192.168.15.56"),
-            "PI-Notify":Raspi(path = "ip:192.168.15.106",ths_hw = ["piface"]),
+            "PI-Notify":Raspi(hw_gws = ["piface:8,8"],path = "ip:192.168.15.106"),
             "PI-Notify2":Raspi(path = "ip:192.168.15.63"),
-            "PI-Notify3":Raspi(path = "ip:192.168.15.133",ths_hw = ["piface"]),
-            "PI-Notify4":Raspi(path = "ip:192.168.15.120",ths_hw = ["piface"]),
-            "PI-Stats":Raspi(path = "ip:192.168.15.35",ths_hw = ["unipi,6,6"]),
+            "PI-Notify3":Raspi(hw_gws = ["piface:8,8"],path = "ip:192.168.15.133"),
+            "PI-Notify4":Raspi(hw_gws = ["piface:8,8"],path = "ip:192.168.15.120"),
+            "PI-Stats":Raspi(hw_gws = ["unipi:6,6"],path = "ip:192.168.15.35"),
             "Vera_plus":Vera(path = "ip:192.168.15.75"),
             "imac-lucy":Ubuntu(path = "ip:192.168.15.113"),
-            "ow_office":Ow_eds(path = "ip:192.168.15.151")})
+            "ow_office":Eds(path = "ip:192.168.15.151")})
 
 ```
 

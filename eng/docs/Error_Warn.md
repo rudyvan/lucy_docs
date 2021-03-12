@@ -71,10 +71,10 @@ msg_cum_request={"txt":"cum <{:}> requested from {:}/{:}", "descr":"","cat":"For
 msg_cum_reply={"txt":"cum <{:}> reply from {:}/{:}", "descr":"","cat":"Forensics"}
 err_deco_args={"txt":"!!FATAL function args bad for <{:}> -> <{:}>", "descr":"","cat":"Prj_parser"}
 err_pi_missing={"txt":"!!FATAL {:} not in {:} defined", "descr":"","cat":"Prj_parser"}
-err_ths_hw={"txt":"!!ths_hw syntax : <{:}>, error:{:}", "descr":"","cat":"Prj_parser"}
+err_hw_gws={"txt":"!!hw_gws syntax : <{:}>, error:{:}", "descr":"","cat":"Prj_parser"}
 err_logic_ths={"txt":"!!Logic Error, {:} not in ths dictionary", "descr":"","cat":"Prj_parser"}
 err_no_owner={"txt":"!!{:} need {:} but no owner defined", "descr":"","cat":"Prj_parser"}
-err_owner_ths_hw={"txt":"!!{:} need {:} but owner {:} ths_hw? {:}", "descr":"","cat":"Prj_parser"}
+err_owner_hw_gws={"txt":"!!{:} need {:} but owner {:} hw_gws? {:}", "descr":"","cat":"Prj_parser"}
 err_where_keys={"txt":"!!Parsing {:}, {:}, missing definitions: {:}", "descr":"","cat":"Prj_parser"}
 err_role_me={"txt":"!!Parsing {:}, {:}, ?? tc name: {:}", "descr":"","cat":"Prj_parser"}
 err_room_name={"txt":"!!Parsing {:}, room {:} not defined", "descr":"","cat":"Prj_parser"}
@@ -103,10 +103,11 @@ err_path_kw_mis={"txt":"!!<{}>, path <{}>: has {} with {} not in {}", "descr":""
 err_path_any={"txt":"!!<{}>, path <{}>: {} disallowed with {}", "descr":"","cat":"Prj_parser"}
 err_path_all={"txt":"!!<{}>, path <{}>: {} must be {}", "descr":"","cat":"Prj_parser"}
 err_path_drv={"txt":"!!<{}>, path <{}>, ?? driver {}", "descr":"","cat":"Prj_parser"}
-err_path_tc={"txt":"!!<{}>, path <{}>, ??tc <{}>", "descr":"","cat":"Prj_parser"}
+err_path_tc={"txt":"!!<{}>, path <{}>, ?? tc <{}>", "descr":"","cat":"Prj_parser"}
 err_path_owner={"txt":"!!<{}>, path <{}>, {} is not {}", "descr":"","cat":"Prj_parser"}
 err_path_nr={"txt":"!!<{}>, path <{}>, {} should be integer number", "descr":"","cat":"Prj_parser"}
 err_path_usb={"txt":"!!<{}>, path <{}>, <{}> not in usb_driver", "descr":"","cat":"Prj_parser"}
+err_path_gw={"txt":"!!gateway? <{}>, available = <{}>", "descr":"","cat":"Prj_parser"}
 msg_path_occupied={"txt":"path <{:}> is now occupied by a thing and removed from paths_free list", "descr":"","cat":"Prj_parser"}
 msg_path_new={"txt":"New path found : <{:}>, paths_free is updated", "descr":"","cat":"Prj_parser"}
 err_pulse_not={"txt":"!!things_sync cannot cmd=pulse for {:}", "descr":"","cat":"Prj_parser"}
@@ -434,6 +435,10 @@ err_shelly_scene={"txt":"!!shelly {:} invalid scene {:}", "descr":"","cat":"Ligh
 err_shelly_get={"txt":"!!Shelly {:} requests get error {:} {:}", "descr":"","cat":"Light_manager"}
 msg_shelly_get={"txt":"Shelly {:} ok for {:} {:}", "descr":"","cat":"Light_manager"}
 msg_shelly_scene={"txt":"Shelly {:} {:} activated", "descr":"","cat":"Light_manager"}
+err_mb_type={"txt":"!!Modbus {} is <{}> type but should be {}", "descr":"","cat":"Modbus_driver"}
+err_mb_bad={"txt":"!!Modbus {} does not access : {}", "descr":"","cat":"Modbus_driver"}
+err_mb_dev={"txt":"!!Modbus {} has {} not in {}", "descr":"","cat":"Modbus_driver"}
+err_mb_ns={"txt":"!!Modbus {} not yet supported", "descr":"","cat":"Modbus_driver"}
 msg_docs_gen={"txt":"DOC_GEN:started", "descr":"","cat":"Prj_parser"}
 msg_docs_gen_new={"txt":"DOC_GEN:app files -> {:} docs new/updated", "descr":"","cat":"Prj_parser"}
 msg_docs_new_toc={"txt":"DOC_GEN:contents table = new", "descr":"","cat":"Prj_parser"}

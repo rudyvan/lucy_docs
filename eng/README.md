@@ -424,7 +424,7 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | [__Pool_manager__](docs/Pool_manager.md) | This is the app for swimpool management |
   | [__Security__](docs/Security.md) | This App is defined per room and contains the Fire/Alarm detectors and sirens and the zones linked to the place or room |
   | [__Security_system__](docs/Security.md) | Advanced interface and definition of a security system, either stand alone or integrated as a master or slave subsystem. The role drives the alarm and fire detectors and the whole security logic |
-  | [__Things_controllers__](docs/Things_controllers.md) | This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Ow_eds','Unipi_Evok' |
+  | [__Things_controllers__](docs/Things_controllers.md) | This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Eds','Unipi_Evok' |
   | [__Weather_station__](docs/Weather_station.md) | wunderground and darksky is used for the weather forecast, Netatmo weather station is used for the wind, rain and other semi real time data. The role involves the weather forecast, weather station (wind, rain, sunshine) and irrigation based on forecast.  Several direct input sensors are supported for rain, wind, temperature, humidity and soil moisture |
   | [__Windows__](docs/Door.md) | A door? Is it not a simple input that states if the door is closed or not? A door can have a raft of method_things including all types of notifications, lights or triggers to open or close the door. To name a few method_things; optical beams to open or close the door, light to open, to close, a light when opening or closing or a night light. Or a timer on the open or close duration that triggers something. Or to define which area the door/window gives access to which is used in the security App |
 <!--e_toc_App_place-->
@@ -495,6 +495,7 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | --- | --- |
   | [__Arduino__](docs/Things_controllers.md) | controller of things - Arduino |
   | [__Daikin__](docs/Things_controllers.md) | controller of things - Daikin |
+  | [__Eds__](docs/Things_controllers.md) | controller of things - EDS |
   | [__HAP__](docs/Things_controllers.md) | controller of things - HAP |
   | [__Hue__](docs/Things_controllers.md) | controller of things - Hue |
   | [__Ikea__](docs/Things_controllers.md) | controller of things - Ikea |
@@ -505,7 +506,6 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | [__MAC_OS__](docs/Things_controllers.md) | controller of things - MAC_OS |
   | [__Modbus__](docs/Things_controllers.md) | controller of things - Modbus |
   | [__Niko__](docs/Things_controllers.md) | controller of things - Niko |
-  | [__Ow_eds__](docs/Things_controllers.md) | controller of things - OW_EDS |
   | [__Raspi__](docs/Things_controllers.md) | controller of things - Raspi |
   | [__Renson__](docs/Things_controllers.md) | Renson Healthbox controller |
   | [__Somfy__](docs/Things_controllers.md) | controller of things - Somfy |
