@@ -53,6 +53,7 @@ Lets look first at the access_manager object definition.
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | notifications | ['a_none', '{id}.a_entry', '{id}.a_exit', '{id}.a_refused'] | True | - | notifications whereby {id} is the device or person, see [__Notifier__](Notifier.md) | 
+  | role_me | {tc} | False | - | role_me of 'Access_manager', adds <access> to the roles of the specified tc | 
 
 ## List of [Notifications](Notifier.md) for  __Access_manager__:
 

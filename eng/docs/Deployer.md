@@ -23,6 +23,7 @@ This script need to be rebuild with the possibilities of github and the new site
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | False | - | role_me of 'Deployer', adds <deploy> to the roles of the specified tc | 
 
 ## List of [Errors/Warnings](Error_Warn.md) for  __Deployer__:
 

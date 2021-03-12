@@ -42,6 +42,7 @@ Much to do and to improve!
   | meters | ['Utility_meter', 'Flow_meter'] | True | True | is a dictionary of meters which counts when something is heating, taking energy, such as cooking, room heating or hot water tub.  CURRENTLY NOT IMPLEMENTED | 
   | notifications | ['power', 'power_cam_shot'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
   | producers | dict | True | True | is a dictionary of utility producers which generate water, electricity (solar panels), gas.  CURRENTLY NOT IMPLEMENTED | 
+  | role_me | {tc} | False | - | role_me of 'Home_utilities', adds <m.clim> to the roles of the specified tc | 
   | sensors | ['Sensor'] | False | True | is a dictionary of sensors which measures when something is heating, taking energy, such as cooking, room heating or hot water tub.  CURRENTLY NOT IMPLEMENTED | 
 
 ## List of [Notifications](Notifier.md) for  __Home_utilities__:
@@ -106,7 +107,7 @@ Home_utilities(
             "power_cam_shot":Mail(subject='Power & Utility CAM Shot', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},
     role_me = "PI-Climate",
     sensors = {
-            "C_domestic_hot_water":Sensor(i_read = "°C",path = "ow:PI-Climate,287B4A740600005D,DS18B20,,92")})
+            "C_domestic_hot_water":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,287B4A740600005D,DS18B20,,92")})
 
 ```
 

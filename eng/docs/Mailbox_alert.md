@@ -20,6 +20,7 @@ To notify incoming and outgoing regular post mail through a magnetic or optical 
   | icon | str | True | - | icon file for this element | 
   | mail_in | Input | False | - | the input to register incoming post mail | 
   | mail_out | Input | True | - | the input to register post mail that is being removed | 
+  | role_me | {tc} | False | - | role_me of 'Mailbox_alert', adds <mail> to the roles of the specified tc | 
 <!--e_tbl-->
 
 ## Example mailbox_alert

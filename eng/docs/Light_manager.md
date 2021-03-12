@@ -53,6 +53,7 @@ Examples of json strings the light_manager accepts (from a trusted source): (0=o
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | False | - | role_me of 'Light_manager', adds <light> to the roles of the specified tc | 
 
 ## List of [Errors/Warnings](Error_Warn.md) for  __Light_manager__:
 
@@ -240,7 +241,7 @@ Lights(my_assistant = True,room_lights = {
                                     "is_holiday":"0",
                                     "sunset-00:10":"35"}}),
             "christmas_tree":Light(
-                    path = "vera:Vera_plus,christmas_tree",
+                    path = "vera:Vera_plus,th,christmas_tree",
                     value_logic = {"assign":{"00:00":"1","is_armed":"0","is_holiday":"0","sunrise+00:15":"0","sunset-00:10":"1"}}),
             "floor_candle":Dim_light(
                     path = "hue:Hue_Bridge,floor_candle",

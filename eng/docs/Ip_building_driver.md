@@ -18,5 +18,6 @@ is the driver for the IP-Building modules
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | False | - | role_me of 'Ip_building_driver', adds <ip_building> to the roles of the specified tc | 
 <!--e_tbl-->
 

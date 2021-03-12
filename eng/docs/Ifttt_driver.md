@@ -29,6 +29,7 @@ IFTTT IF THIS THEN THAT driver, both as a trigger with 'maker' and as an google 
   | notifications | ['ifttt_log'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
   | request_port | int | False | - | the port to map from your router to the security role computer which will watch this port for incoming IFTTT messages | 
   | reverse_url | str | False | - | the url needed to reach the security things_controller | 
+  | role_me | {tc} | False | - | role_me of 'Ifttt_driver', adds <IFTTT> to the roles of the specified tc | 
   | secret_key | str | False | - | private secret | 
   | skip_ifttt_in | Virtual | True | - | the virtual that allows or prohibit incoming IFTTT maker messages | 
   | skip_ifttt_out | Virtual | True | - | the virtual that allows or prohibit outgoing IFTTT triggers | 

@@ -18,6 +18,7 @@ is the driver for Niko
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | False | - | role_me of 'Niko_driver', adds <niko> to the roles of the specified tc | 
 <!--e_tbl-->
 
 ![niko](niko.jpg)

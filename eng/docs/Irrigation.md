@@ -117,6 +117,7 @@ time_irr_depressure=180 # time in seconds all irr channels are bleeding in the w
   | irr_water_supply | Output | True | True | the output(s) to switch the pump | 
   | irr_water_valve | Output | True | True | the output(s) to the main water valve(s) | 
   | notifications | ['irr_cancelled', 'irr_completed', 'irr_depressurised', 'irr_flow_nok', 'irr_freezing', 'irr_ignored', 'irr_new_time', 'irr_rain_decay', 'irr_rain_forecast', 'irr_soil_wet', 'irr_started', 'irr_too_cold', 'irr_too_wet', 'irr_winter_mode'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
+  | role_me | {tc} | False | - | role_me of 'Irrigation_system', adds <irr> to the roles of the specified tc | 
   | winter_months | int_list | False | - | number of the month list with default winter mode | 
 
 ## List of [Notifications](Notifier.md) for  __Irrigation_system__:

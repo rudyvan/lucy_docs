@@ -128,6 +128,7 @@ There has been an attempt to integrate the [netatmo welcome system](Netatmo_driv
   | o_panic | Output | True | True | output is active during a panic alarm | 
   | o_tamper | Output | True | True | output is active during a tamper alarm | 
   | partial_zone_index | Virtual_R | True | - | if multiple partial_zones_x (x=index) exist, then this virtual chooses the one to use | 
+  | role_me | {tc} | False | - | role_me of 'Security_system', adds <security> to the roles of the specified tc | 
   | safe_ways | data_dict | True | - | a dict with exit_way, entry_way as keys for a list of devices to ignore on exit or cause alarm eminent on entry | 
   | si_system_type | Virtual_R | False | - | security system type: -1=slave, 0=whole, 1=master  | 
   | slave_s_alarm | Output | True | True | the slave is instructed to state alarm | 
@@ -266,7 +267,7 @@ Security_system(
     do_fire = Virtual(duration = 1),
     do_unarm = Virtual(duration = 1),
     is_alarm = Virtual(copy_things = {
-                    "carbon_copy":Output(path = "zw:Vera_plus,buttonset,173,Status6")},effect_virtuals = {
+                    "carbon_copy":Output(path = "vera:Vera_plus,zw,buttonset,173,Status6")},effect_virtuals = {
                     "dw_autom_close":Virtual(
                             duration = 600,
                             play = Effect(maker='parent', condition='i_change', effect='make_same', taker='self', delay=None, duration=None)),
@@ -295,7 +296,7 @@ Security_system(
                             value_logic = {"freeze":{"is_not_day":True}})}),
     is_burglar = Virtual(notifications = {"active":Vera_nty(txt='vera_open_curtains')}),
     is_fire = Virtual(copy_things = {
-                    "carbon_copy":Output(path = "zw:Vera_plus,buttonset,173,Status7")}),
+                    "carbon_copy":Output(path = "vera:Vera_plus,zw,buttonset,173,Status7")}),
     light_armed_warn = Light(
             copy_things = {
                     "carbon_copy":Output(path = "unipi:PI-Veranda,relay,8")},

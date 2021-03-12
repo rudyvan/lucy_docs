@@ -19,6 +19,7 @@ is the driver for Modbus
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | notifications | ['modbus_parsing'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
+  | role_me | {tc} | False | - | role_me of 'Modbus_driver', adds <modbus> to the roles of the specified tc | 
 
 ## List of [Notifications](Notifier.md) for  __Modbus_driver__:
 

@@ -81,6 +81,7 @@ Some other sensors that you can purchase;
   | notifications | ['ws_frc_failed', 'ws_frc_report', 'ws_report'] | True | - | soil sensor is moist/dry, rain sensor raining,temp now going below/above zero, the weather station report, the weather forecast wunderground call failed or report succeeded. , see also [__Notifier__](Notifier.md) | 
   | rain_gauge | Rain_gauge | True | - | an input that generates counter data from the gauge, the input must allow for counter mode | 
   | raining | Input | True | - | input device, active when the sensor is wet.  There is a small heater that dries the sensor, to become inactive when it is dry | 
+  | role_me | {tc} | False | - | role_me of 'Weather_station', adds <weather> to the roles of the specified tc | 
   | soil_dry | Input | True | - | Input device to monitor when the soil is dry and needs watering | 
   | soil_moist_sensor | Sensor | True | - | an analog moist sensor 0..100% | 
   | sun_light | Sensor | True | - | an analog light sensor 0..300.000 Lux, 0..100% | 
@@ -148,7 +149,7 @@ Weather_station(
                     "normal":[
                         Mail(subject='Happy! outside temp now {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                         Say(txt='{tts_start} temperature outside is not extreme any more{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
-            path = "ow:PI-Gate,28DAE37306000070,DS18B20,,99"),
+            path = "unipi:PI-Gate,ow,28DAE37306000070,DS18B20,,99"),
     accu_weather_f = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/{loc_key}?apikey={api_key}&details=True&metric=True",
     accu_weather_http = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey={api_key}&q={lat},{long}",
     accu_weather_key = "AkGbOFNJkFEnaeRYtf9X8fEWu8IglEQb",

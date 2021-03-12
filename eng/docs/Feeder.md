@@ -45,6 +45,7 @@ The voice channel is managed by [__my_assistant__](my_assistant.md)
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | notifications | ['feeder', 'feeder_log'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
+  | role_me | {tc} | False | - | role_me of 'Feeder', adds <feeder> to the roles of the specified tc | 
 
 ## List of [Notifications](Notifier.md) for  __Feeder__:
 

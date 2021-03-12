@@ -62,6 +62,7 @@ Notifications can be defined obviously and in the example below there are emails
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | notifications | ['b_none', '{id}.b_detected', '{id}.b_entry', '{id}.b_exit', '{id}.b_lost', '{id}.b_refused'] | True | - | notifications whereby {id} is the device equipped with a btle tag, see [__Notifier__](Notifier.md) | 
+  | role_me | {tc} | False | - | role_me of 'Btle_driver', adds <beacon> to the roles of the specified tc | 
 
 ## List of [Notifications](Notifier.md) for  __Btle_driver__:
 

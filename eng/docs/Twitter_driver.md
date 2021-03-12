@@ -18,5 +18,6 @@ is the driver for Twitter
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | False | - | role_me of 'Twitter_driver', adds <twitter> to the roles of the specified tc | 
 <!--e_tbl-->
 

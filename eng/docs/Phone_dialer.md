@@ -36,6 +36,7 @@ Alternatively [sms](Sms_driver.md) notifications works as an modern alternative,
   | pho_say_fire | Output | False | - | Dialer to invoke in case of fire, the dial sequence is stopped with key 5 on the receiver phone | 
   | pho_say_internet_lost | Output | False | - | Dialer to invoke in case the internet is lost, the dial sequence is stopped with key 5 on the receiver phone | 
   | pho_say_power_lost | Output | False | - | Dialer to invoke in case of electricity power interruption, the dial sequence is stopped with key 5 on the receiver phone | 
+  | role_me | {tc} | False | - | role_me of 'Phone_dialer', adds <phone> to the roles of the specified tc | 
 <!--e_tbl-->
 
 ## Example phone_dialer

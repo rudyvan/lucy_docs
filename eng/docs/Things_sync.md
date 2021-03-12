@@ -154,6 +154,7 @@ Below is the list of all available commands and the role that the receiving thin
   | UDP_port | int | False | - | port for the http UDP things_sync service, used on special authority such as master and vera tc's | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | True | - | role_me of 'Things_sync', adds <system> to the roles of the specified tc | 
   | ws_port | int | False | - | port for the web_socket services | 
   | ws_url | str | False | - | url for the web_socket services, must contain ip and port formatters | 
 

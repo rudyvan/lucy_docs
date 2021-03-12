@@ -27,6 +27,7 @@ Defines the geographical location (needed for sunset and sunrise), the email nam
   | language | str | False | - | currently only 'English.eng' for English but could be Dutch.nl or French.fr | 
   | latitude | float | False | - | -90..90 | 
   | longitude | float | False | - | -180..180 | 
+  | role_me | {tc} | False | - | role_me of 'Site_settings', adds <key_data> to the roles of the specified tc | 
   | site_id | str | False | - | the site name, is the name of the subdirectory used by site_tasker to manage the things_controllers on the site | 
 
 ## List of [Errors/Warnings](Error_Warn.md) for  __Site_settings__:
@@ -60,5 +61,6 @@ App to define parameters such as home occupancy, is_holiday that are crucial asp
   | is_day | Virtual | False | - | are we night (before sunrise or after sunset) or day? | 
   | is_holiday | Virtual | False | - | is holiday active? | 
   | is_reboot | Virtual | False | - | is true for 2 seconds to say the system was rebooting | 
+  | role_me | {tc} | False | - | role_me of 'Home_settings', adds <home_settings> to the roles of the specified tc | 
 <!--e_tbl_hs-->
 

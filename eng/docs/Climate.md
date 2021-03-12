@@ -153,6 +153,7 @@ Please use the default values and change only if you know what you are doing.
   | is_lum_light | Virtual | True | - | virtual to capture if the climate system is light and needs darkening | 
   | notifications | ['climate_report', 'comfort_0', 'comfort_1', 'economy_0', 'economy_1', '{room}.clim_on_0', '{room}.clim_on_1', '{room}.comfort_0', '{room}.comfort_1', '{room}.economy_0', '{room}.economy_1', '{room}.humid_ok_0', '{room}.humid_ok_1', '{room}.lum_ok_0', '{room}.lum_ok_1', '{room}.temp_ok_0', '{room}.temp_ok_1'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
   | role_followers | str_list | False | - | list of names of tc's that are climate slaves, all the same processing but driving outputs is disabled as this is exclusive for the master.  They are good to show on a display what happens... | 
+  | role_me | {tc} | False | - | role_me of 'Climate_manager', adds <m.clim> to the roles of the specified tc | 
   | sp_presets | data_dict | True | - | dictionary of climate setpoint presets | 
 
 ## List of [Notifications](Notifier.md) for  __Climate_manager__:
@@ -234,6 +235,7 @@ Specifically observe climate_mode and climate_comfort_mode.
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | production | ['Clim_energy_SW', 'Clim_energy_DM', 'Input'] | True | True | climate production devices such as gas/electricity boilers, heaters | 
+  | role_me | {tc} | False | - | role_me of 'Climate_system', adds <m.clim> to the roles of the specified tc | 
   | storage | ['Clim_SW', 'Clim_SP', 'Clim_DM', 'Clim_ANY'] | True | True | climate storage devices such as hot water tanks | 
   | transport | ['Output', 'Motor'] | True | True | climate transport devices such as pumps, valves, motor valves | 
 <!--e_tbl_ci-->
@@ -250,10 +252,10 @@ from project.py tree:(o:Climate_manager)
 from lucy_app import *
 
 Climate_manager(
-    C_outdoor_cm = Sensor(i_read = "°C",path = "ow:PI-Gate,28DAE37306000070,DS18B20,,99"),
+    C_outdoor_cm = Sensor(i_read = "°C",path = "unipi:PI-Gate,ow,28DAE37306000070,DS18B20,,99"),
     climate_comfort_mode = Virtual_R(copy_things = {
-                    "twin_copy@-1":Output(path = "zw:Vera_plus,buttonset,152,Status6"),
-                    "twin_copy@1":Output(path = "zw:Vera_plus,buttonset,152,Status2")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1]),
+                    "twin_copy@-1":Output(path = "vera:Vera_plus,zw,buttonset,152,Status6"),
+                    "twin_copy@1":Output(path = "vera:Vera_plus,zw,buttonset,152,Status2")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1]),
     climate_mode = Virtual_R(descr_range = ["Cooling","Deactivated","Heating"],digital_range = [-1,0,1]),
     cold_priority_temp = 33,
     heat_priority_frost = 5.0,
@@ -349,7 +351,7 @@ from lucy_app import *
 Climate_system(
     air_removal = Virtual(
             copy_things = {
-                    "twin_copy":Output(path = "zw:Vera_plus,buttonset,152,Status5")},
+                    "twin_copy":Output(path = "vera:Vera_plus,zw,buttonset,152,Status5")},
             notifications = {
                     "active":[
                         Mail(subject='The heating air removal process is started', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
@@ -364,8 +366,8 @@ Climate_system(
                             "carbon_copy":Output(path = "unipi:PI-Climate,relay,3")},
                     i_make = ['warm'],
                     method_things = {
-                            "C_in":Sensor(i_read = "°C",path = "ow:PI-Climate,28F1EE5E07000094,DS18B20,,77"),
-                            "C_out":Sensor(i_read = "°C",path = "ow:PI-Climate,28E6B45F070000ED,DS18B20,,96")},
+                            "C_in":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28F1EE5E07000094,DS18B20,,77"),
+                            "C_out":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28E6B45F070000ED,DS18B20,,96")},
                     path = "unipi:PI-Climate,relay,2",
                     value_app = Boiler_on_off(max_boiler_nr_rooms=6, C_boiler_highest=70, C_boiler_lowest=40, C_boiler_threshold=4, C_outside_max_boiler=-5, C_outside_min_boiler=15))},
     role_me = "PI-Climate",
@@ -375,7 +377,7 @@ Climate_system(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,28A91F600700002D,DS18B20,,84")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28A91F600700002D,DS18B20,,84")},
                     path = "unipi:PI-Test,relay,1",
                     value_logic = {"assign":{"hot_water_tank^C_fluid<55":"0","hot_water_tank^C_fluid>65":"1"},"disable":['is_holiday']})},
     transport = {
@@ -825,14 +827,14 @@ Climate(clim_makers = {
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,2826236007000046,DS18B20,,83")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,2826236007000046,DS18B20,,83")},
                     path = "unipi:PI-Climate,relay,8"),
             "r27_front":Clim_SW(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,285BFB5E070000A9,DS18B20,,69")},
-                    path = "unipi:PI-Climate,relay,12")},clim_sensors = [Sensor(i_read = "°C",path = "ow:PI-Climate,28A2FC5F07000093,DS18B20,,74"),Sensor(i_read = "°C",path = "ow:PI-Climate,28C12C6007000085,DS18B20,,75")],clim_targets = {"warm_sp":{"away":10.0,"day":12.0,"sleep":10.0}})
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,285BFB5E070000A9,DS18B20,,69")},
+                    path = "unipi:PI-Climate,relay,12")},clim_sensors = [Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28A2FC5F07000093,DS18B20,,74"),Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28C12C6007000085,DS18B20,,75")],clim_targets = {"warm_sp":{"away":10.0,"day":12.0,"sleep":10.0}})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:3,o:Climate>
 
@@ -843,8 +845,8 @@ Climate(clim_makers = {
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,28A91F600700002D,DS18B20,,84")},
-                    path = "unipi:PI-Climate,relay,22")},clim_sensors = [Sensor(i_read = "°C",path = "ow:PI-Climate,28B82760070000FB,DS18B20,,63")],clim_targets = {"warm_sp":{"away":13.0,"day":15.0,"sleep":13.0}})
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28A91F600700002D,DS18B20,,84")},
+                    path = "unipi:PI-Climate,relay,22")},clim_sensors = [Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28B82760070000FB,DS18B20,,63")],clim_targets = {"warm_sp":{"away":13.0,"day":15.0,"sleep":13.0}})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:living_lounge,o:Room,kw:contents,lp:3,o:Climate>
 
@@ -859,28 +861,28 @@ Climate(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,2870835F0700003B,DS18B20,,53")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,2870835F0700003B,DS18B20,,53")},
                     path = "unipi:PI-Climate,relay,13"),
             "r19_south_front":Clim_SW(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,28CC0560070000C4,DS18B20,,66")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28CC0560070000C4,DS18B20,,66")},
                     path = "unipi:PI-Climate,relay,6"),
             "r20_north_rear":Clim_SW(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,28835A600700006F,DS18B20,,72")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28835A600700006F,DS18B20,,72")},
                     path = "unipi:PI-Climate,relay,17"),
             "r21_rear":Clim_SW(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,286CCB5F070000CA,DS18B20,,47")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,286CCB5F070000CA,DS18B20,,47")},
                     path = "unipi:PI-Climate,relay,7")},
     clim_sensors = [
-        Sensor(i_read = "°C",path = "ow:PI-Climate,28014BAF0400001D,DS18B20,,42"),
+        Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28014BAF0400001D,DS18B20,,42"),
         Sensor(i_read = "°C",path = "daikin:DK_Living,h_temp",th_grp = "daikin"),
         Sensor(i_read = "%H",path = "daikin:DK_Living,h_humid",th_grp = "daikin")],
     clim_targets = {"cold_sp":{"preset":"cold_preset"},"warm_sp":{"preset":"warm_preset_1"}},
@@ -888,10 +890,10 @@ Climate(
     room_is_priority = True,
     room_virtuals = {
             "{room}^clim_on":Virtual(copy_things = {
-                            "twin_copy":Output(path = "zw:Vera_plus,buttonset,146,Status4")}),
+                            "twin_copy":Output(path = "vera:Vera_plus,zw,buttonset,146,Status4")}),
             "{room}^clim_pref":Virtual_R(copy_things = {
-                            "twin_copy@-1":Output(path = "zw:Vera_plus,buttonset,171,Status7"),
-                            "twin_copy@1":Output(path = "zw:Vera_plus,buttonset,171,Status3")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1])})
+                            "twin_copy@-1":Output(path = "vera:Vera_plus,zw,buttonset,171,Status7"),
+                            "twin_copy@1":Output(path = "vera:Vera_plus,zw,buttonset,171,Status3")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1])})
 
 ```
 

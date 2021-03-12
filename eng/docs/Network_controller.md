@@ -48,6 +48,7 @@ Plug in the new device and configure it online!
   | notifications | ['internet_lost', 'internet_ok', 'network', 'ping_lost', 'ping_ok'] | True | - | possible notifications, see [__Notifier__](Notifier.md) | 
   | ntp_server | ip | False | - | ntp server ip addr | 
   | power_ok | Input | False | - | the input to be connected with the grid, obviously this things_controller should be connected to a battery | 
+  | role_me | {tc} | False | - | role_me of 'Network_controller', adds <network> to the roles of the specified tc | 
 
 ## List of [Notifications](Notifier.md) for  __Network_controller__:
 

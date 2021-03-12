@@ -18,5 +18,6 @@ is the driver for the loxone master module ip interface
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | False | - | role_me of 'Loxone_driver', adds <loxone> to the roles of the specified tc | 
 <!--e_tbl-->
 

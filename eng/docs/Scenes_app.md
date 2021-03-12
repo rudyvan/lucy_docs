@@ -19,6 +19,7 @@ TBI/Scenes App, containing scenes that can be triggered in a calendar, by sms, b
   | do_scenes | Virtual | False | - | = virtual, when reset, scenes will be ignored as are triggers (unless No_Matter_What) | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | False | - | role_me of 'Scenes_app', adds <scenes> to the roles of the specified tc | 
   | scenes | dict | False | - | TBI/a dictionary of a list of commands that will be run in sequence, just like access_scenes in Access_manager | 
 
 ## List of [Errors/Warnings](Error_Warn.md) for  __Scenes_app__:

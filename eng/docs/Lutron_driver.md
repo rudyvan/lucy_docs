@@ -18,6 +18,7 @@ is the driver for Lutron
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | False | - | role_me of 'Lutron_driver', adds <lutron> to the roles of the specified tc | 
 <!--e_tbl-->
 
 ![lutron](lutron.jpg)

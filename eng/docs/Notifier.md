@@ -287,7 +287,7 @@ Monitor(items = {
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the light box temperature in the attic is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "ow:PI-Light,28FF5F2465040067,DS18B20,,88"),
+                    path = "unipi:PI-Light,ow,28FF5F2465040067,DS18B20,,88"),
             "°C_case_light_rear":Sensor(
                     high = 40.0,
                     i_read = "°C",
@@ -300,7 +300,7 @@ Monitor(items = {
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the light box temperature in the attic is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "ow:PI-Light,28FF7C1965040004,DS18B20,,87")})
+                    path = "unipi:PI-Light,ow,28FF7C1965040004,DS18B20,,87")})
 
 ```
 
@@ -332,6 +332,7 @@ Is the App to deliver all outgoing notifications to displays, buzzers, voice out
   | icon | str | True | - | icon file for this element | 
   | msg_dpls | str_list | True | - | things_controllers that will act as message displays, f.i. to be place next to the television | 
   | notifications | ['say_log', 'timers'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
+  | role_me | {tc} | False | - | role_me of 'Notifier', adds <notifier> to the roles of the specified tc | 
   | tts_port | int | False | - | port for the http tts file web services, choose not to interfere with other ports such as the hue emulation port | 
   | tts_request | str | False | - | accepted web requests, this string is a python3 format string and should contain {ip}, {port} and {wav_file} keyword | 
   | tts_tags | data_dict | - | - | tags that work like formatting in strings in python | 

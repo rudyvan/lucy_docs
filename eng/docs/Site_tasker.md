@@ -30,5 +30,6 @@ This module is work in progress..
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | True | - | role_me of 'Site_tasker', adds <system> to the roles of the specified tc | 
 <!--e_tbl-->
 

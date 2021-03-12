@@ -330,10 +330,10 @@ Climate(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Light,288AE573060000C2,DS18B20,,98")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Light,ow,288AE573060000C2,DS18B20,,98")},
                     path = "unipi:PI-Light,relay,13")},
     clim_sensors = [
-        Sensor(i_read = "°C",path = "ow:PI-Light,28FEF35F070000AF,DS18B20,,61"),
+        Sensor(i_read = "°C",path = "unipi:PI-Light,ow,28FEF35F070000AF,DS18B20,,61"),
         Sensor(i_read = "°C",path = "daikin:DK_Guest,h_temp",th_grp = "daikin"),
         Sensor(i_read = "%H",path = "daikin:DK_Guest,h_humid",th_grp = "daikin")],
     clim_targets = {"cold_sp":{"preset":"cold_preset"},"warm_sp":{"preset":"warm_preset_3"}},
@@ -341,10 +341,10 @@ Climate(
     room_is_priority = True,
     room_virtuals = {
             "{room}^clim_on":Virtual(copy_things = {
-                            "twin_copy":Output(path = "zw:Vera_plus,buttonset,146,Status6")}),
+                            "twin_copy":Output(path = "vera:Vera_plus,zw,buttonset,146,Status6")}),
             "{room}^clim_pref":Virtual_R(copy_things = {
-                            "twin_copy@-1":Output(path = "zw:Vera_plus,buttonset,151,Status7"),
-                            "twin_copy@1":Output(path = "zw:Vera_plus,buttonset,151,Status3")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1])})
+                            "twin_copy@-1":Output(path = "vera:Vera_plus,zw,buttonset,151,Status7"),
+                            "twin_copy@1":Output(path = "vera:Vera_plus,zw,buttonset,151,Status3")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1])})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:guest.bath,o:Room,kw:contents,lp:1,o:Climate>
 
@@ -356,17 +356,17 @@ Climate(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,28FDD25F070000C3,DS18B20,,56")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28FDD25F070000C3,DS18B20,,56")},
                     path = "unipi:PI-Climate,relay,4")},
-    clim_sensors = [Sensor(i_read = "°C",path = "ow:PI-Light,282FF65E07000001,DS18B20,,82"),Sensor(i_read = "%V",path = "renson:Healthbox_North,guest.bath")],
+    clim_sensors = [Sensor(i_read = "°C",path = "unipi:PI-Light,ow,282FF65E07000001,DS18B20,,82"),Sensor(i_read = "%V",path = "renson:Healthbox_North,guest.bath")],
     clim_targets = {"warm_sp":{"preset":"warm_preset_4"}},
     my_assistant = True,
     room_virtuals = {
             "{room}^clim_on":Virtual(copy_things = {
-                            "twin_copy":Output(path = "zw:Vera_plus,buttonset,146,Status6")}),
+                            "twin_copy":Output(path = "vera:Vera_plus,zw,buttonset,146,Status6")}),
             "{room}^clim_pref":Virtual_R(copy_things = {
-                            "twin_copy@-1":Output(path = "zw:Vera_plus,buttonset,151,Status7"),
-                            "twin_copy@1":Output(path = "zw:Vera_plus,buttonset,151,Status3")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1])})
+                            "twin_copy@-1":Output(path = "vera:Vera_plus,zw,buttonset,151,Status7"),
+                            "twin_copy@1":Output(path = "vera:Vera_plus,zw,buttonset,151,Status3")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1])})
 
 ```
 
@@ -417,6 +417,7 @@ Manages and contain options for the defined Door and Window coverings
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | raining_wc | Input | True | - | Input device, active when the sensor is wet.  There is a small heater that dries the sensor, to become inactive when it is dry | 
+  | role_me | {tc} | False | - | role_me of 'Wincover_manager', adds <wincover> to the roles of the specified tc | 
   | sun_light_switch | Input | True | - | Input device to monitor light strength level and flip a switch if it is strong enough | 
   | sun_light_wc | Sensor | True | - | is an analog light sensor with output 0..10V | 
   | wind_speed_wc | Wind_speed | True | - | an input that generates counter data, the input must allow for counter mode | 
@@ -513,7 +514,7 @@ from lucy_app import *
 
 Windows(items = {
             "sun_master_front":Win_cover(
-                    path = "vera:Vera_plus,sun_master_front",
+                    path = "vera:Vera_plus,th,sun_master_front",
                     value_logic = {
                             "assign":{"sunrise+01:00":"100","sunset-02:00":"0"},
                             "disable":['raining_wc', 'wind_speed_wc^wind_gust>60'],

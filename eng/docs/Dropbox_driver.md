@@ -48,6 +48,7 @@ __cums__ | one file per day with the cumulative history of the data and climate 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | p_dropbox | str | False | - | path to the dropbox folder where everything need to get sync | 
+  | role_me | {tc} | False | - | role_me of 'Dropbox_driver', adds <dropbox> to the roles of the specified tc | 
 
 ## List of [Errors/Warnings](Error_Warn.md) for  __Dropbox_driver__:
 

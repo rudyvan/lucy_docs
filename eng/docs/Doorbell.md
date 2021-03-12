@@ -24,6 +24,7 @@ In a future version a link to Slack http://www.slack.com/ will be initiated, all
   | notifications | ['ring', 'ring_away'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
   | open_cmd | Input | True | - | the 'open the door' pulse from the doorbell that can trigger doors or events | 
   | ring_button | Input | False | - | the bell button | 
+  | role_me | {tc} | False | - | role_me of 'Doorbell', adds <doorbell> to the roles of the specified tc | 
 
 ## List of [Notifications](Notifier.md) for  __Doorbell__:
 
