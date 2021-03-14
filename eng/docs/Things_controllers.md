@@ -33,15 +33,31 @@ Others will be added in the future such as niko or lutron.
 
 The things_controllers driven by Lucy (those also drive the alien ones) can be a [Raspberry](https://www.raspberrypi.org/) or a special purpose ethernet [Arduino](https://www.arduino.cc/) or even a full unix computer with [Ubuntu](https://www.ubuntu.com/) or [Debian](https://www.debian.org/).
 
-In case of a raspberry, it can be equipped with [unipi](Unipi_driver.md) or [piface](Piface_driver.md).
+In case of a raspberry, it can be equipped with [unipi](Unipi_driver.md) or [piface](Piface_driver.md), by using the hw_gws list definition.
 
-Some specific consideration exists in case of a raspberry or an arduino as things_controller is presented next.
+Some specific consideration exists in case of a raspberry or an arduino as things_controller.
 
-In both a color setting can be used to distinguish visually the different things_controllers by the deployer when it displays logging messages.	
+A Things_controller need to be located through a path.
 
-Additional information is available in [things](Things.md).
+Currently, the following path definitions are possible:
 
-Very detailed reporting is available from the [prj_parser](Prj_parser.md), see the report at the end.
+<!--s_insert_{"prj_parser":"app_obj.conf","sections":["PATH"],"vars":["tc_path_defs"]}-->
+
+from app_obj.conf:
+```python3
+[PATH]
+
+tc_path_defs={
+	"ip": {"gw_sleep":0, "format":"ip"},
+	"usb":{"gw_sleep":0.8, "format":"tc,usb_path,nr,par1,par2,par3"}}
+
+```
+
+<!--e_insert-->
+
+The format parameter defines the structure of the path definition, see below for examples. 
+
+Very detailed reporting regarding the thingscontrollers is available after the parsing completes from the [prj_parser](Prj_parser.md), see the report at the end.
 
 ## Raspberry Specifics
 
@@ -53,7 +69,7 @@ Very detailed reporting is available from the [prj_parser](Prj_parser.md), see t
     
     These roles are automatically assigned by associating a things_controller with a driver or an app.
 
-## Example
+## Examples
 
 In the example below several things_controllers are defined with a naming convention with 'PI-' prefix for raspberry's.
 Amongst others there is one Vera() gateway, 2 hue bridges, 1 ikea tradfri gateway, Modbus energy reading device and several Renson and Daikin controllers.
