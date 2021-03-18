@@ -96,9 +96,9 @@ Home_utilities(
     meters = {
             "domestic_hot_water":Flow_meter(path = "unipi:PI-Climate,input,6",q_per_rev = 1.0),
             "domestic_water":Flow_meter(path = "unipi:PI-Climate,input,5",q_per_rev = 10.0),
-            "electricity_day":Utility_meter(path = "ean:PI-Climate,electricity,541448820048316727,4117-Piek,XXXXXX00,kW/h,0.25,,,"),
-            "electricity_night":Utility_meter(path = "ean:PI-Climate,electricity,541448820048316727,4117-Dal,XXXXXX00,kW/h,0.125,,,"),
-            "gas":Utility_meter(path = "ean:PI-Climate,gas,41448820048316734,6237,XXXXX.x,m3,0.4078,kwH,9.99,"),
+            "electricity_day":Utility_meter(path = "ean:PI-Climate,electricity,541448820048316727,4117-Piek,XXXXXX00,kWh,0.25,,,"),
+            "electricity_night":Utility_meter(path = "ean:PI-Climate,electricity,541448820048316727,4117-Dal,XXXXXX00,kWh,0.125,,,"),
+            "gas":Utility_meter(path = "ean:PI-Climate,gas,41448820048316734,6237,XXXXX.x,m3,0.4078,kwh,9.99,"),
             "gas_boiler":Flow_meter(path = "unipi:PI-Climate,input,7",q_per_rev = 10.0),
             "pool_water":Flow_meter(path = "unipi:PI-Climate,input,8",q_per_rev = 1.0),
             "water":Utility_meter(path = "ean:PI-Climate,water,,43828915,XXXXX,m3,41.7,,,")},

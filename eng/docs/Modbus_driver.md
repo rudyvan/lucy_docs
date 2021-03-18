@@ -86,6 +86,7 @@ from lucy_app import *
 
 Modbus_driver(
     notifications = {
+            "modbus_forensics":Mail(subject='Modbus Forensics{app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='modbus_forensics', files2mail=None, ceiling=None),
             "modbus_parsing":Mail(subject='Modbus Parsing{app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='modbus', files2mail=None, ceiling=None)},
     role_me = "imac-lucy")
 
@@ -114,14 +115,15 @@ Things_controllers(items = {
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
-  | notifications | ['modbus_parsing'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
+  | notifications | ['modbus_forensics', 'modbus_parsing'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
   | role_me | {tc} | False | - | role_me of 'Modbus_driver', adds <modbus_drv> to the roles of the specified tc | 
 
 ## List of [Notifications](Notifier.md) for  __Modbus_driver__:
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | modbus_parsing | when this report runs | 
+  | modbus_forensics | this report runs at then end of the day to list all modbus modbus thingscontrollers data | 
+  | modbus_parsing | this report runs when parsing of modbus thingscontrollers is complete | 
 
 ## List of [Errors/Warnings](Error_Warn.md) for  __Modbus_driver__:
 
