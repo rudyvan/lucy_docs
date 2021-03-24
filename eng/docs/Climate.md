@@ -445,7 +445,7 @@ Climate energy Switch, is a binary on/off switch for gas or electricity heaters 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['activate_button', 'C_fluid', 'C_in', 'C_out', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button'] | False | - | special methods of this thing, mostly realised through things | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for outputs, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'payload_no'] | True | - | the notifications for outputs, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_app | tuple:value_app_tuples | True | - | app logic to determine the payload based programming logic and input parameters | 
@@ -455,7 +455,7 @@ Climate energy Switch, is a binary on/off switch for gas or electricity heaters 
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | active | when payload is active | 
+  | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
   | disable_off | when all of the disable conditions fail | 
@@ -464,8 +464,8 @@ Climate energy Switch, is a binary on/off switch for gas or electricity heaters 
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
-  | inactive | when payload is nonactive | 
-  | notify+ | extra notifications | 
+  | inactive | when payload is zero | 
+  | notify_binary+ | extra notifications that apply to all binary type things | 
   | payload_no | the requested payload is refused | 
 
 ## List of [copy_things] for  __Clim_energy_SW__:
@@ -513,7 +513,7 @@ Climate energy Dimmer, is a device that has a 0% to 100% setting and value can b
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button'] | False | - | special methods of this thing, mostly realised through things | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high', 'inactive', 'low', 'normal', 'notify+', 'payload_no'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
   | value_app | tuple:value_app_tuples | True | - | app logic to determine the payload based programming logic and input parameters | 
@@ -526,18 +526,22 @@ Climate energy Dimmer, is a device that has a 0% to 100% setting and value can b
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
+  | deicing | temperature becomes positive | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
+  | freezing | temperature becomes below zero | 
   | high | when payload reaches high | 
   | inactive | when payload is zero | 
   | low | when payload reaches low | 
+  | negative | when payload reaches negative, coming from a positive payload | 
   | normal | when payload becomes lower than high or higher than low | 
-  | notify+ | extra notifications | 
+  | notify_analog+ | extra notifications that apply to all analog type things | 
   | payload_no | the requested payload is refused | 
+  | positive | when payload reaches positive or zero coming from a negative payload | 
 
 ## List of [copy_things] for  __Clim_energy_DM__:
 
@@ -640,7 +644,7 @@ Climate Switch, Clim_SW (switch) is a binary on/off climate switch such as an on
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['C_fluid', 'C_in', 'C_out', 'is_on'] | False | - | special methods of this thing, mostly realised through things | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for outputs, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'payload_no'] | True | - | the notifications for outputs, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -649,7 +653,7 @@ Climate Switch, Clim_SW (switch) is a binary on/off climate switch such as an on
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | active | when payload is active | 
+  | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
   | disable_off | when all of the disable conditions fail | 
@@ -658,8 +662,8 @@ Climate Switch, Clim_SW (switch) is a binary on/off climate switch such as an on
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
-  | inactive | when payload is nonactive | 
-  | notify+ | extra notifications | 
+  | inactive | when payload is zero | 
+  | notify_binary+ | extra notifications that apply to all binary type things | 
   | payload_no | the requested payload is refused | 
 
 ## List of [copy_things] for  __Clim_SW__:
@@ -704,7 +708,7 @@ Climate Setpoint, Clim_SP is a climate device that has a (temperature) set-point
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['C_fluid', 'C_in', 'C_out', 'is_on'] | False | - | special methods of this thing, mostly realised through things | 
-  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify+', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
@@ -714,7 +718,7 @@ Climate Setpoint, Clim_SP is a climate device that has a (temperature) set-point
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | active | when payload is not zero | 
+  | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
   | deicing | temperature becomes positive | 
@@ -730,7 +734,7 @@ Climate Setpoint, Clim_SP is a climate device that has a (temperature) set-point
   | low | when payload reaches low | 
   | negative | when payload reaches negative, coming from a positive payload | 
   | normal | when payload becomes lower than high or higher than low | 
-  | notify+ | extra notifications | 
+  | notify_analog+ | extra notifications that apply to all analog type things | 
   | payload_no | the requested payload is refused | 
   | positive | when payload reaches positive or zero coming from a negative payload | 
 
@@ -775,7 +779,7 @@ Climate Dimmer, clim_DM is a climate device that has a 0% to 100% setting and va
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['C_fluid', 'C_in', 'C_out'] | False | - | special methods of this thing, mostly realised through things | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high', 'inactive', 'low', 'normal', 'notify+', 'payload_no'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
@@ -788,18 +792,22 @@ Climate Dimmer, clim_DM is a climate device that has a 0% to 100% setting and va
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
+  | deicing | temperature becomes positive | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
+  | freezing | temperature becomes below zero | 
   | high | when payload reaches high | 
   | inactive | when payload is zero | 
   | low | when payload reaches low | 
+  | negative | when payload reaches negative, coming from a positive payload | 
   | normal | when payload becomes lower than high or higher than low | 
-  | notify+ | extra notifications | 
+  | notify_analog+ | extra notifications that apply to all analog type things | 
   | payload_no | the requested payload is refused | 
+  | positive | when payload reaches positive or zero coming from a negative payload | 
 
 ## List of [copy_things] for  __Clim_DM__:
 

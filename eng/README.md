@@ -1203,6 +1203,39 @@ The [netatmo_ws_driver](docs/Netatmo_driver.md) integrates the netatmo weather s
 Reporting is extensive and combining local sensors and netatmo statistics in one overview.
 <!--e_insert-->
 
+## Utilities App
+
+<!--s_insert_{"file_n":"docs/Utilities.md","path+":"docs/","sub":"toc_ut"}-->
+
+Consumption and production of utilities such as gas, water and electricity become every more important personal aspects in the dealing with climate change.
+Therefore, Lucy contains a simple, yet powerful app to manage and report on utilities with real time decision capabilities.
+
+The minimum is to measure and report on utility production and consumption and for this a Meter thing and an Utility app are the basis.
+Obviously the capability of storage of the utility must exist, such as rain water in a tank, or electricity in a battery.
+
+Utilities carry a rate that can be dependent on various factors such as the time of day, weekdays or even if the effect is coming in (f.i. buying electricity from the grid)
+or out (a different rate for electricity going in the grid).
+
+Utilities can be defined with the usage and the intensity (kWh / kW for electricity or m3 / °C for hot water), and both factors must be comprehended.
+
+Sometimes complex real time decisions have to be taken, imagine the case of heating an outdoor swimming pool either with a gas_boiler (requiring gas) or alternatively with a heat_pump (requiring electricity) and where the electricity can come from solar panels or from the grid.
+Obviously if the solar panels produce plenty, your batteries are full and the rate for producing for the grid is low, using the heat pump makes sense.
+Alternatively when it is ice-cold outside during the night (no solar and low heat-pump efficiency), then the gas_boiler is the best option. 
+Anything between these extreme cases require careful consideration and automatic switching from one heating mode to another. 
+
+Another complex case exists where you need irrigation for your garden, and you need to select one of 3 potential sources: collected rain water (cheap but limited to you tank), ground water (pump and water quality) or purchased city water (expensive and not always possible because of restrictions during drought). 
+
+So an important factor is when to load or discharge your utility storage (battery)?
+When your car has a vehicle to grid capability, you don't want your car battery to be empty when you have to leave for a long trip.
+
+How can this all be managed automatically without you having to resort to several phone apps, and your precious time being wasted on control?
+You want to live a life where the right things happen with your utilities and infrastructure while you can focus on living your life with the comfort of them instead? 
+
+See and be surprised what Lucy can do with utility management!
+
+<!--e_insert-->
+
+See [Utilities](docs/Utilities.md) for more information and examples.
 
 ## Light Manager App
 

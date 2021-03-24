@@ -50,7 +50,7 @@ Door and Window methods are the same
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['access', 'beam2close', 'beam2open', 'beam_can_close', 'beam_can_open', 'cmd_close', 'cmd_close_ign', 'cmd_open', 'cmd_open_ign', 'is_opened', 'keep_closed', 'keep_opened', 'light_deco', 'light_green', 'light_night', 'light_not_closed', 'light_red', 'light_warn', 'lights_off_at_close', 'lights_off_at_open', 'lights_on_at_close', 'lights_on_at_open', 'pulse2close', 'pulse2open', 'ring_button', 'step2open_close', 'time_auto_close', 'time_check_close', 'time_check_open', 'time_open_max'] | False | - | special methods of this thing, mostly realised through things | 
   | my_assistant | bool | True | - | a flag if voice (alexa) can activate this thing | 
-  | notifications | ['active', 'app_done', 'app_start', 'conflict_oc', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'open_max', 'payload_no', 'ring', 'ring_away', 'trigger', 'trigger_no'] | True | - | door nty's, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'conflict_oc', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'open_max', 'payload_no', 'ring', 'ring_away', 'trigger', 'trigger_no'] | True | - | door nty's, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -61,7 +61,7 @@ Door and Window methods are the same
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | active | when payload is active | 
+  | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
   | conflict_oc | error as door is registered to be open and closed at the same time | 
@@ -71,8 +71,8 @@ Door and Window methods are the same
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
-  | inactive | when payload is nonactive | 
-  | notify+ | extra notifications | 
+  | inactive | when payload is zero | 
+  | notify_binary+ | extra notifications that apply to all binary type things | 
   | open_max | door is open for the specified maximum duration | 
   | payload_no | the requested payload is refused | 
   | ring | when the doorbell is pressed | 
@@ -453,7 +453,7 @@ Window covering
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button'] | False | - | special methods of this thing, mostly realised through things | 
   | my_assistant | bool | True | - | a flag if voice (alexa) can activate this thing | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for window covers, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'payload_no'] | True | - | the notifications for window covers, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -465,7 +465,7 @@ Window covering
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | active | when payload is active | 
+  | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
   | disable_off | when all of the disable conditions fail | 
@@ -474,8 +474,8 @@ Window covering
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
-  | inactive | when payload is nonactive | 
-  | notify+ | extra notifications | 
+  | inactive | when payload is zero | 
+  | notify_binary+ | extra notifications that apply to all binary type things | 
   | payload_no | the requested payload is refused | 
 
 ## List of [copy_things] for  __Win_cover__:

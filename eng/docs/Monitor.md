@@ -197,7 +197,7 @@ Monitor(
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the test box temperature in the garage is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "unipi:PI-Test,ow,289574D906000075,DS18B20,,44")})
+                    path = "unipi:PI-Energy,ow,289574D906000075,DS18B20,,44")})
 
 ```
 

@@ -300,7 +300,7 @@ Virtuals that are acting on things can have parameters whereby the parameters ar
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'none', 'notify+', 'payload_no'] | True | - | the notifications for virtuals, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'none', 'notify_binary+', 'payload_no'] | True | - | the notifications for virtuals, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -311,7 +311,7 @@ Virtuals that are acting on things can have parameters whereby the parameters ar
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | active | when payload is active | 
+  | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
   | disable_off | when all of the disable conditions fail | 
@@ -320,9 +320,9 @@ Virtuals that are acting on things can have parameters whereby the parameters ar
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
-  | inactive | when payload is nonactive | 
+  | inactive | when payload is zero | 
   | none | value of the Virtual is None | 
-  | notify+ | extra notifications | 
+  | notify_binary+ | extra notifications that apply to all binary type things | 
   | payload_no | the requested payload is refused | 
 
 ## List of [copy_things] for  __Virtual__:
@@ -364,7 +364,7 @@ Analog type Virtual
   | icon | str | True | - | icon file for this element | 
   | low | float | True | - | - | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high', 'inactive', 'low', 'normal', 'notify+', 'payload_no'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -378,18 +378,22 @@ Analog type Virtual
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
+  | deicing | temperature becomes positive | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
+  | freezing | temperature becomes below zero | 
   | high | when payload reaches high | 
-  | inactive | when payload is nonactive | 
+  | inactive | when payload is zero | 
   | low | when payload reaches low | 
+  | negative | when payload reaches negative, coming from a positive payload | 
   | normal | when payload becomes lower than high or higher than low | 
-  | notify+ | extra notifications | 
+  | notify_analog+ | extra notifications that apply to all analog type things | 
   | payload_no | the requested payload is refused | 
+  | positive | when payload reaches positive or zero coming from a negative payload | 
 
 ## List of [copy_things] for  __Virtual_A__:
 
@@ -474,7 +478,7 @@ Virtual meter for the registration of calculated meter values, for example the w
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['fake_sensor', 'sensor'] | True | - | special methods of this thing, mostly realised through things | 
-  | notifications | ['app_done', 'app_start', 'day>{val}', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high>{val}/sec', 'hour>{val}', 'minute>{val}', 'notify+', 'payload_no'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
+  | notifications | ['app_done', 'app_start', 'day>{val}', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high>{val}', 'hour>{val}', 'minute>{val}', 'notify+', 'payload_no'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | rate | dict | True | - | rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays | 
   | rate_fictive | dict | True | - | fictive rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays.  An example is a fictive rate for hot domestic water, the cost of water and heating is already in other utilities, but calculating and printing the cost of heated water on itself can provide useful information. | 
@@ -496,7 +500,7 @@ Virtual meter for the registration of calculated meter values, for example the w
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
-  | high>{val}/sec |  | 
+  | high>{val} |  | 
   | hour>{val} |  | 
   | minute>{val} |  | 
   | notify+ | extra notifications | 
@@ -542,7 +546,7 @@ Virtual sensor for the registration of calculated sensor values, for example the
   | icon | str | True | - | icon file for this element | 
   | low | float | True | - | - | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high', 'inactive', 'low', 'normal', 'notify+', 'payload_no'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -556,18 +560,22 @@ Virtual sensor for the registration of calculated sensor values, for example the
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
+  | deicing | temperature becomes positive | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
+  | freezing | temperature becomes below zero | 
   | high | when payload reaches high | 
-  | inactive | when payload is nonactive | 
+  | inactive | when payload is zero | 
   | low | when payload reaches low | 
+  | negative | when payload reaches negative, coming from a positive payload | 
   | normal | when payload becomes lower than high or higher than low | 
-  | notify+ | extra notifications | 
+  | notify_analog+ | extra notifications that apply to all analog type things | 
   | payload_no | the requested payload is refused | 
+  | positive | when payload reaches positive or zero coming from a negative payload | 
 
 ## List of [copy_things] for  __Fake_sensor__:
 

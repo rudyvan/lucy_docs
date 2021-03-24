@@ -41,7 +41,7 @@ Older Foscam camera's use port 80 and more recent camera's have port 88.
   | ip | str | False | - | ip in the format of xx.xx.xx.xx | 
   | ip_action | int | False | - | - | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'none', 'notify+', 'payload_no'] | True | - | the notifications for pings, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'none', 'notify_binary+', 'payload_no'] | True | - | the notifications for pings, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | port | int | False | - | ip port | 
   | pwd | str | False | - | password for the login | 
@@ -54,7 +54,7 @@ Older Foscam camera's use port 80 and more recent camera's have port 88.
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | active | when payload is active | 
+  | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
   | disable_off | when all of the disable conditions fail | 
@@ -63,9 +63,9 @@ Older Foscam camera's use port 80 and more recent camera's have port 88.
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
-  | inactive | when payload is nonactive | 
+  | inactive | when payload is zero | 
   | none | value of the Virtual is None | 
-  | notify+ | extra notifications | 
+  | notify_binary+ | extra notifications that apply to all binary type things | 
   | payload_no | the requested payload is refused | 
 
 ## List of [Errors/Warnings](Error_Warn.md) for  __Camera__:

@@ -341,9 +341,6 @@
 <!--s_insert_{'file_n':'docs/Things.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
-<!--s_insert_{'file_n':'docs/Things.md','path+':'docs/','level':+1}-->
-<!--e_insert-->
-
 <!--s_insert_{'file_n':'docs/Ping.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 

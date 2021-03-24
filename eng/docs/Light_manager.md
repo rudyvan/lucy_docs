@@ -136,7 +136,7 @@ Dimmer description, works also for the derived classes such as Motor, Dim_light 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button'] | False | - | special methods of this thing, mostly realised through things | 
   | my_assistant | bool | True | - | a flag if voice (alexa) can activate this thing | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify+', 'payload_no'] | True | - | the notifications for dimmers, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'payload_no'] | True | - | the notifications for dimmers, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -148,7 +148,7 @@ Dimmer description, works also for the derived classes such as Motor, Dim_light 
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | active | when payload is active | 
+  | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
   | disable_off | when all of the disable conditions fail | 
@@ -157,8 +157,8 @@ Dimmer description, works also for the derived classes such as Motor, Dim_light 
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
-  | inactive | when payload is nonactive | 
-  | notify+ | extra notifications | 
+  | inactive | when payload is zero | 
+  | notify_binary+ | extra notifications that apply to all binary type things | 
   | payload_no | the requested payload is refused | 
 
 ## List of [copy_things] for  __Dimmer__:
