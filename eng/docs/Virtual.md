@@ -153,7 +153,7 @@ Security_system(
     do_fire = Virtual(duration = 1),
     do_unarm = Virtual(duration = 1),
     is_alarm = Virtual(copy_things = {
-                    "carbon_copy":Output(path = "zw:Vera_plus,buttonset,173,Status6")},effect_virtuals = {
+                    "carbon_copy":Output(path = "vera:Vera_plus,zw,buttonset,173,Status6")},effect_virtuals = {
                     "dw_autom_close":Virtual(
                             duration = 600,
                             play = Effect(maker='parent', condition='i_change', effect='make_same', taker='self', delay=None, duration=None)),
@@ -182,7 +182,7 @@ Security_system(
                             value_logic = {"freeze":{"is_not_day":True}})}),
     is_burglar = Virtual(notifications = {"active":Vera_nty(txt='vera_open_curtains')}),
     is_fire = Virtual(copy_things = {
-                    "carbon_copy":Output(path = "zw:Vera_plus,buttonset,173,Status7")}),
+                    "carbon_copy":Output(path = "vera:Vera_plus,zw,buttonset,173,Status7")}),
     light_armed_warn = Light(
             copy_things = {
                     "carbon_copy":Output(path = "unipi:PI-Veranda,relay,8")},
@@ -292,7 +292,7 @@ Virtuals that are acting on things can have parameters whereby the parameters ar
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
@@ -329,8 +329,8 @@ Virtuals that are acting on things can have parameters whereby the parameters ar
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 
 ## List of [Errors/Warnings](Error_Warn.md) for  __Virtual__:
 
@@ -354,13 +354,15 @@ Analog type Virtual
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
+  | high | float | True | - | - | 
   | i_read | str | True | - | the type of data that this sensor reads | 
   | icon | str | True | - | icon file for this element | 
+  | low | float | True | - | - | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high', 'inactive', 'low', 'normal', 'notify+', 'payload_no'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
@@ -393,8 +395,8 @@ Analog type Virtual
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_aflg-->
 
 <!--s_name_rflg-->
@@ -446,3 +448,133 @@ Range Virtual's do not just have a binary state such as ordinary virtuals but th
   | twin_copy | ['Virtual_R'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
   | twin_copy@{val} | ['Output', 'Motor', 'Light', 'Dim_light'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_rflg-->
+
+<!--s_name_mflg-->
+# Fake_meter
+
+<!--e_name_mflg-->
+
+<!--s_descr_mflg-->
+Virtual meter for the registration of calculated meter values, for example the water consumption in a T pipe when real meters work for 2 of the 3 legs.
+
+<!--e_descr_mflg-->
+
+<!--s_tbl_mflg-->
+## List of [properties](Properties.md) for __Fake_meter__:
+
+  | Property | Validation | Optional? | Repeat? | Description |
+  | --- | --- | --- | --- | --- |
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | descr | str | False | - | free description field for this thing | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | effect | valid_list | False | - | effect of utility measured, + for adding, - for reducing and +- or -+ for a hybrid node where it can add or reduce | 
+  | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
+  | fav | str | True | - | is this a favorite element | 
+  | i_read | str | False | - | the type of data that this meter stores | 
+  | icon | str | True | - | icon file for this element | 
+  | member_of | list | True | - | a list of group names to which thing belongs | 
+  | method_things | ['fake_sensor', 'sensor'] | True | - | special methods of this thing, mostly realised through things | 
+  | notifications | ['app_done', 'app_start', 'day>{val}', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high>{val}/sec', 'hour>{val}', 'minute>{val}', 'notify+', 'payload_no'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
+  | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
+  | rate | dict | True | - | rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays | 
+  | rate_fictive | dict | True | - | fictive rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays.  An example is a fictive rate for hot domestic water, the cost of water and heating is already in other utilities, but calculating and printing the cost of heated water on itself can provide useful information. | 
+  | short | str | False | - | free (preferably short) description for this thing | 
+  | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
+  | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
+  | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
+
+## List of [Notifications](Notifier.md) for  __Fake_meter__:
+
+  | Notification Suffix | When invoked? |
+  | --- | --- | 
+  | app_done | when a things_app completes | 
+  | app_start | when a things_app starts | 
+  | day>{val} |  | 
+  | disable_off | when all of the disable conditions fail | 
+  | disable_on | when one of the disable conditions succeed | 
+  | enable_off | when one of the enable conditions fail | 
+  | enable_on | when all the enable conditions succeed | 
+  | freeze_off | all of the freeze conditions fail | 
+  | freeze_on | one of the freeze conditions succeed | 
+  | high>{val}/sec |  | 
+  | hour>{val} |  | 
+  | minute>{val} |  | 
+  | notify+ | extra notifications | 
+  | payload_no | the requested payload is refused | 
+
+## List of [copy_things] for  __Fake_meter__:
+
+  | Copy Thing | Type Thing | What it does? |
+  | --- | --- | --- | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+
+## List of [method_things] for  __Fake_meter__:
+
+  | Method Thing | Type Thing | What it does? |
+  | --- | --- | --- | 
+  | fake_sensor | *Fake_sensor | {'descr': 'virtual sensor associated with the meter, such as power for an electricity meter or temperature for heated water', 'short': 'fake_sensor'} | 
+  | sensor | *Sensor | {'descr': 'the sensor associated with the meter, such as power for an electricity meter or temperature for heated water', 'short': 'sensor'} | 
+<!--e_tbl_mflg-->
+
+<!--s_name_sflg-->
+# Fake_sensor
+
+<!--e_name_sflg-->
+
+<!--s_descr_sflg-->
+Virtual sensor for the registration of calculated sensor values, for example the electricity power taken to make the sum of power users zero.
+
+<!--e_descr_sflg-->
+
+<!--s_tbl_sflg-->
+## List of [properties](Properties.md) for __Fake_sensor__:
+
+  | Property | Validation | Optional? | Repeat? | Description |
+  | --- | --- | --- | --- | --- |
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | descr | str | False | - | free description field for this thing | 
+  | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
+  | fav | str | True | - | is this a favorite element | 
+  | high | float | True | - | - | 
+  | i_read | str | False | - | the type of data that this meter stores | 
+  | icon | str | True | - | icon file for this element | 
+  | low | float | True | - | - | 
+  | member_of | list | True | - | a list of group names to which thing belongs | 
+  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high', 'inactive', 'low', 'normal', 'notify+', 'payload_no'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
+  | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
+  | short | str | False | - | free (preferably short) description for this thing | 
+  | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
+  | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
+  | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
+
+## List of [Notifications](Notifier.md) for  __Fake_sensor__:
+
+  | Notification Suffix | When invoked? |
+  | --- | --- | 
+  | active | when payload is non zero | 
+  | app_done | when a things_app completes | 
+  | app_start | when a things_app starts | 
+  | disable_off | when all of the disable conditions fail | 
+  | disable_on | when one of the disable conditions succeed | 
+  | enable_off | when one of the enable conditions fail | 
+  | enable_on | when all the enable conditions succeed | 
+  | freeze_off | all of the freeze conditions fail | 
+  | freeze_on | one of the freeze conditions succeed | 
+  | high | when payload reaches high | 
+  | inactive | when payload is nonactive | 
+  | low | when payload reaches low | 
+  | normal | when payload becomes lower than high or higher than low | 
+  | notify+ | extra notifications | 
+  | payload_no | the requested payload is refused | 
+
+## List of [copy_things] for  __Fake_sensor__:
+
+  | Copy Thing | Type Thing | What it does? |
+  | --- | --- | --- | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+<!--e_tbl_sflg-->
+
+

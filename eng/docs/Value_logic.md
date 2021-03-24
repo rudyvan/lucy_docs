@@ -167,14 +167,14 @@ See extract below and notice the 3 value apps, one to determine the boiler on of
 
 from project.py tree:(o:Climate_system)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:5,o:Climate_system>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:boiler_room,o:Room,kw:contents,lp:3,o:Climate_system>
 
 from lucy_app import *
 
 Climate_system(
     air_removal = Virtual(
             copy_things = {
-                    "twin_copy":Output(path = "zw:Vera_plus,buttonset,152,Status5")},
+                    "twin_copy":Output(path = "vera:Vera_plus,zw,buttonset,152,Status5")},
             notifications = {
                     "active":[
                         Mail(subject='The heating air removal process is started', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
@@ -184,33 +184,53 @@ Climate_system(
                         Say(txt='{tts_start} the heating air removal process is stopped, heating works normal again{tts_end}', ceiling=None, times=1, override=None, volume=35)]}),
     clim_SW_periodic_on = Virtual(value_app = Makers_pertinence(check_freq_mins=5, not_used_hours=13, open_duration_mins=4, C_ok_diff=-0.001)),
     production = {
-            "gas_heater":Clim_energy_SW(
-                    copy_things = {
-                            "carbon_copy":Output(path = "unipi:PI-Climate,relay,3")},
+            "CH_valve":Clim_energy_SW(
+                    active = 0,
                     i_make = ['warm'],
                     method_things = {
-                            "C_in":Sensor(i_read = "°C",path = "ow:PI-Climate,28F1EE5E07000094,DS18B20,,77"),
-                            "C_out":Sensor(i_read = "°C",path = "ow:PI-Climate,28E6B45F070000ED,DS18B20,,96")},
-                    path = "unipi:PI-Climate,relay,2",
+                            "is_on":Input(
+                                    notifications = {
+                                            "active":Cal(txt='Central Heating Active', summary='', ceiling=None),
+                                            "inactive":Cal(txt='Central Heating Inactive', summary='', ceiling=None)},
+                                    path = "unipi:PI-Climate,input,9")},
+                    path = "unipi:PI-Climate,relay,1"),
+            "Pool_valve":Clim_energy_SW(
+                    duration = 0,
+                    i_make = ['warm'],
+                    method_things = {
+                            "is_on":Input(
+                                    notifications = {
+                                            "active":Cal(txt='Pool Heating Active', summary='', ceiling=None),
+                                            "inactive":Cal(txt='Pool Heating Inactive', summary='', ceiling=None)},
+                                    path = "unipi:PI-Climate,input,10")},
+                    path = "unipi:PI-Climate,relay,2"),
+            "gas_heater":Clim_energy_SW(
+                    copy_things = {
+                            "carbon_copy":Output(path = "_:PI-Climate")},
+                    i_make = ['warm'],
+                    method_things = {
+                            "C_in":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28F1EE5E07000094,DS18B20,,77"),
+                            "C_out":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28E6B45F070000ED,DS18B20,,96")},
+                    path = "_:PI-Climate",
                     value_app = Boiler_on_off(max_boiler_nr_rooms=6, C_boiler_highest=70, C_boiler_lowest=40, C_boiler_threshold=4, C_outside_max_boiler=-5, C_outside_min_boiler=15))},
     role_me = "PI-Climate",
     storage = {
             "hot_water_tank":Clim_SW(
-                    active = 0,
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,28A91F600700002D,DS18B20,,84")},
-                    path = "unipi:PI-Test,relay,1",
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28A91F600700002D,DS18B20,,84")},
+                    path = "_:PI-Climate",
                     value_logic = {"assign":{"hot_water_tank^C_fluid<55":"0","hot_water_tank^C_fluid>65":"1"},"disable":['is_holiday']})},
     transport = {
-            "%vent":Motor(path = "unipi:PI-Gate,ao,1",value_logic = {"assign":{"is_armed":"15","is_day":"50","is_holiday":"10","sleep":"25"}}),
+            "%vent":Motor(path = "_:PI-Climate",value_logic = {"assign":{"is_armed":"15","is_day":"50","is_holiday":"10","sleep":"25"}}),
+            "pool_pump":Output(member_of = ["Pool_valve"],path = "_:PI-Climate"),
             "pump":Motor(
                     duration = 310,
-                    member_of = ["gas_heater"],
+                    member_of = ["CH_valve"],
                     method_things = {
-                            "on_off_relay":Output(active = 0,duration = 310,path = "unipi:PI-Climate,relay,1")},
-                    path = "unipi:PI-Climate,ao,1",
+                            "on_off_relay":Output(duration = 310,path = "_:PI-Climate")},
+                    path = "_:PI-Climate",
                     threshold = 1.0,
                     value_app = Pump_speed_set(act_run_idle_hours=13, max_speed_active_makers=60, speed_act_run=50, speed_lowest=50))})
 

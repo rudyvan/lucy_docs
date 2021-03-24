@@ -394,6 +394,9 @@ The beauty lies in the integration of the different functions to deliver a harmo
   | [__Irrigation_manager__](docs/Irrigation.md) | The Irrigation App, whereby based on past and furture rain precipitation plant watering is optimized |
   | [__Light_manager__](docs/Light_manager.md) | Defines the things_controller managing the light process and steering the Hue bridges, the IKEA tradfri gateways and any Vera light devices |
   | [__Security_manager__](docs/Security.md) | This App defines all the security settings and notifications that all security systems inherit |
+  | [__Utilities__](docs/Utilities.md) | Dictionary of utilities with a designated thingscontroller to manage |
+  | [__Utility__](docs/Utilities.md) | An utility description with meters, sensors, costs, scenes |
+  | [__Utility_storage__](docs/Utilities.md) | An utility storage such as a battery or a water tank |
   | [__Wincover_manager__](docs/Door.md) | Manages and contain options for the defined Door and Window coverings |
 <!--e_toc_App_functional-->
 
@@ -412,7 +415,6 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | [__Control__](docs/Control.md) | Generic Motor and Output setting such as swimpool pumps, wine cellar temperatures and any other things to control |
   | [__Doorbell__](docs/Doorbell.md) | Most doorbells drive a bell button signal and have a way to signal agreement to open or lock one or more doors.  You can also declare a doorbell inside a door. |
   | [__Doors__](docs/Door.md) | A door? Is it not a simple input that states if the door is closed or not? A door can have a raft of method_things including all types of notifications, lights or triggers to open or close the door. To name a few method_things; optical beams to open or close the door, light to open, to close, a light when opening or closing or a night light. Or a timer on the open or close duration that triggers something. Or to define which area the door/window gives access to which is used in the security App |
-  | [__Home_utilities__](docs/Utility.md) | Measures and reports utility consumption for heating, cooling, cooking, water, ... by reading utility meters and sensors.  It also reports solar and wind energy production and consumption and recharge of the home battery. |
   | [__Ip_ping__](docs/Network_controller.md) | Register network devices with special parameters for non pingable items and 'special' ip addresses. Devices defined with their ip address such as sonos, camera's and things_controllers are automatically added to the ip_ping list |
   | [__Irrigation_points__](docs/Irrigation.md) | Irrigation point for water delivery to plants, with the normalized duration irrigation time in minutes |
   | [__Irrigation_system__](docs/Irrigation.md) | Interface to the garden irrigation pump(s), activation/deactivation buttons and the watering valves |
@@ -469,10 +471,12 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | [__Color_light__](docs/Things.md) | Color_light description, works also for the derived classes |
   | [__Dim_light__](docs/Things.md) | Dim_light description, works also for the derived classes |
   | [__Door__](docs/Door.md) | Door and Window methods are the same |
+  | [__Fake_meter__](docs/Virtual.md) | Virtual meter for the registration of calculated meter values, for example the water consumption in a T pipe when real meters work for 2 of the 3 legs. |
+  | [__Fake_sensor__](docs/Virtual.md) | Virtual sensor for the registration of calculated sensor values, for example the electricity power taken to make the sum of power users zero. |
   | [__Fire_detector__](docs/Things.md) | Input description, works also for the derived classes |
-  | [__Flow_meter__](docs/Things.md) | Liquid flow meter with hall effect sensor |
   | [__Irr__](docs/Things.md) | Irr description, works also for the derived classes |
   | [__Light__](docs/Things.md) | Light description, works also for the derived classes |
+  | [__Meter__](docs/Things.md) | Meter to register utility usage or flow |
   | [__Motor__](docs/Things.md) | Motor description, works also for the derived classes |
   | [__Optical__](docs/Things.md) | Input description, works also for the derived classes |
   | [__Ping__](docs/Ping.md) | is a network function to check the presence of a thing through a ping |
@@ -480,7 +484,6 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | [__Sensor_switch__](docs/Things.md) | An Input switch which is activated by something such as a high temperature like a thermostat |
   | [__Sonos__](docs/Sonos.md) | is a network function to check the presence of a thing through a ping |
   | [__Switch__](docs/Things.md) | Input description, works also for the derived classes |
-  | [__Utility_meter__](docs/Things.md) | utility consumption meter |
   | [__Win_cover__](docs/Door.md) | Window covering |
   | [__Wind_gust__](docs/Things.md) | Wind gust device |
   | [__Wind_speed__](docs/Things.md) | Wind speed meter device |

@@ -46,6 +46,7 @@ Below are some of the devices currently available, and many more will be added i
   | __[Virtual_R](Virtual.md)__ | obj.Digital_range | to_do, digital_range=None, description_r=None, active=1, duration=0, parameters=None, [properties](Properties.md)=None, [value_logic](value_logic.md)=None | internal signal device |
   | __[Event](Event.md)__ | obj.Digital_input |  to_do, parameters=None, active=1, duration=0, [properties](Properties.md)=None, [value_logic](value_logic.md)=None | internal program sketch |
   | __[Utility_meter](Utility.md)__ | obj.String | 	role_me, ean, vid, cam_roi, cntr_format, unit, value, [properties](Properties.md)=None | utility meter such as gas, water, power  |
+  | __[Meter](Utility.md)__ | obj.Analog_input | 	unit, value, [properties](Properties.md)=None | utility meter such as gas, water, power  |
   | __[Meter_reading](Utility.md)__ | obj.Analog_output | pi_name, utility, [properties](Properties.md)=None | to store a meter reading |
   | __[Beacon_instance](Btle_driver.md)__ | obj.Analog_input |  room, option, b_i_name, [properties](Properties.md)=None | the manifestation of a beacon on a gateway |
   | __[Beacon](Btle_driver.md)__ | -  |  what_is, uuid, major, minor, [properties](Properties.md)=None | definition parameters of a beacon |
@@ -84,7 +85,7 @@ Output description, works also for the derived classes
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
@@ -122,8 +123,8 @@ Output description, works also for the derived classes
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 
 ## List of [method_things] for  __Output__:
 
@@ -151,7 +152,7 @@ Input description, works also for the derived classes
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
@@ -187,8 +188,8 @@ Input description, works also for the derived classes
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_i-->
 
 * * *
@@ -293,7 +294,7 @@ An Input switch which is activated by something such as a high temperature like 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
@@ -330,8 +331,8 @@ An Input switch which is activated by something such as a high temperature like 
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_s_sw-->
 
 * * *
@@ -447,7 +448,7 @@ Wind speed meter device
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
@@ -480,8 +481,8 @@ Wind speed meter device
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_wgst-->
 
 ## 'Rain_gauge' Thing
@@ -496,7 +497,7 @@ Rain gauge meter device
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
@@ -523,53 +524,75 @@ Rain gauge meter device
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_wsrg-->
 
-## 'Flow_meter' Thing
+## 'Meter' Thing
 
-<!--s_descr_wsfm-->
-Liquid flow meter with hall effect sensor
+<!--s_descr_wsm-->
+Meter to register utility usage or flow
 
-<!--e_descr_wsfm-->
+<!--e_descr_wsm-->
 
-<!--s_tbl_wsfm-->
-## List of [properties](Properties.md) for __Flow_meter__:
+<!--s_tbl_wsm-->
+## List of [properties](Properties.md) for __Meter__:
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
+  | effect | valid_list | False | - | effect of utility measured, + for adding, - for reducing and +- or -+ for a hybrid node where it can add or reduce | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
-  | flow_type | str | True | - | type of flow measured | 
+  | i_read | str | False | - | type of utility measured | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['flow_lot', 'flow_major', 'flow_nice', 'flow_tickle'] | True | - | the notifications for Flow_meter, see [__Notifier__](Notifier.md) | 
+  | method_things | ['fake_sensor', 'sensor'] | True | - | special methods of this thing, mostly realised through things | 
+  | notifications | ['app_done', 'app_start', 'day>{val}', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high>{val}/sec', 'hour>{val}', 'minute>{val}', 'notify+', 'payload_no'] | True | - | the notifications for Meter, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
-  | q_per_rev | float | False | - | quantity per revolve | 
+  | place | str | True | - | place/room where the meter can be found, must be one of the places/rooms or an parse error is given | 
+  | rate | dict | True | - | rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays | 
+  | rate_fictive | dict | True | - | fictive rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays.  An example is a fictive rate for hot domestic water, the cost of water and heating is already in other utilities, but calculating and printing the cost of heated water on itself can provide useful information. | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
+  | where2find | str | True | - | description of the physical location where the meter can be found | 
 
-## List of [Notifications](Notifier.md) for  __Flow_meter__:
+## List of [Notifications](Notifier.md) for  __Meter__:
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | flow_lot | > 1 m3 | 
-  | flow_major | > 2 m3 | 
-  | flow_nice | > 0.5 m3 | 
-  | flow_tickle | > 10 l | 
+  | app_done | when a things_app completes | 
+  | app_start | when a things_app starts | 
+  | day>{val} |  | 
+  | disable_off | when all of the disable conditions fail | 
+  | disable_on | when one of the disable conditions succeed | 
+  | enable_off | when one of the enable conditions fail | 
+  | enable_on | when all the enable conditions succeed | 
+  | freeze_off | all of the freeze conditions fail | 
+  | freeze_on | one of the freeze conditions succeed | 
+  | high>{val}/sec |  | 
+  | hour>{val} |  | 
+  | minute>{val} |  | 
+  | notify+ | extra notifications | 
+  | payload_no | the requested payload is refused | 
 
-## List of [copy_things] for  __Flow_meter__:
+## List of [copy_things] for  __Meter__:
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
-<!--e_tbl_wsfm-->
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+
+## List of [method_things] for  __Meter__:
+
+  | Method Thing | Type Thing | What it does? |
+  | --- | --- | --- | 
+  | fake_sensor | *Fake_sensor | {'descr': 'virtual sensor associated with the meter, such as power for an electricity meter or temperature for heated water', 'short': 'fake_sensor'} | 
+  | sensor | *Sensor | {'descr': 'the sensor associated with the meter, such as power for an electricity meter or temperature for heated water', 'short': 'sensor'} | 
+<!--e_tbl_wsm-->
 
 ## 'Utility_meter' Thing
 
@@ -628,7 +651,7 @@ Alarm_detector description
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | detector_type | valid_list | False | - | is the detector type such as burglar, tamper, alarm,.. | 
@@ -665,8 +688,8 @@ Alarm_detector description
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_ad-->
  
 ## 'Fire_detector' Thing
@@ -682,7 +705,7 @@ Input description, works also for the derived classes
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
@@ -718,8 +741,8 @@ Input description, works also for the derived classes
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_fd-->
  
 ## 'Button' Thing
@@ -735,7 +758,7 @@ Input description, works also for the derived classes
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
@@ -771,8 +794,8 @@ Input description, works also for the derived classes
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_bt-->
  
 ## 'Mail' Thing
@@ -841,7 +864,7 @@ Input description, works also for the derived classes
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
@@ -877,8 +900,8 @@ Input description, works also for the derived classes
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_op-->
  
 ## 'Switch' Thing
@@ -894,7 +917,7 @@ Input description, works also for the derived classes
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
@@ -930,8 +953,8 @@ Input description, works also for the derived classes
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 <!--e_tbl_sw-->
 
 * * *

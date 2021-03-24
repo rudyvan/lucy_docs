@@ -92,7 +92,7 @@ clim_dna={"Temperature": {"i_make":{"warm":"is_heating","cold":"is_cooling"},"i_
 	"Humidity":    {"i_make":{"dry":"is_humid","moist":"is_dry"},"i_read":"%H","clim_tst":{"is_dry":"<","is_humid":">"},"soll":"humid_soll","sens_ok":"humid_ok","short":"humid","fmt":"{:>05.0f}"},
 	"Luminosity":  {"i_make":{"dark":"is_lum_light","light":"is_lum_dark"},"i_read":"%L","clim_tst":{"is_light":">","is_dark":"<"},"soll":"light_soll","sens_ok":"lum_ok","short":"lum","fmt":"{:>05.0f}"}}
 clim_sp_in_between={"Temperature":"warm_sp","Humidity":"dry_sp","Luminosity":"light_sp"}
-sensor_types=["°C","%H","%L","Lux","mmB","dP°C","CO2","CO","msec","%V"]
+sensor_types=["°C","%H","%L","Lux","mmB","dP°C","CO2","CO","msec","%V","W","kW","kWh","Wh","L","m3","%"]
 
 ```
 
@@ -344,7 +344,7 @@ Climate_manager(
 
 from project.py tree:(o:Climate_system)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:5,o:Climate_system>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:boiler_room,o:Room,kw:contents,lp:3,o:Climate_system>
 
 from lucy_app import *
 
@@ -361,33 +361,53 @@ Climate_system(
                         Say(txt='{tts_start} the heating air removal process is stopped, heating works normal again{tts_end}', ceiling=None, times=1, override=None, volume=35)]}),
     clim_SW_periodic_on = Virtual(value_app = Makers_pertinence(check_freq_mins=5, not_used_hours=13, open_duration_mins=4, C_ok_diff=-0.001)),
     production = {
+            "CH_valve":Clim_energy_SW(
+                    active = 0,
+                    i_make = ['warm'],
+                    method_things = {
+                            "is_on":Input(
+                                    notifications = {
+                                            "active":Cal(txt='Central Heating Active', summary='', ceiling=None),
+                                            "inactive":Cal(txt='Central Heating Inactive', summary='', ceiling=None)},
+                                    path = "unipi:PI-Climate,input,9")},
+                    path = "unipi:PI-Climate,relay,1"),
+            "Pool_valve":Clim_energy_SW(
+                    duration = 0,
+                    i_make = ['warm'],
+                    method_things = {
+                            "is_on":Input(
+                                    notifications = {
+                                            "active":Cal(txt='Pool Heating Active', summary='', ceiling=None),
+                                            "inactive":Cal(txt='Pool Heating Inactive', summary='', ceiling=None)},
+                                    path = "unipi:PI-Climate,input,10")},
+                    path = "unipi:PI-Climate,relay,2"),
             "gas_heater":Clim_energy_SW(
                     copy_things = {
-                            "carbon_copy":Output(path = "unipi:PI-Climate,relay,3")},
+                            "carbon_copy":Output(path = "_:PI-Climate")},
                     i_make = ['warm'],
                     method_things = {
                             "C_in":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28F1EE5E07000094,DS18B20,,77"),
                             "C_out":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28E6B45F070000ED,DS18B20,,96")},
-                    path = "unipi:PI-Climate,relay,2",
+                    path = "_:PI-Climate",
                     value_app = Boiler_on_off(max_boiler_nr_rooms=6, C_boiler_highest=70, C_boiler_lowest=40, C_boiler_threshold=4, C_outside_max_boiler=-5, C_outside_min_boiler=15))},
     role_me = "PI-Climate",
     storage = {
             "hot_water_tank":Clim_SW(
-                    active = 0,
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
                             "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28A91F600700002D,DS18B20,,84")},
-                    path = "unipi:PI-Test,relay,1",
+                    path = "_:PI-Climate",
                     value_logic = {"assign":{"hot_water_tank^C_fluid<55":"0","hot_water_tank^C_fluid>65":"1"},"disable":['is_holiday']})},
     transport = {
-            "%vent":Motor(path = "unipi:PI-Gate,ao,1",value_logic = {"assign":{"is_armed":"15","is_day":"50","is_holiday":"10","sleep":"25"}}),
+            "%vent":Motor(path = "_:PI-Climate",value_logic = {"assign":{"is_armed":"15","is_day":"50","is_holiday":"10","sleep":"25"}}),
+            "pool_pump":Output(member_of = ["Pool_valve"],path = "_:PI-Climate"),
             "pump":Motor(
                     duration = 310,
-                    member_of = ["gas_heater"],
+                    member_of = ["CH_valve"],
                     method_things = {
-                            "on_off_relay":Output(active = 0,duration = 310,path = "unipi:PI-Climate,relay,1")},
-                    path = "unipi:PI-Climate,ao,1",
+                            "on_off_relay":Output(duration = 310,path = "_:PI-Climate")},
+                    path = "_:PI-Climate",
                     threshold = 1.0,
                     value_app = Pump_speed_set(act_run_idle_hours=13, max_speed_active_makers=60, speed_act_run=50, speed_lowest=50))})
 
@@ -415,7 +435,7 @@ Climate energy Switch, is a binary on/off switch for gas or electricity heaters 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
@@ -452,8 +472,8 @@ Climate energy Switch, is a binary on/off switch for gas or electricity heaters 
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 
 ## List of [method_things] for  __Clim_energy_SW__:
 
@@ -484,7 +504,7 @@ Climate energy Dimmer, is a device that has a 0% to 100% setting and value can b
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
@@ -523,8 +543,8 @@ Climate energy Dimmer, is a device that has a 0% to 100% setting and value can b
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 
 ## List of [method_things] for  __Clim_energy_DM__:
 
@@ -610,7 +630,7 @@ Climate Switch, Clim_SW (switch) is a binary on/off climate switch such as an on
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
   | active | valid_set_int | False | - | designate the active state for a binary thing, either 0 or 1 | 
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | descr_01 | list-2 | False | - | description for a binary thing when payload value is 0 or 1 | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
@@ -646,8 +666,8 @@ Climate Switch, Clim_SW (switch) is a binary on/off climate switch such as an on
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 
 ## List of [method_things] for  __Clim_SW__:
 
@@ -675,7 +695,7 @@ Climate Setpoint, Clim_SP is a climate device that has a (temperature) set-point
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
@@ -718,8 +738,8 @@ Climate Setpoint, Clim_SP is a climate device that has a (temperature) set-point
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 
 ## List of [method_things] for  __Clim_SP__:
 
@@ -746,7 +766,7 @@ Climate Dimmer, clim_DM is a climate device that has a 0% to 100% setting and va
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
-  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
+  | copy_things | {'carbon_copy': {'doc': {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}, 'twin_copy': {'doc': {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'}, 'optional': True, 'type': ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor']}} | False | - | copies of things, either carbon copy (one sided copy) or twin copy (copies in both directions) | 
   | descr | str | False | - | free description field for this thing | 
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
@@ -785,8 +805,8 @@ Climate Dimmer, clim_DM is a climate device that has a 0% to 100% setting and va
 
   | Copy Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
-  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
+  | carbon_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'receiving copy - carbon copy', 'short': 'carbon_copy'} | 
+  | twin_copy | ['Output', 'Motor', 'Light', 'Dim_light', 'Virtual', 'Virtual_A', 'Fake_sensor'] | {'descr': 'two way copy - twin_copy', 'short': 'twin_copy'} | 
 
 ## List of [method_things] for  __Clim_DM__:
 
@@ -836,7 +856,7 @@ Climate(clim_makers = {
                             "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,285BFB5E070000A9,DS18B20,,69")},
                     path = "unipi:PI-Climate,relay,12")},clim_sensors = [Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28A2FC5F07000093,DS18B20,,74"),Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28C12C6007000085,DS18B20,,75")],clim_targets = {"warm_sp":{"away":10.0,"day":12.0,"sleep":10.0}})
 
-# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:3,o:Climate>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:2,o:Climate>
 
 from lucy_app import *
 

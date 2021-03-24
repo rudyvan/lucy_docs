@@ -111,7 +111,7 @@ time_irr_depressure=180 # time in seconds all irr channels are bleeding in the w
   | irr_daily_at | str | True | - | daily irrigation trigger time, clock is checked every minute - do not change formatting 'hh:mm' in 24 hour format, also alternatively google calendar can be used to irrigation trigger start | 
   | irr_deact_button | Button | True | - | the button to press to cancel irrigation | 
   | irr_fcst_min_dg | int | False | - | day low temp forecast, below this value, no irrigation | 
-  | irr_flow_meter | Flow_meter | True | - | a irrigation water flow meter, measuring water consumption with a hall effect sensor | 
+  | irr_flow_meter | *Meter | True | - | a irrigation water flow meter, measuring water consumption with a hall effect sensor | 
   | irr_flow_sensor | Input | True | - | a irrigation water flow sensor, a feedback to working or faulty irrigation because the script can check when water should or should not flow.  The check happens at the first watering point | 
   | irr_time_base | int | False | - | time in minutes, the basis irrigation time used for rain decay adjustment, do not change | 
   | irr_water_supply | Output | True | True | the output(s) to switch the pump | 
@@ -188,7 +188,7 @@ Irrigation_system(
     irr_act_button = Button(path = "unipi:PI-Garden,input,1"),
     irr_all_out_dg = 6,
     irr_fcst_min_dg = 5,
-    irr_flow_meter = Flow_meter(path = "unipi:PI-Water,input,4",q_per_rev = 1.0),
+    irr_flow_meter = Meter(effect = "-",i_read = "L",path = "unipi:PI-Water,input,4"),
     irr_flow_sensor = Input(path = "unipi:PI-Garden,input,4"),
     irr_time_base = 8,
     irr_water_supply = Output(

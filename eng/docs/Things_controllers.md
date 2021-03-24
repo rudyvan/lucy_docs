@@ -87,8 +87,7 @@ Things_controllers(items = {
             "PI-Garden":Raspi(hw_gws = ["unipi:8,14"],path = "ip:192.168.15.55"),
             "PI-Gate":Raspi(hw_gws = ["unipi:16,14"],path = "ip:192.168.15.121"),
             "PI-Pool":Raspi(hw_gws = ["unipi:16,14"],path = "ip:192.168.15.194"),
-            "PI-Soccer":Raspi(hw_gws = ["unipi:6,6"],path = "ip:192.168.15.78"),
-            "pool_energy":Modbus(path = "usb:PI-Pool,RS485,1,EASTRON_SDM630V2,Tot_kWh+Tot_W")})
+            "PI-Soccer":Raspi(hw_gws = ["unipi:6,6"],path = "ip:192.168.15.78")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage,o:Room,kw:contents,lp:0,o:Things_controllers>
 

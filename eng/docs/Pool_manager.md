@@ -23,6 +23,6 @@ This is the app for swimpool management
   | lights | ['Dimmer', 'Output', 'Light', 'Color_light', 'Dim_light', 'Motor'] | True | True | light decoration, lights, dimable lights or color lights | 
   | role_me | {tc} | False | - | role_me of 'Pool_manager', adds <pool> to the roles of the specified tc | 
   | sensors | ['Sensor'] | True | True | Sensors for Temperature, Humidity, Chloride, pH, etc.. | 
-  | usage_meters | ['Utility_meter', 'Flow_meter'] | True | True | utility usage of water, electricity and pool consumables | 
+  | usage_meters | *Meter | True | True | utility usage of water, electricity and pool consumables | 
 <!--e_tbl-->
 

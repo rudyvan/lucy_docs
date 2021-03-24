@@ -179,6 +179,15 @@
 <!--s_insert_{'file_n':'docs/Security.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
+<!--s_insert_{'file_n':'docs/Utilities.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
+<!--s_insert_{'file_n':'docs/Utilities.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
+<!--s_insert_{'file_n':'docs/Utilities.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
 <!--s_insert_{'file_n':'docs/Door.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
@@ -211,9 +220,6 @@
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Door.md','path+':'docs/','level':+1}-->
-<!--e_insert-->
-
-<!--s_insert_{'file_n':'docs/Utility.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Network_controller.md','path+':'docs/','level':+1}-->
@@ -311,6 +317,15 @@
 <!--s_insert_{'file_n':'docs/Door.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
+<!--s_insert_{'file_n':'docs/Virtual.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
+<!--s_insert_{'file_n':'docs/Virtual.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
+<!--s_insert_{'file_n':'docs/Things.md','path+':'docs/','level':+1}-->
+<!--e_insert-->
+
 <!--s_insert_{'file_n':'docs/Things.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
@@ -339,9 +354,6 @@
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Sonos.md','path+':'docs/','level':+1}-->
-<!--e_insert-->
-
-<!--s_insert_{'file_n':'docs/Things.md','path+':'docs/','level':+1}-->
 <!--e_insert-->
 
 <!--s_insert_{'file_n':'docs/Things.md','path+':'docs/','level':+1}-->

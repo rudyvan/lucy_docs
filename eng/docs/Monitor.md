@@ -33,9 +33,9 @@ In the 2nd example, the temperature of the climatisation electronics is monitore
 If something happens, proper notifications are issued.
 
 
-<!--s_insert_{"tree":["(dk:garden).*(o:Monitor)","(dk:garage_dressing).*(o:Monitor)"]}-->
+<!--s_insert_{"tree":["(dk:garden).*(o:Monitor)","(dk:boiler_room).*(o:Monitor)"]}-->
 
-from project.py tree:['(dk:garden).*(o:Monitor)', '(dk:garage_dressing).*(o:Monitor)']
+from project.py tree:['(dk:garden).*(o:Monitor)', '(dk:boiler_room).*(o:Monitor)']
 ```python3
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:5,o:Monitor>
 
@@ -86,7 +86,7 @@ Monitor(
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the temperature of the electronics in the garden toilet is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "ow:PI-Garden,284BF15E0700004F,DS18B20,,100"),
+                    path = "unipi:PI-Garden,ow,284BF15E0700004F,DS18B20,,100"),
             "°C_irr_pump":Sensor(
                     high = 65.0,
                     i_read = "°C",
@@ -99,7 +99,7 @@ Monitor(
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the irrigation pump temperature in the garage is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "ow:PI-Water,284FFC7306000039,DS18B20,,94"),
+                    path = "unipi:PI-Water,ow,284FFC7306000039,DS18B20,,94"),
             "°C_pool_case":Sensor(
                     high = 50.0,
                     i_read = "°C",
@@ -112,7 +112,7 @@ Monitor(
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the temperature of the electronics in the soccer door case is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "ow:PI-Pool,2811CE790B000008,DS18B20,,107"),
+                    path = "unipi:PI-Pool,ow,2811CE790B000008,DS18B20,,107"),
             "°C_soccer_case":Sensor(
                     high = 50.0,
                     i_read = "°C",
@@ -125,9 +125,9 @@ Monitor(
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the temperature of the electronics in the soccer door case is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "ow:PI-Soccer,,DS18B20,28D4747A0B000006,106")})
+                    path = "unipi:PI-Soccer,ow,28D4747A0B000006,DS18B20,,106")})
 
-# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garage_dressing,o:Room,kw:contents,lp:4,o:Monitor>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:boiler_room,o:Room,kw:contents,lp:2,o:Monitor>
 
 from lucy_app import *
 
@@ -171,7 +171,7 @@ Monitor(
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the climate box temperature in the garage is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "ow:PI-Climate,28CD3A7406000085,DS18B20,,95"),
+                    path = "unipi:PI-Climate,ow,28CD3A7406000085,DS18B20,,95"),
             "°C_case_clim_under":Sensor(
                     high = 40.0,
                     i_read = "°C",
@@ -184,7 +184,7 @@ Monitor(
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the climate box temperature in the garage is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "ow:PI-Climate,2818525F070000CA,DS18B20,,76"),
+                    path = "unipi:PI-Climate,ow,2818525F070000CA,DS18B20,,76"),
             "°C_case_test":Sensor(
                     high = 40.0,
                     i_read = "°C",
@@ -197,7 +197,7 @@ Monitor(
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the test box temperature in the garage is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "ow:PI-Test,289574D906000075,DS18B20,,44")})
+                    path = "unipi:PI-Test,ow,289574D906000075,DS18B20,,44")})
 
 ```
 

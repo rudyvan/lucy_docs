@@ -21,7 +21,7 @@ entity object - Apartment
   | occupants | list | True | - | list of occupants of the property | 
   | owners | list | True | - | list of owners of the property | 
   | rooms | *Place | - | True | rooms in the apartment | 
-  | utilities | *Utility | - | True | utilities in the apartment | 
+  | utilities | Utilities | - | True | utilities in the apartment | 
 <!--e_tbl_apartment-->
 
 <!--s_name_building-->
@@ -43,7 +43,7 @@ entity object - Building
   | managers | list | True | - | list of managers of the property | 
   | owners | list | True | - | list of owners of the property | 
   | private_entities | *Apartment | - | True | owner specific entities | 
-  | utilities | *Utility | - | True | utilities in the apartment | 
+  | utilities | Utilities | - | True | utilities in the apartment | 
 <!--e_tbl_building-->
 
 <!--s_name_business-->
@@ -84,7 +84,7 @@ entity object - House
   | occupants | list | True | - | list of occupants of the property | 
   | owners | list | True | - | list of owners of the property | 
   | places | *Place | - | True | rooms in the house and places outside such as the garden, the street, .. | 
-  | utilities | *Utility | - | True | utilities in the house | 
+  | utilities | Utilities | - | True | utilities in the house | 
 <!--e_tbl_house-->
 
 <!--s_name_site-->
@@ -105,6 +105,6 @@ entity object - Site
   | occupants | list | True | - | list of occupants of the property | 
   | owners | list | True | - | list of owners of the property | 
   | sites | *Place | - | True | places or rooms | 
-  | utilities | *Utility | - | True | utilities at the site | 
+  | utilities | Utilities | - | True | utilities at the site | 
 <!--e_tbl_site-->
 

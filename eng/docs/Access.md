@@ -666,6 +666,17 @@ Access_keys(
                             "iButton_out_garden":"exit_via_gate",
                             "iButton_out_rear_door":"exit_via_garage_rear_door_lockup",
                             "iButton_out_veranda":"exit_via_veranda_and_lockup"}),
+            "Rudy_remote_control":Access(
+                    member_of = ["persons"],
+                    path = "ow:PI-Security,007700000127255E,DS2401,owner",
+                    rights = {
+                            "iButton_in_rear_door":"entry_via_garage_rear_door_and_unlock",
+                            "iButton_in_soccer":"entry_via_soccer",
+                            "iButton_in_street":"entry_via_gate_and_unlock",
+                            "iButton_out_garage":"exit_via_garage_and_lockup",
+                            "iButton_out_garden":"exit_via_gate",
+                            "iButton_out_rear_door":"exit_via_garage_rear_door_lockup",
+                            "iButton_out_veranda":"exit_via_veranda_and_lockup"}),
             "Rudy_scooter":Access(
                     member_of = ["persons"],
                     path = "ow:PI-Security,00FA000019389F58,DS2401,owner",

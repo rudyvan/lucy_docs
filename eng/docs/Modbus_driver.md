@@ -54,12 +54,12 @@ devices={
 	{ "modbus_addr": 0x16, "name": "L3_VA", "description": "L3 Volt Amps (VA)", "type": "float", "th": "Sensor", "unit":"VA" },
 	
 	{ "modbus_addr": 0x34, "name": "Tot_W", "description": "Total System Power (W)", "type": "float", "th": "Sensor", "unit":"W" },
-	{ "modbus_addr": 0x38, "name": "Tot_VA", "description": "Total System Volt Amps (VA)", "type": "float", "th": "Sensor", "unit":"VA" },
-	{ "modbus_addr": 0x0156, "name": "Tot_kWh", "description": "Total Energy (kWh)", "type": "float", "th": "Sensor", "unit":"kWh" },
+	{ "modbus_addr": 0x38, "name": "Tot_VA", "description": "Total System Volt Amps (VA)", "type": "float", "th": "Meter", "unit":"VA" },
+	{ "modbus_addr": 0x0156, "name": "Tot_kWh", "description": "Total Energy (kWh)", "type": "float", "th": "Meter", "unit":"kWh", "cum": True },
 	{ "modbus_addr": 0x46, "name": "LineFrequency_Hz", "description": "Line frequency (Hz)", "type": "float", "th": "Sensor", "unit":"Hz" },
 	
-	{ "modbus_addr": 0x48, "name": "EnergyImported_kWh", "description": "Energy Imported Accumulated (kWh)", "type": "float", "th": "Sensor", "unit":"kWh" },
-	{ "modbus_addr": 0x4A, "name": "EnergyExported_kWh", "description": "Energy Exported Accumulated (kWh)", "type": "float", "th": "Sensor", "unit":"kWh" },
+	{ "modbus_addr": 0x48, "name": "EnergyImported_kWh", "description": "Energy Imported Accumulated (kWh)", "type": "float", "th": "Meter", "unit":"kWh", "cum": True },
+	{ "modbus_addr": 0x4A, "name": "EnergyExported_kWh", "description": "Energy Exported Accumulated (kWh)", "type": "float", "th": "Meter", "unit":"kWh", "cum": True },
 	
 	{ "modbus_addr": 0x54, "name": "N_MAX_A", "description": "Neutral Maximum Current (A)", "type": "float", "th": "Sensor", "unit":"A" },
 	{ "modbus_addr": 0x0108, "name": "L1_MAX_A", "description": "L1 Maximum Current (A)", "type": "float", "th": "Sensor", "unit":"A" },
@@ -98,8 +98,7 @@ Things_controllers(items = {
             "PI-Garden":Raspi(hw_gws = ["unipi:8,14"],path = "ip:192.168.15.55"),
             "PI-Gate":Raspi(hw_gws = ["unipi:16,14"],path = "ip:192.168.15.121"),
             "PI-Pool":Raspi(hw_gws = ["unipi:16,14"],path = "ip:192.168.15.194"),
-            "PI-Soccer":Raspi(hw_gws = ["unipi:6,6"],path = "ip:192.168.15.78"),
-            "pool_energy":Modbus(path = "usb:PI-Pool,RS485,1,EASTRON_SDM630V2,Tot_kWh+Tot_W")})
+            "PI-Soccer":Raspi(hw_gws = ["unipi:6,6"],path = "ip:192.168.15.78")})
 
 ```
 
