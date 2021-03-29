@@ -236,8 +236,8 @@ from app_data.conf:
 [PATH]
 
 paths_used={'_:PI-Climate': 'gas_heater^carbon_copy,gas_heater,hot_water_tank,%vent,pump^on_off_relay,pump,pool_pump',
-	 '_:PI-Energy': 'electricity^car_battery^occupancy',
-	 '_:PI-Pool': 'collected_water^tank_outflow,collected_water^irrigation,collected_water^rain_tank^occupancy',
+	 '_:PI-Energy': 'electricity^car_battery^occupancy,collected_water^tank_outflow,collected_water^irrigation',
+	 '_:PI-Pool': 'collected_water^rain_tank^occupancy',
 	 'btle:PI-Security,0117c58556ac,23a01af0232a45189c0e323fb773f5ef,1,1': 'car',
 	 'btle:PI-Security,0117c587fea6,23a01af0232a45189c0e323fb773f5ef,2,2': 'motor',
 	 'btle:PI-Security,0117c58b0b9b,23a01af0232a45189c0e323fb773f5ef,3,3': 'scooter',

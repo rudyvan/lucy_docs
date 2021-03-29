@@ -74,13 +74,13 @@ Utilities(
                                     effect = "-",
                                     i_read = "L",
                                     member_of = ["tank_outflow"],
-                                    path = "_:PI-Pool",
+                                    path = "_:PI-Energy",
                                     where2find = "pool_house"),
                             "pool_topup":Fake_meter(effect = "-",i_read = "L",member_of = ["tank_outflow"]),
                             "tank_outflow":Meter(
                                     effect = "+",
                                     i_read = "L",
-                                    path = "_:PI-Pool",
+                                    path = "_:PI-Energy",
                                     rate_fictive = {"00:00":1.0},
                                     where2find = "pool_house")},
                     scenes = ,
@@ -142,7 +142,7 @@ Utilities(
                                             "sensor":Sensor(i_read = "W",path = "modbus:car_energy,Tot_W")},
                                     path = "modbus:car_energy,Tot_kWh",
                                     place = "boiler_room",
-                                    where2find = "bord2"),
+                                    where2find = "bord4"),
                             "fluvius_day":Meter(
                                     effect = "+-",
                                     i_read = "kWh",
@@ -175,7 +175,7 @@ Utilities(
                                             "sensor":Sensor(i_read = "W",path = "modbus:pool_energy,Tot_W")},
                                     path = "modbus:pool_energy,Tot_kWh",
                                     place = "boiler_room",
-                                    where2find = "bord2"),
+                                    where2find = "bord4"),
                             "solar_power":Meter(
                                     effect = "+",
                                     i_read = "kWh",
