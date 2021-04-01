@@ -139,6 +139,8 @@ Utilities(
                                     effect = "-+",
                                     i_read = "kWh",
                                     method_things = {
+                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:car_energy,EnergyImported_kWh"),
+                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:car_energy,EnergyExported_kWh"),
                                             "sensor":Sensor(i_read = "W",path = "modbus:car_energy,Tot_W")},
                                     path = "modbus:car_energy,Tot_kWh",
                                     place = "boiler_room",
@@ -163,6 +165,8 @@ Utilities(
                                     effect = "+-",
                                     i_read = "kWh",
                                     method_things = {
+                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:main_energy,EnergyImported_kWh"),
+                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:main_energy,EnergyExported_kWh"),
                                             "sensor":Sensor(i_read = "W",path = "modbus:main_energy,Tot_W")},
                                     path = "modbus:main_energy,Tot_kWh",
                                     place = "garage_dressing",

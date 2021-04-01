@@ -1,5 +1,18 @@
 
 <!--s_sub_toc_toc-->
+# The sentient Home
+
+My dream always have been to live in a sentient home.  A sentient home symbolises the future of smart homes where the house will be an entirely intuitive environment 
+that manages external and internal necessities for residents.  A sentient home has smart devices and is totally connected to its residents through voice interaction, 
+wireless detection and identification of residents and visitors.   The home will automatically adjust in real-time, a spectrum of facilities that support individuals,
+their preferences and copes with efficient use of utilities such as energy and water in combination with weather patterns.   On a whole, these smart houses are totally automatic that the house routines on their own.
+Automatic applications controlled with artificial intelligence will cope with the day by day functions of the home efficiency and in a manner that accrues data so that machine learning can continue to 
+optimise all processes.
+
+To achieve this vision, a first step is to ensure a layer of home control that allows an universal use and control of things and a language to store preferences, and behaviour for these things.
+
+Enter the world of universal home control.
+
 
 # Universal Home Control
 

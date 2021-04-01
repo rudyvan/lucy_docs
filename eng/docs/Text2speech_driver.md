@@ -26,6 +26,7 @@ These wave files are placed in the subdirectory tts on the raspberry memory card
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
+  | role_me | {tc} | False | - | role_me of 'Notifier', adds <notifier> to the roles of the specified tc | 
   | speech_gender | str | False | - | Female or Male | 
   | speech_key1 | str | False | - | important to set right as it contains the credentials for getting an access token | 
   | speech_key2 | str | True | - | is currently not used, legacy | 

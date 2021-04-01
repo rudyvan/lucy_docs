@@ -333,6 +333,7 @@ Is the App to deliver all outgoing notifications to displays, buzzers, voice out
   | msg_dpls | str_list | True | - | things_controllers that will act as message displays, f.i. to be place next to the television | 
   | notifications | ['say_log', 'timers'] | True | - | extensive list of notifications, see [__Notifier__](Notifier.md) | 
   | role_me | {tc} | False | - | role_me of 'Notifier', adds <notifier> to the roles of the specified tc | 
+  | role_tts | {tc} | True | - | role_tts (role text to speech, serving wav file requests) of 'Notifier', adds <voice> to the roles of the specified tc | 
   | tts_port | int | False | - | port for the http tts file web services, choose not to interfere with other ports such as the hue emulation port | 
   | tts_request | str | False | - | accepted web requests, this string is a python3 format string and should contain {ip}, {port} and {wav_file} keyword | 
   | tts_tags | data_dict | - | - | tags that work like formatting in strings in python | 

@@ -91,7 +91,7 @@ from lucy_app import *
 Lights(my_assistant = True,room_lights = {
             "veranda_color":Color_light(
                     my_assistant = True,
-                    path = "vera:Vera_plus,veranda_color",
+                    path = "vera:Vera_plus,th,veranda_color",
                     usage = {"watts":12},
                     value_logic = {
                             "assign":{
@@ -231,7 +231,7 @@ Lights(my_assistant = True,room_lights = {
                                     "is_holiday":"0",
                                     "sunset-00:10":"35"}}),
             "christmas_tree":Light(
-                    path = "vera:Vera_plus,christmas_tree",
+                    path = "vera:Vera_plus,th,christmas_tree",
                     value_logic = {"assign":{"00:00":"1","is_armed":"0","is_holiday":"0","sunrise+00:15":"0","sunset-00:10":"1"}}),
             "floor_candle":Dim_light(
                     path = "hue:Hue_Bridge,floor_candle",
@@ -280,7 +280,7 @@ from lucy_app import *
 
 Lights(room_lights = {
             "bathroom_wall_light":Light(
-                    path = "vera:Vera_plus,bathroom_wall_light",
+                    path = "vera:Vera_plus,th,bathroom_wall_light",
                     usage = {"watts":2},
                     value_logic = {"assign":{"00:00":"1","17:00":"1","is_holiday":"0","is_room_secure":"0","sunrise":"0"}})})
 
@@ -289,9 +289,9 @@ Lights(room_lights = {
 from lucy_app import *
 
 Lights(my_assistant = True,room_lights = {
-            "{room}^main_light":Light(path = "vera:Vera_plus,office^main_light",value_logic = {"assign":{"is_room_secure":"0"}}),
+            "{room}^main_light":Light(path = "vera:Vera_plus,th,office^main_light",value_logic = {"assign":{"is_room_secure":"0"}}),
             "{room}^wall_light":Light(
-                    path = "vera:Vera_plus,office^wall_light",
+                    path = "vera:Vera_plus,th,office^wall_light",
                     value_logic = {"assign":{"00:00":"1","is_room_secure":"0","sunrise":"0","sunset":"1"}}),
             "{room}_candle":Dim_light(path = "hue:Hue_Bridge,office_candle",value_logic = {"assign":{"00:00":"50","sunrise":"0","sunset":"50"}})})
 
@@ -353,7 +353,7 @@ Notifier(
                             play = Effect(maker='self', condition='i_change', effect='make_same', taker='parent', delay=None, duration=None))}),
     do_say = Virtual(
             copy_things = {
-                    "twin_copy":Output(path = "zw:Vera_plus,v_switch,135,")},
+                    "twin_copy":Output(path = "vera:Vera_plus,zw,v_switch,135,")},
             notifications = {"inactive":Ifttt(txt='do_say=off', ceiling=None)},
             value_logic = {"assign":{"00:00":"False","09:15":"True","22:30":"False","is_armed":"False","is_holiday":"False"}}),
     msg_dpls = ["PI-Notify","PI-Notify2","PI-Notify3","PI-Notify4"],
@@ -386,28 +386,28 @@ Climate(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,2870835F0700003B,DS18B20,,53")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,2870835F0700003B,DS18B20,,53")},
                     path = "unipi:PI-Climate,relay,13"),
             "r19_south_front":Clim_SW(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,28CC0560070000C4,DS18B20,,66")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28CC0560070000C4,DS18B20,,66")},
                     path = "unipi:PI-Climate,relay,6"),
             "r20_north_rear":Clim_SW(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,28835A600700006F,DS18B20,,72")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28835A600700006F,DS18B20,,72")},
                     path = "unipi:PI-Climate,relay,17"),
             "r21_rear":Clim_SW(
                     i_make = ['warm'],
                     member_of = ["pump"],
                     method_things = {
-                            "C_fluid":Sensor(i_read = "°C",path = "ow:PI-Climate,286CCB5F070000CA,DS18B20,,47")},
+                            "C_fluid":Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,286CCB5F070000CA,DS18B20,,47")},
                     path = "unipi:PI-Climate,relay,7")},
     clim_sensors = [
-        Sensor(i_read = "°C",path = "ow:PI-Climate,28014BAF0400001D,DS18B20,,42"),
+        Sensor(i_read = "°C",path = "unipi:PI-Climate,ow,28014BAF0400001D,DS18B20,,42"),
         Sensor(i_read = "°C",path = "daikin:DK_Living,h_temp",th_grp = "daikin"),
         Sensor(i_read = "%H",path = "daikin:DK_Living,h_humid",th_grp = "daikin")],
     clim_targets = {"cold_sp":{"preset":"cold_preset"},"warm_sp":{"preset":"warm_preset_1"}},
@@ -415,10 +415,10 @@ Climate(
     room_is_priority = True,
     room_virtuals = {
             "{room}^clim_on":Virtual(copy_things = {
-                            "twin_copy":Output(path = "zw:Vera_plus,buttonset,146,Status4")}),
+                            "twin_copy":Output(path = "vera:Vera_plus,zw,buttonset,146,Status4")}),
             "{room}^clim_pref":Virtual_R(copy_things = {
-                            "twin_copy@-1":Output(path = "zw:Vera_plus,buttonset,171,Status7"),
-                            "twin_copy@1":Output(path = "zw:Vera_plus,buttonset,171,Status3")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1])})
+                            "twin_copy@-1":Output(path = "vera:Vera_plus,zw,buttonset,171,Status7"),
+                            "twin_copy@1":Output(path = "vera:Vera_plus,zw,buttonset,171,Status3")},descr_range = ["Economy","Standard","Comfort"],digital_range = [-1,0,1])})
 
 ```
 

@@ -549,7 +549,7 @@ Meter to register utility usage or flow
   | i_read | str | False | - | type of utility measured | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | method_things | ['fake_sensor', 'sensor'] | True | - | special methods of this thing, mostly realised through things | 
+  | method_things | ['fake_sensor', 'minus_meter', 'plus_meter', 'sensor'] | True | - | special methods of this thing, mostly realised through things | 
   | notifications | ['app_done', 'app_start', 'day>{val}', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'high>{val}', 'hour>{val}', 'minute>{val}', 'notify+', 'payload_no'] | True | - | the notifications for Meter, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | place | str | True | - | place/room where the meter can be found, must be one of the places/rooms or an parse error is given | 
@@ -590,8 +590,10 @@ Meter to register utility usage or flow
 
   | Method Thing | Type Thing | What it does? |
   | --- | --- | --- | 
-  | fake_sensor | *Fake_sensor | {'descr': 'virtual sensor associated with the meter, such as power for an electricity meter or temperature for heated water', 'short': 'fake_sensor'} | 
-  | sensor | *Sensor | {'descr': 'the sensor associated with the meter, such as power for an electricity meter or temperature for heated water', 'short': 'sensor'} | 
+  | fake_sensor | Fake_sensor | {'descr': 'virtual sensor associated with the meter, such as power for an electricity meter or temperature for heated water', 'short': 'fake_sensor'} | 
+  | minus_meter | Meter | {'descr': 'a sub meter registering all minus effects, such as an export electricity meter or an outbound liquid flow', 'short': 'plus_meter'} | 
+  | plus_meter | Meter | {'descr': 'a sub meter registering all plus effects, such as an import electricity meter or an inbound liquid flow', 'short': 'plus_meter'} | 
+  | sensor | Sensor | {'descr': 'the sensor associated with the meter, such as power for an electricity meter or temperature for heated water', 'short': 'sensor'} | 
 <!--e_tbl_wsm-->
 
 ## 'Alarm_detector' Thing
