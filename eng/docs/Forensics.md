@@ -39,6 +39,7 @@ Collects and reports cumulative data of all Things for a 24 hours period and ass
   | err_cum_reply | !!{:} replied for {:}?? with cumul {:} |  
   | err_cum_req | !!{:} wanted cumul {:}?? |  
   | err_cumul | !!Cumul internal error for <{:}> with {:} not in {:} |  
+  | err_forensic_sz | !!Forensics database <{:}> size={:}, reduced to {:} |  
   | err_item_cumul | !!{:} ?tc for cumul request |  
   | msg_cum_flip | Cumuls {:} |  
   | msg_cum_new_day_done | Cumul New Day resets of all tcs is completed |  

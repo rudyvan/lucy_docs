@@ -179,7 +179,7 @@ from lucy_app import *
 
 Irrigation_manager()
 
-# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:9,o:Irrigation_system>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:7,o:Irrigation_system>
 
 from lucy_app import *
 
@@ -199,9 +199,9 @@ Irrigation_system(
                             play = Effect(maker='self', condition='become_active', effect='make_inactive', taker='parent', delay=None, duration=None))},
             method_things = {
                     "activate_button":Button(active = 0,path = "unipi:PI-Garden,input,8"),
-                    "toggle_button":[Button(path = "unipi:PI-Water,input,1"),Button(path = "unipi:PI-Garden,input,2")]},
-            path = "unipi:PI-Water,relay,3",
-            value_logic = {"disable":['C_outdoor_wc<5', '°C_irr_pump>50'],"disable_delay":{"after":3600}}),
+                    "toggle_button":[Button(path = "unipi:PI-Garden,input,2")]},
+            path = "_:PI-Pool",
+            value_logic = {"disable":['C_outdoor_wc<5'],"disable_delay":{"after":3600}}),
     notifications = {
             "irr_cancelled":[
                 Mail(subject='Irrigation canceled! {app_txt}', to=None, cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
@@ -232,7 +232,7 @@ Irrigation_system(
     role_me = "PI-Garden",
     winter_months = [11,12,1,2,3])
 
-# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:8,o:Irrigation_points>
+# --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:6,o:Irrigation_points>
 
 from lucy_app import *
 
@@ -242,8 +242,8 @@ Irrigation_points(
             "irr2_for_veg_a_front":Irr(path = "unipi:PI-Garden,relay,3",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
             "irr3_for_veg_b_back":Irr(path = "unipi:PI-Garden,relay,2",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
             "irr4_for_veg_back":Irr(path = "unipi:PI-Garden,relay,1",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
-            "irr5_for_roses":Irr(path = "unipi:PI-Water,relay,2",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"}),
-            "irr6_for_flowers":Irr(path = "unipi:PI-Water,relay,1",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"})})
+            "irr5_for_roses":Irr(path = "_:PI-Pool",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"}),
+            "irr6_for_flowers":Irr(path = "_:PI-Pool",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"})})
 
 ```
 

@@ -41,34 +41,7 @@ from project.py tree:['(dk:garden).*(o:Monitor)', '(dk:boiler_room).*(o:Monitor)
 
 from lucy_app import *
 
-Monitor(
-    items = {
-            "pump_rain_water":Input(
-                    active = 0,
-                    duration = 15,
-                    notifications = {
-                            "active":[
-                                Mail(subject='!Rain Water Pump Level is very high', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the rain pump level is very, very high{tts_end}', ceiling=None, times=2, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
-                            "inactive":[
-                                Mail(subject='Rain Water Pump Level is normal again', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the rain pump level is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "unipi:PI-Gate,input,10"),
-            "pump_waste_water":Input(
-                    active = 0,
-                    duration = 15,
-                    notifications = {
-                            "active":[
-                                Mail(subject='!Waste Water Pump Level is very high', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the waste water pump level is very, very high{tts_end}', ceiling=None, times=2, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
-                            "inactive":[
-                                Mail(subject='Waste Water Pump Level is normal again', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the waste water level is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "unipi:PI-Gate,input,9"),
+Monitor(items = {
             "rear_door_movement":Input(
                     notifications = {
                             "active":[
@@ -87,19 +60,6 @@ Monitor(
                                 Say(txt='{tts_start} the temperature of the electronics in the garden toilet is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
                     path = "unipi:PI-Garden,ow,284BF15E0700004F,DS18B20,,100"),
-            "°C_irr_pump":Sensor(
-                    high = 65.0,
-                    i_read = "°C",
-                    notifications = {
-                            "high":[
-                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the irrigation pump in the garage gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
-                            "normal":[
-                                Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the irrigation pump temperature in the garage is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
-                    path = "unipi:PI-Water,ow,284FFC7306000039,DS18B20,,94"),
             "°C_pool_case":Sensor(
                     high = 50.0,
                     i_read = "°C",

@@ -69,6 +69,7 @@ err_cum_owner={"txt":"!!Cumul request failed, no tc for <{:}>", "descr":"","cat"
 msg_cum_self={"txt":"cum <{:}> i have myself", "descr":"","cat":"Forensics"}
 msg_cum_request={"txt":"cum <{:}> requested from {:}/{:}", "descr":"","cat":"Forensics"}
 msg_cum_reply={"txt":"cum <{:}> reply from {:}/{:}", "descr":"","cat":"Forensics"}
+err_forensic_sz={"txt":"!!Forensics database <{:}> size={:}, reduced to {:}", "descr":"","cat":"Forensics"}
 err_deco_args={"txt":"!!FATAL function args bad for <{:}> -> <{:}>", "descr":"","cat":"Prj_parser"}
 err_pi_missing={"txt":"!!FATAL {:} not in {:} defined", "descr":"","cat":"Prj_parser"}
 err_hw_gws={"txt":"!!hw_gws syntax : <{:}>, error:{:}", "descr":"","cat":"Prj_parser"}
@@ -439,6 +440,7 @@ err_mb_type={"txt":"!!Modbus {} is <{}> type but should be {}", "descr":"","cat"
 err_mb_bad={"txt":"!!Modbus {} does not access : {}", "descr":"","cat":"Modbus_driver"}
 err_mb_dev={"txt":"!!Modbus {} has {} not in {}", "descr":"","cat":"Modbus_driver"}
 err_mb_ns={"txt":"!!Modbus {} not yet supported", "descr":"","cat":"Modbus_driver"}
+err_storage_measure={"txt":"!!Utility Storage <{}>: either availability OR occupancy, yet: ", "descr":"","cat":"Utilities"}
 msg_docs_gen={"txt":"DOC_GEN:started", "descr":"","cat":"Prj_parser"}
 msg_docs_gen_new={"txt":"DOC_GEN:app files -> {:} docs new/updated", "descr":"","cat":"Prj_parser"}
 msg_docs_new_toc={"txt":"DOC_GEN:contents table = new", "descr":"","cat":"Prj_parser"}

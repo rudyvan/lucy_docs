@@ -77,6 +77,12 @@ Utilities(
                                     path = "_:PI-Energy",
                                     where2find = "pool_house"),
                             "pool_topup":Fake_meter(effect = "-",i_read = "L",member_of = ["tank_outflow"]),
+                            "rain_domestic_use":Meter(
+                                    effect = "-",
+                                    i_read = "L",
+                                    member_of = ["tank_outflow"],
+                                    path = "unipi:PI-RearDoor,input,11",
+                                    where2find = "garage"),
                             "tank_outflow":Meter(
                                     effect = "+",
                                     i_read = "L",
@@ -85,7 +91,8 @@ Utilities(
                                     where2find = "pool_house")},
                     scenes = ,
                     storage = {
-                            "rain_tank":Utility_storage(occupancy = Sensor(
+                            "rain_tank":Utility_storage(
+                                    availability = Sensor(
                                             high = 90,
                                             i_read = "%",
                                             low = 5,
@@ -96,7 +103,13 @@ Utilities(
                                                     "low":[
                                                         Mail(subject='Rain storage tank is empty {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                                         Say(txt='{tts_start}the rain storage tank is empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
-                                            path = "_:PI-Pool"),size = 10)},
+                                            path = "_:PI-Pool"),
+                                    fill_up = [
+                                        Output(path = "unipi:PI-RearDoor,relay,3"),
+                                        Output(path = "unipi:PI-RearDoor,relay,4"),
+                                        Output(path = "unipi:PI-RearDoor,relay,3"),
+                                        Output(path = "unipi:PI-RearDoor,relay,4")],
+                                    size = 13)},
                     topology = "pipe",
                     unit = {"L":0.001,"format":".XXX","m3":1}),
             "domestic_water":Utility(
@@ -127,6 +140,11 @@ Utilities(
                             "purchased_water":Meter(
                                     effect = "+",
                                     i_read = "L",
+                                    notifications = {
+                                            "sum_hour>=10.5":[
+                                                Say(txt='{tts_start} whoa, that was a lot of water consumed last hour{tts_end}', ceiling=None, times=1, override=None, volume=None)],
+                                            "sum_weekday[67]>=20":[
+                                                Say(txt='{tts_start} whoa, that was a lot of water consumed in the weekend day{tts_end}', ceiling=None, times=1, override=None, volume=None)]},
                                     path = "unipi:PI-Climate,input,5",
                                     place = "boiler_room",
                                     rate = {"00:00":3.11},
@@ -145,6 +163,16 @@ Utilities(
                                     path = "modbus:car_energy,Tot_kWh",
                                     place = "boiler_room",
                                     where2find = "bord4"),
+                            "external_connector":Meter(
+                                    effect = "-+",
+                                    i_read = "kWh",
+                                    method_things = {
+                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyImported_kWh"),
+                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyExported_kWh"),
+                                            "sensor":Sensor(i_read = "W",path = "modbus:generator,Tot_W")},
+                                    path = "modbus:generator,Tot_kWh",
+                                    place = "garden_houses",
+                                    where2find = "pool_house -> bord5"),
                             "fluvius_day":Meter(
                                     effect = "+-",
                                     i_read = "kWh",
@@ -220,7 +248,26 @@ Utilities(
                                     owned_by = "fluvius",
                                     path = "ean:PI-Climate,41448820048316734,6237,XXXXX.x,0")},
                     topology = "pipe",
-                    unit = {"conversion":{"m3":0.4078},"format":".XX","kwh":1.0})},
+                    unit = {"conversion":{"m3":0.4078},"format":".XX","kwh":1.0}),
+            "ground_water":Utility(
+                    description = "ground water, pumped up for filling the raintank or irrigation use",
+                    nodes = {
+                            "irrigation":Meter(
+                                    effect = "-",
+                                    i_read = "L",
+                                    member_of = ["pump_outflow"],
+                                    path = "_:PI-Pool",
+                                    where2find = "pool_house"),
+                            "pump_outflow":Meter(
+                                    effect = "+",
+                                    i_read = "L",
+                                    path = "unipi:PI-RearDoor,input,10",
+                                    rate_fictive = {"00:00":1.0},
+                                    where2find = "garage"),
+                            "rain_tank_topup":Fake_meter(effect = "-",i_read = "L",member_of = ["pump_outflow"])},
+                    scenes = ,
+                    topology = "pipe",
+                    unit = {"L":0.001,"format":".XXX","m3":1})},
     notifications = {
             "daily_cost":Mail(subject='Utility Report{app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
             "monthly_cost":Mail(subject='Monthly Utility Report{app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
@@ -251,7 +298,7 @@ Some beautiful products exist for measuring electricity and water/gas
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
-  | items | *Utility | - | True | dict of utility items | 
+  | items | *Utility | False | True | dict of utility items | 
   | notifications | ['daily_cost', 'monthly_cost', 'weekly_cost', 'yearly_cost'] | True | - | notifications, see [__Notifier__](Notifier.md) | 
   | role_me | {tc} | False | - | role_me of 'Utilities', adds <utilities> to the roles of the specified tc | 
 
@@ -263,6 +310,13 @@ Some beautiful products exist for measuring electricity and water/gas
   | monthly_cost | monthly cost reporting | 
   | weekly_cost | weekly cost reporting | 
   | yearly_cost | yearly cost reporting | 
+
+## List of [Errors/Warnings](Error_Warn.md) for  __Utilities__:
+
+  | Error/Warning ID | Error/Warning MSG | Occurring When? |
+  | --- | --- | --- | 
+  | err_mtr_attr | !!Meter <{}> has {:} not in {:} |  
+  | err_storage_measure | !!Utility Storage <{}>: either availability OR occupancy, yet: {:} |  
 <!--e_tbl_utilities-->
 
 
@@ -285,9 +339,9 @@ An utility description with meters, sensors, costs, scenes
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | nodes | ['Meter', 'Fake_meter'] | True | True | nodes in the utility topology where meters are placed to measure usage. To measure intensity in the nodes, use method_things attribute of the meter to add sensors | 
-  | scenes | dict | True | - | scenes that can be called in effect scenarios | 
+  | scenes | dict | True | True | scenes that can be called in effect scenarios | 
   | sensors | *Sensor | True | - | sensors measuring the utility intensity such as power (watts) for electricity or °C of heated water, preferably use sensors as method_things attached to the meters as they are embedded into the nodes concept | 
-  | storage | *Utility_storage | True | - | a tank or battery type storage for storage of utility | 
+  | storage | *Utility_storage | True | True | a tank or battery type storage for storage of utility | 
   | topology | valid_list | False | - | topology is either 'grid' (such as electricity) or 'pipes' (such as water) | 
   | unit | dict | False | - | by default it defines the unit for meters, but you can also specify the unit for the sensors, see the examples of what is possible | 
 <!--e_tbl_utility-->
@@ -307,10 +361,13 @@ An utility storage such as a battery or a water tank
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
+  | availability | *Sensor | True | - | availability of the storage in %, whereby 100% is empty and 0% is full.  Use either availability OR occupancy, use of both is not allowed | 
   | description | str | True | - | free text to identify your utility storage, will be used in reports and notifications | 
+  | drain_out | *Output | True | - | the storage will drain out when this thing is active | 
   | fav | str | True | - | is this a favorite element | 
+  | fill_up | *Output | True | - | the storage will fill up when this thing is active | 
   | icon | str | True | - | icon file for this element | 
-  | occupancy | *Sensor | False | - | occupancy of the storage in % | 
+  | occupancy | *Sensor | True | - | occupancy of the storage in %, whereby 0% is empty and full is 100%.  Use either occupancy OR availability, use of both is not allowed | 
   | size | float | False | - | size of the storage in the utility base unit | 
 <!--e_tbl_utility_storage-->
 
