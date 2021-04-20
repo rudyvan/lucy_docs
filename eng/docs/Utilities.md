@@ -159,7 +159,7 @@ Utilities(
                                     method_things = {
                                             "minus_meter":Meter(i_read = "kWh",path = "modbus:car_energy,EnergyImported_kWh"),
                                             "plus_meter":Meter(i_read = "kWh",path = "modbus:car_energy,EnergyExported_kWh"),
-                                            "sensor":Sensor(i_read = "W",path = "modbus:car_energy,Tot_W")},
+                                            "sensor":Sensor(i_read = "W",path = "modbus:car_energy,Tot_W",threshold = 20)},
                                     path = "modbus:car_energy,Tot_kWh",
                                     place = "boiler_room",
                                     where2find = "bord4"),
@@ -169,7 +169,7 @@ Utilities(
                                     method_things = {
                                             "minus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyImported_kWh"),
                                             "plus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyExported_kWh"),
-                                            "sensor":Sensor(i_read = "W",path = "modbus:generator,Tot_W")},
+                                            "sensor":Sensor(i_read = "W",path = "modbus:generator,Tot_W",threshold = 20)},
                                     path = "modbus:generator,Tot_kWh",
                                     place = "garden_houses",
                                     where2find = "pool_house -> bord5"),
@@ -195,7 +195,7 @@ Utilities(
                                     method_things = {
                                             "minus_meter":Meter(i_read = "kWh",path = "modbus:main_energy,EnergyImported_kWh"),
                                             "plus_meter":Meter(i_read = "kWh",path = "modbus:main_energy,EnergyExported_kWh"),
-                                            "sensor":Sensor(i_read = "W",path = "modbus:main_energy,Tot_W")},
+                                            "sensor":Sensor(i_read = "W",path = "modbus:main_energy,Tot_W",threshold = 20)},
                                     path = "modbus:main_energy,Tot_kWh",
                                     place = "garage_dressing",
                                     rate = {"+":{"weekday":{"12345":{"00:00":3.0,"07:00":4.0,"22:00":3.0},"67":{"00:00":3.0}}},"-":-0.5},
@@ -204,7 +204,7 @@ Utilities(
                                     effect = "-",
                                     i_read = "kWh",
                                     method_things = {
-                                            "sensor":Sensor(i_read = "W",path = "modbus:pool_energy,Tot_W")},
+                                            "sensor":Sensor(i_read = "W",path = "modbus:pool_energy,Tot_W",threshold = 20)},
                                     path = "modbus:pool_energy,Tot_kWh",
                                     place = "boiler_room",
                                     where2find = "bord4"),
@@ -212,7 +212,7 @@ Utilities(
                                     effect = "+",
                                     i_read = "kWh",
                                     method_things = {
-                                            "sensor":Sensor(i_read = "W",path = "modbus:solar_energy,Tot_W")},
+                                            "sensor":Sensor(i_read = "W",path = "modbus:solar_energy,Tot_W",threshold = 20)},
                                     path = "modbus:solar_energy,Tot_kWh",
                                     place = "boiler_room",
                                     rate = {"00:00":0.0},

@@ -515,7 +515,7 @@ Climate energy Dimmer, is a device that has a 0% to 100% setting and value can b
   | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button'] | False | - | special methods of this thing, mostly realised through things | 
   | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
-  | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
+  | threshold | float | False | - | the minimum % that an analog input must change before the value is considered changed | 
   | value_app | tuple:value_app_tuples | True | - | app logic to determine the payload based programming logic and input parameters | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
 
@@ -711,7 +711,7 @@ Climate Setpoint, Clim_SP is a climate device that has a (temperature) set-point
   | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
-  | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
+  | threshold | float | False | - | the minimum % that an analog input must change before the value is considered changed | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
 
 ## List of [Notifications](Notifier.md) for  __Clim_SP__:
@@ -782,7 +782,7 @@ Climate Dimmer, clim_DM is a climate device that has a 0% to 100% setting and va
   | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
-  | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
+  | threshold | float | False | - | the minimum % that an analog input must change before the value is considered changed | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
 
 ## List of [Notifications](Notifier.md) for  __Clim_DM__:

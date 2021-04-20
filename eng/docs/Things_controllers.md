@@ -94,8 +94,7 @@ from lucy_app import *
 
 Things_controllers(items = {
             "PI-RearDoor":Raspi(hw_gws = ["unipi:12,14"],path = "ip:192.168.15.94"),
-            "PI-Security":Raspi(hw_gws = ["unipi:16,14"],path = "ip:192.168.15.29"),
-            "PI-Water":Raspi(hw_gws = ["unipi:6,6"],path = "ip:192.168.15.33")})
+            "PI-Security":Raspi(hw_gws = ["unipi:16,14"],path = "ip:192.168.15.29")})
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:master_bed,o:Room,kw:contents,lp:1,o:Things_controllers>
 

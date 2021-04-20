@@ -113,6 +113,7 @@ time_irr_depressure=180 # time in seconds all irr channels are bleeding in the w
   | irr_fcst_min_dg | int | False | - | day low temp forecast, below this value, no irrigation | 
   | irr_flow_meter | *Meter | True | - | a irrigation water flow meter, measuring water consumption with a hall effect sensor | 
   | irr_flow_sensor | Input | True | - | a irrigation water flow sensor, a feedback to working or faulty irrigation because the script can check when water should or should not flow.  The check happens at the first watering point | 
+  | irr_sequential | bool | True | - | irrigate one point after another (the default) or all irrigation points in parallel | 
   | irr_time_base | int | False | - | time in minutes, the basis irrigation time used for rain decay adjustment, do not change | 
   | irr_water_supply | Output | True | True | the output(s) to switch the pump | 
   | irr_water_valve | Output | True | True | the output(s) to the main water valve(s) | 
@@ -188,8 +189,9 @@ Irrigation_system(
     irr_act_button = Button(path = "unipi:PI-Garden,input,1"),
     irr_all_out_dg = 6,
     irr_fcst_min_dg = 5,
-    irr_flow_meter = Meter(effect = "-",i_read = "L",path = "unipi:PI-Water,input,4"),
+    irr_flow_meter = Meter(effect = "-",i_read = "L",path = "_:PI-Pool"),
     irr_flow_sensor = Input(path = "unipi:PI-Garden,input,4"),
+    irr_sequential = False,
     irr_time_base = 8,
     irr_water_supply = Output(
             copy_things = {
@@ -242,8 +244,8 @@ Irrigation_points(
             "irr2_for_veg_a_front":Irr(path = "unipi:PI-Garden,relay,3",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
             "irr3_for_veg_b_back":Irr(path = "unipi:PI-Garden,relay,2",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
             "irr4_for_veg_back":Irr(path = "unipi:PI-Garden,relay,1",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
-            "irr5_for_roses":Irr(path = "_:PI-Pool",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"}),
-            "irr6_for_flowers":Irr(path = "_:PI-Pool",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"})})
+            "irr5_rev_clockwise":Irr(path = "_:PI-Pool",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"}),
+            "irr6_clockwise":Irr(path = "_:PI-Pool",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"})})
 
 ```
 

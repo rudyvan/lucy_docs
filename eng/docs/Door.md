@@ -457,7 +457,7 @@ Window covering
   | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
-  | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
+  | threshold | float | False | - | the minimum % that an analog input must change before the value is considered changed | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
   | where2find | str | True | - | where to find in the room or place | 
 

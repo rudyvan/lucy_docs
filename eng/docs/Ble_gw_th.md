@@ -26,7 +26,7 @@ is an internal generated thing for every beacon for every gateway to hold the rs
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
-  | threshold | float | False | - | the minimum value that an analog input must change before the value is considered changed | 
+  | threshold | float | False | - | the minimum % that an analog input must change before the value is considered changed | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
 
 ## List of [copy_things] for  __Ble_gw_th__:
