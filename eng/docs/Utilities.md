@@ -67,51 +67,6 @@ from lucy_app import *
 
 Utilities(
     items = {
-            "collected_water":Utility(
-                    description = "rain water, supplemented with ground water for the pool, irrigation and toilets",
-                    nodes = {
-                            "irrigation":Meter(
-                                    effect = "-",
-                                    i_read = "L",
-                                    member_of = ["tank_outflow"],
-                                    path = "_:PI-Energy",
-                                    where2find = "pool_house"),
-                            "pool_topup":Fake_meter(effect = "-",i_read = "L",member_of = ["tank_outflow"]),
-                            "rain_domestic_use":Meter(
-                                    effect = "-",
-                                    i_read = "L",
-                                    member_of = ["tank_outflow"],
-                                    path = "unipi:PI-RearDoor,input,11",
-                                    where2find = "garage"),
-                            "tank_outflow":Meter(
-                                    effect = "+",
-                                    i_read = "L",
-                                    path = "_:PI-Energy",
-                                    rate_fictive = {"00:00":1.0},
-                                    where2find = "pool_house")},
-                    scenes = ,
-                    storage = {
-                            "rain_tank":Utility_storage(
-                                    availability = Sensor(
-                                            high = 90,
-                                            i_read = "%",
-                                            low = 5,
-                                            notifications = {
-                                                    "high":[
-                                                        Mail(subject='Rain storage tank is full {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                        Say(txt='{tts_start} rain storage tank is full again{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
-                                                    "low":[
-                                                        Mail(subject='Rain storage tank is empty {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                        Say(txt='{tts_start}the rain storage tank is empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
-                                            path = "_:PI-Pool"),
-                                    fill_up = [
-                                        Output(path = "unipi:PI-RearDoor,relay,3"),
-                                        Output(path = "unipi:PI-RearDoor,relay,4"),
-                                        Output(path = "unipi:PI-RearDoor,relay,3"),
-                                        Output(path = "unipi:PI-RearDoor,relay,4")],
-                                    size = 13)},
-                    topology = "pipe",
-                    unit = {"L":0.001,"format":".XXX","m3":1}),
             "domestic_water":Utility(
                     nodes = {
                             "cold_water":Fake_meter(effect = "-",i_read = "L",member_of = ["purchased_water"]),
@@ -163,16 +118,6 @@ Utilities(
                                     path = "modbus:car_energy,Tot_kWh",
                                     place = "boiler_room",
                                     where2find = "bord4"),
-                            "external_connector":Meter(
-                                    effect = "-+",
-                                    i_read = "kWh",
-                                    method_things = {
-                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyImported_kWh"),
-                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyExported_kWh"),
-                                            "sensor":Sensor(i_read = "W",path = "modbus:generator,Tot_W",threshold = 20)},
-                                    path = "modbus:generator,Tot_kWh",
-                                    place = "garden_houses",
-                                    where2find = "pool_house -> bord5"),
                             "fluvius_day":Meter(
                                     effect = "+-",
                                     i_read = "kWh",
@@ -200,13 +145,26 @@ Utilities(
                                     place = "garage_dressing",
                                     rate = {"+":{"weekday":{"12345":{"00:00":3.0,"07:00":4.0,"22:00":3.0},"67":{"00:00":3.0}}},"-":-0.5},
                                     where2find = "bord1"),
-                            "pool_usage":Meter(
+                            "pool_house":Meter(
                                     effect = "-",
                                     i_read = "kWh",
                                     method_things = {
                                             "sensor":Sensor(i_read = "W",path = "modbus:pool_energy,Tot_W",threshold = 20)},
                                     path = "modbus:pool_energy,Tot_kWh",
                                     place = "boiler_room",
+                                    sub_nodes = {
+                                            "generator":Meter(
+                                                    effect = "-+",
+                                                    i_read = "kWh",
+                                                    method_things = {
+                                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyImported_kWh"),
+                                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyExported_kWh"),
+                                                            "sensor":Sensor(i_read = "W",path = "modbus:generator,Tot_W",threshold = 20)},
+                                                    path = "modbus:generator,Tot_kWh",
+                                                    place = "garden_houses",
+                                                    where2find = "pool_house -> bord5"),
+                                            "pool_usage":Fake_meter(effect = "-",i_read = "kWh",method_things = {
+                                                            "fake_sensor":Fake_sensor(i_read = "W")})},
                                     where2find = "bord4"),
                             "solar_power":Meter(
                                     effect = "+",
@@ -266,6 +224,87 @@ Utilities(
                                     where2find = "garage"),
                             "rain_tank_topup":Fake_meter(effect = "-",i_read = "L",member_of = ["pump_outflow"])},
                     scenes = ,
+                    topology = "pipe",
+                    unit = {"L":0.001,"format":".XXX","m3":1}),
+            "rain_water":Utility(
+                    description = "rain water, supplemented with ground water for the pool, irrigation and toilets",
+                    nodes = {
+                            "irrigation":Meter(
+                                    effect = "-",
+                                    i_read = "L",
+                                    member_of = ["tank_outflow"],
+                                    path = "_:PI-Energy",
+                                    where2find = "pool_house"),
+                            "pool_topup":Fake_meter(effect = "-",i_read = "L",member_of = ["tank_outflow"]),
+                            "rain_domestic_use":Meter(
+                                    effect = "-",
+                                    i_read = "L",
+                                    member_of = ["tank_outflow"],
+                                    path = "unipi:PI-RearDoor,input,11",
+                                    where2find = "garage"),
+                            "tank_outflow":Meter(
+                                    effect = "+",
+                                    i_read = "L",
+                                    path = "_:PI-Energy",
+                                    rate_fictive = {"00:00":1.0},
+                                    where2find = "pool_house")},
+                    scenes = ,
+                    storage = {
+                            "rain_tank":Utility_storage(
+                                    availability = Sensor(
+                                            high = 90,
+                                            i_read = "%",
+                                            low = 5,
+                                            notifications = {
+                                                    "high":[
+                                                        Mail(subject='Rain storage tank is full {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                                        Say(txt='{tts_start} rain storage tank is full again{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
+                                                    "low":[
+                                                        Mail(subject='Rain storage tank is empty {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                                        Say(txt='{tts_start}the rain storage tank is empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
+                                            path = "_:PI-Pool"),
+                                    fill_up = [
+                                        Output(path = "unipi:PI-RearDoor,relay,3"),
+                                        Output(path = "unipi:PI-RearDoor,relay,4"),
+                                        Output(path = "unipi:PI-RearDoor,relay,3"),
+                                        Output(path = "unipi:PI-RearDoor,relay,4")],
+                                    monitor = Sensor(
+                                            high = 70,
+                                            i_read = "%",
+                                            low = 5,
+                                            notifications = {
+                                                    "high":[
+                                                        Mail(subject='Rainlevel is {thing_state} high', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                                        Say(txt='{tts_start} Rainlevel is too high{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
+                                                    "low":[
+                                                        Mail(subject='Rainlevels are low {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)]},
+                                            path = "usb:PI-Soccer,serial_arduino,a,0",
+                                            scalar = {"in":[23,100],"out":[0,100]}),
+                                    size = 13)},
+                    topology = "pipe",
+                    unit = {"L":0.001,"format":".XXX","m3":1}),
+            "waste_water":Utility(
+                    description = "grey and black waste water destined for the communal purification plant",
+                    storage = {
+                            "waste_tank":Utility_storage(
+                                    availability = Sensor(
+                                            high = 90,
+                                            i_read = "%",
+                                            low = 5,
+                                            path = "_:PI-Pool"),
+                                    monitor = Sensor(
+                                            high = 70,
+                                            i_read = "%",
+                                            low = 5,
+                                            notifications = {
+                                                    "high":[
+                                                        Mail(subject='Waste water level is {thing_state} high', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                                        Say(txt='{tts_start} Waste water level is too high{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
+                                                    "low":[
+                                                        Mail(subject='Waste water levels are low {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)]},
+                                            path = "usb:PI-Soccer,serial_arduino,a,1",
+                                            scalar = {"in":[23,100],"out":[0,100]}),
+                                    size = 3)},
                     topology = "pipe",
                     unit = {"L":0.001,"format":".XXX","m3":1})},
     notifications = {
@@ -367,6 +406,7 @@ An utility storage such as a battery or a water tank
   | fav | str | True | - | is this a favorite element | 
   | fill_up | *Output | True | - | the storage will fill up when this thing is active | 
   | icon | str | True | - | icon file for this element | 
+  | monitor | *Sensor | True | - | level monitoring or reporting | 
   | occupancy | *Sensor | True | - | occupancy of the storage in %, whereby 0% is empty and full is 100%.  Use either occupancy OR availability, use of both is not allowed | 
   | size | float | False | - | size of the storage in the utility base unit | 
 <!--e_tbl_utility_storage-->

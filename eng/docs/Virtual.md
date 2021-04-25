@@ -366,6 +366,7 @@ Analog type Virtual
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
+  | scalar | data_dict | True | - | a function that maps a things value within a certain range to another range such as scalar={'in':[24,100], 'out':[0,100]} which returns 0 if the thing reads 24 | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum % that an analog input must change before the value is considered changed | 
@@ -553,6 +554,7 @@ Virtual sensor for the registration of calculated sensor values, for example the
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
+  | scalar | data_dict | True | - | a function that maps a things value within a certain range to another range such as scalar={'in':[24,100], 'out':[0,100]} which returns 0 if the thing reads 24 | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum % that an analog input must change before the value is considered changed | 

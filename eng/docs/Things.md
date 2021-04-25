@@ -216,6 +216,7 @@ Any temperature sensor
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'payload_no', 'positive'] | True | - | the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
+  | scalar | data_dict | True | - | a function that maps a things value within a certain range to another range such as scalar={'in':[24,100], 'out':[0,100]} which returns 0 if the thing reads 24 | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum % that an analog input must change before the value is considered changed | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
@@ -556,6 +557,7 @@ Meter to register utility usage or flow
   | rate | dict | True | - | rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays | 
   | rate_fictive | dict | True | - | fictive rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays.  An example is a fictive rate for hot domestic water, the cost of water and heating is already in other utilities, but calculating and printing the cost of heated water on itself can provide useful information. | 
   | short | str | False | - | free (preferably short) description for this thing | 
+  | sub_nodes | ['Meter', 'Fake_meter'] | True | True | sub_nodes in the utility topology where meters are placed after other meters | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum % that an analog input must change before the value is considered changed | 
   | value_logic | dict | False | - | logic to automatically determine the payload  based on time or other things | 
