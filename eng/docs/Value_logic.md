@@ -184,13 +184,15 @@ Climate_system(
                         Say(txt='{tts_start} the heating air removal process is stopped, heating works normal again{tts_end}', ceiling=None, times=1, override=None, volume=35)]}),
     clim_SW_periodic_on = Virtual(value_app = Makers_pertinence(check_freq_mins=5, not_used_hours=13, open_duration_mins=4, C_ok_diff=-0.001)),
     production = {
-            "CH_valve":Clim_energy_SW(
+            "CV_valve":Clim_energy_SW(
                     active = 0,
                     i_make = ['warm'],
                     method_things = {
-                            "is_on":Input(
+                            "check_state:10":Input(
+                                    duration = 0.5,
                                     notifications = {
                                             "active":Cal(txt='Central Heating Active', summary='', ceiling=None),
+                                            "check_fail":Mail(subject='Issue CV Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                             "inactive":Cal(txt='Central Heating Inactive', summary='', ceiling=None)},
                                     path = "unipi:PI-Climate,input,9")},
                     path = "unipi:PI-Climate,relay,1"),
@@ -198,9 +200,11 @@ Climate_system(
                     duration = 0,
                     i_make = ['warm'],
                     method_things = {
-                            "is_on":Input(
+                            "check_state:10":Input(
+                                    duration = 0.5,
                                     notifications = {
                                             "active":Cal(txt='Pool Heating Active', summary='', ceiling=None),
+                                            "check_fail":Mail(subject='Issue Pool Heating Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                             "inactive":Cal(txt='Pool Heating Inactive', summary='', ceiling=None)},
                                     path = "unipi:PI-Climate,input,10")},
                     path = "unipi:PI-Climate,relay,2"),
@@ -227,11 +231,11 @@ Climate_system(
             "pool_pump":Output(member_of = ["Pool_valve"],path = "_:PI-Climate"),
             "pump":Motor(
                     duration = 310,
-                    member_of = ["CH_valve"],
+                    member_of = ["CV_valve"],
                     method_things = {
                             "on_off_relay":Output(duration = 310,path = "_:PI-Climate")},
                     path = "_:PI-Climate",
-                    threshold = 1.0,
+                    threshold = 5.0,
                     value_app = Pump_speed_set(act_run_idle_hours=13, max_speed_active_makers=60, speed_act_run=50, speed_lowest=50))})
 
 ```

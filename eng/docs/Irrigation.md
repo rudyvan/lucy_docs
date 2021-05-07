@@ -189,7 +189,7 @@ Irrigation_system(
     irr_act_button = Button(path = "unipi:PI-Garden,input,1"),
     irr_all_out_dg = 6,
     irr_fcst_min_dg = 5,
-    irr_flow_meter = Meter(effect = "-",i_read = "L",path = "_:PI-Pool"),
+    irr_flow_meter = Meter(effect = "-",i_read = "L",path = "unipi:PI-Pool,input,2"),
     irr_flow_sensor = Input(path = "unipi:PI-Garden,input,4"),
     irr_sequential = False,
     irr_time_base = 8,
@@ -201,8 +201,15 @@ Irrigation_system(
                             play = Effect(maker='self', condition='become_active', effect='make_inactive', taker='parent', delay=None, duration=None))},
             method_things = {
                     "activate_button":Button(active = 0,path = "unipi:PI-Garden,input,8"),
+                    "check_state:10":Input(
+                            duration = 0.5,
+                            notifications = {
+                                    "active":Cal(txt='Irrigation Water On', summary='', ceiling=None),
+                                    "check_fail":Mail(subject='Issue IRR supply Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                    "inactive":Cal(txt='Irrigation Water Off', summary='', ceiling=None)},
+                            path = "unipi:PI-Pool,input,4"),
                     "toggle_button":[Button(path = "unipi:PI-Garden,input,2")]},
-            path = "_:PI-Pool",
+            path = "unipi:PI-Pool,relay,4",
             value_logic = {"disable":['C_outdoor_wc<5'],"disable_delay":{"after":3600}}),
     notifications = {
             "irr_cancelled":[
@@ -244,8 +251,28 @@ Irrigation_points(
             "irr2_for_veg_a_front":Irr(path = "unipi:PI-Garden,relay,3",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
             "irr3_for_veg_b_back":Irr(path = "unipi:PI-Garden,relay,2",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
             "irr4_for_veg_back":Irr(path = "unipi:PI-Garden,relay,1",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
-            "irr5_rev_clockwise":Irr(path = "_:PI-Pool",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"}),
-            "irr6_clockwise":Irr(path = "_:PI-Pool",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"})})
+            "irr5_rev_clockwise":Irr(
+                    method_things = {
+                            "check_state:10":Input(
+                                    active = 0,
+                                    duration = 0.5,
+                                    notifications = {
+                                            "check_fail":Mail(subject='Issue IRR rev Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},
+                                    path = "unipi:PI-Pool,input,6")},
+                    path = "unipi:PI-Pool,relay,1",
+                    time_run = 6,
+                    usage = {"Qty":8,"Unit":"L/min","type":"Water"}),
+            "irr6_clockwise":Irr(
+                    method_things = {
+                            "check_state:10":Input(
+                                    active = 0,
+                                    duration = 0.5,
+                                    notifications = {
+                                            "check_fail":Mail(subject='Issue IRR Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},
+                                    path = "unipi:PI-Pool,input,7")},
+                    path = "unipi:PI-Pool,relay,2",
+                    time_run = 6,
+                    usage = {"Qty":8,"Unit":"L/min","type":"Water"})})
 
 ```
 

@@ -32,7 +32,7 @@ Sonos has a broad range of speakers.
   | ip | str | False | - | ip in the format of xx.xx.xx.xx | 
   | ip_action | int | True | - | - | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'none', 'notify_binary+', 'payload_no'] | True | - | the notifications for pings, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'check_fail', 'check_ok', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'none', 'notify_binary+', 'payload_no'] | True | - | the notifications for pings, see [__Notifier__](Notifier.md) | 
   | override_only | bool | True | - | boolean if zone controller | 
   | ping | bool | True | - | if need to be ping | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
@@ -49,6 +49,8 @@ Sonos has a broad range of speakers.
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
+  | check_fail | the check_state thingsmethod fails after the set time and the input does not reflects the parent output | 
+  | check_ok | the check_state thingsmethod succeeds after the set time and the input reflects the parent output | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 

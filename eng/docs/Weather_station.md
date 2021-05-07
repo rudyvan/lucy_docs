@@ -202,7 +202,7 @@ Weather_station(
                         Say(txt='{tts_start} i love it when the sun is bright{tts_end}', ceiling='1/day', times=1, override=None, volume=None),
                         Say(txt='{tts_start} your solar panels are generating lots of energy with the sunshine outside{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
             path = "unipi:PI-Garden,ai,1",
-            threshold = 5),
+            threshold = 5.0),
     wind_speed = Wind_speed(
             edges_per_rev = 2,
             high_speed_factor = 3.013,

@@ -50,7 +50,7 @@ Door and Window methods are the same
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['access', 'beam2close', 'beam2open', 'beam_can_close', 'beam_can_open', 'cmd_close', 'cmd_close_ign', 'cmd_open', 'cmd_open_ign', 'is_opened', 'keep_closed', 'keep_opened', 'light_deco', 'light_green', 'light_night', 'light_not_closed', 'light_red', 'light_warn', 'lights_off_at_close', 'lights_off_at_open', 'lights_on_at_close', 'lights_on_at_open', 'pulse2close', 'pulse2open', 'ring_button', 'step2open_close', 'time_auto_close', 'time_check_close', 'time_check_open', 'time_open_max'] | False | - | special methods of this thing, mostly realised through things | 
   | my_assistant | bool | True | - | a flag if voice (alexa) can activate this thing | 
-  | notifications | ['active', 'app_done', 'app_start', 'conflict_oc', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'open_max', 'payload_no', 'ring', 'ring_away', 'trigger', 'trigger_no'] | True | - | door nty's, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'check_fail', 'check_ok', 'conflict_oc', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'open_max', 'payload_no', 'ring', 'ring_away', 'trigger', 'trigger_no'] | True | - | door nty's, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -64,6 +64,8 @@ Door and Window methods are the same
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
+  | check_fail | the check_state thingsmethod fails after the set time and the input does not reflects the parent output | 
+  | check_ok | the check_state thingsmethod succeeds after the set time and the input reflects the parent output | 
   | conflict_oc | error as door is registered to be open and closed at the same time | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
@@ -451,9 +453,9 @@ Window covering
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button'] | False | - | special methods of this thing, mostly realised through things | 
+  | method_things | ['activate_button', 'check_state', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button'] | False | - | special methods of this thing, mostly realised through things | 
   | my_assistant | bool | True | - | a flag if voice (alexa) can activate this thing | 
-  | notifications | ['active', 'app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'payload_no'] | True | - | the notifications for window covers, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'check_fail', 'check_ok', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'payload_no'] | True | - | the notifications for window covers, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -468,6 +470,8 @@ Window covering
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
+  | check_fail | the check_state thingsmethod fails after the set time and the input does not reflects the parent output | 
+  | check_ok | the check_state thingsmethod succeeds after the set time and the input reflects the parent output | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 
@@ -490,6 +494,7 @@ Window covering
   | Method Thing | Type Thing | What it does? |
   | --- | --- | --- | 
   | activate_button | ['Button'] | {'descr': 'activates the output if inactive', 'short': 'activate_button'} | 
+  | check_state | Input | {'descr': 'is the feedback input to ensure if the output is really active or not', 'short': 'check_state'} | 
   | de_activate_button | ['Button'] | {'descr': 'deactivates the output if active', 'short': 'de_activate_button'} | 
   | is_on | Input | {'descr': 'is the input to measure if the output is active or not', 'short': 'is_on'} | 
   | on_off_relay | ['Output', 'Light'] | {'descr': 'deactivates the output if active', 'short': 'de_activate_button'} | 
