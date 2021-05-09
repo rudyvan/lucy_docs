@@ -237,7 +237,7 @@ from app_data.conf:
 
 paths_used={'_:PI-Climate': 'gas_heater^carbon_copy,gas_heater,hot_water_tank,%vent,pump^on_off_relay,pump,pool_pump',
 	 '_:PI-Energy': 'electricity^car_battery^occupancy',
-	 '_:PI-Pool': 'waste_water^waste_tank^availability',
+	 '_:PI-Pool': 'irr_water_supply,waste_water^waste_tank^availability',
 	 'btle:PI-Security,0117c58556ac,23a01af0232a45189c0e323fb773f5ef,1,1': 'Audi_Car',
 	 'btle:PI-Security,0117c587fea6,23a01af0232a45189c0e323fb773f5ef,2,2': 'BMW_motor',
 	 'btle:PI-Security,0117c58b0b9b,23a01af0232a45189c0e323fb773f5ef,3,3': 'BMW_Scooter',
@@ -569,7 +569,7 @@ paths_used={'_:PI-Climate': 'gas_heater^carbon_copy,gas_heater,hot_water_tank,%v
 	 'unipi:PI-Pool,relay,1': 'irr5_rev_clockwise',
 	 'unipi:PI-Pool,relay,2': 'irr6_clockwise',
 	 'unipi:PI-Pool,relay,3': 'rain_water^rain_tanks_1_2^drain_out',
-	 'unipi:PI-Pool,relay,4': 'irr_water_supply',
+	 'unipi:PI-Pool,relay,4': 'irr_frost_valve',
 	 'unipi:PI-RearDoor,input,1': 'garage_light^is_on',
 	 'unipi:PI-RearDoor,input,10': 'ground_water^pump_outflow',
 	 'unipi:PI-RearDoor,input,11': 'rain_water^rain_domestic_use',

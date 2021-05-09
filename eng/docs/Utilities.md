@@ -279,14 +279,12 @@ Utilities(
                                             scalar = {"ign_bounds":True,"in":[10,85],"out":[0,100]}),
                                     drain_out = [Output(method_things = {
                                                         "check_state:10":Input(
-                                                                active = 0,
                                                                 notifications = {
                                                                         "active":Cal(txt='Rain Drain On', summary='', ceiling=None),
                                                                         "check_fail":Mail(subject='Issue Rain Drain Out Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                                                         "inactive":Cal(txt='Rain Drain Off', summary='', ceiling=None)},
                                                                 path = "unipi:PI-Pool,input,5")},path = "unipi:PI-Pool,relay,3"),Output(method_things = {
                                                         "check_state:10":Input(
-                                                                active = 0,
                                                                 notifications = {
                                                                         "active":Cal(txt='Rain Drain On', summary='', ceiling=None),
                                                                         "check_fail":Mail(subject='Issue Rain Drain Out Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),

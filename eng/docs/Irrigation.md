@@ -113,6 +113,7 @@ time_irr_depressure=180 # time in seconds all irr channels are bleeding in the w
   | irr_fcst_min_dg | int | False | - | day low temp forecast, below this value, no irrigation | 
   | irr_flow_meter | *Meter | True | - | a irrigation water flow meter, measuring water consumption with a hall effect sensor | 
   | irr_flow_sensor | Input | True | - | a irrigation water flow sensor, a feedback to working or faulty irrigation because the script can check when water should or should not flow.  The check happens at the first watering point | 
+  | irr_frost_valve | Output | True | True | the output(s) to the frost protection valve(s), this valve is closed (inactive) when frost conditions | 
   | irr_sequential | bool | True | - | irrigate one point after another (the default) or all irrigation points in parallel | 
   | irr_time_base | int | False | - | time in minutes, the basis irrigation time used for rain decay adjustment, do not change | 
   | irr_water_supply | Output | True | True | the output(s) to switch the pump | 
@@ -191,6 +192,7 @@ Irrigation_system(
     irr_fcst_min_dg = 5,
     irr_flow_meter = Meter(effect = "-",i_read = "L",path = "unipi:PI-Pool,input,2"),
     irr_flow_sensor = Input(path = "unipi:PI-Garden,input,4"),
+    irr_frost_valve = Output(path = "unipi:PI-Pool,relay,4"),
     irr_sequential = False,
     irr_time_base = 8,
     irr_water_supply = Output(
@@ -209,7 +211,7 @@ Irrigation_system(
                                     "inactive":Cal(txt='Irrigation Water Off', summary='', ceiling=None)},
                             path = "unipi:PI-Pool,input,4"),
                     "toggle_button":[Button(path = "unipi:PI-Garden,input,2")]},
-            path = "unipi:PI-Pool,relay,4",
+            path = "_:PI-Pool",
             value_logic = {"disable":['C_outdoor_wc<5'],"disable_delay":{"after":3600}}),
     notifications = {
             "irr_cancelled":[
@@ -254,7 +256,6 @@ Irrigation_points(
             "irr5_rev_clockwise":Irr(
                     method_things = {
                             "check_state:10":Input(
-                                    active = 0,
                                     duration = 0.5,
                                     notifications = {
                                             "check_fail":Mail(subject='Issue IRR rev Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},
@@ -265,7 +266,6 @@ Irrigation_points(
             "irr6_clockwise":Irr(
                     method_things = {
                             "check_state:10":Input(
-                                    active = 0,
                                     duration = 0.5,
                                     notifications = {
                                             "check_fail":Mail(subject='Issue IRR Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},
