@@ -359,12 +359,10 @@ Analog type Virtual
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
-  | high | float | True | - | - | 
   | i_read | str | True | - | the type of data that this sensor reads | 
   | icon | str | True | - | icon file for this element | 
-  | low | float | True | - | - | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'now>{cur_state}', 'payload_no', 'positive'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'inactive', 'negative', 'nothing_is', 'notify_analog+', 'payload_no', 'positive', 'when_is>{cur_state}'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | scalar | data_dict | True | - | a function that maps a things value within a certain range to another range such as scalar={'in':[24,100], 'out':[0,100]} which returns 0 if the thing reads 24.  It is currently only implemented on usb:arduino and unipi inputs. | 
   | short | str | False | - | free (preferably short) description for this thing | 
@@ -387,15 +385,13 @@ Analog type Virtual
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
   | freezing | temperature becomes below zero | 
-  | high | when payload reaches high | 
   | inactive | when payload is zero | 
-  | low | when payload reaches low | 
   | negative | when payload reaches negative, coming from a positive payload | 
-  | normal | when payload becomes lower than high or higher than low | 
+  | nothing_is | when payload does not encounter any active conditional notification when there were previously | 
   | notify_analog+ | extra notifications that apply to all analog type things | 
-  | now>{cur_state} | if the current meter level is > cur_state (or <, =) | 
   | payload_no | the requested payload is refused | 
   | positive | when payload reaches positive or zero coming from a negative payload | 
+  | when_is>{cur_state} | if the current value is > cur_state (or <, =) | 
 
 ## List of [copy_things] for  __Virtual_A__:
 
@@ -428,7 +424,7 @@ Range Virtual's do not just have a binary state such as ordinary virtuals but th
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['going_down', 'going_up', 'high', 'low', 'normal', 'val_'] | True | - | the notifications for range virtuals. val_ can be followed with the value of the virtual, see [__Notifier__](Notifier.md) | 
+  | notifications | ['going_down', 'going_up', 'high', 'low', 'normal', 'val_', 'when_is>{cur_state}'] | True | - | the notifications for range virtuals. val_ can be followed with the value of the virtual, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -444,6 +440,7 @@ Range Virtual's do not just have a binary state such as ordinary virtuals but th
   | low | when the payload reaches low | 
   | normal | when payload becomes lower than high or higher than low | 
   | val_ | when a specific value has been reached | 
+  | when_is>{cur_state} | if the current value is > cur_state (or <, =) | 
 
 ## List of [copy_things] for  __Virtual_R__:
 
@@ -480,7 +477,7 @@ Virtual meter for the registration of calculated meter values, for example the w
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['fake_sensor', 'sensor'] | True | - | special methods of this thing, mostly realised through things | 
-  | notifications | ['app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'notify+', 'payload_no', 'sum_day>{d}', 'sum_hour>{h}', 'sum_min>{m}', 'sum_month>{M}', 'sum_month[]>{M}', 'sum_now>{cur_state}', 'sum_week>{w}', 'sum_weekday[]>{d}', 'sum_year>{y}'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
+  | notifications | ['app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'notify+', 'payload_no', 'sum_day>{d}', 'sum_hour>{h}', 'sum_minute>{m}', 'sum_month>{M}', 'sum_month[]>{M}', 'sum_now>{cur_state}', 'sum_week>{w}', 'sum_weekday[]>{d}', 'sum_year>{y}'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | rate | dict | True | - | rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays | 
   | rate_fictive | dict | True | - | fictive rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays.  An example is a fictive rate for hot domestic water, the cost of water and heating is already in other utilities, but calculating and printing the cost of heated water on itself can provide useful information. | 
@@ -505,7 +502,7 @@ Virtual meter for the registration of calculated meter values, for example the w
   | payload_no | the requested payload is refused | 
   | sum_day>{d} | if the current day sum is above (>), below (<) or equal (=) to d | 
   | sum_hour>{h} | if the sum of the last hour ago is above (>), below (<) or equal (=) to h | 
-  | sum_min>{m} | if the sum of the last minute ago is above (>), below (<) or equal (=) to m | 
+  | sum_minute>{m} | if the sum of the last minute ago is above (>), below (<) or equal (=) to m | 
   | sum_month>{M} | if the current month sum is above (>), below (<) or equal (=) to M | 
   | sum_month[]>{M} | if the current month is in [..] and the sum is above (>), below (<) or equal (=) to M | 
   | sum_now>{cur_state} | if the current meter level is > cur_state | 
@@ -548,12 +545,10 @@ Virtual sensor for the registration of calculated sensor values, for example the
   | duration | float | False | - | duration of the output being active/ input must be active for duration before considered active | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
-  | high | float | True | - | - | 
   | i_read | str | False | - | the type of data that this meter stores | 
   | icon | str | True | - | icon file for this element | 
-  | low | float | True | - | - | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'now>{cur_state}', 'payload_no', 'positive'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'inactive', 'negative', 'nothing_is', 'notify_analog+', 'payload_no', 'positive', 'when_is>{cur_state}'] | True | - | similar for the notifications for Meters, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | scalar | data_dict | True | - | a function that maps a things value within a certain range to another range such as scalar={'in':[24,100], 'out':[0,100]} which returns 0 if the thing reads 24.  It is currently only implemented on usb:arduino and unipi inputs. | 
   | short | str | False | - | free (preferably short) description for this thing | 
@@ -576,15 +571,13 @@ Virtual sensor for the registration of calculated sensor values, for example the
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
   | freezing | temperature becomes below zero | 
-  | high | when payload reaches high | 
   | inactive | when payload is zero | 
-  | low | when payload reaches low | 
   | negative | when payload reaches negative, coming from a positive payload | 
-  | normal | when payload becomes lower than high or higher than low | 
+  | nothing_is | when payload does not encounter any active conditional notification when there were previously | 
   | notify_analog+ | extra notifications that apply to all analog type things | 
-  | now>{cur_state} | if the current meter level is > cur_state (or <, =) | 
   | payload_no | the requested payload is refused | 
   | positive | when payload reaches positive or zero coming from a negative payload | 
+  | when_is>{cur_state} | if the current value is > cur_state (or <, =) | 
 
 ## List of [copy_things] for  __Fake_sensor__:
 

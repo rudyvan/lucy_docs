@@ -317,7 +317,7 @@ We hope you enjoy discovering universal home control - Lucy
   | what_is | Description |
   | --- | --- |
   | [__copy_things__](docs/Properties.md) | additional settings about a thing, adding features and logic |
-  | [__effect_virtuals__](docs/Properties.md) | effects things can have on each others such as striking a value when another thing gets high or low |
+  | [__effect_virtuals__](docs/Properties.md) | effects things can have on each others such as striking a value when another thing gets active or inactive |
   | [__errors_warnings__](docs/Error_Warn.md) | A long list of messages, errors and warnings exist |
   | [__method_things__](docs/Properties.md) | additional settings about a thing, adding features and logic |
   | [__notifications__](docs/Notifier.md) | Notifications are messages triggered by an app or a thing and they are delivered through different channels |

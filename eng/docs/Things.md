@@ -214,12 +214,10 @@ Any temperature sensor
   | descr | str | False | - | free description field for this thing | 
   | effect_virtuals | ['Virtual', 'Virtual_A', 'Virtual_R'] | False | True | virtual things that are affected by, or can have an effect on, the value of the parent thing | 
   | fav | str | True | - | is this a favorite element | 
-  | high | float | True | - | - | 
   | i_read | str | False | - | the type of data that this sensor reads | 
   | icon | str | True | - | icon file for this element | 
-  | low | float | True | - | - | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high', 'inactive', 'low', 'negative', 'normal', 'notify_analog+', 'now>{cur_state}', 'payload_no', 'positive'] | True | - | the notifications for Sensors, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'inactive', 'negative', 'nothing_is', 'notify_analog+', 'payload_no', 'positive', 'when_is>{cur_state}'] | True | - | the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | scalar | data_dict | True | - | a function that maps a things value within a certain range to another range such as scalar={'in':[24,100], 'out':[0,100]} which returns 0 if the thing reads 24.  It is currently only implemented on usb:arduino and unipi inputs. | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -242,15 +240,13 @@ Any temperature sensor
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
   | freezing | temperature becomes below zero | 
-  | high | when payload reaches high | 
   | inactive | when payload is zero | 
-  | low | when payload reaches low | 
   | negative | when payload reaches negative, coming from a positive payload | 
-  | normal | when payload becomes lower than high or higher than low | 
+  | nothing_is | when payload does not encounter any active conditional notification when there were previously | 
   | notify_analog+ | extra notifications that apply to all analog type things | 
-  | now>{cur_state} | if the current meter level is > cur_state (or <, =) | 
   | payload_no | the requested payload is refused | 
   | positive | when payload reaches positive or zero coming from a negative payload | 
+  | when_is>{cur_state} | if the current value is > cur_state (or <, =) | 
 <!--e_tbl_s-->
 
 ## 'Environment Sensor' Thing
@@ -418,7 +414,7 @@ Wind speed meter device
   | low_speed_factor | float | False | - | low speed wind factor | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['wind_gust'] | False | - | special methods of this thing, mostly realised through things | 
-  | notifications | ['high_wind', 'wind_fresh_breeze', 'wind_hurricane', 'wind_moderate_breeze', 'wind_storm', 'wind_strong', 'wind_strong_breeze', 'wind_very_strong', 'wind_violent_storm'] | True | - | the notifications for Wind_speed, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high_wind', 'inactive', 'negative', 'nothing_is', 'notify_analog+', 'payload_no', 'positive', 'when_is>{cur_state}', 'wind_fresh_breeze', 'wind_hurricane', 'wind_moderate_breeze', 'wind_storm', 'wind_strong', 'wind_strong_breeze', 'wind_very_strong', 'wind_violent_storm'] | True | - | the notifications for Wind_speed, see [__Notifier__](Notifier.md) | 
   | path | str | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -428,7 +424,25 @@ Wind speed meter device
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
+  | active | when payload is non zero | 
+  | app_done | when a things_app completes | 
+  | app_start | when a things_app starts | 
+  | deicing | temperature becomes positive | 
+  | disable_off | when all of the disable conditions fail | 
+  | disable_on | when one of the disable conditions succeed | 
+  | enable_off | when one of the enable conditions fail | 
+  | enable_on | when all the enable conditions succeed | 
+  | freeze_off | all of the freeze conditions fail | 
+  | freeze_on | one of the freeze conditions succeed | 
+  | freezing | temperature becomes below zero | 
   | high_wind | wind 60 km/h | 
+  | inactive | when payload is zero | 
+  | negative | when payload reaches negative, coming from a positive payload | 
+  | nothing_is | when payload does not encounter any active conditional notification when there were previously | 
+  | notify_analog+ | extra notifications | 
+  | payload_no | the requested payload is refused | 
+  | positive | when payload reaches positive or zero coming from a negative payload | 
+  | when_is>{cur_state} | if the current value is > cur_state (or <, =) | 
   | wind_fresh_breeze | wind 38 km/h | 
   | wind_hurricane | wind > 120 km/h | 
   | wind_moderate_breeze | wind 28 km/h | 
@@ -465,7 +479,7 @@ Wind speed meter device
   | i_read | str | True | - | the type of data that this sensor reads | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | notifications | ['high_wind', 'wind_fresh_breeze', 'wind_hurricane', 'wind_moderate_breeze', 'wind_storm', 'wind_strong', 'wind_strong_breeze', 'wind_very_strong', 'wind_violent_storm'] | True | - | the notifications for Wind_speed, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'high_wind', 'inactive', 'negative', 'nothing_is', 'notify_analog+', 'payload_no', 'positive', 'when_is>{cur_state}', 'wind_fresh_breeze', 'wind_hurricane', 'wind_moderate_breeze', 'wind_storm', 'wind_strong', 'wind_strong_breeze', 'wind_very_strong', 'wind_violent_storm'] | True | - | the notifications for Wind_speed, see [__Notifier__](Notifier.md) | 
   | play | tuple:virtual_tuples | True | - | the effect definition for a virtual, is a named tuple Effect with 'actor', 'when', 'make', 'on' | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -476,7 +490,25 @@ Wind speed meter device
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
+  | active | when payload is non zero | 
+  | app_done | when a things_app completes | 
+  | app_start | when a things_app starts | 
+  | deicing | temperature becomes positive | 
+  | disable_off | when all of the disable conditions fail | 
+  | disable_on | when one of the disable conditions succeed | 
+  | enable_off | when one of the enable conditions fail | 
+  | enable_on | when all the enable conditions succeed | 
+  | freeze_off | all of the freeze conditions fail | 
+  | freeze_on | one of the freeze conditions succeed | 
+  | freezing | temperature becomes below zero | 
   | high_wind | wind 60 km/h | 
+  | inactive | when payload is zero | 
+  | negative | when payload reaches negative, coming from a positive payload | 
+  | nothing_is | when payload does not encounter any active conditional notification when there were previously | 
+  | notify_analog+ | extra notifications | 
+  | payload_no | the requested payload is refused | 
+  | positive | when payload reaches positive or zero coming from a negative payload | 
+  | when_is>{cur_state} | if the current value is > cur_state (or <, =) | 
   | wind_fresh_breeze | wind 38 km/h | 
   | wind_hurricane | wind > 120 km/h | 
   | wind_moderate_breeze | wind 28 km/h | 
@@ -514,7 +546,7 @@ Rain gauge meter device
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | mm_per_rev | float | False | - | mm rain per revolve | 
-  | notifications | ['rain_flooding', 'rain_lot', 'rain_nice', 'rain_tickle'] | True | - | the notifications for Rain_gauge, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'inactive', 'negative', 'nothing_is', 'notify_analog+', 'payload_no', 'positive', 'rain_flooding', 'rain_lot', 'rain_nice', 'rain_tickle', 'when_is>{cur_state}'] | True | - | the notifications for Rain_gauge, see [__Notifier__](Notifier.md) | 
   | path | str | False | - | path to the specific hardware element | 
   | short | str | False | - | free (preferably short) description for this thing | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -524,10 +556,28 @@ Rain gauge meter device
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
+  | active | when payload is non zero | 
+  | app_done | when a things_app completes | 
+  | app_start | when a things_app starts | 
+  | deicing | temperature becomes positive | 
+  | disable_off | when all of the disable conditions fail | 
+  | disable_on | when one of the disable conditions succeed | 
+  | enable_off | when one of the enable conditions fail | 
+  | enable_on | when all the enable conditions succeed | 
+  | freeze_off | all of the freeze conditions fail | 
+  | freeze_on | one of the freeze conditions succeed | 
+  | freezing | temperature becomes below zero | 
+  | inactive | when payload is zero | 
+  | negative | when payload reaches negative, coming from a positive payload | 
+  | nothing_is | when payload does not encounter any active conditional notification when there were previously | 
+  | notify_analog+ | extra notifications | 
+  | payload_no | the requested payload is refused | 
+  | positive | when payload reaches positive or zero coming from a negative payload | 
   | rain_flooding | > 10mm/m2 of rain | 
   | rain_lot | > 5mm/m2 of rain | 
   | rain_nice | > 2mm/m2 of rain | 
   | rain_tickle | > 1mm/m2 rain | 
+  | when_is>{cur_state} | if the current value is > cur_state (or <, =) | 
 
 ## List of [copy_things] for  __Rain_gauge__:
 
@@ -559,7 +609,7 @@ Meter to register utility usage or flow
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
   | method_things | ['fake_sensor', 'minus_meter', 'plus_meter', 'sensor'] | True | - | special methods of this thing, mostly realised through things | 
-  | notifications | ['app_done', 'app_start', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'notify+', 'payload_no', 'sum_day>{d}', 'sum_hour>{h}', 'sum_min>{m}', 'sum_month>{M}', 'sum_month[]>{M}', 'sum_now>{cur_state}', 'sum_week>{w}', 'sum_weekday[]>{d}', 'sum_year>{y}'] | True | - | the notifications for Meter, see [__Notifier__](Notifier.md) | 
+  | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'inactive', 'negative', 'nothing_is', 'notify_analog+', 'payload_no', 'positive', 'sum_day>{d}', 'sum_hour>{h}', 'sum_minute>{m}', 'sum_month>{M}', 'sum_month[]>{M}', 'sum_now>{cur_state}', 'sum_week>{w}', 'sum_weekday[]>{d}', 'sum_year>{y}', 'when_is>{cur_state}'] | True | - | the notifications for Meter, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | place | str | True | - | place/room where the meter can be found, must be one of the places/rooms or an parse error is given | 
   | rate | dict | True | - | rate per effect and per unit to determine utility usage cost, can be a dict specifying different rates during the day or for weekdays | 
@@ -575,25 +625,33 @@ Meter to register utility usage or flow
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
+  | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
+  | deicing | temperature becomes positive | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 
   | enable_on | when all the enable conditions succeed | 
   | freeze_off | all of the freeze conditions fail | 
   | freeze_on | one of the freeze conditions succeed | 
-  | notify+ | extra notifications | 
+  | freezing | temperature becomes below zero | 
+  | inactive | when payload is zero | 
+  | negative | when payload reaches negative, coming from a positive payload | 
+  | nothing_is | when payload does not encounter any active conditional notification when there were previously | 
+  | notify_analog+ | extra notifications | 
   | payload_no | the requested payload is refused | 
+  | positive | when payload reaches positive or zero coming from a negative payload | 
   | sum_day>{d} | if the current day sum is above (>), below (<) or equal (=) to d | 
   | sum_hour>{h} | if the sum of the last hour ago is above (>), below (<) or equal (=) to h | 
-  | sum_min>{m} | if the sum of the last minute ago is above (>), below (<) or equal (=) to m | 
+  | sum_minute>{m} | if the sum of the last minute ago is above (>), below (<) or equal (=) to m | 
   | sum_month>{M} | if the current month sum is above (>), below (<) or equal (=) to M | 
   | sum_month[]>{M} | if the current month is in [..] and the sum is above (>), below (<) or equal (=) to M | 
   | sum_now>{cur_state} | if the current meter level is > cur_state | 
   | sum_week>{w} | if the current week sum is above (>), below (<) or equal (=) to w | 
   | sum_weekday[]>{d} | if the current week day position (monday=1) in [] and that day sum is above (>), below (<) or equal (=) to d | 
   | sum_year>{y} | if the current year sum is above (>), below (<) or equal (=) to y | 
+  | when_is>{cur_state} | if the current value is > cur_state (or <, =) | 
 
 ## List of [copy_things] for  __Meter__:
 
@@ -932,12 +990,10 @@ notify_analog={
 	"freeze_off":"all of the freeze conditions fail",
 	"freeze_on":"one of the freeze conditions succeed",
 	"payload_no":"the requested payload is refused",
-	"high":"when payload reaches high",
-	"low":"when payload reaches low",
-	"normal":"when payload becomes lower than high or higher than low",
+	"nothing_is":"when payload does not encounter any active conditional notification when there were previously",
 	"active":"when payload is non zero",
 	"inactive":"when payload is zero",
-	"now>{cur_state}": "if the current meter level is > cur_state (or <, =)",
+	"when_is>{cur_state}": "if the current value is > cur_state (or <, =)",
 	"deicing":"temperature becomes positive",
 	"freezing":"temperature becomes below zero",
 	"positive":"when payload reaches positive or zero coming from a negative payload",

@@ -176,7 +176,7 @@ additional settings about a thing, adding features and logic
 <!--e_name_ef-->
 
 <!--s_descr_ef-->
-effects things can have on each others such as striking a value when another thing gets high or low
+effects things can have on each others such as striking a value when another thing gets active or inactive
 
 <!--e_descr_ef-->
 

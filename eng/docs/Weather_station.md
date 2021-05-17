@@ -130,9 +130,7 @@ from lucy_app import *
 
 Weather_station(
     C_outdoor = Sensor(
-            high = 27.0,
             i_read = "°C",
-            low = 5.0,
             notifications = {
                     "deicing":[
                         Mail(subject='It is dewing outside {app_txt}', to=None, cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
@@ -140,15 +138,15 @@ Weather_station(
                     "freezing":[
                         Mail(subject='Ice Temp Outside {app_txt}', to='{everyone}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                         Say(txt='{tts_start} temperature outside is at freezing level{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
-                    "high":[
-                        Mail(subject='it is HOT outside, more than {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                        Say(txt='{tts_start} it is very warm outside, the temperature is above 27 degrees{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
-                    "low":[
+                    "nothing_is":[
+                        Mail(subject='Happy! outside temp now {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                        Say(txt='{tts_start} temperature outside is not extreme any more{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
+                    "when_is<5.0":[
                         Mail(subject='it is COLD outside, below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                         Say(txt='{tts_start} it is cold outside, approaching freezing levels{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
-                    "normal":[
-                        Mail(subject='Happy! outside temp now {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                        Say(txt='{tts_start} temperature outside is not extreme any more{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
+                    "when_is>27.0":[
+                        Mail(subject='it is HOT outside, more than {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                        Say(txt='{tts_start} it is very warm outside, the temperature is above 27 degrees{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
             path = "unipi:PI-Gate,ow,28DAE37306000070,DS18B20,,99"),
     accu_weather_f = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/{loc_key}?apikey={api_key}&details=True&metric=True",
     accu_weather_http = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey={api_key}&q={lat},{long}",
@@ -193,10 +191,9 @@ Weather_station(
     role_me = "PI-Garden",
     soil_dry = Input(path = "unipi:PI-Garden,input,3"),
     sun_light = Sensor(
-            high = 95,
             i_read = "%L",
             notifications = {
-                    "high":[
+                    "when_is>95":[
                         Say(txt='{tts_start} it is a bright day outside, surely good for your mood{tts_end}', ceiling='1/day', times=1, override=None, volume=None),
                         Say(txt='{tts_start} what a nice and bright sunshine outside{tts_end}', ceiling='1/day', times=1, override=None, volume=None),
                         Say(txt='{tts_start} i love it when the sun is bright{tts_end}', ceiling='1/day', times=1, override=None, volume=None),
@@ -228,6 +225,8 @@ Weather_station(
                                     "wind_violent_storm":[
                                         Mail(subject='wind strength:  {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                         Say(txt='{tts_start} Attention! There is a violent storm outside{tts_end}', ceiling=None, times=2, override=True, volume=60)]})},
+            notifications = {
+                    "when_is>15":[Say(txt='{tts_start} wind is nice, just a breeze{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
             path = "unipi:PI-Garden,input,12"))
 
 ```

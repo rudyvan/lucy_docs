@@ -154,9 +154,11 @@ Then any latex to pdf transformer such as Texmaker can be used to produce a few 
   | err_i_make | !!Clim_XX <{:}> in {:} has i_make {:} ? {:} |  
   | err_ip_addr | !!IP addr invalid: {:} for {:} |  
   | err_logic_ths | !!Logic Error, {:} not in ths dictionary |  
+  | err_meter_pulse | !!{:} has no pulse_qty, {:}, ?? missing ean path type?? |  
   | err_msg_dpl | !!notifier definition for msg_dpls contains non rasp :<{:}> |  
   | err_need_ones | !!prj_parser, missing {:} |  
   | err_no_owner | !!{:} need {:} but no owner defined |  
+  | err_nty_cond | !!System Error in Conditional Notification: {:} |  
   | err_nty_drv | !!Notifications {:} exist, but {:} not |  
   | err_opt_mult | !!prj_parser, {:} only one allowed |  
   | err_ow_tpe | !!{:} ow thing type <{:}> not implemented |  
@@ -184,6 +186,8 @@ Then any latex to pdf transformer such as Texmaker can be used to produce a few 
   | err_role_me | !!Parsing {:}, {:}, ?? tc name: {:} |  
   | err_room_name | !!Parsing {:}, room {:} not defined |  
   | err_say_make | !!Cannot make Say-{} with file: {}  |  
+  | err_scalar_format | !!Scalar Format <{}> scalar={} |  
+  | err_scalar_range | !!Scalar Out of Bounds <{}> with {} and scalar={} |  
   | err_sensor_unknown | !!Sensor {:} unknown |  
   | err_short_name | !!Concept: short <{:}> is multiple {:}, {:} |  
   | err_sun_sr | !!Sun Set/Rise, invalid Site_setting: <{:}> |  

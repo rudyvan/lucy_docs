@@ -48,42 +48,39 @@ Monitor(items = {
                                 Mail(subject='Movement at the rear door', to=None, cams=['cam_alpha_rear_door'], cam_groups=None, passes=2, body_file='', files2mail=None, ceiling=None)]},
                     path = "unipi:PI-RearDoor,input,4"),
             "°C_garden_toilet":Sensor(
-                    high = 50.0,
                     i_read = "°C",
                     notifications = {
-                            "high":[
-                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the electronics in the garden toilet gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
-                            "normal":[
+                            "nothing_is":[
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the temperature of the electronics in the garden toilet is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
+                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
+                            "when_is>40.0":[
+                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                Say(txt='{tts_start} the electronics in the garden toilet gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
                     path = "unipi:PI-Garden,ow,284BF15E0700004F,DS18B20,,100"),
             "°C_pool_case":Sensor(
-                    high = 50.0,
                     i_read = "°C",
                     notifications = {
-                            "high":[
-                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the electronics in the soccer door case gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
-                            "normal":[
+                            "nothing_is":[
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the temperature of the electronics in the soccer door case is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
+                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
+                            "when_is>40.0":[
+                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                Say(txt='{tts_start} the electronics in the soccer door case gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
                     path = "unipi:PI-Pool,ow,2811CE790B000008,DS18B20,,107"),
             "°C_soccer_case":Sensor(
-                    high = 50.0,
                     i_read = "°C",
                     notifications = {
-                            "high":[
-                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the electronics in the soccer door case gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
-                            "normal":[
+                            "nothing_is":[
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the temperature of the electronics in the soccer door case is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
+                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
+                            "when_is>40.0":[
+                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                Say(txt='{tts_start} the electronics in the soccer door case gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
                     path = "unipi:PI-Soccer,ow,28D4747A0B000006,DS18B20,,106")})
 
@@ -120,42 +117,39 @@ Monitor(
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
                     path = "unipi:PI-Climate,input,2"),
             "°C_case_clim_top":Sensor(
-                    high = 40.0,
                     i_read = "°C",
                     notifications = {
-                            "high":[
-                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the climate box in the garage gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
-                            "normal":[
+                            "nothing_is":[
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the climate box temperature in the garage is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
+                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
+                            "when_is>40.0":[
+                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                Say(txt='{tts_start} the climate box in the garage gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
                     path = "unipi:PI-Climate,ow,28CD3A7406000085,DS18B20,,95"),
             "°C_case_clim_under":Sensor(
-                    high = 40.0,
                     i_read = "°C",
                     notifications = {
-                            "high":[
-                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the climate box in the garage gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
-                            "normal":[
+                            "nothing_is":[
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the climate box temperature in the garage is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
+                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
+                            "when_is>40.0":[
+                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                Say(txt='{tts_start} the climate box in the garage gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
                     path = "unipi:PI-Climate,ow,2818525F070000CA,DS18B20,,76"),
             "°C_case_test":Sensor(
-                    high = 40.0,
                     i_read = "°C",
                     notifications = {
-                            "high":[
-                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                Say(txt='{tts_start} the test box in the garage gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
-                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
-                            "normal":[
+                            "nothing_is":[
                                 Mail(subject='Happy! temp {thing} is below {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                 Say(txt='{tts_start} the test box temperature in the garage is normal again{tts_end}', ceiling=None, times=1, override=None, volume=None),
+                                Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)],
+                            "when_is>40.0":[
+                                Mail(subject='Warning! temp {thing} is above {thing_state}°C', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                Say(txt='{tts_start} the test box in the garage gets too hot inside{tts_end}', ceiling=None, times=1, override=None, volume=None),
                                 Sms(to='{everyone}', txt='{site}-{default}/{nty_id}', override=None, ceiling=None)]},
                     path = "unipi:PI-Energy,ow,289574D906000075,DS18B20,,44")})
 

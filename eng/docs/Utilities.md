@@ -96,10 +96,13 @@ Utilities(
                                     effect = "+",
                                     i_read = "L",
                                     notifications = {
-                                            "sum_hour>10.5":[
+                                            "sum_day>10000":[
+                                                Mail(subject='Domestic Water Consumption {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)],
+                                            "sum_hour>1000":[
                                                 Say(txt='{tts_start} whoa, that was a lot of water consumed last hour{tts_end}', ceiling=None, times=1, override=None, volume=None)],
-                                            "sum_weekday[67]>20":[
-                                                Say(txt='{tts_start} whoa, that was a lot of water consumed in the weekend day{tts_end}', ceiling=None, times=1, override=None, volume=None)]},
+                                            "sum_weekday[67]>2000":[
+                                                Say(txt='{tts_start} whoa, that was a lot of water consumed in a weekend day{tts_end}', ceiling=None, times=1, override=None, volume=None),
+                                                Mail(subject='Domestic Water Consumption {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)]},
                                     path = "unipi:PI-Climate,input,5",
                                     place = "boiler_room",
                                     rate = {"00:00":3.11},
@@ -178,15 +181,13 @@ Utilities(
                     scenes = ,
                     storage = {
                             "car_battery":Utility_storage(occupancy = Sensor(
-                                            high = 90,
                                             i_read = "%",
-                                            low = 15,
                                             notifications = {
-                                                    "high":[
+                                                    "when_is<15":[
+                                                        Mail(subject='Car battery is empty {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)],
+                                                    "when_is>90":[
                                                         Mail(subject='Car is {thing_state} charged', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                        Say(txt='{tts_start} Car is fully charged{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
-                                                    "low":[
-                                                        Mail(subject='Car battery is empty {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)]},
+                                                        Say(txt='{tts_start} Car is fully charged{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
                                             path = "_:PI-Energy"),size = 75)},
                     topology = "grid",
                     unit = {"MWh":1000000.0,"Wh":0.001,"format":".XX","kWh":1.0}),
@@ -251,31 +252,27 @@ Utilities(
                     scenes = ,
                     storage = {
                             "rain_tank_3":Utility_storage(availability = Sensor(
-                                            high = 90,
                                             i_read = "%",
-                                            low = 5,
                                             notifications = {
-                                                    "high":[
-                                                        Mail(subject='Rain storage tank 3 is empty: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                        Say(txt='{tts_start}the rain storage tank 3 is empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
-                                                    "low":[
+                                                    "when_is<5":[
                                                         Mail(subject='Rain storage tank three is full: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                        Say(txt='{tts_start} rain storage tank three is full again{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
-                                            path = "unipi:PI-Pool,ai,1",
+                                                        Say(txt='{tts_start} rain storage tank three is full again{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
+                                                    "when_is>90":[
+                                                        Mail(subject='Rain storage tank 3 is empty: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                                        Say(txt='{tts_start}the rain storage tank 3 is empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
+                                            path = "unipi:PI-Pool,ai,2",
                                             scalar = {"ign_bounds":True,"in":[10,85],"out":[0,100]}),size = 3),
                             "rain_tanks_1_2":Utility_storage(
                                     availability = Sensor(
-                                            high = 90,
                                             i_read = "%",
-                                            low = 5,
                                             notifications = {
-                                                    "high":[
-                                                        Mail(subject='Rain storage tanks 1 and 2 are empty: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                        Say(txt='{tts_start}the rain storage tanks one and two are empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
-                                                    "low":[
+                                                    "when_is<5":[
                                                         Mail(subject='Rain storage tanks 1 and 2 are full: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                        Say(txt='{tts_start}the rain storage tanks one and two are full again{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
-                                            path = "unipi:PI-Pool,ai,0",
+                                                        Say(txt='{tts_start}the rain storage tanks one and two are full again{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
+                                                    "when_is>90":[
+                                                        Mail(subject='Rain storage tanks 1 and 2 are empty: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                                        Say(txt='{tts_start}the rain storage tanks one and two are empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
+                                            path = "unipi:PI-Pool,ai,1",
                                             scalar = {"ign_bounds":True,"in":[10,85],"out":[0,100]}),
                                     drain_out = [Output(method_things = {
                                                         "check_state:10":Input(
@@ -296,18 +293,16 @@ Utilities(
                                         Output(path = "unipi:PI-RearDoor,relay,3"),
                                         Output(path = "unipi:PI-RearDoor,relay,4")],
                                     monitor = Sensor(
-                                            high = 70,
                                             i_read = "%",
-                                            low = 5,
                                             notifications = {
-                                                    "high":[
-                                                        Mail(subject='Rain tanks are overflowing: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                        Say(txt='{tts_start}the rain tanks are full {tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
-                                                    "low":[
+                                                    "when_is<5":[
                                                         Mail(subject='Rain tanks are empty: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                        Say(txt='{tts_start}the rain tanks are empty{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
+                                                        Say(txt='{tts_start}the rain tanks are empty{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
+                                                    "when_is>70":[
+                                                        Mail(subject='Rain tanks are overflowing: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                                        Say(txt='{tts_start}the rain tanks are full {tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
                                             path = "usb:PI-Soccer,serial_arduino,a,0",
-                                            scalar = {"ign_bounds":True,"in":[20,100],"out":[0,100]}),
+                                            scalar = {"ign_bounds":True,"in":[14,100],"out":[0,100]}),
                                     size = 10)},
                     topology = "pipe",
                     unit = {"L":0.001,"format":".XXX","m3":1}),
@@ -315,23 +310,15 @@ Utilities(
                     description = "grey and black waste water destined for the communal purification plant",
                     storage = {
                             "waste_tank":Utility_storage(
-                                    availability = Sensor(
-                                            high = 90,
-                                            i_read = "%",
-                                            low = 5,
-                                            path = "_:PI-Pool"),
+                                    availability = Sensor(i_read = "%",path = "_:PI-Pool"),
                                     monitor = Sensor(
-                                            high = 70,
                                             i_read = "%",
-                                            low = 5,
                                             notifications = {
-                                                    "high":[
-                                                        Mail(subject='Waste water level is high: {thing_state} ', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                        Say(txt='{tts_start} Waste water level is too high{tts_end}', ceiling='1/day', times=1, override=None, volume=None)],
-                                                    "low":[
-                                                        Mail(subject='Waste water levels are low: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)]},
+                                                    "when_is>90":[
+                                                        Mail(subject='Waste water level is high: {thing_state}, check the pump', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
+                                                        Say(txt='{tts_start} Waste water level is too high, check the pump{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
                                             path = "usb:PI-Soccer,serial_arduino,a,1",
-                                            scalar = {"ign_bounds":True,"in":[20,100],"out":[0,100]}),
+                                            scalar = {"ign_bounds":True,"in":[14,100],"out":[0,100]}),
                                     size = 3)},
                     topology = "pipe",
                     unit = {"L":0.001,"format":".XXX","m3":1})},

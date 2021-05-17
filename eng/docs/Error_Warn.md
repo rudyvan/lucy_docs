@@ -112,6 +112,8 @@ err_path_gw={"txt":"!!gateway? <{}>, available = <{}>", "descr":"","cat":"Prj_pa
 msg_path_occupied={"txt":"path <{:}> is now occupied by a thing and removed from paths_free list", "descr":"","cat":"Prj_parser"}
 msg_path_new={"txt":"New path found : <{:}>, paths_free is updated", "descr":"","cat":"Prj_parser"}
 err_pulse_not={"txt":"!!things_sync cannot cmd=pulse for {:}", "descr":"","cat":"Prj_parser"}
+err_meter_pulse={"txt":"!!{:} has no pulse_qty, {:}, ?? missing ean path type??", "descr":"","cat":"Prj_parser"}
+err_nty_cond={"txt":"!!System Error in Conditional Notification: {:}", "descr":"","cat":"Prj_parser"}
 err_ip_addr={"txt":"!!IP addr invalid: {:} for {:}", "descr":"","cat":"Prj_parser"}
 err_currency={"txt":"!!Currency <{:}> should be like '€&euro;', 1 to 3 characters followed by that HTML currency symbol", "descr":"","cat":"Prj_parser"}
 err_degrees={"txt":"!!Degrees <{:}> should be °C or °F", "descr":"","cat":"Prj_parser"}
@@ -130,6 +132,8 @@ err_feeder_sec={"txt":"!!Feeder {:} and Security {:} <> ??", "descr":"","cat":"P
 err_usage_dict={"txt":"!!Things_app thing usage {:} is missing Qty or Unit", "descr":"","cat":"Prj_parser"}
 err_duplicate={"txt":"!!Duplicate <{:}>, name <{:}>", "descr":"Twice the same object and name is only allowed for sensors","cat":"Prj_parser"}
 err_say_make={"txt":"!!Cannot make Say-{} with file: {} ", "descr":"","cat":"Prj_parser"}
+err_scalar_format={"txt":"!!Scalar Format <{}> scalar={}", "descr":"","cat":"Prj_parser"}
+err_scalar_range={"txt":"!!Scalar Out of Bounds <{}> with {} and scalar={}", "descr":"","cat":"Prj_parser"}
 err_render_do={"txt":"!!Error in rendering table_do in <{:}> : {:} {:} {:}", "descr":"","cat":"Things_additions"}
 err_render_report={"txt":"!!render name {:} not in [REPORT] section of app_obj.conf, called from {:}", "descr":"","cat":"Things_additions"}
 err_render_gen_prg={"txt":"!!render {:}, generator {:} is not defined in dir() : {:}", "descr":"","cat":"Things_additions"}
@@ -440,7 +444,8 @@ err_mb_type={"txt":"!!Modbus {} is <{}> type but should be {}", "descr":"","cat"
 err_mb_bad={"txt":"!!Modbus {} does not access : {}", "descr":"","cat":"Modbus_driver"}
 err_mb_dev={"txt":"!!Modbus {} has {} not in {}", "descr":"","cat":"Modbus_driver"}
 err_mb_ns={"txt":"!!Modbus {} not yet supported", "descr":"","cat":"Modbus_driver"}
-err_storage_measure={"txt":"!!Utility Storage <{}>: either availability OR occupancy, yet: ", "descr":"","cat":"Utilities"}
+err_storage_measure={"txt":"!!Utility Storage <{}>: either availability OR occupancy, yet: {:}", "descr":"","cat":"Utilities"}
+err_mtr_attr={"txt":"!!Meter <{}> has {:} not in {:}", "descr":"","cat":"Utilities"}
 msg_docs_gen={"txt":"DOC_GEN:started", "descr":"","cat":"Prj_parser"}
 msg_docs_gen_new={"txt":"DOC_GEN:app files -> {:} docs new/updated", "descr":"","cat":"Prj_parser"}
 msg_docs_new_toc={"txt":"DOC_GEN:contents table = new", "descr":"","cat":"Prj_parser"}
