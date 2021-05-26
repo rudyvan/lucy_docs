@@ -115,9 +115,9 @@ Utilities(
                                     effect = "-+",
                                     i_read = "kWh",
                                     method_things = {
-                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:car_energy,EnergyImported_kWh"),
-                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:car_energy,EnergyExported_kWh"),
-                                            "sensor":Sensor(i_read = "W",path = "modbus:car_energy,Tot_W",threshold = 20)},
+                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:car_energy,EnergyImported_kWh",threshold = 0.1),
+                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:car_energy,EnergyExported_kWh",threshold = 0.1),
+                                            "sensor":Sensor(i_read = "W",path = "modbus:car_energy,Tot_W",threshold = 30)},
                                     path = "modbus:car_energy,Tot_kWh",
                                     place = "boiler_room",
                                     where2find = "bord4"),
@@ -141,18 +141,19 @@ Utilities(
                                     effect = "+-",
                                     i_read = "kWh",
                                     method_things = {
-                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:main_energy,EnergyImported_kWh"),
-                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:main_energy,EnergyExported_kWh"),
-                                            "sensor":Sensor(i_read = "W",path = "modbus:main_energy,Tot_W",threshold = 20)},
+                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:main_energy,EnergyImported_kWh",threshold = 0.1),
+                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:main_energy,EnergyExported_kWh",threshold = 0.1),
+                                            "sensor":Sensor(i_read = "W",path = "modbus:main_energy,Tot_W",threshold = 30)},
                                     path = "modbus:main_energy,Tot_kWh",
                                     place = "garage_dressing",
                                     rate = {"+":{"weekday":{"12345":{"00:00":3.0,"07:00":4.0,"22:00":3.0},"67":{"00:00":3.0}}},"-":-0.5},
+                                    threshold = 0.1,
                                     where2find = "bord1"),
                             "pool_house":Meter(
                                     effect = "-",
                                     i_read = "kWh",
                                     method_things = {
-                                            "sensor":Sensor(i_read = "W",path = "modbus:pool_energy,Tot_W",threshold = 20)},
+                                            "sensor":Sensor(i_read = "W",path = "modbus:pool_energy,Tot_W",threshold = 30)},
                                     path = "modbus:pool_energy,Tot_kWh",
                                     place = "boiler_room",
                                     sub_nodes = {
@@ -160,23 +161,26 @@ Utilities(
                                                     effect = "-+",
                                                     i_read = "kWh",
                                                     method_things = {
-                                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyImported_kWh"),
-                                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyExported_kWh"),
-                                                            "sensor":Sensor(i_read = "W",path = "modbus:generator,Tot_W",threshold = 20)},
+                                                            "minus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyImported_kWh",threshold = 0.1),
+                                                            "plus_meter":Meter(i_read = "kWh",path = "modbus:generator,EnergyExported_kWh",threshold = 0.1),
+                                                            "sensor":Sensor(i_read = "W",path = "modbus:generator,Tot_W",threshold = 30)},
                                                     path = "modbus:generator,Tot_kWh",
                                                     place = "garden_houses",
+                                                    threshold = 0.1,
                                                     where2find = "pool_house -> bord5"),
                                             "pool_usage":Fake_meter(effect = "-",i_read = "kWh",method_things = {
                                                             "fake_sensor":Fake_sensor(i_read = "W")})},
+                                    threshold = 1,
                                     where2find = "bord4"),
                             "solar_power":Meter(
                                     effect = "+",
                                     i_read = "kWh",
                                     method_things = {
-                                            "sensor":Sensor(i_read = "W",path = "modbus:solar_energy,Tot_W",threshold = 20)},
+                                            "sensor":Sensor(i_read = "W",path = "modbus:solar_energy,Tot_W",threshold = 30)},
                                     path = "modbus:solar_energy,Tot_kWh",
                                     place = "boiler_room",
                                     rate = {"00:00":0.0},
+                                    threshold = 0.1,
                                     where2find = "bord2")},
                     scenes = ,
                     storage = {
@@ -193,21 +197,20 @@ Utilities(
                     unit = {"MWh":1000000.0,"Wh":0.001,"format":".XX","kWh":1.0}),
             "gas":Utility(
                     nodes = {
-                            "cooking":Fake_meter(effect = "-",i_read = "m3"),
                             "heating":Meter(
                                     effect = "-",
-                                    i_read = "m3",
+                                    i_read = "L",
                                     path = "unipi:PI-Climate,input,7",
                                     place = "boiler_room",
                                     rate = {"00:00":9.99},
                                     where2find = "above the heating"),
                             "purchased_gas":Meter(
                                     effect = "+",
-                                    i_read = "m3",
+                                    i_read = "L",
                                     owned_by = "fluvius",
                                     path = "ean:PI-Climate,41448820048316734,6237,XXXXX.x,0")},
                     topology = "pipe",
-                    unit = {"conversion":{"m3":0.4078},"format":".XX","kwh":1.0}),
+                    unit = {"L":0.001,"conversion":{"kWh":2.4521,"m3":0.4078},"format":".XX","m3":1}),
             "ground_water":Utility(
                     description = "ground water, pumped up for filling the raintank or irrigation use",
                     nodes = {
@@ -261,7 +264,8 @@ Utilities(
                                                         Mail(subject='Rain storage tank 3 is empty: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                                         Say(txt='{tts_start}the rain storage tank 3 is empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
                                             path = "unipi:PI-Pool,ai,2",
-                                            scalar = {"ign_bounds":True,"in":[10,85],"out":[0,100]}),size = 3),
+                                            scalar = {"ign_bounds":True,"in":[10,85],"out":[0,100]},
+                                            threshold = 4),size = 3),
                             "rain_tanks_1_2":Utility_storage(
                                     availability = Sensor(
                                             i_read = "%",
@@ -273,25 +277,18 @@ Utilities(
                                                         Mail(subject='Rain storage tanks 1 and 2 are empty: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                                         Say(txt='{tts_start}the rain storage tanks one and two are empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
                                             path = "unipi:PI-Pool,ai,1",
-                                            scalar = {"ign_bounds":True,"in":[10,85],"out":[0,100]}),
+                                            scalar = {"ign_bounds":True,"in":[5,85],"out":[0,100]},
+                                            threshold = 4),
                                     drain_out = [Output(method_things = {
                                                         "check_state:10":Input(
                                                                 notifications = {
                                                                         "active":Cal(txt='Rain Drain On', summary='', ceiling=None),
                                                                         "check_fail":Mail(subject='Issue Rain Drain Out Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                                                         "inactive":Cal(txt='Rain Drain Off', summary='', ceiling=None)},
-                                                                path = "unipi:PI-Pool,input,5")},path = "unipi:PI-Pool,relay,3"),Output(method_things = {
-                                                        "check_state:10":Input(
-                                                                notifications = {
-                                                                        "active":Cal(txt='Rain Drain On', summary='', ceiling=None),
-                                                                        "check_fail":Mail(subject='Issue Rain Drain Out Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
-                                                                        "inactive":Cal(txt='Rain Drain Off', summary='', ceiling=None)},
                                                                 path = "unipi:PI-Pool,input,5")},path = "unipi:PI-Pool,relay,3")],
-                                    fill_up = [
-                                        Output(path = "unipi:PI-RearDoor,relay,3"),
-                                        Output(path = "unipi:PI-RearDoor,relay,4"),
-                                        Output(path = "unipi:PI-RearDoor,relay,3"),
-                                        Output(path = "unipi:PI-RearDoor,relay,4")],
+                                    fill_up = {
+                                            "ground_water_valve_1":Output(path = "unipi:PI-RearDoor,relay,3"),
+                                            "ground_water_valve_2":Output(path = "unipi:PI-RearDoor,relay,4")},
                                     monitor = Sensor(
                                             i_read = "%",
                                             notifications = {
@@ -302,7 +299,8 @@ Utilities(
                                                         Mail(subject='Rain tanks are overflowing: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                                         Say(txt='{tts_start}the rain tanks are full {tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
                                             path = "usb:PI-Soccer,serial_arduino,a,0",
-                                            scalar = {"ign_bounds":True,"in":[14,100],"out":[0,100]}),
+                                            scalar = {"ign_bounds":True,"in":[14,100],"out":[0,100]},
+                                            threshold = 4),
                                     size = 10)},
                     topology = "pipe",
                     unit = {"L":0.001,"format":".XXX","m3":1}),
@@ -318,7 +316,8 @@ Utilities(
                                                         Mail(subject='Waste water level is high: {thing_state}, check the pump', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                                         Say(txt='{tts_start} Waste water level is too high, check the pump{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
                                             path = "usb:PI-Soccer,serial_arduino,a,1",
-                                            scalar = {"ign_bounds":True,"in":[14,100],"out":[0,100]}),
+                                            scalar = {"ign_bounds":True,"in":[14,100],"out":[0,100]},
+                                            threshold = 4),
                                     size = 3)},
                     topology = "pipe",
                     unit = {"L":0.001,"format":".XXX","m3":1})},
@@ -369,8 +368,14 @@ Some beautiful products exist for measuring electricity and water/gas
 
   | Error/Warning ID | Error/Warning MSG | Occurring When? |
   | --- | --- | --- | 
+  | err_fake_sensor | !!Fake_sensor <{}>: {:} |  
   | err_mtr_attr | !!Meter <{}> has {:} not in {:} |  
-  | err_storage_measure | !!Utility Storage <{}>: either availability OR occupancy, yet: {:} |  
+  | err_mtr_rate | !!Meter <{}> has rate {:} not valid: {:} |  
+  | err_mtr_sub | !!Meter <{}>.sub_nodes: multiple fakes not permitted =>{:} |  
+  | err_sns_attr | !!Fake_sensor <{}> has {:} not in {:} |  
+  | err_storage | !!Utility Storage <{:}>: {:} |  
+  | err_utility | !!Utility <{:}>: {:} |  
+  | err_utl_node | !!Utility <{}>.nodes: multiple fakes not permitted =>{:} |  
 <!--e_tbl_utilities-->
 
 
@@ -398,6 +403,7 @@ An utility description with meters, sensors, costs, scenes
   | storage | *Utility_storage | True | True | a tank or battery type storage for storage of utility | 
   | topology | valid_list | False | - | topology is either 'grid' (such as electricity) or 'pipes' (such as water) | 
   | unit | dict | False | - | by default it defines the unit for meters, but you can also specify the unit for the sensors, see the examples of what is possible | 
+  | valves | *Output | True | - | valves that enable or disable the flow of the utility | 
 <!--e_tbl_utility-->
 
 <!--s_name_utility_storage-->

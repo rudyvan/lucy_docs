@@ -444,8 +444,14 @@ err_mb_type={"txt":"!!Modbus {} is <{}> type but should be {}", "descr":"","cat"
 err_mb_bad={"txt":"!!Modbus {} does not access : {}", "descr":"","cat":"Modbus_driver"}
 err_mb_dev={"txt":"!!Modbus {} has {} not in {}", "descr":"","cat":"Modbus_driver"}
 err_mb_ns={"txt":"!!Modbus {} not yet supported", "descr":"","cat":"Modbus_driver"}
-err_storage_measure={"txt":"!!Utility Storage <{}>: either availability OR occupancy, yet: {:}", "descr":"","cat":"Utilities"}
+err_utility={"txt":"!!Utility <{:}>: {:}", "descr":"","cat":"Utilities"}
+err_storage={"txt":"!!Utility Storage <{:}>: {:}", "descr":"","cat":"Utilities"}
 err_mtr_attr={"txt":"!!Meter <{}> has {:} not in {:}", "descr":"","cat":"Utilities"}
+err_mtr_rate={"txt":"!!Meter <{}> has rate {:} not valid: {:}", "descr":"","cat":"Utilities"}
+err_sns_attr={"txt":"!!Fake_sensor <{}> has {:} not in {:}", "descr":"","cat":"Utilities"}
+err_mtr_sub={"txt":"!!Meter <{}>.sub_nodes: multiple fakes not permitted =>{:}", "descr":"","cat":"Utilities"}
+err_utl_node={"txt":"!!Utility <{}>.nodes: multiple fakes not permitted =>{:}", "descr":"","cat":"Utilities"}
+err_fake_sensor={"txt":"!!Fake_sensor <{}>: {:}", "descr":"","cat":"Utilities"}
 msg_docs_gen={"txt":"DOC_GEN:started", "descr":"","cat":"Prj_parser"}
 msg_docs_gen_new={"txt":"DOC_GEN:app files -> {:} docs new/updated", "descr":"","cat":"Prj_parser"}
 msg_docs_new_toc={"txt":"DOC_GEN:contents table = new", "descr":"","cat":"Prj_parser"}

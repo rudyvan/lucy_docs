@@ -226,7 +226,8 @@ Weather_station(
                                         Mail(subject='wind strength:  {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                         Say(txt='{tts_start} Attention! There is a violent storm outside{tts_end}', ceiling=None, times=2, override=True, volume=60)]})},
             notifications = {
-                    "when_is>15":[Say(txt='{tts_start} wind is nice, just a breeze{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
+                    "when_is>100":[
+                        Say(txt='{tts_start}beware, wind speed became more than 100 km per hour{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
             path = "unipi:PI-Garden,input,12"))
 
 ```
