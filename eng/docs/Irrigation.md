@@ -204,7 +204,7 @@ Irrigation_system(
             method_things = {
                     "activate_button":Button(active = 0,path = "unipi:PI-Garden,input,8"),
                     "toggle_button":[Button(path = "unipi:PI-Garden,input,2")],
-                    "vfy_same_delayed:10":Input(
+                    "vfy_same_secs:10":Input(
                             duration = 0.5,
                             notifications = {
                                     "active":Cal(txt='Irrigation Water On', summary='', ceiling=None),
@@ -255,7 +255,7 @@ Irrigation_points(
             "irr4_for_veg_back":Irr(path = "unipi:PI-Garden,relay,1",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
             "irr5_rev_clockwise":Irr(
                     method_things = {
-                            "vfy_same_delayed:10":Input(
+                            "vfy_same_secs:10":Input(
                                     duration = 0.5,
                                     notifications = {
                                             "check_fail":Mail(subject='Issue IRR rev Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},
@@ -265,7 +265,7 @@ Irrigation_points(
                     usage = {"Qty":8,"Unit":"L/min","type":"Water"}),
             "irr6_clockwise":Irr(
                     method_things = {
-                            "vfy_same_delayed:10":Input(
+                            "vfy_same_secs:10":Input(
                                     duration = 0.5,
                                     notifications = {
                                             "check_fail":Mail(subject='Issue IRR Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},

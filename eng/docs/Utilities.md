@@ -280,7 +280,7 @@ Utilities(
                                             scalar = {"ign_bounds":True,"in":[-4,85],"out":[0,100]},
                                             threshold = 4),
                                     drain_out = [Output(method_things = {
-                                                        "vfy_same_delayed:10":Input(
+                                                        "vfy_same_secs:10":Input(
                                                                 notifications = {
                                                                         "active":Cal(txt='Rain Drain On', summary='', ceiling=None),
                                                                         "check_fail":Mail(subject='Issue Rain Drain Out Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),

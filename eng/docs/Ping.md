@@ -39,8 +39,8 @@ is a network function to check the presence of a thing through a ping
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
-  | check_fail | the vfy_same_delayed thingsmethod fails after the set time and the input does not reflects the parent output | 
-  | check_ok | the vfy_same_delayed thingsmethod succeeds after the set time and the input reflects the parent output | 
+  | check_fail | the vfy_same_secs thingsmethod fails after the set time and the input does not reflects the parent output | 
+  | check_ok | the vfy_same_secs thingsmethod succeeds after the set time and the input reflects the parent output | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 

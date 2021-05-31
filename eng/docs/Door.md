@@ -64,8 +64,8 @@ Door and Window methods are the same
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
-  | check_fail | the vfy_same_delayed thingsmethod fails after the set time and the input does not reflects the parent output | 
-  | check_ok | the vfy_same_delayed thingsmethod succeeds after the set time and the input reflects the parent output | 
+  | check_fail | the vfy_same_secs thingsmethod fails after the set time and the input does not reflects the parent output | 
+  | check_ok | the vfy_same_secs thingsmethod succeeds after the set time and the input reflects the parent output | 
   | conflict_oc | error as door is registered to be open and closed at the same time | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
@@ -453,7 +453,7 @@ Window covering
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button', 'vfy_same_delayed'] | False | - | special methods of this thing, mostly realised through things | 
+  | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button', 'vfy_same_secs'] | False | - | special methods of this thing, mostly realised through things | 
   | my_assistant | bool | True | - | a flag if voice (alexa) can activate this thing | 
   | notifications | ['active', 'app_done', 'app_start', 'check_fail', 'check_ok', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'payload_no'] | True | - | the notifications for window covers, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
@@ -470,8 +470,8 @@ Window covering
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
-  | check_fail | the vfy_same_delayed thingsmethod fails after the set time and the input does not reflects the parent output | 
-  | check_ok | the vfy_same_delayed thingsmethod succeeds after the set time and the input reflects the parent output | 
+  | check_fail | the vfy_same_secs thingsmethod fails after the set time and the input does not reflects the parent output | 
+  | check_ok | the vfy_same_secs thingsmethod succeeds after the set time and the input reflects the parent output | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 
@@ -498,7 +498,7 @@ Window covering
   | is_on | Input | {'descr': 'is the input to measure if the output is active or not', 'short': 'is_on'} | 
   | on_off_relay | ['Output', 'Light'] | {'descr': 'deactivates the output if active', 'short': 'de_activate_button'} | 
   | toggle_button | ['Button'] | {'descr': 'is an input to toggle the output state', 'short': 'toggle_button'} | 
-  | vfy_same_delayed | Input | {'descr': 'is the feedback input to ensure if the output is really active or not', 'short': 'vfy_same_delayed'} | 
+  | vfy_same_secs | Input | {'descr': 'is the feedback input to ensure if the output is really active or not', 'short': 'vfy_same_secs'} | 
 <!--e_tbl_wc-->
 
 

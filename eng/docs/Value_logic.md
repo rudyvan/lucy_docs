@@ -188,7 +188,7 @@ Climate_system(
                     active = 0,
                     i_make = ['warm'],
                     method_things = {
-                            "vfy_same_delayed:10":Input(
+                            "vfy_same_secs:10":Input(
                                     duration = 0.5,
                                     notifications = {
                                             "active":Cal(txt='Central Heating Active', summary='', ceiling=None),
@@ -200,7 +200,7 @@ Climate_system(
                     duration = 0,
                     i_make = ['warm'],
                     method_things = {
-                            "vfy_same_delayed:10":Input(
+                            "vfy_same_secs:10":Input(
                                     duration = 0.5,
                                     notifications = {
                                             "active":Cal(txt='Pool Heating Active', summary='', ceiling=None),
