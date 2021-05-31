@@ -264,7 +264,7 @@ Utilities(
                                                         Mail(subject='Rain storage tank 3 is empty: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                                         Say(txt='{tts_start}the rain storage tank 3 is empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
                                             path = "unipi:PI-Pool,ai,2",
-                                            scalar = {"ign_bounds":True,"in":[10,85],"out":[0,100]},
+                                            scalar = {"ign_bounds":True,"in":[0,85],"out":[0,100]},
                                             threshold = 4),size = 3),
                             "rain_tanks_1_2":Utility_storage(
                                     availability = Sensor(
@@ -277,10 +277,10 @@ Utilities(
                                                         Mail(subject='Rain storage tanks 1 and 2 are empty: {thing_state}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                                                         Say(txt='{tts_start}the rain storage tanks one and two are empty, where is the rain?{tts_end}', ceiling='1/day', times=1, override=None, volume=None)]},
                                             path = "unipi:PI-Pool,ai,1",
-                                            scalar = {"ign_bounds":True,"in":[5,85],"out":[0,100]},
+                                            scalar = {"ign_bounds":True,"in":[-4,85],"out":[0,100]},
                                             threshold = 4),
                                     drain_out = [Output(method_things = {
-                                                        "check_state:10":Input(
+                                                        "vfy_same_secs:10":Input(
                                                                 notifications = {
                                                                         "active":Cal(txt='Rain Drain On', summary='', ceiling=None),
                                                                         "check_fail":Mail(subject='Issue Rain Drain Out Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),

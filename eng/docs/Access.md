@@ -263,8 +263,8 @@ An example of a real life situation is the use of nold.io, see www.nold.io and t
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
-  | check_fail | the check_state thingsmethod fails after the set time and the input does not reflects the parent output | 
-  | check_ok | the check_state thingsmethod succeeds after the set time and the input reflects the parent output | 
+  | check_fail | the vfy_same_secs thingsmethod fails after the set time and the input does not reflects the parent output | 
+  | check_ok | the vfy_same_secs thingsmethod succeeds after the set time and the input reflects the parent output | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 
@@ -658,7 +658,7 @@ Access_keys(
                             "iButton_out_veranda":"exit_via_veranda_and_lockup"}),
             "Nara Bonita":Access(
                     member_of = ["persons"],
-                    path = "ow:PI-Security,0051000001057C5F,DS2401,worker",
+                    path = "ow:PI-Security,00030000010DC35D,DS2401,worker",
                     rights = {
                             "iButton_in_soccer":"entry_via_soccer",
                             "iButton_in_street":"entry_via_gate_no_unlock",

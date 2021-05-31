@@ -180,6 +180,7 @@ Below is the list of all available commands and the role that the receiving thin
   | err_write_crash | !!Write to <{:}> crashed, a={:}, kw={:} |  
   | err_write_gone | !!Write to <{:}> now OK! |  
   | err_ws_crash | !!Websocket crash: <{:}> {:}{:} |  
+  | err_ws_msg | !!Websocket msg: <{:}> {:}{:} |  
   | err_ws_sanic | !!Websocket Sanic crash: <{:}> {:}{:} |  
   | msg_ws_closed | Websocket: {:} is closed {:} |  
   | msg_ws_connect | Websocket: {:} is connected {:} |  

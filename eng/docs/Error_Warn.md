@@ -376,6 +376,7 @@ msg_acc_entry_ok={"txt":"{:}/{:} entry by {:}/{:}", "descr":"","cat":"Access_man
 msg_acc_exit_ok={"txt":"{:}/{:} exit by {:}/{:}", "descr":"","cat":"Access_manager"}
 err_drv_msg={"txt":"!!{:} driver error wrapper expects msg list, not {:}", "descr":"","cat":"Things_sync"}
 err_ws_crash={"txt":"!!Websocket crash: <{:}> {:}{:}", "descr":"","cat":"Things_sync"}
+err_ws_msg={"txt":"!!Websocket msg: <{:}> {:}{:}", "descr":"","cat":"Things_sync"}
 err_ws_sanic={"txt":"!!Websocket Sanic crash: <{:}> {:}{:}", "descr":"","cat":"Things_sync"}
 err_scan_crash={"txt":"!!Scan crashed of <{:}> {:}{:}", "descr":"","cat":"Things_sync"}
 err_scan_gone={"txt":"!!Scan of <{:}>  now OK!", "descr":"","cat":"Things_sync"}

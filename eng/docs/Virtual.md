@@ -312,8 +312,8 @@ Virtuals that are acting on things can have parameters whereby the parameters ar
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
-  | check_fail | the check_state thingsmethod fails after the set time and the input does not reflects the parent output | 
-  | check_ok | the check_state thingsmethod succeeds after the set time and the input reflects the parent output | 
+  | check_fail | the vfy_same_secs thingsmethod fails after the set time and the input does not reflects the parent output | 
+  | check_ok | the vfy_same_secs thingsmethod succeeds after the set time and the input reflects the parent output | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 
