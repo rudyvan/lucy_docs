@@ -103,6 +103,7 @@ time_irr_depressure=180 # time in seconds all irr channels are bleeding in the w
 
   | Property | Validation | Optional? | Repeat? | Description |
   | --- | --- | --- | --- | --- |
+  | C_outdoor_irr | Sensor | False | - | outside temperature sensor | 
   | dry_days_max | int | False | - | max number of days without rain to have irrigation (zaps remaining rain decay).  It is very difficult to estimate rain infiltration and having a cut off helps.. | 
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
@@ -114,7 +115,7 @@ time_irr_depressure=180 # time in seconds all irr channels are bleeding in the w
   | irr_flow_meter | *Meter | True | - | a irrigation water flow meter, measuring water consumption with a hall effect sensor | 
   | irr_flow_sensor | Input | True | - | a irrigation water flow sensor, a feedback to working or faulty irrigation because the script can check when water should or should not flow.  The check happens at the first watering point | 
   | irr_frost_valve | Output | True | True | the output(s) to the frost protection valve(s), this valve is closed (inactive) when frost conditions | 
-  | irr_sequential | bool | True | - | irrigate one point after another (the default) or all irrigation points in parallel | 
+  | irr_sequence | str | True | - | irrigate 'serial' (default), ''parallel', or custom as [('name1','name2','name3'), ('name4','name5')] (quoted) | 
   | irr_time_base | int | False | - | time in minutes, the basis irrigation time used for rain decay adjustment, do not change | 
   | irr_water_supply | Output | True | True | the output(s) to switch the pump | 
   | irr_water_valve | Output | True | True | the output(s) to the main water valve(s) | 
@@ -186,14 +187,15 @@ Irrigation_manager()
 from lucy_app import *
 
 Irrigation_system(
+    C_outdoor_irr = Sensor(i_read = "°C",path = "unipi:PI-Gate,ow,28DAE37306000070,DS18B20,,99"),
     dry_days_max = 3,
     irr_act_button = Button(path = "unipi:PI-Garden,input,1"),
     irr_all_out_dg = 6,
     irr_fcst_min_dg = 5,
     irr_flow_meter = Meter(effect = "-",i_read = "L",path = "unipi:PI-Pool,input,2"),
     irr_flow_sensor = Input(path = "unipi:PI-Garden,input,4"),
-    irr_frost_valve = Output(path = "unipi:PI-Pool,relay,4"),
-    irr_sequential = False,
+    irr_frost_valve = Output(active = 0,path = "unipi:PI-Pool,relay,4"),
+    irr_sequence = "[('irr1_for_veg_front','irr2_for_veg_a_front'),('irr3_for_veg_b_back', 'irr4_for_veg_back'),('irr5_rev_clockwise','irr6_clockwise')]",
     irr_time_base = 8,
     irr_water_supply = Output(
             copy_things = {
@@ -204,7 +206,7 @@ Irrigation_system(
             method_things = {
                     "activate_button":Button(active = 0,path = "unipi:PI-Garden,input,8"),
                     "toggle_button":[Button(path = "unipi:PI-Garden,input,2")],
-                    "vfy_same_secs:10":Input(
+                    "vfy_same_delayed:10":Input(
                             duration = 0.5,
                             notifications = {
                                     "active":Cal(txt='Irrigation Water On', summary='', ceiling=None),
@@ -241,7 +243,7 @@ Irrigation_system(
                 Mail(subject='{app_txt} Irrigation in Winter Mode!', to=None, cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None),
                 Say(txt='{tts_start} no irrigation in the winter months, we just going to routinely activate the pump and valves{tts_end}', ceiling=None, times=1, override=None, volume=None)]},
     role_me = "PI-Garden",
-    winter_months = [11,12,1,2,3])
+    winter_months = [10,11,12,1,2,3,4])
 
 # --> project.py :<dk:project,o:Project,kw:property,lp:0,o:House,kw:places,dk:garden,o:Place,kw:contents,lp:6,o:Irrigation_points>
 
@@ -253,26 +255,8 @@ Irrigation_points(
             "irr2_for_veg_a_front":Irr(path = "unipi:PI-Garden,relay,3",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
             "irr3_for_veg_b_back":Irr(path = "unipi:PI-Garden,relay,2",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
             "irr4_for_veg_back":Irr(path = "unipi:PI-Garden,relay,1",time_run = 6,usage = {"Qty":6,"Unit":"L/min","type":"Water"}),
-            "irr5_rev_clockwise":Irr(
-                    method_things = {
-                            "vfy_same_secs:10":Input(
-                                    duration = 0.5,
-                                    notifications = {
-                                            "check_fail":Mail(subject='Issue IRR rev Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},
-                                    path = "unipi:PI-Pool,input,6")},
-                    path = "unipi:PI-Pool,relay,1",
-                    time_run = 6,
-                    usage = {"Qty":8,"Unit":"L/min","type":"Water"}),
-            "irr6_clockwise":Irr(
-                    method_things = {
-                            "vfy_same_secs:10":Input(
-                                    duration = 0.5,
-                                    notifications = {
-                                            "check_fail":Mail(subject='Issue IRR Valve: {app_txt}', to='{prime}', cams=None, cam_groups=None, passes=0, body_file='', files2mail=None, ceiling=None)},
-                                    path = "unipi:PI-Pool,input,7")},
-                    path = "unipi:PI-Pool,relay,2",
-                    time_run = 6,
-                    usage = {"Qty":8,"Unit":"L/min","type":"Water"})})
+            "irr5_rev_clockwise":Irr(path = "unipi:PI-Pool,relay,1",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"}),
+            "irr6_clockwise":Irr(path = "unipi:PI-Pool,relay,2",time_run = 6,usage = {"Qty":8,"Unit":"L/min","type":"Water"})})
 
 ```
 

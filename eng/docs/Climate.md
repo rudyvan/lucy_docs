@@ -365,7 +365,7 @@ Climate_system(
                     active = 0,
                     i_make = ['warm'],
                     method_things = {
-                            "vfy_same_secs:10":Input(
+                            "vfy_same_delayed:10":Input(
                                     duration = 0.5,
                                     notifications = {
                                             "active":Cal(txt='Central Heating Active', summary='', ceiling=None),
@@ -377,7 +377,7 @@ Climate_system(
                     duration = 0,
                     i_make = ['warm'],
                     method_things = {
-                            "vfy_same_secs:10":Input(
+                            "vfy_same_delayed:10":Input(
                                     duration = 0.5,
                                     notifications = {
                                             "active":Cal(txt='Pool Heating Active', summary='', ceiling=None),
@@ -448,7 +448,7 @@ Climate energy Switch, is a binary on/off switch for gas or electricity heaters 
   | i_make | str | False | - | the type of environmental impact that this thing makes | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | method_things | ['activate_button', 'C_fluid', 'C_in', 'C_out', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button', 'vfy_same_secs'] | False | - | special methods of this thing, mostly realised through things | 
+  | method_things | ['activate_button', 'C_fluid', 'C_in', 'C_out', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button', 'vfy_same_delayed'] | False | - | special methods of this thing, mostly realised through things | 
   | notifications | ['active', 'app_done', 'app_start', 'check_fail', 'check_ok', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'inactive', 'notify_binary+', 'payload_no'] | True | - | the notifications for outputs, see [__Notifier__](Notifier.md) | 
   | path | str, str_list | False | - | path to the specific hardware element | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
@@ -462,8 +462,8 @@ Climate energy Switch, is a binary on/off switch for gas or electricity heaters 
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
-  | check_fail | the vfy_same_secs thingsmethod fails after the set time and the input does not reflects the parent output | 
-  | check_ok | the vfy_same_secs thingsmethod succeeds after the set time and the input reflects the parent output | 
+  | check_fail | the vfy_same_delayed thingsmethod fails after the set time and the input does not reflects the parent output | 
+  | check_ok | the vfy_same_delayed thingsmethod succeeds after the set time and the input reflects the parent output | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 
@@ -493,7 +493,7 @@ Climate energy Switch, is a binary on/off switch for gas or electricity heaters 
   | is_on | Input | {'descr': 'is the input to measure if the output is active or not', 'short': 'is_on'} | 
   | on_off_relay | ['Output', 'Light'] | {'descr': 'deactivates the output if active', 'short': 'de_activate_button'} | 
   | toggle_button | ['Button'] | {'descr': 'is an input to toggle the output state', 'short': 'toggle_button'} | 
-  | vfy_same_secs | Input | {'descr': 'is the feedback input to ensure if the output is really active or not', 'short': 'vfy_same_secs'} | 
+  | vfy_same_delayed | Input | {'descr': 'is the feedback input to ensure if the output is really active or not', 'short': 'vfy_same_delayed'} | 
 <!--e_tbl_e_sw-->
 
 <!--s_name_e_dm-->
@@ -519,7 +519,7 @@ Climate energy Dimmer, is a device that has a 0% to 100% setting and value can b
   | i_make | str | False | - | the type of environmental impact that this thing makes | 
   | icon | str | True | - | icon file for this element | 
   | member_of | list | True | - | a list of group names to which thing belongs | 
-  | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button', 'vfy_same_secs'] | False | - | special methods of this thing, mostly realised through things | 
+  | method_things | ['activate_button', 'de_activate_button', 'is_on', 'on_off_relay', 'toggle_button', 'vfy_same_delayed'] | False | - | special methods of this thing, mostly realised through things | 
   | notifications | ['active', 'app_done', 'app_start', 'deicing', 'disable_off', 'disable_on', 'enable_off', 'enable_on', 'freeze_off', 'freeze_on', 'freezing', 'inactive', 'negative', 'nothing_is', 'notify_analog+', 'payload_no', 'positive', 'when_is>{cur_state}'] | True | - | similar for the notifications for Sensors, see [__Notifier__](Notifier.md) | 
   | th_grp | str | False | - | the technical group to which this thing belongs, used in groupings for lists and reports | 
   | threshold | float | False | - | the minimum % that an analog input must change before the value is considered changed | 
@@ -565,7 +565,7 @@ Climate energy Dimmer, is a device that has a 0% to 100% setting and value can b
   | is_on | Input | {'descr': 'is the input to measure if the output is active or not', 'short': 'is_on'} | 
   | on_off_relay | ['Output', 'Light'] | {'descr': 'deactivates the output if active', 'short': 'de_activate_button'} | 
   | toggle_button | ['Button'] | {'descr': 'is an input to toggle the output state', 'short': 'toggle_button'} | 
-  | vfy_same_secs | Input | {'descr': 'is the feedback input to ensure if the dimmer is really active or not', 'short': 'vfy_same_secs'} | 
+  | vfy_same_delayed | Input | {'descr': 'is the feedback input to ensure if the dimmer is really active or not', 'short': 'vfy_same_delayed'} | 
 <!--e_tbl_e_dm-->
 
 ## Climate Transport
@@ -663,8 +663,8 @@ Climate Switch, Clim_SW (switch) is a binary on/off climate switch such as an on
   | active | when payload is non zero | 
   | app_done | when a things_app completes | 
   | app_start | when a things_app starts | 
-  | check_fail | the vfy_same_secs thingsmethod fails after the set time and the input does not reflects the parent output | 
-  | check_ok | the vfy_same_secs thingsmethod succeeds after the set time and the input reflects the parent output | 
+  | check_fail | the vfy_same_delayed thingsmethod fails after the set time and the input does not reflects the parent output | 
+  | check_ok | the vfy_same_delayed thingsmethod succeeds after the set time and the input reflects the parent output | 
   | disable_off | when all of the disable conditions fail | 
   | disable_on | when one of the disable conditions succeed | 
   | enable_off | when one of the enable conditions fail | 

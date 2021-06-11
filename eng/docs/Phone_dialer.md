@@ -64,13 +64,12 @@ Phone_dialer(
                             duration = 2,
                             play = Effect(maker='self', condition='become_active', effect='make_active', taker='parent', delay=None, duration=None))},path = "unipi:PI-Stats,relay,1"),
     pho_say_internet_lost = Output(duration = 40,effect_virtuals = {
+                    "home_occupancy":Virtual_R(
+                            descr_range = ["Day","Away","Sleep","Holiday"],
+                            digital_range = [0,1,2,3],
+                            play = Effect(maker='self', condition=[0, 2], effect='inactive_freeze', taker='parent', delay=None, duration=None)),
                     "internet_lost":Virtual(
                             duration = 2,
-                            effect_virtuals = {
-                                    "home_occupancy":Virtual_R(
-                                            descr_range = ["Day","Away","Sleep","Holiday"],
-                                            digital_range = [0,1,2,3],
-                                            play = Effect(maker='self', condition=[0, 2], effect='inactive_freeze', taker='parent', delay=None, duration=None))},
                             play = Effect(maker='self', condition='become_active', effect='make_active', taker='parent', delay=None, duration=None))},path = "unipi:PI-Stats,relay,2"),
     pho_say_power_lost = Output(duration = 40,effect_virtuals = {
                     "power_flag":Virtual(
