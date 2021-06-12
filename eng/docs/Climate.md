@@ -290,7 +290,7 @@ Climate_manager(
             "{room}.comfort_1":Say(txt='{tts_start} {room} is set to comfort climatisation{tts_end}', ceiling=None, times=1, override=None, volume=None),
             "{room}.economy_0":Say(txt='{tts_start} {room} is set to regular climatisation{tts_end}', ceiling=None, times=1, override=None, volume=None),
             "{room}.economy_1":Say(txt='{tts_start} {room} is set to economy climatisation{tts_end}', ceiling=None, times=1, override=None, volume=None)},
-    role_followers = ["PI-CSlave"],
+    role_followers = ,
     role_me = "PI-Climate",
     sp_presets = {
             "cold_preset":{"away":28.0,"comfort":-1.0,"day":{"off":28.0,"on":24.0},"economy":1.5,"sleep":{"off":28.0,"on":24}},
