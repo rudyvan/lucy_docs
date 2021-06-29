@@ -379,7 +379,9 @@ These Apps interface to gateways, bridges of other suppliers or make a connectio
   | [__Niko_driver__](docs/Niko_driver.md) | is the driver for Niko |
   | [__One_wire_driver__](docs/One_wire_driver.md) | Handles the 1 wire sensors, 1 wire devices and iButtons |
   | [__Piface_driver__](docs/Piface_driver.md) | Reads and writes binary inputs and outputs on the piface hat |
+  | [__Pixtend_driver__](docs/Pixtend_driver.md) | Reads and writes binary and analog inputs and outputs on the PiXtend hat |
   | [__Slack_driver__](docs/Slack_driver.md) | is the driver for the Slack interface |
+  | [__Sma_driver__](docs/Sma_driver.md) | is the driver for Sunny SMA |
   | [__Sms_driver__](docs/Sms_driver.md) | GSM SMS driver, both as a notification sender of messages as a receiver of remote commands, via the hologram nova modem, see http://hologram.io |
   | [__Somfy_driver__](docs/Somfy_driver.md) | is the driver for Somfy |
   | [__Sonos_driver__](docs/Sonos.md) | The Sonos Driver to play notifications through a sonos setup.   Define the sonos speakers with the Sonos() thing! |
@@ -524,6 +526,7 @@ These Apps can be defined in a place or a room and decorate it with functionalit
   | [__Niko__](docs/Things_controllers.md) | controller of things - Niko |
   | [__Raspi__](docs/Things_controllers.md) | controller of things - Raspi |
   | [__Renson__](docs/Things_controllers.md) | Renson Healthbox controller |
+  | [__Sma__](docs/Things_controllers.md) | controller of things - SMA |
   | [__Somfy__](docs/Things_controllers.md) | controller of things - Somfy |
   | [__Ubuntu__](docs/Things_controllers.md) | controller of things - Ubuntu |
   | [__Unipi_Evok__](docs/Things_controllers.md) | controller of things - Unipi_Evok |

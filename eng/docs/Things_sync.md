@@ -15,7 +15,7 @@ The process of ensuring that the as_is and to_be state of a Thing is there where
 
 ### rest API versus messaging
 
-The situation is that piface devices do not have a rest api that raspberry's over the local lan can consult. Unipi devices do through evok.py
+The situation is that piface or Pixtend devices do not have a rest api that raspberry's over the local lan can consult. Unipi devices do through evok.py
 Even then, it would generate a lot of network traffic if every things_controller would consult every other one's rest api as frequently as possible.
 
 Therefore a design assumption is included that raspberry's should know who else needs their input/output status and then inform the other party when a change happen.  
@@ -23,9 +23,9 @@ The other party acknowledges the receipt of input status, and also requests the 
 
 This handshake only generate traffic at startup and when a change happen.   
 
-Of-course with a lot of things_controllers, a lot of io_devices and very distributed functions and io_devices would still generate traffic, but only when a lot of status changes happen, and this is not a real world scenario.
+Of-course with a lot of things_controllers, a lot of things and very distributed functions and things would still generate traffic, but only when a lot of status changes happen, and this is not a real world scenario.
 
-The communications protocol is an UDP message with device status and a reply notification expectation within a reply time frame.
+The communications' protocol is websocket json message with device status and a reply notification expectation within a reply time frame.
 		
 ### Why a propriety protocol?
 
@@ -179,13 +179,9 @@ Below is the list of all available commands and the role that the receiving thin
   | err_scan_gone | !!Scan of <{:}>  now OK! |  
   | err_write_crash | !!Write to <{:}> crashed, a={:}, kw={:} |  
   | err_write_gone | !!Write to <{:}> now OK! |  
-  | err_ws_c_issue | !!WS_client: crash of <{:}> {:}, sending {:} |  
   | err_ws_crash | !!Websocket crash: <{:}> {:} {:} |  
-  | err_ws_issue | !!WS_server: crash of <{:}> {:} |  
   | err_ws_msg | !!Websocket msg: <{:}> {:} {:} |  
   | err_ws_sanic | !!Websocket Sanic crash: <{:}> {:} {:} |  
-  | msg_ws_c_closed | WS_client: {:} is closed |  
-  | msg_ws_c_connect | WS_client: {:} is connected |  
   | msg_ws_closed | WS_server: {:} is closed {:} |  
   | msg_ws_connect | WS_server: {:} is connected {:} |  
   | msg_ws_reject | WS_server: {:} is rejected {:} |  

@@ -28,7 +28,7 @@ Others will be added in the future such as niko or lutron.
   | --- | --- | --- | --- | --- |
   | fav | str | True | - | is this a favorite element | 
   | icon | str | True | - | icon file for this element | 
-  | items | ['Raspi', 'Ubuntu', 'MAC_OS', 'Arduino', 'Vera', 'Hue', 'Ikea', 'Eds', 'Unipi_Evok', 'Daikin', 'IP_Building', 'Loxone', 'Renson', 'Modbus'] | False | - | This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Eds','Unipi_Evok' | 
+  | items | ['Raspi', 'Ubuntu', 'MAC_OS', 'Arduino', 'Vera', 'Hue', 'Ikea', 'Eds', 'Unipi_Evok', 'Daikin', 'IP_Building', 'Loxone', 'Renson', 'Modbus', 'Sma'] | False | - | This structure defines a Things Controller such as 'Raspberry','Ubuntu','MAC_OS','Arduino','Vera','Hue','Ikea','Eds','Unipi_Evok' | 
 <!--e_tbl-->
 
 The things_controllers driven by Lucy (those also drive the alien ones) can be a [Raspberry](https://www.raspberrypi.org/) or a special purpose ethernet [Arduino](https://www.arduino.cc/) or even a full unix computer with [Ubuntu](https://www.ubuntu.com/) or [Debian](https://www.debian.org/).
@@ -49,7 +49,7 @@ from app_obj.conf:
 
 tc_path_defs={
 	"ip": {"gw_sleep":0, "format":"ip"},
-	"usb":{"gw_sleep":0.8, "format":"tc,usb_path,nr,par1,par2,par3"}}
+	"usb":{"gw_sleep":0.8, "format":"tc,usb_path,nr"}}
 
 ```
 

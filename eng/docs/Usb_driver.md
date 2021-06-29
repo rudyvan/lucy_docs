@@ -19,7 +19,7 @@ In the example below a usb_driver is defined with one item serial_arduino:
 
 from project.py tree:(o:Usb_driver)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:drivers,lp:15,o:Usb_driver>
+# --> project.py :<dk:project,o:Project,kw:drivers,lp:16,o:Usb_driver>
 
 from lucy_app import *
 

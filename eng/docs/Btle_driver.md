@@ -101,7 +101,7 @@ If the beacon gateway name starts with "PI-", then it will be removed for intern
 
 from project.py tree:(o:Btle_driver)
 ```python3
-# --> project.py :<dk:project,o:Project,kw:drivers,lp:12,o:Btle_driver>
+# --> project.py :<dk:project,o:Project,kw:drivers,lp:13,o:Btle_driver>
 
 from lucy_app import *
 

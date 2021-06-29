@@ -120,7 +120,7 @@ Things_controllers(items = {
 
   | Notification Suffix | When invoked? |
   | --- | --- | 
-  | modbus_forensics | this report runs at then end of the day to list all modbus modbus thingscontrollers data | 
+  | modbus_forensics | this report runs at then end of the day to list all modbus thingscontrollers data | 
   | modbus_parsing | this report runs when parsing of modbus thingscontrollers is complete | 
 
 ## List of [Errors/Warnings](Error_Warn.md) for  __Modbus_driver__:
